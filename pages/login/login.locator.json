@@ -1,0 +1,19 @@
+{
+    "Logo":"img[src='/assets/general/Logo.svg']",
+    "GmailLogo":"//body/div[@id='root']/div/div/div/div/div/div[2]/div[1]",
+    "LoginHeading":"//div[contains(text(),'Login')]",
+    "EmailAddressTxtBox":"input[placeholder='Email Address']",
+    "PasswordTxtBox" : "input[placeholder='Password']",
+    "SignInBtn" : "//a[normalize-space()='Sign in']",
+    "UserNamePasswordValidationError" : "div[role='alert']",
+    "PasswordIsRequiredValidationError":"//div[contains(text(),'Password is a required field')]",
+    "EmailIsRequiredValidationError":"//div[contains(text(),'Email address is a required field')]",
+    "PleaseEnterAValidEmailValidationError":"//div[contains(text(),'Please enter a valid email address.')]",
+    "OrLoginUsingText" : "//div[contains(text(),'Or login using')]",
+    "DontHaveAnAccountText" : "//p[1]",
+    "SignUpWithJuicMindBtn" : "a[href='/signup']",
+    "ForgotPasswordBtn" : "a[href='/forgot-password']",
+    "LogInNavigationBtn":"a[href='/login']",
+    "SignUpNavigationBtn":"a[href='/signup']",
+    "ProfilePicture":"div[aria-label='My Account']"
+}

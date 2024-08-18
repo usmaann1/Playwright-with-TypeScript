@@ -1,0 +1,29 @@
+{
+    "LoginHeadingValue":"Login",
+    "SignInBtnValue" : "Sign in",
+    "OrLoginUsingTextValue" : "Or login using",
+    "DontHaveAnAccountTextValue" : "Don't have an account? Sign up for JuiceMind.",
+    "SignUpWithJuicMindBtnValue" : "Sign up for JuiceMind.",
+    "ForgotPasswordBtnValue" : "Forgot Password",
+    "UserNameValidationErrorTextValue" : "We couldn't find a user with this email address.",
+    "PasswordValidationErrorTextValue" : "Incorrect email and password combination.",
+    "PasswordIsRequiredValidationErroValue":"Password is a required field",
+    "EmailIsRequiredValidationErrorValue":"Email address is a required field",
+    "PleaseEnterAValidEmailValidationErrorValue":"Please enter a valid email address.",
+    "InvalidLoginCredentials" : [{
+        "UserName" : "admin",
+        "Password" : ""
+    },
+    {
+        "UserName" : "",
+        "Password" : ""
+    },
+    {
+        "UserName" : "abcd@gmail.com",
+        "Password" : "Admin123"
+    },
+    {
+        "UserName" : "kmuhammadumair02@gmail.com",
+        "Password" : "abcd12"
+    }]
+}

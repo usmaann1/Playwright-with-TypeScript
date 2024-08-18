@@ -1,0 +1,10 @@
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/test-environment/test-reports/
+.vs
+.git
+.env
+loginState.json
+package-lock.json
