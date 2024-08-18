@@ -27,6 +27,7 @@ exports.LoginPage = class LoginPage {
     this.LogInNavigationBtn = this.page.locator(Locators.LogInNavigationBtn);
     this.SignUpNavigationBtn = this.page.locator(Locators.SignUpNavigationBtn);
     this.ProfilePicture = this.page.locator(Locators.ProfilePicture);
+    this.ResetPasswordBtn = this.page.locator(Locators.ResetPasswordBtn);
   }
   async fillCredentialsAndLogin(username, password) {
     username && (await PlaywrightCore.fill(this.EmailAddressTxtBox, username));
@@ -42,6 +43,10 @@ exports.LoginPage = class LoginPage {
     await PlaywrightCore.goTo(this.page, this.baseURL)
     await PlaywrightCore.click(this.SignUpNavigationBtn);
     await PlaywrightCore.click(this.LogInNavigationBtn);
+  }
+
+  async NavigateToForgotPasswordPage(){
+    await PlaywrightCore.click(this.ForgotPasswordBtn);
   }
 
 };

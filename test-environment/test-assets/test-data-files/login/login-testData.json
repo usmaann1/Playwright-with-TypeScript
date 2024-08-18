@@ -10,6 +10,8 @@
     "PasswordIsRequiredValidationErroValue":"Password is a required field",
     "EmailIsRequiredValidationErrorValue":"Email address is a required field",
     "PleaseEnterAValidEmailValidationErrorValue":"Please enter a valid email address.",
+    "ResetPasswordBtnValue":"Reset Password",
+    "LogInNavigationBtnValue":"Log in",
     "InvalidLoginCredentials" : [{
         "UserName" : "admin",
         "Password" : ""
