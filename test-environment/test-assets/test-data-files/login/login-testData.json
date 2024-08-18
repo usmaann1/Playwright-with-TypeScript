@@ -12,6 +12,7 @@
     "PleaseEnterAValidEmailValidationErrorValue":"Please enter a valid email address.",
     "ResetPasswordBtnValue":"Reset Password",
     "LogInNavigationBtnValue":"Log in",
+    "SignUpHeadingValue":"Sign up",
     "InvalidLoginCredentials" : [{
         "UserName" : "admin",
         "Password" : ""

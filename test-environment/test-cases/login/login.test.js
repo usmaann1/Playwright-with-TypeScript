@@ -57,6 +57,13 @@ test.describe('TestSuite: Login', () => {
         });
     }
 
+    test('TC: Login Page to Sign Up Page Redirection', async ({loginPage}) => {
+        PlaywrightCore.click(loginPage.SignUpWithJuicMindBtn)
+        await expect(loginPage.SignUpHeading).toHaveText(LoginCredentials.SignUpHeadingValue)
+        PlaywrightCore.click(loginPage.LogInNavigationBtn)
+        await expect(loginPage.LoginHeading).toHaveText(LoginCredentials.LoginHeadingValue)
+    }); 
+
     test('TC: Forgot Password UI Validations & Navigation', async ({loginPage}) => {
         await loginPage.NavigateToForgotPasswordPage()
         await expect(loginPage.Logo).toBeVisible()
