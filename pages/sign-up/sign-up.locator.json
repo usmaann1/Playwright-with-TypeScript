@@ -1,0 +1,8 @@
+{
+    "SignUpHeading":"//div[contains(text(),'Sign up')]",
+    "SignUpBtn":"//a[normalize-space()='Sign up']",
+    "OrSignUpUsing":"//div[contains(text(),'Or signup using')]",
+    "BySigningUPMessage":"//p[contains(text(),'By signing up, you agree to our')]",
+    "ExplorePlatformBtn":"//a[normalize-space()='Explore the platform before signing up']",
+    "AlreadyHaveAnAccountText":"//p[2]"
+}

@@ -7,7 +7,7 @@ test.describe('TestSuite: Join Quiz', () => {
 
     test('TC - Validate UI of Join Quiz Page', async ({joinQuizPage}) => {
         await joinQuizPage.navigateToJoinQuizPage()
-       await expect(joinQuizPage.Logo).toBeVisible()
+        await expect(joinQuizPage.Logo).toBeVisible()
         await expect(joinQuizPage.JoinQuizHeading).toHaveText(JoinQuizTestData.JoinQuizHeadingValue)
         await expect(joinQuizPage.GamePinInputField).toBeVisible()
         await expect(joinQuizPage.EnterBtn).toHaveText(JoinQuizTestData.EnterBtnValue)
