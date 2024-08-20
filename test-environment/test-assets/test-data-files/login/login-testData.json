@@ -13,6 +13,7 @@
     "ResetPasswordBtnValue":"Reset Password",
     "LogInNavigationBtnValue":"Log in",
     "SignUpHeadingValue":"Sign up",
+    "AtGmailDotCom":"@gmail.com",
     "InvalidLoginCredentials" : [{
         "UserName" : "admin",
         "Password" : ""

@@ -39,7 +39,7 @@ test.describe('TestSuite: Login', () => {
             {
                 await expect(loginPage.EmailIsRequiredValidationError).toHaveText(LoginCredentials.EmailIsRequiredValidationErrorValue)
             }
-            else if(loginUserName != process.env.USERNAME && !loginUserName.includes("@gmail.com") ){
+            else if(loginUserName != process.env.USERNAME && !loginUserName.includes(LoginCredentials.AtGmailDotCom) ){
                 await PlaywrightCore.waitFor(loginPage.PleaseEnterAValidEmailValidationError);
                 await expect(loginPage.PleaseEnterAValidEmailValidationError).toHaveText(LoginCredentials.PleaseEnterAValidEmailValidationErrorValue)
             }

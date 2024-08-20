@@ -3,5 +3,24 @@
     "BySigningUPMessageValue":"By signing up, you agree to our Terms and Privacy Policy.",
     "ExplorePlatformBtnValue":"Explore the platform before signing up",
     "AlreadyHaveAnAccountTextValue":"Already have an account? Log in.",
-    "LoginTxt":"Log in."
+    "LoginTxt":"Log in.",
+    "PasswordMustBe6DigitsValidationErrorValue":"Password must be at least 6 characters",
+    "EmailIsRequiredValidationErrorValue":"Email Address is a required field",
+    "IamAHeadingValue":"I am a..",
+    "StudentHeadingValue":"Student",
+    "IamExploringStudentTxtValue":"I'm exploring JuiceMind for myself, outside of a classroom setting.",
+    "TeacherHeadingValue":"Teacher",
+    "IamExploringTeacherTxtValue":"I'd like to use JuiceMind with my students in a classroom setting.",
+    "InvalidLoginCredentials" : [{
+        "UserName" : "admin",
+        "Password" : ""
+    },
+    {
+        "UserName" : "",
+        "Password" : ""
+    },
+    {
+        "UserName" : "abcd@gmail.com",
+        "Password" : "Admin"
+    }]
 }
