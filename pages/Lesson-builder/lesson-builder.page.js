@@ -9,7 +9,7 @@ const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports
       this.page = page;
       this.baseURL = "./"
       this.TeamCoursesBtn = this.page.locator(Locators.TeamCoursesBtn);
-      this.CreateNewTeamBtnValue = this.page.locator(Locators.CreateNewTeamBtnValue);
+      this.CreateNewTeamBtn = this.page.locator(Locators.CreateNewTeamBtn);
       this.StartfromScratch = this.page.locator(Locators.StartfromScratch);
       this.TeamNametxtbox = this.page.locator(Locators.TeamNametxtbox);
       this.SubmitBtn = this.page.locator(Locators.SubmitBtn);
@@ -23,19 +23,16 @@ const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports
      await PlaywrightCore.click(this.TeamCoursesBtn);
     }
 
-    async NavigateToCreateNewTeam(){
-        await PlaywrightCore.click(this.CreateNewTeamBtnValue);
+    async ClickOnCreateNewTeamBtn(){
+      await PlaywrightCore.click(this.CreateNewTeamBtn);
     }
 
-    async NavigateToStartFromScratch(){
-        await PlaywrightCore.click(this.StartfromScratch);
-        
+    async ClickOnStartFromScratch(){
+      await PlaywrightCore.click(this.StartfromScratch);
     }
 
-    async NavigateToTeamnametxtbox(){
-        
-        //await PlaywrightCore(this.TeamNametxtbox);
-        await PlaywrightCore.fill(this.TeamNametxtbox, 'Java Class');
+    async FillTeamNameTxtBox(){
+      await PlaywrightCore.fill(this.TeamNametxtbox, 'Java Class');
     }
   
   };

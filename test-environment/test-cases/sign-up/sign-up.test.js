@@ -25,7 +25,7 @@ test.describe('TestSuite: Sign Up', () => {
     });
     
     test('TC - Valid Sign Up & Redirection to Next Page', async ({loginPage, signUpPage}) => {
-        const randomEmail = await UserFunctions.generateRandomEmail(process.env.USERNAME)
+        const randomEmail = await UserFunctions.generateRandomEmail(process.env.EMAIL)
         await signUpPage.fillCredentialsAndSignUp(loginPage, randomEmail, process.env.PASSWORD)
         await expect(loginPage.Logo).toBeVisible()
         await expect(signUpPage.IamAHeading).toHaveText(SignUpTestData.IamAHeadingValue)

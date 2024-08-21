@@ -9,6 +9,6 @@ module.exports = async loginConfig => {
     const page = await context.newPage();
     const loginPage = new LoginPage(page);
     await page.goto("https://play.juicemind.com/login")
-    await loginPage.fillCredentialsAndLogin(process.env.USERNAME, process.env.PASSWORD)
+    await loginPage.fillCredentialsAndLogin(process.env.EMAIL, process.env.PASSWORD)
     await page.context().storageState({path: 'loginState.json'})
 }
