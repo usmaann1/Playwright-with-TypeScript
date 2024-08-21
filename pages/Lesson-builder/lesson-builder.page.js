@@ -1,42 +1,26 @@
-const {
-    PlaywrightCore,
-  } = require("../../module-imports/helperFunctions.imports");
+const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports");
   import Locators from "./lesson-builder.locator.json";
   
-  exports.LoginPage = class LoginPage {
+  exports.LessonBuilder = class LessonBuilder {
     constructor(page) {
       this.intializePage(page);
     }
     intializePage(page) {
       this.page = page;
       this.baseURL = "./"
-      this.SignInBtn = this.page.locator(Locators.SignInBtn);
-      this.UserNamePasswordValidationError = this.page.locator(Locators.UserNamePasswordValidationError);
-      this.PasswordIsRequiredValidationError = this.page.locator(Locators.PasswordIsRequiredValidationError);
-      this.EmailIsRequiredValidationError = this.page.locator(Locators.EmailIsRequiredValidationError);
-      this.PleaseEnterAValidEmailValidationError = this.page.locator(Locators.PleaseEnterAValidEmailValidationError);
-      this.OrLoginUsingText = this.page.locator(Locators.OrLoginUsingText);
-      this.DontHaveAnAccountText = this.page.locator(Locators.DontHaveAnAccountText);
-      this.SignUpWithJuicMindBtn = this.page.locator(Locators.SignUpWithJuicMindBtn);
-      this.ForgotPasswordBtn = this.page.locator(Locators.ForgotPasswordBtn);
-      this.LogInNavigationBtn = this.page.locator(Locators.LogInNavigationBtn);
-      this.SignUpNavigationBtn = this.page.locator(Locators.SignUpNavigationBtn);
-      this.ProfilePicture = this.page.locator(Locators.ProfilePicture);
+      this.TeamCoursesBtn = this.page.locator(Locators.TeamCoursesBtn);
+      this.CreateNewTeamBtnValue = this.page.locator(Locators.CreateNewTeamBtnValue);
+      this.StartfromScratch = this.page.locator(Locators.StartfromScratch);
+      this.TeamNametxtbox = this.page.locator(Locators.TeamNametxtbox);
+      this.SubmitBtn = this.page.locator(Locators.SubmitBtn);
+      this.CreatenewassignmentBtn = this.page.locator(Locators.CreatenewassignmentBtn);
+      this.CodingAssignmentBtn = this.page.locator(Locators.CodingAssignmentBtn);
+      this.CodingAssignmentName = this.page.locator(Locators.CodingAssignmentName);
+      this.CodingAssignmentCreateBtn = this.page.locator(Locators.CodingAssignmentCreateBtn);
     }
-    async fillCredentialsAndLogin(username, password) {
-      username && (await PlaywrightCore.fill(this.EmailAddressTxtBox, username));
-      password && (await PlaywrightCore.fill(this.PasswordTxtBox, password));
-      await this.clickLoginButton();
-    }
-    async clickLoginButton() {
-      await PlaywrightCore.waitFor(this.SignInBtn);
-      await PlaywrightCore.click(this.SignInBtn);
-    }
-  
-    async NavigateToLoginPage(){
-      await PlaywrightCore.goTo(this.page, this.baseURL)
-      await PlaywrightCore.click(this.SignUpNavigationBtn);
-      await PlaywrightCore.click(this.LogInNavigationBtn);
+
+    async NavigateToTeamCoursesPage(){
+     await PlaywrightCore.click(this.TeamCoursesBtn);
     }
   
   };

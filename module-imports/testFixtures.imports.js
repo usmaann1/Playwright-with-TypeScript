@@ -2,6 +2,7 @@ const base = require('@playwright/test');
 const { LoginPage } = require('../pages/login/login.page')
 const { JoinQuizPage } = require('../pages/join-quiz/join-quiz.page')
 const { SignUpPage } = require('../pages/sign-up/sign-up.page')
+const { LessonBuilder } = require('../pages/Lesson-builder/lesson-builder.page')
 
 exports.test = base.test.extend({
 
@@ -15,6 +16,10 @@ exports.test = base.test.extend({
 
     signUpPage: async ({ page }, use) => {
         await use(new SignUpPage(page));
+    },
+
+    lessonBuilder: async ({ page }, use) => {
+        await use(new LessonBuilder(page));
     },
     
 });
