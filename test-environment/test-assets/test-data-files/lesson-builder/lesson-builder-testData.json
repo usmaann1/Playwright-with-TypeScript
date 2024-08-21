@@ -1,3 +1,4 @@
 {
-    "CreateNewTeamBtnValue": "Create new team"
+    "CreateNewTeamBtnValue": "Create new team",
+    "CreateNewTeamURL": "https://play.juicemind.com/dashboard/teams/create/create"
 }

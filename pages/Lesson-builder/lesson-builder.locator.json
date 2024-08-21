@@ -2,7 +2,7 @@
     "TeamCoursesBtn": "//div[normalize-space()='Teams/Courses']",
     "CreateNewTeamBtnValue": "//a[normalize-space()='Create new team']",
     "StartfromScratch": "img[src='/assets/teams/start-from-scratch.png']",
-    "TeamNametxtbox": "input[placeholder='Team name']",
+    "TeamNametxtbox": "//input[@placeholder='Team name']",
     "SubmitBtn": "//a[normalize-space()='Submit']",
     "CreatenewassignmentBtn": "//a[normalize-space()='Create new Assignment or Lesson']",
     "CodingAssignmentBtn": "//div[normalize-space()='Coding Assignment']",

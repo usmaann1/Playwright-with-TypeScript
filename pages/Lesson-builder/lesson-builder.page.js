@@ -22,6 +22,21 @@ const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports
     async NavigateToTeamCoursesPage(){
      await PlaywrightCore.click(this.TeamCoursesBtn);
     }
+
+    async NavigateToCreateNewTeam(){
+        await PlaywrightCore.click(this.CreateNewTeamBtnValue);
+    }
+
+    async NavigateToStartFromScratch(){
+        await PlaywrightCore.click(this.StartfromScratch);
+        
+    }
+
+    async NavigateToTeamnametxtbox(){
+        
+        //await PlaywrightCore(this.TeamNametxtbox);
+        await PlaywrightCore.fill(this.TeamNametxtbox, 'Java Class');
+    }
   
   };
   
