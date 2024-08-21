@@ -11,6 +11,7 @@
     "IamExploringStudentTxtValue":"I'm exploring JuiceMind for myself, outside of a classroom setting.",
     "TeacherHeadingValue":"Teacher",
     "IamExploringTeacherTxtValue":"I'd like to use JuiceMind with my students in a classroom setting.",
+    "AlreadySignedUpUserErrorValidationValue":"Firebase: Error (auth/email-already-in-use).",
     "InvalidLoginCredentials" : [{
         "UserName" : "admin",
         "Password" : ""
