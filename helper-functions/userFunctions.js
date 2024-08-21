@@ -20,6 +20,15 @@ exports.UserFunctions = class UserFunctions {
     static generateUUIDV4() {
         return require('uuid').v4()
     }
+    static generateRandomEmail(email) {
+        const uuid = this.generateUUIDV4();
+        const emailParts = email.split('@');
+        if (emailParts.length !== 2) {
+            throw new Error("Invalid email format");
+        }
+        const randomEmail = `${emailParts[0]}+${uuid}@${emailParts[1]}`;
+        return randomEmail;
+    }
     /**
      * Reads the contents of a file at the specified file path using the fs.readFile() method and returns a Promise.
      * @param {string} filePath - The path to the file to be read.

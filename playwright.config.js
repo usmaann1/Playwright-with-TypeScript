@@ -26,7 +26,7 @@ const config = {
   /* Retry on CI only */
   retries: process.env.CI ? 2 : undefined,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 2 : 3,
+  workers: process.env.CI ? 1 : 3,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   outputDir: `${outputDirectory}/trace-output/`,
   reporter: [
@@ -50,11 +50,6 @@ const config = {
       args: ["--start-maximized"],
     },
   },
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   port: 3000,
-  // },
 };
 
 module.exports = config;

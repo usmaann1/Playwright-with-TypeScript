@@ -15,5 +15,7 @@
     "ForgotPasswordBtn" : "a[href='/forgot-password']",
     "LogInNavigationBtn":"a[href='/login']",
     "SignUpNavigationBtn":"a[href='/signup']",
-    "ProfilePicture":"div[aria-label='My Account']"
+    "ProfilePicture":"div[aria-label='My Account']",
+    "ResetPasswordBtn":"//a[normalize-space()='Reset Password']",
+    "SignUpHeading":"//div[contains(text(),'Sign up')]"
 }
