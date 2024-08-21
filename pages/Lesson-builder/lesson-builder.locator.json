@@ -1,0 +1,15 @@
+{
+    "EmailAddressTxtBox":"input[placeholder='Email Address']",
+    "PasswordTxtBox" : "input[placeholder='Password']",
+    "SignInBtn" : "//a[normalize-space()='Sign in']",
+    "Team/CoursesBtn": "//div[normalize-space()='Teams/Courses']",
+    "CreatenewteamBtn": "//a[normalize-space()='Create new team']",
+    "StartfromScratch": "img[src='/assets/teams/start-from-scratch.png']",
+    "TeamNametxtbox": "input[placeholder='Team name']",
+    "SubmitBtn": "//a[normalize-space()='Submit']",
+    "CreatenewassignmentBtn": "//a[normalize-space()='Create new Assignment or Lesson']",
+    "CodingAssignmentBtn": "//div[normalize-space()='Coding Assignment']",
+    "CodingAssignmentName": "input[placeholder='Item name']']",
+    "CodingAssignmentCreateBtn": "//a[normalize-space()='Create']"
+
+}
