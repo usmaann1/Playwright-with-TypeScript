@@ -25,7 +25,7 @@ test.describe('TestSuite: Login', () => {
     }); 
 
     test('TC: Valid Login', async ({loginPage}) => {
-        await loginPage.fillCredentialsAndLogin(process.env.USERNAME, process.env.PASSWORD)
+        await loginPage.fillCredentialsAndLogin(process.env.EMAIL, process.env.PASSWORD)
         await expect(loginPage.ProfilePicture).toBeVisible()
     }); 
 
@@ -35,23 +35,23 @@ test.describe('TestSuite: Login', () => {
        
         test('TC-InvalidLoginErrorAssertion - UserName: '+loginUserName+', Password '+loginPassword, async ({loginPage}) => {
             await loginPage.fillCredentialsAndLogin(loginUserName,loginPassword)
-            if(loginUserName != process.env.USERNAME && loginUserName == "")
+            if(loginUserName != process.env.EMAIL && loginUserName == "")
             {
                 await expect(loginPage.EmailIsRequiredValidationError).toHaveText(LoginCredentials.EmailIsRequiredValidationErrorValue)
             }
-            else if(loginUserName != process.env.USERNAME && !loginUserName.includes(LoginCredentials.AtGmailDotCom) ){
+            else if(loginUserName != process.env.EMAIL && !loginUserName.includes(LoginCredentials.AtGmailDotCom) ){
                 await PlaywrightCore.waitFor(loginPage.PleaseEnterAValidEmailValidationError);
                 await expect(loginPage.PleaseEnterAValidEmailValidationError).toHaveText(LoginCredentials.PleaseEnterAValidEmailValidationErrorValue)
             }
-            else if(loginUserName != process.env.USERNAME){
+            else if(loginUserName != process.env.EMAIL){
                 await expect(loginPage.UserNamePasswordValidationError).toHaveText(LoginCredentials.UserNameValidationErrorTextValue)
-            }
+            }s
 
             if(loginPassword != process.env.PASSWORD && loginPassword == "")
             {
                 await expect(loginPage.PasswordIsRequiredValidationError).toHaveText(LoginCredentials.PasswordIsRequiredValidationErroValue)
             }  
-            else if(loginUserName == process.env.USERNAME && loginPassword != process.env.PASSWORD){
+            else if(loginUserName == process.env.EMAIL && loginPassword != process.env.PASSWORD){
                 await expect(loginPage.UserNamePasswordValidationError).toHaveText(LoginCredentials.PasswordValidationErrorTextValue)
             }          
         });

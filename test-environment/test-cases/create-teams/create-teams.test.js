@@ -1,0 +1,108 @@
+const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helperFunctions.imports')
+const { test, expect } = require('../../../module-imports/testFixtures.imports')
+import CreateTeamsTestData from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
+import JoinQuizTestData from '../../test-assets/test-data-files/join-quiz/join-quiz-testData.json'
+require('dotenv').config()
+
+test.describe('TestSuite: Create Teams', () => {
+
+    test.beforeEach(async ({ loginPage, createTeams }) => {
+        await loginPage.NavigateToLoginPage()
+        await loginPage.fillCredentialsAndLogin(process.env.EMAIL, process.env.PASSWORD)
+        await expect(loginPage.ProfilePicture).toBeVisible()
+        await expect(createTeams.TeamsCoursesBtn).toHaveText(CreateTeamsTestData.TeamsCoursesBtnValue)
+        await createTeams.navigateToTeamsCoursesPage()
+        await expect(createTeams.CreateNewTeamBtn).toHaveText(CreateTeamsTestData.CreateNewTeamBtnValue)
+      });
+
+    test('TC - Validate UI of Create New Team Pop Up', async ({ createTeams }) => {
+        await PlaywrightCore.click(createTeams.CreateNewTeamBtn)
+        await expect(createTeams.StartFromScratchBtn).toHaveText(CreateTeamsTestData.StartFromScratchBtnValue)
+        await expect(createTeams.StartFromScratchDescription).toHaveText(CreateTeamsTestData.StartFromScratchDescriptionValue)
+        await expect(createTeams.CSAwseomeBtn).toHaveText(CreateTeamsTestData.CSAwseomeBtnValue)
+        await expect(createTeams.CSAwseomeDescription).toHaveText(CreateTeamsTestData.CSAwseomeDescriptionValue)
+        await expect(createTeams.CreateNewTeamImportCoursesLogo).toBeVisible()
+        await expect(createTeams.CreateNewTeamImportCodingRoomsHeading).toHaveText(CreateTeamsTestData.CreateNewTeamImportCodingRoomsHeadingValue)
+        await expect(createTeams.CreateNewTeamImportCoursesBtn).toHaveText(CreateTeamsTestData.CreateNewTeamImportCoursesBtnValue)
+        await expect(createTeams.CreateNewTeamSyncReplitLogo).toBeVisible()
+        await expect(createTeams.CreateNewTeamSyncReplitHeading).toHaveText(CreateTeamsTestData.CreateNewTeamSyncReplitHeadingValue)
+        await expect(createTeams.CreateNewTeamImportTeamsBtn).toHaveText(CreateTeamsTestData.CreateNewTeamImportTeamsBtnValue)
+        await expect(createTeams.OrHeading).toHaveText(CreateTeamsTestData.OrHeadingValue)
+        await expect(createTeams.CreateNewTeamHeading).toHaveText(CreateTeamsTestData.CreateNewTeamBtnValue)
+        await expect(createTeams.UnlockWithJuiceMindPremiumBox).toBeVisible()
+        await expect(createTeams.LockIcon).toBeVisible()
+        await expect(createTeams.UnlockWithJuiceMindPremiumHeading).toHaveText(CreateTeamsTestData.UnlockWithJuiceMindPremiumHeadingValue)
+        await expect(createTeams.GetAQuoteBtn).toHaveText(CreateTeamsTestData.GetAQuoteBtnValue)
+    });
+
+    test('TC - Create a New Team From Scratch', async ({ createTeams }) => {
+        await createTeams.createNewTeamFromScratch(CreateTeamsTestData.TeamCreatedHeadingValue)
+        await expect(createTeams.TeamCreatedHeading).toHaveText(CreateTeamsTestData.TeamCreatedHeadingValue)
+        await PlaywrightCore.click(createTeams.BackToTheTeamsBtn)
+        await createTeams.deleteFirstTeamInList()
+    });
+
+    test('TC - Delete a Newly Create Team From Scratch', async ({ createTeams }) => {
+        const threeDotsCount = await createTeams.ThreeDots.count()
+        await createTeams.createNewTeamFromScratch(CreateTeamsTestData.TeamCreatedHeadingValue)
+        await expect(createTeams.TeamCreatedHeading).toHaveText(CreateTeamsTestData.TeamCreatedHeadingValue)
+        await PlaywrightCore.click(createTeams.BackToTheTeamsBtn)
+        await createTeams.deleteFirstTeamInList()
+        await expect(createTeams.ThreeDots).toHaveCount(threeDotsCount)
+    });
+
+    test('TC - Create a New Team CS Awesome', async ({ createTeams }) => {
+        await createTeams.createNewTeamCSAwesome(CreateTeamsTestData.TeamCreatedHeadingValue)
+        await expect(createTeams.CreatingTeamLoder).toHaveText(CreateTeamsTestData.CreatingTeamLoderValue)
+        await PlaywrightCore.waitForElementToDisappear(createTeams, createTeams.LoaderCreatingTeam)
+        await expect(createTeams.GettingStartedHeading).toHaveText(CreateTeamsTestData.GettingStartedHeadingValue)
+        await PlaywrightCore.click(createTeams.BackToTheTeamsBtn)
+        await createTeams.deleteFirstTeamInList()
+    });
+
+    test('TC - Delete a Newly Create Team CS Awesome', async ({ createTeams }) => {
+        const threeDotsCount = await createTeams.ThreeDots.count()
+        await createTeams.createNewTeamCSAwesome(CreateTeamsTestData.TeamCreatedHeadingValue)
+        await expect(createTeams.CreatingTeamLoder).toHaveText(CreateTeamsTestData.CreatingTeamLoderValue)
+        await PlaywrightCore.waitForElementToDisappear(createTeams, createTeams.LoaderCreatingTeam)
+        await expect(createTeams.GettingStartedHeading).toHaveText(CreateTeamsTestData.GettingStartedHeadingValue)
+        await PlaywrightCore.click(createTeams.BackToTheTeamsBtn)
+        await createTeams.deleteFirstTeamInList()
+        await expect(createTeams.ThreeDots).toHaveCount(threeDotsCount)
+    });
+
+    test('TC - Delete a Newly Create Team UI Validations', async ({ createTeams }) => {
+        const threeDotsCount = await createTeams.ThreeDots.count()
+        await createTeams.createNewTeamFromScratch(CreateTeamsTestData.TeamCreatedHeadingValue)
+        await expect(createTeams.TeamCreatedHeading).toHaveText(CreateTeamsTestData.TeamCreatedHeadingValue)
+        await PlaywrightCore.click(createTeams.BackToTheTeamsBtn)
+        await PlaywrightCore.click(createTeams.ThreeDots)
+        await PlaywrightCore.click(createTeams.DeleteTeamBtn)
+        await expect(createTeams.DeleteConfirmBtn).toHaveText(CreateTeamsTestData.DeleteTxt)
+        await expect(createTeams.CancelDeleteTeamBtn).toHaveText(CreateTeamsTestData.CancelBtnValue)
+        await expect(createTeams.ConfirmDeleteHeading).toHaveText(CreateTeamsTestData.ConfirmDeleteHeadingValue)
+        await expect(createTeams.ConfirmDeleteDescription).toHaveText(CreateTeamsTestData.ConfirmDeleteDescriptionValue)
+        await PlaywrightCore.click(createTeams.DeleteConfirmBtn)
+        await expect(createTeams.ThreeDots).toHaveCount(threeDotsCount)
+    });
+
+    test('TC - UI Validation of Write Team Name Pop Up Box', async ({ createTeams }) => {
+        await PlaywrightCore.click(createTeams.CreateNewTeamBtn)
+        await PlaywrightCore.click(createTeams.CSAwseomeBtn)
+        await expect(createTeams.TeamNameTxtBox).toBeVisible()
+        await expect(createTeams.ATeamIsANewClassroomDescription).toHaveText(CreateTeamsTestData.ATeamIsANewClassroomDescriptionValue)
+        await expect(createTeams.BackBtn).toHaveText(CreateTeamsTestData.BackTxt)
+        await expect(createTeams.CrossBtn).toBeVisible()
+        await expect(createTeams.CancelBtn).toHaveText(CreateTeamsTestData.CancelBtnValue)
+        await expect(createTeams.SubmitBtn).toHaveText(CreateTeamsTestData.SubmitBtnValue)
+    });
+
+    test('TC - Join Quiz Re-direction and UI Validation', async ({ joinQuizPage, createTeams }) => {
+        await PlaywrightCore.click(createTeams.JoinQuizBtn)
+        await expect(joinQuizPage.Logo).toBeVisible()
+        await expect(joinQuizPage.JoinQuizHeading).toHaveText(JoinQuizTestData.JoinQuizHeadingValue)
+        await expect(joinQuizPage.GamePinInputField).toBeVisible()
+        await expect(joinQuizPage.EnterBtn).toHaveText(JoinQuizTestData.EnterBtnValue)
+    });
+
+})
