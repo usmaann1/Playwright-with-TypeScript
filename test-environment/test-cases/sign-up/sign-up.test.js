@@ -40,6 +40,11 @@ test.describe('TestSuite: Sign Up', () => {
         
     });
 
+    test('TC - Sign-Up with Already Registered Email', async ({loginPage, signUpPage}) => {
+        await signUpPage.fillCredentialsAndSignUp(loginPage, process.env.USERNAME, process.env.PASSWORD)
+        await expect(loginPage.UserNamePasswordValidationError).toHaveText(SignUpTestData.AlreadySignedUpUserErrorValidationValue)
+    });
+
     for(const InvalidLoginCredentials of SignUpTestData.InvalidLoginCredentials) {
         const loginUserName = InvalidLoginCredentials.UserName
         const loginPassword = InvalidLoginCredentials.Password
