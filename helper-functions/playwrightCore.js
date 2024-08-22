@@ -432,14 +432,61 @@ exports.PlaywrightCore = class PlaywrightCore {
     }
   }
 
-  static async selectingDropDown(page, label, input) {
+  static async selectingDropDownByLabel(page, label, input) {
     try {
       await page.getByLabel(label).click();
-      await page
-        .getByRole("option", { name: input })
-        .click();
+      await page.getByRole("option", { name: input }).click();
     } catch (error) {
-      console.warn(`An error occurred while checking, Error:`, error);
+      console.warn(`An error occurred while selecting, Error:`, error);
+      throw error;
+    }
+  }
+
+  static async selectingDropDownByText(page, Text, input) {
+    try {
+      await page.getByText(Text).click();
+      await page.getByRole("option", { name: input }).click();
+    } catch (error) {
+      console.warn(`An error occurred while selecting, Error:`, error);
+      throw error;
+    }
+  }
+
+  static async ClickByText(page, Text) {
+    try {
+      await page.getByText(Text).click();
+    } catch (error) {
+      console.warn(`An error occurred while clicking, Error:`, error);
+      throw error;
+    }
+  }
+
+  static async slidingElement(page, element, key, code, duration = null) {
+    try {
+      if (duration) {
+        const startTime = Date.now();
+
+        while (Date.now() - startTime < duration) {
+          await page.getByRole(element).press(key);
+        }
+      } else {
+        console.log(code);
+        const count = code?.length + 40;
+        for (let i = 0; i <= count; i++) {
+          await page.getByRole(element).press(key);
+        }
+      }
+    } catch (error) {
+      console.warn(`An error occurred while sliding, Error:`, error);
+      throw error;
+    }
+  }
+
+  static async fileUpload(locator, path) {
+    try {
+      await locator.setInputFiles(path);
+    } catch (error) {
+      console.warn(`An error occurred while uploading, Error:`, error);
       throw error;
     }
   }

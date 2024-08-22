@@ -18,9 +18,10 @@ exports.test = base.test.extend({
         await use(new SignUpPage(page));
     },
 
-    teamCoursesPage: async ({ page }, use) => {
+    teamCoursesPage: async ({ page, context}, use) => {
+        await context.grantPermissions(['clipboard-read', 'clipboard-write']);
         await use(new TeamCoursesPage(page));
-    },
+    },    
     
 });
 

@@ -170,12 +170,4 @@ exports.UserFunctions = class UserFunctions {
     return namePrefix;
   }
 
-  static async clipBoardData() {
-    try {
-      const text = await navigator.clipboard.readText();
-      return text;
-    } catch (err) {
-      console.error("Failed to read clipboard contents:", err);
-    }
-  }
 };

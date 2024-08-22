@@ -1,6 +1,7 @@
 const {
   PlaywrightCore,
 } = require("../../module-imports/helperFunctions.imports");
+import { expect } from "@playwright/test";
 import Locators from "./team-courses.locator.json";
 
 exports.TeamCoursesPage = class TeamCoursesPage {
@@ -47,6 +48,22 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.TestInput = this.page.locator(Locators.TestInput);
     this.TestOutput = this.page.locator(Locators.TestOutput);
     this.PublishCheckBox = this.page.locator(Locators.PublishCheckBox);
+    this.CreateTestBtn = this.page.locator(Locators.CreateTestBtn);
+    this.InviteStudentBtn = this.page.locator(Locators.InviteStudent);
+    this.CopyBtn = this.page.locator(Locators.CopyBtn);
+    this.StudentBtn = this.page.locator(Locators.StudentBtn);
+    this.FirstNameInput = this.page.locator(Locators.FirstNameInput);
+    this.LastNameInput = this.page.locator(Locators.LastNameInput);
+    this.FinishBtn = this.page.locator(Locators.FinishBtn);
+    this.CreateStarterCode = this.page.locator(Locators.CreateStarterCode);
+    this.EditorTextBox = this.page.locator(Locators.EditorTextBox);
+    this.ModalCloseBtn = this.page.locator(Locators.ModalCloseBtn);
+    this.EditorSubmit = this.page.locator(Locators.EditorSubmit);
+    this.UserText = this.page.locator(Locators.UserText);
+    this.EditorTextBox = this.page.locator(Locators.EditorTextBox);
+    this.UploadFile = this.page.locator(Locators.UploadFile);
+    this.IndexFile =
+      "//div[@class='_root_xd7bb_1']//div[contains(text(),'index.js')]";
   }
 
   async NavigateToSignUpPage() {
@@ -90,7 +107,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   async IntializeIDE(ProjecttName) {
     await PlaywrightCore.click(this.IntializeIDEBtn);
     await PlaywrightCore.fill(this.ProjectNameInput, ProjecttName);
-    await PlaywrightCore.selectingDropDown(
+    await PlaywrightCore.selectingDropDownByLabel(
       this.page,
       "Project type",
       "Javascript (Node.js)"
@@ -119,18 +136,107 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await folder.press("Enter");
   }
 
-  async createTest(testType, testName, input, output) {
+  async createTest(type, oldTestType, newTestType, testName, input, output) {
+    await this.page.waitForTimeout(5000);
     await PlaywrightCore.click(this.TestBtn);
     await PlaywrightCore.click(this.AddTestBtn);
-    await PlaywrightCore.selectingDropDown(this.page, "Test Type", testType);
+    await PlaywrightCore.selectingDropDownByLabel(this.page, "Test Type", type);
     await PlaywrightCore.fill(this.TestName, testName);
     await PlaywrightCore.fill(this.TestInput, input);
     await PlaywrightCore.fill(this.TestOutput, output);
-    await PlaywrightCore.selectingDropDown(this.page, "Type", testType);
+    await PlaywrightCore.selectingDropDownByText(
+      this.page,
+      oldTestType,
+      newTestType
+    );
+    await PlaywrightCore.click(this.CreateTestBtn);
   }
 
   async PublishAndInvite() {
     await PlaywrightCore.check(this.PublishCheckBox);
+    await PlaywrightCore.click(this.InviteStudentBtn);
+    await PlaywrightCore.click(this.CopyBtn);
+    const handle = await this.page.evaluateHandle(() =>
+      navigator.clipboard.readText()
+    );
+    const clipboardContent = await handle.jsonValue();
+    await PlaywrightCore.click(this.ModalCloseBtn);
+    return clipboardContent;
   }
 
+  async afterInviteSignUp(url, userName, password, firstName, lastName) {
+    await this.page.goto(url);
+    await this.signUpUser(userName, password);
+    await PlaywrightCore.click(this.StudentBtn);
+    await PlaywrightCore.fill(this.FirstNameInput, firstName);
+    await PlaywrightCore.fill(this.LastNameInput, lastName);
+    await PlaywrightCore.click(this.FinishBtn);
+    // for joined team finsh btn
+    await PlaywrightCore.click(this.FinishBtn);
+  }
+
+  async createStarterCode(code) {
+    await PlaywrightCore.click(this.CreateStarterCode);
+    await this.page.waitForTimeout(10000);
+    await this.page.getByText("index.js").nth(1).click();
+    await this.page.waitForTimeout(10000);
+    // Locate the text box
+    const textBox = await this.EditorTextBox.nth(1);
+    // Focus on the text box
+    await textBox.click({ clickCount: 1 });
+    await textBox.press("Control+A");
+    await textBox.press("Backspace");
+    // await textBox.fill(code);
+    for (const char of code) {
+      await textBox.type(char);
+    }
+    await PlaywrightCore.click(this.EditorSubmit);
+    await this.page.waitForTimeout(10000);
+    await PlaywrightCore.click(this.SubmitBtn);
+  }
+
+  async assertingUserAnswered(name) {
+    await this.page.bringToFront();
+    const xpath = await Locators.UserSubmissionSuccessFull.replace(
+      "###REPLACE###",
+      name
+    );
+    console.log(xpath);
+    const greenButton = await this.page.locator(xpath);
+    await expect(greenButton).toBeVisible();
+  }
+
+  async assertingUserAnswerHistory(name, textAssertion) {
+    await PlaywrightCore.ClickByText(this.page, name);
+    await this.page.waitForTimeout(10000);
+    await this.page.locator(this.IndexFile).click();
+    await this.page.waitForTimeout(10000);
+    await this.page.pause();
+    await PlaywrightCore.ClickByText(this.page, "History");
+    await PlaywrightCore.slidingElement(
+      this.page,
+      "slider",
+      "ArrowLeft",
+      textAssertion
+    );
+    await PlaywrightCore.slidingElement(
+      this.page,
+      "slider",
+      "ArrowRight",
+      textAssertion
+    );
+    const textBox = await this.EditorTextBox.nth(1);
+    const editorText = await textBox.textContent();
+    console.log("Editor Text:", editorText);
+    expect(editorText).toBe(textAssertion);
+  }
+
+  async uploadFile(path) {
+    await PlaywrightCore.click(this.FileExplorerBtnOpen);
+    await PlaywrightCore.fileUpload(this.UploadFile, path);
+  }
+
+  async breakPoint() {
+    await this.page.pause();
+  }
 };
