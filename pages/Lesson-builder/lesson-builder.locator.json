@@ -6,6 +6,9 @@
     "SubmitBtn": "//a[normalize-space()='Submit']",
     "CreatenewassignmentBtn": "//a[normalize-space()='Create new Assignment or Lesson']",
     "CodingAssignmentBtn": "//div[normalize-space()='Coding Assignment']",
-    "CodingAssignmentName": "input[placeholder='Item name']']",
-    "CodingAssignmentCreateBtn": "//a[normalize-space()='Create']"
+    "CodingAssignmentName": "//input[@placeholder='Item name']",
+    "CodingAssignmentCreateBtn": "//a[normalize-space()='Create']",
+    "PublishButton": "div[class='flex flex-row items-center gap-x-1.5']",
+    "thirdsixdot": "#tippy-78 > div > div.tippy-content > div > div > button:nth-child(2) > svg",
+    "PresentationModeBtn": "#root > div > div > div > div > div > div > div:nth-child(4) > div > div > div > div:nth-child(1) > div > div:nth-child(1) > div > a"
 }

@@ -1,4 +1,10 @@
 {
     "CreateNewTeamBtnValue": "Create new team",
-    "CreateNewTeamURL": "https://play.juicemind.com/dashboard/teams/create/create"
+    "CreateNewTeamURL": "https://play.juicemind.com/dashboard/teams/create/create",
+    "NoData": "You don't have any Data!",
+    "ClassName": "Java Class",
+    "SampleLessonplan": "Sample Lesson Plan",
+    "AssignementName": "Java Assignment",
+    "Publishbuttondisableclass": "MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-1mo6cvn",
+    "LockIconClass": "MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-vubbuv"
 }

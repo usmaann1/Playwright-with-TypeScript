@@ -17,6 +17,12 @@ const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports
       this.CodingAssignmentBtn = this.page.locator(Locators.CodingAssignmentBtn);
       this.CodingAssignmentName = this.page.locator(Locators.CodingAssignmentName);
       this.CodingAssignmentCreateBtn = this.page.locator(Locators.CodingAssignmentCreateBtn);
+      this.PublishButton = this.page.locator(Locators.PublishButton);
+      this.thirdsixdot = this.page.locator(Locators.thirdsixdotsixdot);
+      this.PresentationModeBtn = this.page.locator(Locators.PresentationMoeBtn);
+      
+
+
     }
 
     async NavigateToTeamCoursesPage(){
@@ -34,6 +40,32 @@ const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports
     async FillTeamNameTxtBox(){
       await PlaywrightCore.fill(this.TeamNametxtbox, 'Java Class');
     }
+
+    async Submitbtn(){
+        await PlaywrightCore.click(this.SubmitBtn);
+      }
+    async CreateAssignmentbtn(){
+        await PlaywrightCore.click(this.CreatenewassignmentBtn);
+      }
+
+      async CodingAssignmentbtn(){
+        await PlaywrightCore.click(this.CodingAssignmentBtn);
+      }
+
+      async CodingAssignment(){
+        await PlaywrightCore.fill(this.CodingAssignmentName, 'Java Assignment');
+      }
+
+      async AssignmentCreateBtn(){
+        await PlaywrightCore.click(this.CodingAssignmentCreateBtn);
+      }
   
+      async thirdsixdotbtn(){
+        await PlaywrightCore.click(this.thirdsixdot);
+      }
+
+      async PresentationMode(){
+        await PlaywrightCore.click(this.PresentationModeBtn);
+      }
   };
   
