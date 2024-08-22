@@ -6,5 +6,9 @@
     "SampleLessonplan": "Sample Lesson Plan",
     "AssignementName": "Java Assignment",
     "Publishbuttondisableclass": "MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-1mo6cvn",
-    "LockIconClass": "MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-vubbuv"
+    "LockIconClass": "MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-vubbuv",
+    
+    "PageLockedText":"//div[contains(text(), 'Your teacher must publish')]",
+    "waitingForTeacherText":"//div[contains(text(), 'Waiting for teacher to')]",
+    "ViewStuPreview_btn":"//span[normalize-space()='Preview']"
 }
