@@ -69,6 +69,9 @@ exports.CreateTeams = class CreateTeams {
       this.ArchivedTeamHeading = this.page.locator(Locators.ArchivedTeamHeading)
       this.UpgradeBtn = this.page.locator(Locators.UpgradeBtn)
       this.ImportCodingRoomDotComHeading = this.page.locator(Locators.ImportCodingRoomDotComHeading)
+      this.FolderIconNoDataImage = this.page.locator(Locators.FolderIconNoDataImage)
+      this.YouDontHaveAnyDataTxt = this.page.locator(Locators.YouDontHaveAnyDataTxt)
+      this.CreateNewAssignmentOrLessonBtn = this.page.locator(Locators.CreateNewAssignmentOrLessonBtn)
     }
 
     async navigateToTeamsCoursesPage(){

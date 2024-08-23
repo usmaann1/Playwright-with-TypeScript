@@ -57,5 +57,8 @@
     "SyncTeamsHeadingMainPageDescription":"//div[contains(text(),'Import your replit.com teams and projects with a s')]",
     "ArchivedTeamHeading":"//p[normalize-space()='Archived Teams']",
     "UpgradeBtn":"//a[@href='/pricing']//a",
-    "ImportCodingRoomDotComHeading":"//div[normalize-space()='Import CodingRooms.com Courses']"
+    "ImportCodingRoomDotComHeading":"//div[normalize-space()='Import CodingRooms.com Courses']",
+    "FolderIconNoDataImage":"//img[@src='/assets/general/no-data.svg']",
+    "YouDontHaveAnyDataTxt":"//div[2]//div[1]//div[1]",
+    "CreateNewAssignmentOrLessonBtn":"//a[normalize-space()='Create new Assignment or Lesson']"
 }

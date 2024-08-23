@@ -62,6 +62,9 @@ test.describe('TestSuite: Create Teams', () => {
     test('TC - Create a New Team From Scratch', async ({ createTeams }) => {
         await createTeams.createNewTeamFromScratch(CreateTeamsTestData.TeamCreatedHeadingValue)
         await expect(createTeams.TeamCreatedHeading).toHaveText(CreateTeamsTestData.TeamCreatedHeadingValue)
+        await expect(createTeams.FolderIconNoDataImage).toBeVisible()
+        await expect(createTeams.YouDontHaveAnyDataTxt.nth(0)).toHaveText(CreateTeamsTestData.YouDontHaveAnyDataTxtValue)
+        await expect(createTeams.CreateNewAssignmentOrLessonBtn).toHaveText(CreateTeamsTestData.CreateNewAssignmentOrLessonBtnValue)
         await PlaywrightCore.click(createTeams.BackToTheTeamsBtn)
         await createTeams.deleteFirstTeamInList()
     });
@@ -70,6 +73,9 @@ test.describe('TestSuite: Create Teams', () => {
         const threeDotsCount = await createTeams.ThreeDots.count()
         await createTeams.createNewTeamFromScratch(CreateTeamsTestData.TeamCreatedHeadingValue)
         await expect(createTeams.TeamCreatedHeading).toHaveText(CreateTeamsTestData.TeamCreatedHeadingValue)
+        await expect(createTeams.FolderIconNoDataImage).toBeVisible()
+        await expect(createTeams.YouDontHaveAnyDataTxt.nth(0)).toHaveText(CreateTeamsTestData.YouDontHaveAnyDataTxtValue)
+        await expect(createTeams.CreateNewAssignmentOrLessonBtn).toHaveText(CreateTeamsTestData.CreateNewAssignmentOrLessonBtnValue)
         await PlaywrightCore.click(createTeams.BackToTheTeamsBtn)
         await createTeams.deleteFirstTeamInList()
         await expect(createTeams.ThreeDots).toHaveCount(threeDotsCount)

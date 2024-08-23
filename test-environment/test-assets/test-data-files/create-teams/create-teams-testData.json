@@ -38,5 +38,7 @@
     "ImportCodingMainPageTeamsCoursesDescriptionValue":"Import all of your content with the single click of a button.",
     "SyncTeamsHeadingMainPageDescriptionValue":"Import your replit.com teams and projects with a single click.",
     "ArchivedTeamHeadingValue":"Archived Teams",
-    "UpgradeBtnValue":"Upgrade"
+    "UpgradeBtnValue":"Upgrade",
+    "YouDontHaveAnyDataTxtValue":"You don't have any Data!",
+    "CreateNewAssignmentOrLessonBtnValue":"Create new Assignment or Lesson"
 }
