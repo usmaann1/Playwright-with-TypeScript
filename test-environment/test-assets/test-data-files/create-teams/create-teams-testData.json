@@ -22,5 +22,21 @@
     "ConfirmDeleteDescriptionValue":"Are you sure you want to delete the team \"Hello World\"?",
     "DeleteTxt":"Delete",
     "BackTxt":"Back",
-    "JoinQuizBtnValue":"Join Quiz"
+    "JoinQuizBtnValue":"Join Quiz",
+    "ReportIssueHeadingValue":"Report Issues & Request New Features!",
+    "ReverToOldSIteHeadingValue":"Revert back to Old Website",
+    "HowItWOrksHeadingValue":"How it works",
+    "CreateBtnValue":"Create",
+    "ExploreBtnValue":"Explore",
+    "MyQuizzesBtnValue":"My Quizzes",
+    "SmartDoorBellBtnValue":"Smart Doorbell & Ping Pong Launcher",
+    "ReportsBtnValue":"Reports",
+    "MyStudentBtnValue":"My Students",
+    "JuiceMindRoadMapBtnValue":"JuiceMind Roadmap",
+    "MyTeamsHeadingValue":"My Teams",
+    "ImportCodingRoomsCoursesBtnValue":"Import CodingRooms Course",
+    "ImportCodingMainPageTeamsCoursesDescriptionValue":"Import all of your content with the single click of a button.",
+    "SyncTeamsHeadingMainPageDescriptionValue":"Import your replit.com teams and projects with a single click.",
+    "ArchivedTeamHeadingValue":"Archived Teams",
+    "UpgradeBtnValue":"Upgrade"
 }

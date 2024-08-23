@@ -15,6 +15,30 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.CreateNewTeamBtn).toHaveText(CreateTeamsTestData.CreateNewTeamBtnValue)
       });
 
+    test('TC - UI Validation Teams/Courses Page', async ({ createTeams }) => {
+        await expect(createTeams.JuiceMindLogo).toBeVisible()
+        await expect(createTeams.ReportIssueHeading).toHaveText(CreateTeamsTestData.ReportIssueHeadingValue)
+        await expect(createTeams.ReverToOldSIteHeading).toHaveText(CreateTeamsTestData.ReverToOldSIteHeadingValue)
+        await expect(createTeams.HowItWOrksHeading).toHaveText(CreateTeamsTestData.HowItWOrksHeadingValue)
+        await expect(createTeams.CreateBtn).toHaveText(CreateTeamsTestData.CreateBtnValue)
+        await expect(createTeams.ExploreBtn).toHaveText(CreateTeamsTestData.ExploreBtnValue)
+        await expect(createTeams.MyQuizzesBtn).toHaveText(CreateTeamsTestData.MyQuizzesBtnValue)
+        await expect(createTeams.SmartDoorBellBtn).toHaveText(CreateTeamsTestData.SmartDoorBellBtnValue)
+        await expect(createTeams.ReportsBtn).toHaveText(CreateTeamsTestData.ReportsBtnValue)
+        await expect(createTeams.MyStudentBtn).toHaveText(CreateTeamsTestData.MyStudentBtnValue)
+        await expect(createTeams.JuiceMindRoadMapBtn).toHaveText(CreateTeamsTestData.JuiceMindRoadMapBtnValue)
+        await expect(createTeams.MyTeamsHeading).toHaveText(CreateTeamsTestData.MyTeamsHeadingValue)
+        await expect(createTeams.ImportCodingRoomsCoursesBtn).toHaveText(CreateTeamsTestData.ImportCodingRoomsCoursesBtnValue)
+        await expect(createTeams.ImportCoursesBtnMainPageTeamsCourses).toHaveText(CreateTeamsTestData.CreateNewTeamImportCoursesBtnValue)
+        await expect(createTeams.ImportTeamBtnMainPageTeamsCourses).toHaveText(CreateTeamsTestData.CreateNewTeamImportTeamsBtnValue)
+        await expect(createTeams.ImportCodingMainPageTeamsCoursesDescription).toHaveText(CreateTeamsTestData.ImportCodingMainPageTeamsCoursesDescriptionValue)
+        await expect(createTeams.SyncTeamsHeadingMainPage).toHaveText(CreateTeamsTestData.CreateNewTeamSyncReplitHeadingValue)
+        await expect(createTeams.SyncTeamsHeadingMainPageDescription).toHaveText(CreateTeamsTestData.SyncTeamsHeadingMainPageDescriptionValue)
+        await expect(createTeams.ArchivedTeamHeading).toHaveText(CreateTeamsTestData.ArchivedTeamHeadingValue)
+        await expect(createTeams.UpgradeBtn).toHaveText(CreateTeamsTestData.UpgradeBtnValue)
+        await expect(createTeams.ImportCodingRoomDotComHeading).toHaveText(CreateTeamsTestData.CreateNewTeamImportCodingRoomsHeadingValue)
+    });  
+
     test('TC - Validate UI of Create New Team Pop Up', async ({ createTeams }) => {
         await PlaywrightCore.click(createTeams.CreateNewTeamBtn)
         await expect(createTeams.StartFromScratchBtn).toHaveText(CreateTeamsTestData.StartFromScratchBtnValue)
