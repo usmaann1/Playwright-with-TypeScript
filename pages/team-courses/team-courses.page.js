@@ -1,6 +1,4 @@
-const {
-  PlaywrightCore,
-} = require("../../module-imports/helperFunctions.imports");
+const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports");
 import { expect } from "@playwright/test";
 import Locators from "./team-courses.locator.json";
 
@@ -62,8 +60,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.UserText = this.page.locator(Locators.UserText);
     this.EditorTextBox = this.page.locator(Locators.EditorTextBox);
     this.UploadFile = this.page.locator(Locators.UploadFile);
-    this.IndexFile =
-      "//div[@class='_root_xd7bb_1']//div[contains(text(),'index.js')]";
+    this.IndexFile = this.page.locator(Locators.IndexFile);
   }
 
   async NavigateToSignUpPage() {
@@ -90,7 +87,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.CoursesBtn);
     await PlaywrightCore.click(this.CoursesBtn);
     await PlaywrightCore.click(this.CreateNewTeam);
-    // await PlaywrightCore.isTextPresent(this.StartFromScratch, this.StartFromScratchText);
     await PlaywrightCore.click(this.StartFromScratch);
     await PlaywrightCore.fill(this.TeamNameInput, teamName);
     await PlaywrightCore.click(this.SubmitBtn);
@@ -107,11 +103,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   async IntializeIDE(ProjecttName) {
     await PlaywrightCore.click(this.IntializeIDEBtn);
     await PlaywrightCore.fill(this.ProjectNameInput, ProjecttName);
-    await PlaywrightCore.selectingDropDownByLabel(
-      this.page,
-      "Project type",
-      "Javascript (Node.js)"
-    );
+    await PlaywrightCore.selectingDropDownByLabel(this.page, "Project type", "Javascript (Node.js)");
     await PlaywrightCore.click(this.SubmitBtn);
   }
 
@@ -120,18 +112,12 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await page.waitForTimeout(10000);
     await PlaywrightCore.click(this.FileExplorerBtnOpen);
     await page.getByTestId("NoteAddIcon").click();
-    const file = await page
-      .locator("div")
-      .filter({ hasText: /^Filesindex\.js$/ })
-      .getByRole("textbox");
+    const file = await page.locator("div").filter({ hasText: /^Filesindex\.js$/ }).getByRole("textbox");
     await file.fill("abc.js");
     await file.press("Enter");
     // await PlaywrightCore.click(this.CreateNewFolder);
     await page.getByTestId("CreateNewFolderIcon").click();
-    const folder = await page
-      .locator("div")
-      .filter({ hasText: /^Filesindex\.jsabc\.js$/ })
-      .getByRole("textbox");
+    const folder = await page.locator("div").filter({ hasText: /^Filesindex\.jsabc\.js$/ }).getByRole("textbox");
     await folder.fill("test");
     await folder.press("Enter");
   }
@@ -144,11 +130,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.fill(this.TestName, testName);
     await PlaywrightCore.fill(this.TestInput, input);
     await PlaywrightCore.fill(this.TestOutput, output);
-    await PlaywrightCore.selectingDropDownByText(
-      this.page,
-      oldTestType,
-      newTestType
-    );
+    await PlaywrightCore.selectingDropDownByText(this.page, oldTestType, newTestType);
     await PlaywrightCore.click(this.CreateTestBtn);
   }
 
@@ -186,7 +168,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await textBox.click({ clickCount: 1 });
     await textBox.press("Control+A");
     await textBox.press("Backspace");
-    // await textBox.fill(code);
     for (const char of code) {
       await textBox.type(char);
     }
@@ -197,10 +178,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async assertingUserAnswered(name) {
     await this.page.bringToFront();
-    const xpath = await Locators.UserSubmissionSuccessFull.replace(
-      "###REPLACE###",
-      name
-    );
+    const xpath = await Locators.UserSubmissionSuccessFull.replace("###REPLACE###", name);
     const greenButton = await this.page.locator(xpath);
     await expect(greenButton).toBeVisible();
   }
@@ -211,18 +189,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await this.page.locator(this.IndexFile).click();
     await this.page.waitForTimeout(10000);
     await PlaywrightCore.ClickByText(this.page, "History");
-    await PlaywrightCore.slidingElement(
-      this.page,
-      "slider",
-      "ArrowLeft",
-      textAssertion
-    );
-    await PlaywrightCore.slidingElement(
-      this.page,
-      "slider",
-      "ArrowRight",
-      textAssertion
-    );
+    await PlaywrightCore.slidingElement(this.page, "slider", "ArrowLeft", textAssertion);
+    await PlaywrightCore.slidingElement(this.page, "slider", "ArrowRight", textAssertion);
     const textBox = await this.EditorTextBox.nth(1);
     const editorText = await textBox.textContent();
     expect(editorText).toBe(textAssertion);
@@ -236,4 +204,5 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   async breakPoint() {
     await this.page.pause();
   }
+
 };

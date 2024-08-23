@@ -39,5 +39,6 @@
     "UserText": "//h2[normalize-space(text())='Users']/following-sibling::div[1]",
     "EditorTextBox": "div[contenteditable='true'].cm-content",
     "UserSubmissionSuccessFull": "//div[contains(@class, '_userButton') and contains(., '###REPLACE###')]/following-sibling::div/div[contains(@class, 'bg-green-500')]",
-    "UploadFile": "//input[@id='hidden-file-input']"
+    "UploadFile": "//input[@id='hidden-file-input']",
+    "IndexFile":"//div[@class='_root_xd7bb_1']//div[contains(text(),'index.js')]"
 }
