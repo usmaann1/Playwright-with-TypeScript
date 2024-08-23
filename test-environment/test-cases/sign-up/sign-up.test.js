@@ -25,7 +25,7 @@ test.describe('TestSuite: Sign Up', () => {
     });
     
     test('TC - Valid Sign Up & Redirection to Next Page', async ({loginPage, signUpPage}) => {
-        const randomEmail = await UserFunctions.generateRandomEmail(process.env.USERNAME)
+        const randomEmail = await UserFunctions.generateRandomEmail(process.env.EMAIL)
         await signUpPage.fillCredentialsAndSignUp(loginPage, randomEmail, process.env.PASSWORD)
         await expect(loginPage.Logo).toBeVisible()
         await expect(signUpPage.IamAHeading).toHaveText(SignUpTestData.IamAHeadingValue)
@@ -41,7 +41,7 @@ test.describe('TestSuite: Sign Up', () => {
     });
 
     test('TC - Sign-Up with Already Registered Email', async ({loginPage, signUpPage}) => {
-        await signUpPage.fillCredentialsAndSignUp(loginPage, process.env.USERNAME, process.env.PASSWORD)
+        await signUpPage.fillCredentialsAndSignUp(loginPage, process.env.EMAIL, process.env.PASSWORD)
         await expect(loginPage.UserNamePasswordValidationError).toHaveText(SignUpTestData.AlreadySignedUpUserErrorValidationValue)
     });
 
