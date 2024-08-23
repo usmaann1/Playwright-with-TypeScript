@@ -470,7 +470,6 @@ exports.PlaywrightCore = class PlaywrightCore {
           await page.getByRole(element).press(key);
         }
       } else {
-        console.log(code);
         const count = code?.length + 40;
         for (let i = 0; i <= count; i++) {
           await page.getByRole(element).press(key);

@@ -9,16 +9,13 @@ const {
 const {
   TeamCoursesPage,
 } = require("../../../pages/team-courses/team-courses.page");
-const {
-  TeamCoursesData,
-} = require("../../test-assets/test-data-files/team-courses/team-courses.js");
+import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses.json";
 require("dotenv").config();
 
-
 test.describe("TestSuite: Team/Courses", () => {
-  test.only("TC: Flow Test", async ({ teamCoursesPage, browser }) => {
-    const email = TeamCoursesData.email;
-    const password = TeamCoursesData.password;
+  test("TC: Flow Test", async ({ teamCoursesPage, browser }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
     const randomEmail = await UserFunctions.generateRandomEmail(email);
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
@@ -55,6 +52,5 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.testInput
     );
     await teamCoursesPage.uploadFile(TeamCoursesData.uploadFilePath);
-    await teamCoursesPage.breakPoint();
   });
 });

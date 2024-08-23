@@ -201,7 +201,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       "###REPLACE###",
       name
     );
-    console.log(xpath);
     const greenButton = await this.page.locator(xpath);
     await expect(greenButton).toBeVisible();
   }
@@ -211,7 +210,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await this.page.waitForTimeout(10000);
     await this.page.locator(this.IndexFile).click();
     await this.page.waitForTimeout(10000);
-    await this.page.pause();
     await PlaywrightCore.ClickByText(this.page, "History");
     await PlaywrightCore.slidingElement(
       this.page,
@@ -227,7 +225,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     );
     const textBox = await this.EditorTextBox.nth(1);
     const editorText = await textBox.textContent();
-    console.log("Editor Text:", editorText);
     expect(editorText).toBe(textAssertion);
   }
 
