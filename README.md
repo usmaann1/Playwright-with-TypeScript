@@ -18,6 +18,10 @@ After cloning the project, run the following command to install dependencies:
 To execute all tests, run the following command:
     • npx playwright test
 
+- Running All Tests on SIngle Worker
+To execute all tests with 1 worker, run the following command:
+    • npx playwright test --workers 1
+
 - Running a Single Test
 To execute a specific test, use:
    • npx playwright test --grep "test name"
