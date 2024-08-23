@@ -3,6 +3,7 @@ const { LoginPage } = require('../pages/login/login.page')
 const { JoinQuizPage } = require('../pages/join-quiz/join-quiz.page')
 const { SignUpPage } = require('../pages/sign-up/sign-up.page')
 const { TeamCoursesPage } = require('../pages/team-courses/team-courses.page')
+const { CreateTeams } = require('../pages/create-teams/create-teams.page')
 
 exports.test = base.test.extend({
 
@@ -22,6 +23,10 @@ exports.test = base.test.extend({
         await context.grantPermissions(['clipboard-read', 'clipboard-write']);
         await use(new TeamCoursesPage(page));
     },    
+
+    createTeams: async ({ page }, use) => {
+        await use(new CreateTeams(page));
+    },
     
 });
 
