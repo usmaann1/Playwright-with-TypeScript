@@ -45,7 +45,7 @@ test.describe('TestSuite: Login', () => {
             }
             else if(loginUserName != process.env.EMAIL){
                 await expect(loginPage.UserNamePasswordValidationError).toHaveText(LoginCredentials.UserNameValidationErrorTextValue)
-            }s
+            }
 
             if(loginPassword != process.env.PASSWORD && loginPassword == "")
             {
