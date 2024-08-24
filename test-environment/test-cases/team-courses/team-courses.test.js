@@ -6,13 +6,12 @@ require("dotenv").config();
 
 test.describe("TestSuite: Team/Courses", () => {
 
-  test.only("TC: Flow Test", async ({ teamCoursesPage, browser }) => {
+  test("TC: Flow Test JavaScript", async ({ teamCoursesPage, browser }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomEmail = await UserFunctions.generateRandomEmail(email);
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    const randomAssignment2 = await UserFunctions.generateName();
 
     await teamCoursesPage.signInUser(email, password);
     await teamCoursesPage.CreateTeam(randomName);
@@ -48,12 +47,37 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.testInput
     );
     await teamCoursesPage.uploadFile(TeamCoursesData.uploadFilePath);
-    await teamCoursesPage.CreateAssignment(randomAssignment2, true);
+    await newPage.close();
+  });
+
+  test("TC: Flow Test Python with Turtle", async ({ teamCoursesPage }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
       randomName,
       TeamCoursesData.projectTypeOption2
     );
     await teamCoursesPage.pythonWithTurtle();
+  });
+
+  test.only("TC: Flow Test Python with Matplotlib", async ({ teamCoursesPage }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption6
+    );
+    await teamCoursesPage.pythonWithMatplotlib();
   });
 
 });

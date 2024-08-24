@@ -10,5 +10,10 @@
   "completeName": "test test",
   "uploadFilePath": "./test-environment/test-assets/test-resource-files/teamUploadTest.js",
   "projectTypeOption1": "Javascript (Node.js)",
-  "projectTypeOption2": "Python with Turtle"
+  "projectTypeOption2": "Python with Turtle",
+  "projectTypeOption3": "Python with Pygame",
+  "projectTypeOption4": "Python with Tkinter",
+  "projectTypeOption5": "Python with PyQT",
+  "projectTypeOption6": "Python with Matplotlib",
+  "projectTypeOption7": "Python with Pillow"
 }
