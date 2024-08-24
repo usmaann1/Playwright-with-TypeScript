@@ -148,27 +148,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.SubmitBtn);
   }
 
-  /* async IDEInteraction() {
-    const page = this.page;
-    await page.waitForTimeout(10000);
-    await PlaywrightCore.click(this.FileExplorerBtnOpen);
-    await page.getByTestId("NoteAddIcon").click();
-    const file = await page
-      .locator("div")
-      .filter({ hasText: /^Filesindex\.js$/ })
-      .getByRole("textbox");
-    await file.fill("abc.js");
-    await file.press("Enter");
-    // await PlaywrightCore.click(this.CreateNewFolder);
-    await page.getByTestId("CreateNewFolderIcon").click();
-    const folder = await page
-      .locator("div")
-      .filter({ hasText: /^Filesindex\.jsabc\.js$/ })
-      .getByRole("textbox");
-    await folder.fill("test");
-    await folder.press("Enter");
-  } */
-
   async createTest(type, oldTestType, newTestType, testName, input, output) {
     await PlaywrightCore.waitTimeout(this.page, 5000)
     await PlaywrightCore.click(this.TestBtn);
