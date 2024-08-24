@@ -1,13 +1,16 @@
-const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports");
+const {
+  PlaywrightCore,
+} = require("../../module-imports/helperFunctions.imports");
 import { expect } from "@playwright/test";
 import Locators from "./team-courses.locator.json";
+import { UserFunctions } from "../../helper-functions/userFunctions";
 
 exports.TeamCoursesPage = class TeamCoursesPage {
   constructor(page) {
     this.intializePage(page);
   }
 
-  intializePage(page) {
+  async intializePage(page) {
     this.page = page;
     this.baseURL = "./";
     this.LoginURL = "./login";
@@ -61,6 +64,35 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.EditorTextBox = this.page.locator(Locators.EditorTextBox);
     this.UploadFile = this.page.locator(Locators.UploadFile);
     this.IndexFile = this.page.locator(Locators.IndexFile);
+    /* this.IndexFile =
+      "//div[@class='_root_xd7bb_1']//div[contains(text(),'index.js')]"; */
+    this.AddNewItem = this.page.locator(Locators.AddNewItem);
+    this.CloudIcon = this.page.locator(Locators.CloudIcon);
+    this.EditorPlayButton = this.page.locator(Locators.EditorPlayButton);
+    this.EditorStopBtn = this.page.locator(Locators.EditorStopBtn);
+    this.FullScreenBtn = this.page.locator(Locators.FullScreenBtn);
+    const { SelectAll, Copy } = await this.page.evaluate(() => {
+      const isMac = navigator.userAgent.includes("Mac");
+      return {
+        SelectAll: isMac ? "Meta+A" : "Control+A",
+        Copy: isMac ? "Meta+c" : "Control+c",
+      };
+    });
+    this.ProjectType = "Project type";
+    this.TestType = "Test Type";
+    this.CreateCourse = "text='Create a course item'";
+    this.IndexJs = "index.js";
+    this.MainPy = "main.py";
+    this.GreenColorStyle = /background-color:\s*(rgb\(0,\s*255,\s*0\))/;
+    this.GreenColor = "rgb(0, 255, 0)";
+    this.RedColor = "#FF0000";
+    this.ArrLeft = "ArrowLeft";
+    this.ArrRight = "ArrowRight";
+    this.SelectAll = SelectAll;
+    this.Copy = Copy;
+    this.Slider = "slider";
+    this.BackSpace = "Backspace";
+    this.History = "History";
   }
 
   async NavigateToSignUpPage() {
@@ -87,50 +119,73 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.CoursesBtn);
     await PlaywrightCore.click(this.CoursesBtn);
     await PlaywrightCore.click(this.CreateNewTeam);
+    // await PlaywrightCore.isTextPresent(this.StartFromScratch, this.StartFromScratchText);
     await PlaywrightCore.click(this.StartFromScratch);
     await PlaywrightCore.fill(this.TeamNameInput, teamName);
     await PlaywrightCore.click(this.SubmitBtn);
   }
 
-  async CreateAssignment(assignmentName) {
-    await PlaywrightCore.click(this.CreateAssignmentBtn);
-    const textExists = await this.page.isVisible('text="Create a course item"');
+  async CreateAssignment(assignmentName, isAddNewItem = false) {
+    if (!isAddNewItem) {
+      await PlaywrightCore.click(this.CreateAssignmentBtn);
+    } else {
+      await PlaywrightCore.click(this.AddNewItem);
+    }
+    const textExists = await this.page.isVisible(this.CreateCourse);
     if (textExists) await PlaywrightCore.click(this.CodingAssignmentBtn);
     await PlaywrightCore.fill(this.CodingAssignmentInput, assignmentName);
     await PlaywrightCore.click(this.CodingAssignmentCreateBtn);
   }
 
-  async IntializeIDE(ProjecttName) {
+  async IntializeIDE(ProjecttName, option) {
     await PlaywrightCore.click(this.IntializeIDEBtn);
     await PlaywrightCore.fill(this.ProjectNameInput, ProjecttName);
-    await PlaywrightCore.selectingDropDownByLabel(this.page, "Project type", "Javascript (Node.js)");
+    await PlaywrightCore.selectingDropDownByLabel(
+      this.page,
+      this.ProjectType,
+      option
+    );
     await PlaywrightCore.click(this.SubmitBtn);
   }
 
-  async IDEInteraction() {
+  /* async IDEInteraction() {
     const page = this.page;
     await page.waitForTimeout(10000);
     await PlaywrightCore.click(this.FileExplorerBtnOpen);
     await page.getByTestId("NoteAddIcon").click();
-    const file = await page.locator("div").filter({ hasText: /^Filesindex\.js$/ }).getByRole("textbox");
+    const file = await page
+      .locator("div")
+      .filter({ hasText: /^Filesindex\.js$/ })
+      .getByRole("textbox");
     await file.fill("abc.js");
     await file.press("Enter");
     // await PlaywrightCore.click(this.CreateNewFolder);
     await page.getByTestId("CreateNewFolderIcon").click();
-    const folder = await page.locator("div").filter({ hasText: /^Filesindex\.jsabc\.js$/ }).getByRole("textbox");
+    const folder = await page
+      .locator("div")
+      .filter({ hasText: /^Filesindex\.jsabc\.js$/ })
+      .getByRole("textbox");
     await folder.fill("test");
     await folder.press("Enter");
-  }
+  } */
 
   async createTest(type, oldTestType, newTestType, testName, input, output) {
     await this.page.waitForTimeout(5000);
     await PlaywrightCore.click(this.TestBtn);
     await PlaywrightCore.click(this.AddTestBtn);
-    await PlaywrightCore.selectingDropDownByLabel(this.page, "Test Type", type);
+    await PlaywrightCore.selectingDropDownByLabel(
+      this.page,
+      this.TestType,
+      type
+    );
     await PlaywrightCore.fill(this.TestName, testName);
     await PlaywrightCore.fill(this.TestInput, input);
     await PlaywrightCore.fill(this.TestOutput, output);
-    await PlaywrightCore.selectingDropDownByText(this.page, oldTestType, newTestType);
+    await PlaywrightCore.selectingDropDownByText(
+      this.page,
+      oldTestType,
+      newTestType
+    );
     await PlaywrightCore.click(this.CreateTestBtn);
   }
 
@@ -160,14 +215,15 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   async createStarterCode(code) {
     await PlaywrightCore.click(this.CreateStarterCode);
     await this.page.waitForTimeout(10000);
-    await this.page.getByText("index.js").nth(1).click();
+    await this.page.getByText(this.IndexJs).nth(1).click();
     await this.page.waitForTimeout(10000);
     // Locate the text box
     const textBox = await this.EditorTextBox.nth(1);
     // Focus on the text box
     await textBox.click({ clickCount: 1 });
-    await textBox.press("Control+A");
-    await textBox.press("Backspace");
+    await textBox.press(this.SelectAll);
+    await textBox.press(this.BackSpace);
+    // await textBox.fill(code);
     for (const char of code) {
       await textBox.type(char);
     }
@@ -176,24 +232,72 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.SubmitBtn);
   }
 
+  async pythonWithTurtle() {
+    await PlaywrightCore.click(this.CreateStarterCode);
+    await this.page.waitForTimeout(10000);
+    await this.page.getByText(this.MainPy).nth(1).click();
+    await this.page.waitForTimeout(10000);
+    await expect(this.CloudIcon.nth(1)).toBeVisible();
+    await this.page.waitForTimeout(20000);
+    await PlaywrightCore.click(this.EditorPlayButton);
+    await this.page.waitForTimeout(10000);
+    await PlaywrightCore.click(this.EditorStopBtn);
+    await this.page.waitForTimeout(5000);
+    const codeEditorContent = await this.EditorTextBox.nth(1);
+    await codeEditorContent.press(this.SelectAll);
+    await codeEditorContent.press(this.Copy);
+    const clipboardContent = await this.page.evaluate(async () => {
+      return await navigator.clipboard.readText();
+    });
+    const updatedCode = clipboardContent.replace(/black/g, "red");
+    await codeEditorContent.press(this.BackSpace);
+    await codeEditorContent.fill(updatedCode);
+    await this.page.waitForTimeout(5000);
+    await PlaywrightCore.click(this.EditorPlayButton);
+    await this.page.waitForTimeout(10000);
+    await PlaywrightCore.click(this.FullScreenBtn.nth(1));
+    const isColorRed = await UserFunctions.getCanvasBackgroundColor(
+      this.page,
+      50,
+      50
+    );
+    await expect(isColorRed).toBe(this.RedColor);
+  }
+
   async assertingUserAnswered(name) {
     await this.page.bringToFront();
-    const xpath = await Locators.UserSubmissionSuccessFull.replace("###REPLACE###", name);
+    const xpath = await Locators.UserSubmissionSuccessFull.replace(
+      "###REPLACE###",
+      name
+    );
     const greenButton = await this.page.locator(xpath);
-    await expect(greenButton).toBeVisible();
+    const styleAttribute = await greenButton.getAttribute("style");
+    const backgroundColorStyle = styleAttribute.match(this.GreenColorStyle)[1];
+    await expect(backgroundColorStyle).toBe(this.GreenColor);
   }
 
   async assertingUserAnswerHistory(name, textAssertion) {
     await PlaywrightCore.ClickByText(this.page, name);
     await this.page.waitForTimeout(10000);
-    await this.page.locator(this.IndexFile).click();
+    //await this.page.locator("index.js").click();
+    await this.page.getByText(this.IndexJs).nth(1).click();
     await this.page.waitForTimeout(10000);
-    await PlaywrightCore.ClickByText(this.page, "History");
-    await PlaywrightCore.slidingElement(this.page, "slider", "ArrowLeft", textAssertion);
-    await PlaywrightCore.slidingElement(this.page, "slider", "ArrowRight", textAssertion);
+    await PlaywrightCore.ClickByText(this.page, this.History);
+    await PlaywrightCore.slidingElement(
+      this.page,
+      this.Slider,
+      this.ArrLeft,
+      textAssertion
+    );
+    await PlaywrightCore.slidingElement(
+      this.page,
+      this.Slider,
+      this.ArrRight,
+      textAssertion
+    );
     const textBox = await this.EditorTextBox.nth(1);
     const editorText = await textBox.textContent();
-    expect(editorText).toBe(textAssertion);
+    await expect(editorText).toBe(textAssertion);
   }
 
   async uploadFile(path) {
@@ -201,8 +305,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.fileUpload(this.UploadFile, path);
   }
 
+  //async addNewItem() {}
+
   async breakPoint() {
     await this.page.pause();
   }
-
 };

@@ -8,5 +8,7 @@
   "firstName": "test",
   "LastName": "test",
   "completeName": "test test",
-  "uploadFilePath": "./test-environment/test-assets/test-resource-files/teamUploadTest.js"
+  "uploadFilePath": "./test-environment/test-assets/test-resource-files/teamUploadTest.js",
+  "projectTypeOption1": "Javascript (Node.js)",
+  "projectTypeOption2": "Python with Turtle"
 }

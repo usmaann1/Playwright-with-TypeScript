@@ -470,7 +470,7 @@ exports.PlaywrightCore = class PlaywrightCore {
           await page.getByRole(element).press(key);
         }
       } else {
-        const count = code?.length + 40;
+        const count = code?.length * 4;
         for (let i = 0; i <= count; i++) {
           await page.getByRole(element).press(key);
         }
@@ -490,23 +490,30 @@ exports.PlaywrightCore = class PlaywrightCore {
     }
   }
 
-static async waitForElementToDisappear(page, selector, timeout = 60000, interval = 3000) {
+  static async waitForElementToDisappear(
+    page,
+    selector,
+    timeout = 60000,
+    interval = 3000
+  ) {
     const start = Date.now();
     while (Date.now() - start < timeout) {
-        try {
-            const element = await page.$(selector);
-            if (!element) {
-                console.log(`Element ${selector} has disappeared.`);
-                return;
-            }
-        } catch (error) {
-            console.error(`Error occurred while checking ${selector}:`, error);
+      try {
+        const element = await page.$(selector);
+        if (!element) {
+          console.log(`Element ${selector} has disappeared.`);
+          return;
         }
-        // Custom wait with setTimeout for polling interval
-        await new Promise(resolve => setTimeout(resolve, interval));
+      } catch (error) {
+        console.error(`Error occurred while checking ${selector}:`, error);
+      }
+      // Custom wait with setTimeout for polling interval
+      await new Promise((resolve) => setTimeout(resolve, interval));
     }
-    console.error(`Timeout exceeded: Element ${selector} did not disappear within ${timeout / 1000} seconds.`);
-}
-
-}
-
+    console.error(
+      `Timeout exceeded: Element ${selector} did not disappear within ${
+        timeout / 1000
+      } seconds.`
+    );
+  }
+};

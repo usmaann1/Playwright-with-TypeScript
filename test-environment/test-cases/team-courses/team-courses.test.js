@@ -6,17 +6,21 @@ require("dotenv").config();
 
 test.describe("TestSuite: Team/Courses", () => {
 
-  test("TC: Flow Test", async ({ teamCoursesPage, browser }) => {
+  test.only("TC: Flow Test", async ({ teamCoursesPage, browser }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomEmail = await UserFunctions.generateRandomEmail(email);
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
+    const randomAssignment2 = await UserFunctions.generateName();
 
     await teamCoursesPage.signInUser(email, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
-    await teamCoursesPage.IntializeIDE(randomName);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption1
+    );
     await teamCoursesPage.createTest(
       TeamCoursesData.createTestType,
       TeamCoursesData.createTestOldType,
@@ -44,6 +48,13 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.testInput
     );
     await teamCoursesPage.uploadFile(TeamCoursesData.uploadFilePath);
+    await teamCoursesPage.CreateAssignment(randomAssignment2, true);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption2
+    );
+    await teamCoursesPage.pythonWithTurtle();
+    await teamCoursesPage.breakPoint();
   });
 
 });

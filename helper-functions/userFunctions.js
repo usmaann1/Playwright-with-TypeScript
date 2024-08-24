@@ -170,4 +170,24 @@ exports.UserFunctions = class UserFunctions {
     return namePrefix;
   }
 
+  static async getCanvasBackgroundColor(page, xDim = 50, yDim = 50) {
+    // Evaluate JavaScript in the context of the page
+    const color = await page.evaluate(({ xDim, yDim }) => {
+      const canvas = document.querySelector("canvas");
+      if (!canvas) return "Canvas not found";
+  
+      const context = canvas.getContext("2d");
+      const imageData = context.getImageData(xDim, yDim, 1, 1).data;
+      const [r, g, b, a] = imageData;
+  
+      // Convert RGBA to HEX format
+      const hex = `#${((1 << 24) + (r << 16) + (g << 8) + b)
+        .toString(16)
+        .slice(1)
+        .toUpperCase()}`;
+      return hex;
+    }, { xDim, yDim });
+  
+    return color;
+  }
 };
