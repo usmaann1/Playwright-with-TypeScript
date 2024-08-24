@@ -124,6 +124,7 @@ test.describe('TestSuite: Create Teams', () => {
     });
 
     test('TC - Delete a Newly Create Team UI Validations', async ({ createTeams }) => {
+        await createTeams.waitForElementAndPerformAction()
         const threeDotsCount = await createTeams.ThreeDots.count()
         await createTeams.createNewTeamFromScratch(CreateTeamsTestData.TeamCreatedHeadingValue)
         await expect(createTeams.TeamCreatedHeading).toHaveText(CreateTeamsTestData.TeamCreatedHeadingValue)

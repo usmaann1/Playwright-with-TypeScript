@@ -110,4 +110,12 @@ exports.CreateTeams = class CreateTeams {
         await PlaywrightCore.click(this.DeleteConfirmBtn)
     }
 
+    async waitForElementAndPerformAction() {
+      while (!(await this.page.waitForSelector(this.ThreeDots, { state: 'visible', timeout: 0 }))){
+        await this.deleteFirstTeamInList()
+        // Wait for a short period before checking again
+        await page.waitForTimeout(1000);
+      }
+    }
+
 }

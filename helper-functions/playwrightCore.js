@@ -344,6 +344,6 @@ static async waitForElementToDisappear(page, selector, timeout = 60000, interval
         await new Promise(resolve => setTimeout(resolve, interval));
     }
     console.error(`Timeout exceeded: Element ${selector} did not disappear within ${timeout / 1000} seconds.`);
-}
+} 
 
 }
