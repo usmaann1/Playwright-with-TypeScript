@@ -88,8 +88,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.EditorTextBox = this.page.locator(Locators.EditorTextBox);
     this.UploadFile = this.page.locator(Locators.UploadFile);
     this.IndexFile = this.page.locator(Locators.IndexFile);
-    /* this.IndexFile =
-      "//div[@class='_root_xd7bb_1']//div[contains(text(),'index.js')]"; */
     this.AddNewItem = this.page.locator(Locators.AddNewItem);
     this.CloudIcon = this.page.locator(Locators.CloudIcon);
     this.EditorPlayButton = this.page.locator(Locators.EditorPlayButton);
@@ -122,7 +120,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.CoursesBtn);
     await PlaywrightCore.click(this.CoursesBtn);
     await PlaywrightCore.click(this.CreateNewTeam);
-    // await PlaywrightCore.isTextPresent(this.StartFromScratch, this.StartFromScratchText);
     await PlaywrightCore.click(this.StartFromScratch);
     await PlaywrightCore.fill(this.TeamNameInput, teamName);
     await PlaywrightCore.click(this.SubmitBtn);
@@ -211,7 +208,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.fill(this.FirstNameInput, firstName);
     await PlaywrightCore.fill(this.LastNameInput, lastName);
     await PlaywrightCore.click(this.FinishBtn);
-    // for joined team finsh btn
     await PlaywrightCore.click(this.FinishBtn);
   }
 
@@ -220,13 +216,10 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.waitTimeout(this.page, 10000)
     await this.page.getByText(this.IndexJs).nth(1).click();
     await PlaywrightCore.waitTimeout(this.page, 10000)
-    // Locate the text box
     const textBox = await this.EditorTextBox.nth(1);
-    // Focus on the text box
     await textBox.click({ clickCount: 1 });
     await textBox.press(this.SelectAll);
     await textBox.press(this.BackSpace);
-    // await textBox.fill(code);
     for (const char of code) {
       await textBox.type(char);
     }
@@ -284,7 +277,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   async assertingUserAnswerHistory(name, textAssertion) {
     await PlaywrightCore.ClickByText(this.page, name);
     await PlaywrightCore.waitTimeout(this.page, 10000)
-    //await this.page.locator("index.js").click();
     await this.page.getByText(this.IndexJs).nth(1).click();
     await PlaywrightCore.waitTimeout(this.page, 10000)
     await PlaywrightCore.ClickByText(this.page, this.History);
@@ -309,8 +301,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.FileExplorerBtnOpen);
     await PlaywrightCore.fileUpload(this.UploadFile, path);
   }
-
-  //async addNewItem() {}
 
   async breakPoint() {
     await this.page.pause();
