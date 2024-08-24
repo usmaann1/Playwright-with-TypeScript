@@ -19,10 +19,11 @@ const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports
       this.CodingAssignmentCreateBtn = this.page.locator(Locators.CodingAssignmentCreateBtn);
       this.PublishButton = this.page.locator(Locators.PublishButton);
       this.arrowBtnLeftSideBar = this.page.locator(Locators.arrowBtnLeftSideBar);
-      this.invite_StudentsBtn = this.page.locator(Locators.inviteStudentsBtn);
+      this.invite_StudentsBtn = this.page.locator(Locators.invite_StudentsBtn);
+      this.invitestudents_closeBtn = this.page.locator(Locators.invitestudents_closeBtn);
     
-      this.copy_InviteStudentsBtn = this.page.locator(Locators.copyInviteStudentsBtn);
-      this.Publish_AssignmentBtn = this.page.locator(Locators.PublishAssignmentBtn);
+      this.copy_InviteStudentsBtn = this.page.locator(Locators.copy_InviteStudentsBtn);
+      this.Publish_AssignmentBtn = this.page.locator(Locators.Publish_AssignmentBtn);
       this.PageLockedText = this.page.locator(Locators.PageLockedText);
       this.waitingForTeacherText = this.page.locator(Locators.waitingForTeacherText);
 
@@ -32,6 +33,11 @@ const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports
     this.Gotit_btn = this.page.locator(Locators.Gotit_btn);
     this.ViewStuPreview_btn = this.page.locator(Locators.ViewStuPreview_btn);
     this.ExitStudentView_btn = this.page.locator(Locators.ExitStudentView_btn);
+    this.thirdsixdot_btn = this.page.locator(Locators.thirdsixdot_btn);
+    this.EmailStudentSignup_textfield = this.page.locator(Locators.EmailStudentSignup_textfield);
+    this.PasswordStudentSignup_textfield = this.page.locator(Locators.PasswordStudentSignup_textfield);
+    this.SubmitStudentSignup_btn = this.page.locator(Locators.SubmitStudentSignup_btn);
+
     }
 
     async NavigateToTeamCoursesPage(){
@@ -80,9 +86,6 @@ const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports
         await PlaywrightCore.click(this.invite_StudentsBtn);
     }
 
-      async CopyinviteStudentsbtn(){
-          await PlaywrightCore.click(this.copy_InviteStudentsBtn);
-      }
       async publishAssignmentbtn(){
         await PlaywrightCore.click(this.Publish_AssignmentBtn);
       }
@@ -104,5 +107,29 @@ const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports
       async ExitStudentView(){
         await PlaywrightCore.click(this.ExitStudentView_btn);
     }
-  };
+
+    async thirdsixdot(){
+      await PlaywrightCore.click(this.thirdsixdot_btn);
+  }
+
+  async CopyinviteStudentsbtn(){
+    await PlaywrightCore.click(this.copy_InviteStudentsBtn);
+}
+
+async closeinvitestudentspopup(){
+  await PlaywrightCore.click(this.invitestudents_closeBtn);
+}
+
+
+async publishassignmentbutton(){
+  await PlaywrightCore.click(this.Publish_AssignmentBtn);
+}
+
+
+async fillstudentsignupdata(){
+  await PlaywrightCore.fill(this.EmailStudentSignup_textfield, 'usman.allaudin+13@gmail.com');
+  await PlaywrightCore.fill(this.PasswordStudentSignup_textfield, '98769876');
+  await PlaywrightCore.click(this.SubmitStudentSignup_btn);
+}
+};
   
