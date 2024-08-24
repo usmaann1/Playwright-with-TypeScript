@@ -54,7 +54,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption2
     );
     await teamCoursesPage.pythonWithTurtle();
-    await teamCoursesPage.breakPoint();
+    // await teamCoursesPage.breakPoint();
   });
 
 });
