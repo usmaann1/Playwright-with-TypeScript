@@ -69,7 +69,8 @@ test.describe('TestSuite: Create Teams', () => {
         await createTeams.deleteFirstTeamInList()
     });
 
-    test('TC - Delete a Newly Create Team From Scratch', async ({ createTeams }) => {
+    test('TC - Delete a Newly Create Team - From Scratch', async ({ createTeams }) => {
+        await createTeams.deleteAllTeams(CreateTeamsTestData.TeamCreatedHeadingValue)
         const threeDotsCount = await createTeams.ThreeDots.count()
         await createTeams.createNewTeamFromScratch(CreateTeamsTestData.TeamCreatedHeadingValue)
         await expect(createTeams.TeamCreatedHeading).toHaveText(CreateTeamsTestData.TeamCreatedHeadingValue)
@@ -101,7 +102,8 @@ test.describe('TestSuite: Create Teams', () => {
         await createTeams.deleteFirstTeamInList()
     });
 
-    test('TC - Delete a Newly Create Team CS Awesome', async ({ createTeams }) => {
+    test('TC - Delete a Newly Create Team - CS Awesome', async ({ createTeams }) => {
+        await createTeams.deleteAllTeams(CreateTeamsTestData.TeamCreatedHeadingValue)
         const threeDotsCount = await createTeams.ThreeDots.count()
         await createTeams.createNewTeamCSAwesome(CreateTeamsTestData.TeamCreatedHeadingValue)
         await expect(createTeams.CreatingTeamLoder).toHaveText(CreateTeamsTestData.CreatingTeamLoderValue)
@@ -124,7 +126,7 @@ test.describe('TestSuite: Create Teams', () => {
     });
 
     test('TC - Delete a Newly Create Team UI Validations', async ({ createTeams }) => {
-        await createTeams.waitForElementAndPerformAction()
+        await createTeams.deleteAllTeams(CreateTeamsTestData.TeamCreatedHeadingValue)
         const threeDotsCount = await createTeams.ThreeDots.count()
         await createTeams.createNewTeamFromScratch(CreateTeamsTestData.TeamCreatedHeadingValue)
         await expect(createTeams.TeamCreatedHeading).toHaveText(CreateTeamsTestData.TeamCreatedHeadingValue)

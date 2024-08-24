@@ -72,5 +72,7 @@
     "UsersHeading":"//h2[normalize-space()='Users']",
     "GettingStartedANdPrimitiveTypeTxt":"//body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/div[1]/div[1]/div[1]/div[1]/div[1]",
     "LessonBuilderInsideTxt":"//p[3]",
-    "CSAwesomeCreationNoteTxt":"//div[contains(text(),'Note: It can take up to 2-3 minutes for the team t')]"
+    "CSAwesomeCreationNoteTxt":"//div[contains(text(),'Note: It can take up to 2-3 minutes for the team t')]",
+    "TeamsNameContainerBox":"//div[@data-rbd-droppable-id='teams']",
+    "TeamContainerFirstItem":"//div[@data-rbd-droppable-id='teams']//div[1]//div[2]"
 }                   

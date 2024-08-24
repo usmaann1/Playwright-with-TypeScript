@@ -84,6 +84,8 @@ exports.CreateTeams = class CreateTeams {
       this.GettingStartedANdPrimitiveTypeTxt = this.page.locator(Locators.GettingStartedANdPrimitiveTypeTxt)
       this.LessonBuilderInsideTxt = this.page.locator(Locators.LessonBuilderInsideTxt)
       this.CSAwesomeCreationNoteTxt = this.page.locator(Locators.CSAwesomeCreationNoteTxt)
+      this.TeamsNameContainerBox = this.page.locator(Locators.TeamsNameContainerBox)
+      this.TeamContainerFirstItem = this.page.locator(Locators.TeamContainerFirstItem)
     }
 
     async navigateToTeamsCoursesPage(){
@@ -110,12 +112,23 @@ exports.CreateTeams = class CreateTeams {
         await PlaywrightCore.click(this.DeleteConfirmBtn)
     }
 
-    async waitForElementAndPerformAction() {
-      while (!(await this.page.waitForSelector(this.ThreeDots, { state: 'visible', timeout: 0 }))){
+    async deleteAllTeams(teamName) {
+      this.createNewTeamFromScratch(teamName)
+      PlaywrightCore.click(this.BackToTheTeamsBtn)
+      await this.page.waitForTimeout(3000);
+      if(this.TeamContainerFirstItem.isVisible()){
+        const containerHandle = await this.page.waitForSelector(Locators.TeamsNameContainerBox);
+        // Get all div elements inside the container
+        const divHandles = await containerHandle.$$('div');
+        // Count the number of div elements
+        this.count = divHandles.length / 4;
+        while (this.count > 0){
         await this.deleteFirstTeamInList()
         // Wait for a short period before checking again
-        await page.waitForTimeout(1000);
+        await this.page.waitForTimeout(3000);
+        this.count = this.count - 1;
       }
+    }
     }
 
 }
