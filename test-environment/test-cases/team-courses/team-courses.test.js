@@ -6,7 +6,7 @@ require("dotenv").config();
 
 test.describe("TestSuite: Team/Courses", () => {
 
-  test.only("TC: Flow Test", async ({ teamCoursesPage, browser }) => {
+  test("TC: Flow Test", async ({ teamCoursesPage, browser }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomEmail = await UserFunctions.generateRandomEmail(email);
