@@ -205,9 +205,9 @@ exports.UserFunctions = class UserFunctions {
       data: { text },
     } = await Tesseract.recognize(`${path}canvas.png`, `eng`);
 
-    const num1Valid = text.includes(num1);
-    const num2Valid = text.includes(num2);
+    const num1Valid = await text.includes(num1);
+    const num2Valid = await text.includes(num2);
 
-    return (await num1Valid) && num2Valid;
+    return await(num1Valid && num2Valid);
   }
 };
