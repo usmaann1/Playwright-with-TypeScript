@@ -86,6 +86,17 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.CreatingTeamLoder).toHaveText(CreateTeamsTestData.CreatingTeamLoderValue)
         await PlaywrightCore.waitForElementToDisappear(createTeams, createTeams.LoaderCreatingTeam)
         await expect(createTeams.GettingStartedHeading).toHaveText(CreateTeamsTestData.GettingStartedHeadingValue)
+        await expect(createTeams.PublishBtn).toHaveText(CreateTeamsTestData.PublishBtnValue)
+        await expect(createTeams.AddALessonBtn).toHaveText(CreateTeamsTestData.AddALessonBtnValue)
+        await expect(createTeams.PresentationMode).toHaveText(CreateTeamsTestData.PresentationModeValue)
+        await expect(createTeams.NextBtnCSAwesome).toHaveText(CreateTeamsTestData.NextBtnCSAwesomeValue)
+        await expect(createTeams.PublishMultipleBtn).toHaveText(CreateTeamsTestData.PublishMultipleBtnValue)
+        await expect(createTeams.DeleteMultipleBtn).toHaveText(CreateTeamsTestData.DeleteMultipleBtnValue)
+        await expect(createTeams.StudentsGradesBtn.nth(0)).toHaveText(CreateTeamsTestData.StudentsGradesBtnValue)
+        await expect(createTeams.InviteStudentsBtn).toHaveText(CreateTeamsTestData.InviteStudentsBtnValue)
+        await expect(createTeams.UsersHeading).toHaveText(CreateTeamsTestData.UsersHeadingValue)
+        await expect(createTeams.GettingStartedANdPrimitiveTypeTxt).toHaveText(CreateTeamsTestData.GettingStartedANdPrimitiveTypeTxtValue)
+        await expect(createTeams.LessonBuilderInsideTxt).toHaveText(CreateTeamsTestData.LessonBuilderInsideTxtValue)
         await PlaywrightCore.click(createTeams.BackToTheTeamsBtn)
         await createTeams.deleteFirstTeamInList()
     });
@@ -96,6 +107,17 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.CreatingTeamLoder).toHaveText(CreateTeamsTestData.CreatingTeamLoderValue)
         await PlaywrightCore.waitForElementToDisappear(createTeams, createTeams.LoaderCreatingTeam)
         await expect(createTeams.GettingStartedHeading).toHaveText(CreateTeamsTestData.GettingStartedHeadingValue)
+        await expect(createTeams.PublishBtn).toHaveText(CreateTeamsTestData.PublishBtnValue)
+        await expect(createTeams.AddALessonBtn).toHaveText(CreateTeamsTestData.AddALessonBtnValue)
+        await expect(createTeams.PresentationMode).toHaveText(CreateTeamsTestData.PresentationModeValue)
+        await expect(createTeams.NextBtnCSAwesome).toHaveText(CreateTeamsTestData.NextBtnCSAwesomeValue)
+        await expect(createTeams.PublishMultipleBtn).toHaveText(CreateTeamsTestData.PublishMultipleBtnValue)
+        await expect(createTeams.DeleteMultipleBtn).toHaveText(CreateTeamsTestData.DeleteMultipleBtnValue)
+        await expect(createTeams.StudentsGradesBtn.nth(0)).toHaveText(CreateTeamsTestData.StudentsGradesBtnValue)
+        await expect(createTeams.InviteStudentsBtn).toHaveText(CreateTeamsTestData.InviteStudentsBtnValue)
+        await expect(createTeams.UsersHeading).toHaveText(CreateTeamsTestData.UsersHeadingValue)
+        await expect(createTeams.GettingStartedANdPrimitiveTypeTxt).toHaveText(CreateTeamsTestData.GettingStartedANdPrimitiveTypeTxtValue)
+        await expect(createTeams.LessonBuilderInsideTxt).toHaveText(CreateTeamsTestData.LessonBuilderInsideTxtValue)
         await PlaywrightCore.click(createTeams.BackToTheTeamsBtn)
         await createTeams.deleteFirstTeamInList()
         await expect(createTeams.ThreeDots).toHaveCount(threeDotsCount)
@@ -116,7 +138,18 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.ThreeDots).toHaveCount(threeDotsCount)
     });
 
-    test('TC - UI Validation of Write Team Name Pop Up Box', async ({ createTeams }) => {
+    test('TC - UI Validation of Write Team Name Pop Up Box - From Scratch', async ({ createTeams }) => {
+        await PlaywrightCore.click(createTeams.CreateNewTeamBtn)
+        await PlaywrightCore.click(createTeams.StartFromScratchBtn)
+        await expect(createTeams.TeamNameTxtBox).toBeVisible()
+        await expect(createTeams.ATeamIsANewClassroomDescription).toHaveText(CreateTeamsTestData.ATeamIsANewClassroomDescriptionValue)
+        await expect(createTeams.BackBtn).toHaveText(CreateTeamsTestData.BackTxt)
+        await expect(createTeams.CrossBtn).toBeVisible()
+        await expect(createTeams.CancelBtn).toHaveText(CreateTeamsTestData.CancelBtnValue)
+        await expect(createTeams.SubmitBtn).toHaveText(CreateTeamsTestData.SubmitBtnValue)
+    });
+
+    test('TC - UI Validation of Write Team Name Pop Up Box - CS Awesome', async ({ createTeams }) => {
         await PlaywrightCore.click(createTeams.CreateNewTeamBtn)
         await PlaywrightCore.click(createTeams.CSAwseomeBtn)
         await expect(createTeams.TeamNameTxtBox).toBeVisible()
@@ -125,6 +158,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.CrossBtn).toBeVisible()
         await expect(createTeams.CancelBtn).toHaveText(CreateTeamsTestData.CancelBtnValue)
         await expect(createTeams.SubmitBtn).toHaveText(CreateTeamsTestData.SubmitBtnValue)
+        await expect(createTeams.CSAwesomeCreationNoteTxt).toHaveText(CreateTeamsTestData.CSAwesomeCreationNoteTxtValue)
     });
 
     test('TC - Join Quiz Re-direction and UI Validation', async ({ joinQuizPage, createTeams }) => {

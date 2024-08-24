@@ -72,6 +72,18 @@ exports.CreateTeams = class CreateTeams {
       this.FolderIconNoDataImage = this.page.locator(Locators.FolderIconNoDataImage)
       this.YouDontHaveAnyDataTxt = this.page.locator(Locators.YouDontHaveAnyDataTxt)
       this.CreateNewAssignmentOrLessonBtn = this.page.locator(Locators.CreateNewAssignmentOrLessonBtn)
+      this.PublishBtn = this.page.locator(Locators.PublishBtn)
+      this.AddALessonBtn = this.page.locator(Locators.AddALessonBtn)
+      this.PresentationMode = this.page.locator(Locators.PresentationMode)
+      this.NextBtnCSAwesome = this.page.locator(Locators.NextBtnCSAwesome)
+      this.PublishMultipleBtn = this.page.locator(Locators.PublishMultipleBtn)
+      this.DeleteMultipleBtn = this.page.locator(Locators.DeleteMultipleBtn)
+      this.StudentsGradesBtn = this.page.locator(Locators.StudentsGradesBtn)
+      this.InviteStudentsBtn = this.page.locator(Locators.InviteStudentsBtn)
+      this.UsersHeading = this.page.locator(Locators.UsersHeading)
+      this.GettingStartedANdPrimitiveTypeTxt = this.page.locator(Locators.GettingStartedANdPrimitiveTypeTxt)
+      this.LessonBuilderInsideTxt = this.page.locator(Locators.LessonBuilderInsideTxt)
+      this.CSAwesomeCreationNoteTxt = this.page.locator(Locators.CSAwesomeCreationNoteTxt)
     }
 
     async navigateToTeamsCoursesPage(){

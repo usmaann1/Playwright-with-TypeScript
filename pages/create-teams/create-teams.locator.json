@@ -60,5 +60,17 @@
     "ImportCodingRoomDotComHeading":"//div[normalize-space()='Import CodingRooms.com Courses']",
     "FolderIconNoDataImage":"//img[@src='/assets/general/no-data.svg']",
     "YouDontHaveAnyDataTxt":"//div[2]//div[1]//div[1]",
-    "CreateNewAssignmentOrLessonBtn":"//a[normalize-space()='Create new Assignment or Lesson']"
-}
+    "CreateNewAssignmentOrLessonBtn":"//a[normalize-space()='Create new Assignment or Lesson']",
+    "PublishBtn":"//body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]",
+    "AddALessonBtn":"//a[normalize-space()='Add lesson plan']",
+    "PresentationMode":"//a[normalize-space()='Presentation Mode']",
+    "NextBtnCSAwesome":"//a[normalize-space()='Next']",
+    "PublishMultipleBtn":"//a[normalize-space()='Publish Multiple']",
+    "DeleteMultipleBtn":"//a[normalize-space()='Delete Multiple']",
+    "StudentsGradesBtn":"//a[normalize-space()='Student Grades']",
+    "InviteStudentsBtn":"//a[normalize-space()='Invite students']",
+    "UsersHeading":"//h2[normalize-space()='Users']",
+    "GettingStartedANdPrimitiveTypeTxt":"//body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/div[1]/div[1]/div[1]/div[1]/div[1]",
+    "LessonBuilderInsideTxt":"//p[3]",
+    "CSAwesomeCreationNoteTxt":"//div[contains(text(),'Note: It can take up to 2-3 minutes for the team t')]"
+}                   

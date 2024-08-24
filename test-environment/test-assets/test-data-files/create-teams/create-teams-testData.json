@@ -40,5 +40,17 @@
     "ArchivedTeamHeadingValue":"Archived Teams",
     "UpgradeBtnValue":"Upgrade",
     "YouDontHaveAnyDataTxtValue":"You don't have any Data!",
-    "CreateNewAssignmentOrLessonBtnValue":"Create new Assignment or Lesson"
+    "CreateNewAssignmentOrLessonBtnValue":"Create new Assignment or Lesson",
+    "PublishBtnValue":"Publish",
+    "AddALessonBtnValue":"Add lesson plan",
+    "PresentationModeValue":"Presentation Mode",
+    "NextBtnCSAwesomeValue":"Next",
+    "PublishMultipleBtnValue":"Publish Multiple",
+    "DeleteMultipleBtnValue":"Delete Multiple",
+    "StudentsGradesBtnValue":"Student Grades",
+    "InviteStudentsBtnValue":"Invite students",
+    "UsersHeadingValue":"Users",
+    "GettingStartedANdPrimitiveTypeTxtValue":"1. Getting Started and Primitive Types",
+    "LessonBuilderInsideTxtValue":"Follow the links below to learn more about the AP CS A course and exam and Java development environments. Please complete the pretest to see where you are with your knowledge of Java before beginning this course and then complete the brief demographic survey. The Java lessons start in 1.2.",
+    "CSAwesomeCreationNoteTxtValue":"Note: It can take up to 2-3 minutes for the team to finish creating, so please don't leave this page!"
 }
