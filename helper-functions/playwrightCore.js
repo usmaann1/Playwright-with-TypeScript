@@ -490,6 +490,15 @@ exports.PlaywrightCore = class PlaywrightCore {
     }
   }
 
+  static async waitTimeout(page, time = 10000) {
+    try {
+      await page.waitForTimeout(time);
+    } catch (error) {
+      console.warn(`An error occurred while waiting, Error:`, error);
+      throw error;
+    }
+  }
+
   static async waitForElementToDisappear(
     page,
     selector,

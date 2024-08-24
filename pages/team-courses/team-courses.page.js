@@ -14,6 +14,30 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.page = page;
     this.baseURL = "./";
     this.LoginURL = "./login";
+    const { SelectAll, Copy } = await this.page.evaluate(() => {
+      const isMac = navigator.userAgent.includes("Mac");
+      return {
+        SelectAll: isMac ? "Meta+A" : "Control+A",
+        Copy: isMac ? "Meta+c" : "Control+c",
+      };
+    });
+    this.ProjectType = "Project type";
+    this.TestType = "Test Type";
+    this.CreateCourse = "text='Create a course item'";
+    this.IndexJs = "index.js";
+    this.MainPy = "main.py";
+    this.GreenColorStyle = /background-color:\s*(rgb\(0,\s*255,\s*0\))/;
+    this.GreenColor = "rgb(0, 255, 0)";
+    this.RedColor = "#FF0000";
+    this.ArrLeft = "ArrowLeft";
+    this.ArrRight = "ArrowRight";
+    this.SelectAll = SelectAll;
+    this.Copy = Copy;
+    this.Slider = "slider";
+    this.BackSpace = "Backspace";
+    this.History = "History";
+    this.BlackMatch = /black/g;
+    this.RedColor2 = "red";
     this.SignInBtn = this.page.locator(Locators.SignInBtn);
     this.SignUpNavigationBtn = this.page.locator(Locators.SignUpNavigationBtn);
     this.SignUpBtn = this.page.locator(Locators.SignUpBtn);
@@ -71,28 +95,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.EditorPlayButton = this.page.locator(Locators.EditorPlayButton);
     this.EditorStopBtn = this.page.locator(Locators.EditorStopBtn);
     this.FullScreenBtn = this.page.locator(Locators.FullScreenBtn);
-    const { SelectAll, Copy } = await this.page.evaluate(() => {
-      const isMac = navigator.userAgent.includes("Mac");
-      return {
-        SelectAll: isMac ? "Meta+A" : "Control+A",
-        Copy: isMac ? "Meta+c" : "Control+c",
-      };
-    });
-    this.ProjectType = "Project type";
-    this.TestType = "Test Type";
-    this.CreateCourse = "text='Create a course item'";
-    this.IndexJs = "index.js";
-    this.MainPy = "main.py";
-    this.GreenColorStyle = /background-color:\s*(rgb\(0,\s*255,\s*0\))/;
-    this.GreenColor = "rgb(0, 255, 0)";
-    this.RedColor = "#FF0000";
-    this.ArrLeft = "ArrowLeft";
-    this.ArrRight = "ArrowRight";
-    this.SelectAll = SelectAll;
-    this.Copy = Copy;
-    this.Slider = "slider";
-    this.BackSpace = "Backspace";
-    this.History = "History";
+    this.CloseFullScreenBtn = this.page.locator(Locators.CloseFullScreenBtn);
   }
 
   async NavigateToSignUpPage() {
@@ -170,7 +173,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   } */
 
   async createTest(type, oldTestType, newTestType, testName, input, output) {
-    await this.page.waitForTimeout(5000);
+    await PlaywrightCore.waitTimeout(this.page, 5000)
     await PlaywrightCore.click(this.TestBtn);
     await PlaywrightCore.click(this.AddTestBtn);
     await PlaywrightCore.selectingDropDownByLabel(
@@ -214,9 +217,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async createStarterCode(code) {
     await PlaywrightCore.click(this.CreateStarterCode);
-    await this.page.waitForTimeout(10000);
+    await PlaywrightCore.waitTimeout(this.page, 10000)
     await this.page.getByText(this.IndexJs).nth(1).click();
-    await this.page.waitForTimeout(10000);
+    await PlaywrightCore.waitTimeout(this.page, 10000)
     // Locate the text box
     const textBox = await this.EditorTextBox.nth(1);
     // Focus on the text box
@@ -228,39 +231,41 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       await textBox.type(char);
     }
     await PlaywrightCore.click(this.EditorSubmit);
-    await this.page.waitForTimeout(10000);
+    await PlaywrightCore.waitTimeout(this.page, 10000)
     await PlaywrightCore.click(this.SubmitBtn);
   }
 
   async pythonWithTurtle() {
     await PlaywrightCore.click(this.CreateStarterCode);
-    await this.page.waitForTimeout(10000);
+    await PlaywrightCore.waitTimeout(this.page, 10000)
     await this.page.getByText(this.MainPy).nth(1).click();
-    await this.page.waitForTimeout(10000);
+    await PlaywrightCore.waitTimeout(this.page, 10000)
     await expect(this.CloudIcon.nth(1)).toBeVisible();
-    await this.page.waitForTimeout(20000);
+    await PlaywrightCore.waitTimeout(this.page, 20000)
     await PlaywrightCore.click(this.EditorPlayButton);
-    await this.page.waitForTimeout(10000);
+    await PlaywrightCore.waitTimeout(this.page, 10000)
     await PlaywrightCore.click(this.EditorStopBtn);
-    await this.page.waitForTimeout(5000);
+    await PlaywrightCore.waitTimeout(this.page, 5000)
     const codeEditorContent = await this.EditorTextBox.nth(1);
     await codeEditorContent.press(this.SelectAll);
     await codeEditorContent.press(this.Copy);
     const clipboardContent = await this.page.evaluate(async () => {
       return await navigator.clipboard.readText();
     });
-    const updatedCode = clipboardContent.replace(/black/g, "red");
+    const updatedCode = clipboardContent.replace(this.BlackMatch, this.RedColor2);
     await codeEditorContent.press(this.BackSpace);
     await codeEditorContent.fill(updatedCode);
-    await this.page.waitForTimeout(5000);
+    await PlaywrightCore.waitTimeout(this.page, 5000)
     await PlaywrightCore.click(this.EditorPlayButton);
-    await this.page.waitForTimeout(10000);
+    await PlaywrightCore.waitTimeout(this.page, 10000)
     await PlaywrightCore.click(this.FullScreenBtn.nth(1));
     const isColorRed = await UserFunctions.getCanvasBackgroundColor(
       this.page,
       50,
       50
     );
+    await PlaywrightCore.waitTimeout(this.page, 5000)
+    await PlaywrightCore.click(this.CloseFullScreenBtn);
     await expect(isColorRed).toBe(this.RedColor);
   }
 
@@ -278,10 +283,10 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async assertingUserAnswerHistory(name, textAssertion) {
     await PlaywrightCore.ClickByText(this.page, name);
-    await this.page.waitForTimeout(10000);
+    await PlaywrightCore.waitTimeout(this.page, 10000)
     //await this.page.locator("index.js").click();
     await this.page.getByText(this.IndexJs).nth(1).click();
-    await this.page.waitForTimeout(10000);
+    await PlaywrightCore.waitTimeout(this.page, 10000)
     await PlaywrightCore.ClickByText(this.page, this.History);
     await PlaywrightCore.slidingElement(
       this.page,
