@@ -1,5 +1,6 @@
 const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports");
   import Locators from "./lesson-builder.locator.json";
+
   
   exports.LessonBuilder = class LessonBuilder {
     constructor(page) {
@@ -37,6 +38,7 @@ const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports
     this.EmailStudentSignup_textfield = this.page.locator(Locators.EmailStudentSignup_textfield);
     this.PasswordStudentSignup_textfield = this.page.locator(Locators.PasswordStudentSignup_textfield);
     this.SubmitStudentSignup_btn = this.page.locator(Locators.SubmitStudentSignup_btn);
+    
 
     }
 
@@ -123,13 +125,13 @@ async closeinvitestudentspopup(){
 
 async publishassignmentbutton(){
   await PlaywrightCore.click(this.Publish_AssignmentBtn);
+   
 }
 
 
-async fillstudentsignupdata(){
+async fillstudentsignupdata(newPage){
   await PlaywrightCore.fill(this.EmailStudentSignup_textfield, 'usman.allaudin+13@gmail.com');
   await PlaywrightCore.fill(this.PasswordStudentSignup_textfield, '98769876');
   await PlaywrightCore.click(this.SubmitStudentSignup_btn);
 }
 };
-  

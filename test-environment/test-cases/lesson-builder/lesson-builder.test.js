@@ -75,49 +75,9 @@ console.log('Copied link:', copiedLink);
 await newPage.goto(copiedLink);
 await newPage.bringToFront(); // Ensure the new page is focused
 
-await lessonBuilder.fillstudentsignupdata();
+await lessonBuilder.fillstudentsignupdata(newPage);
 
 
-
-    //Ensure the left sidebar arrow button is visible and click it
-    // await expect(lessonBuilder.arrowBtnLeftSideBar).toBeVisible();
-    // await lessonBuilder.leftsidebarArrowBtn();
-    
-    // // Ensure the Invite Students button is visible and click it
-    // await chromiumPage.waitForTimeout(3000); // Wait for any animations or delays
-    // await expect(lessonBuilder.invite_StudentsBtn).toBeVisible();
-    // await lessonBuilder.InviteStudentsbtn();
-    // const isInviteStudentsVisible = await lessonBuilder.invite_StudentsBtn.locator().waitFor({ state: 'visible', timeout: 5000 }).then(() => true).catch(() => false);
-
-    // if (isInviteStudentsVisible) {
-    //     // If visible, click on it
-    //     await lessonBuilder.InviteStudentsbtn();
-    // } else {
-    //     // If not visible, click the left sidebar arrow button and then click "Invite Students"
-    //     await lessonBuilder.leftsidebarArrowBtn();
-    //     await lessonBuilder.InviteStudentsbtn();
-    // }
-    // await lessonBuilder.InviteStudentsbtn();
-    // //Ensure the Copy Invite Students button is visible and click it
-    // await expect(lessonBuilder.copy_InviteStudentsBtn).toBeVisible();
-    // await lessonBuilder.CopyinviteStudentsbtn();
-    
-    // // Get the copied link from the clipboard
-    // const copiedLink = await chromiumPage.evaluate(() => navigator.clipboard.readText());
-    // console.log('Copied link:', copiedLink);
-
-    // // Open Edge and navigate to the copied link
-    // await edgePage.goto(copiedLink);
-    
-    // // Switch back to Chromium and click the publish button
-    
-
-    // // Optional: Wait for the publish action to complete and for the Edge page to update
-    // await edgePage.waitForTimeout(2000); // Adjust timeout as necessary
-
-    // // Perform further assertion in Edge (adjust selector as needed)
-    // await edgePage.goto(copiedLink); // Navigate back to the copied link
-    // await edgePage.waitForTimeout(2000); // Ensure page has loaded
   });
 
 });
