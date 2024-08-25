@@ -55,5 +55,7 @@
     "CSAwesomeCreationNoteTxtValue":"Note: It can take up to 2-3 minutes for the team to finish creating, so please don't leave this page!",
     "UploadCodingRoomZipFileHeadingValue":"Upload CodingRooms course zip file",
     "ImportCourseFinalBtnValue":"Import Course",
-    "CSAwesomeCourseZipPath":"./test-environment/test-assets/test-resource-files/cs-awesome.zip"
+    "CSAwesomeCourseZipPath":"./test-environment/test-assets/test-resource-files/cs-awesome.zip",
+    "ImportingCourseValue":"Importing Course",
+    "UnzippingAndValidinagValue":"Unzipping and validating..."
 }

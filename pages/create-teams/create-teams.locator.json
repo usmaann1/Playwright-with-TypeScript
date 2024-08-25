@@ -76,6 +76,9 @@
     "TeamsNameContainerBox":"//div[@data-rbd-droppable-id='teams']",
     "TeamContainerFirstItem":"//div[@data-rbd-droppable-id='teams']//div[1]//div[2]",
     "UploadCodingRoomZipFileHeading":"//div[normalize-space()='Upload CodingRooms course zip file']",
-    "UploadZip":"//div[@role='presentation']//div//div[@role='presentation']",
-    "ImportCourseFinalBtn":"//a[contains(text(),'Import Course')]"
+    "UploadZip":"//input[@type='file']",
+    "ImportCourseFinalBtn":"//a[contains(text(),'Import Course')]",
+    "ImportingCourse":"//div[normalize-space()='Importing Course']",
+    "LoaderUnzippingFile":"//body/div[@role='presentation']/div/div/div/div/div/div[1]",
+    "UnzippingAndValidinag":"//div[normalize-space()='Unzipping and validating...']"
 }                   

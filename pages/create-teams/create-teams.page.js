@@ -89,6 +89,9 @@ exports.CreateTeams = class CreateTeams {
       this.UploadCodingRoomZipFileHeading = this.page.locator(Locators.UploadCodingRoomZipFileHeading)
       this.UploadZip = this.page.locator(Locators.UploadZip)
       this.ImportCourseFinalBtn = this.page.locator(Locators.ImportCourseFinalBtn)
+      this.ImportingCourse = this.page.locator(Locators.ImportingCourse)
+      this.LoaderUnzippingFile = this.page.locator(Locators.LoaderUnzippingFile)
+      this.UnzippingAndValidinag = this.page.locator(Locators.UnzippingAndValidinag)
     }
 
     async navigateToTeamsCoursesPage(){
