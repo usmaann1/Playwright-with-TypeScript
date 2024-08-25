@@ -86,6 +86,9 @@ exports.CreateTeams = class CreateTeams {
       this.CSAwesomeCreationNoteTxt = this.page.locator(Locators.CSAwesomeCreationNoteTxt)
       this.TeamsNameContainerBox = this.page.locator(Locators.TeamsNameContainerBox)
       this.TeamContainerFirstItem = this.page.locator(Locators.TeamContainerFirstItem)
+      this.UploadCodingRoomZipFileHeading = this.page.locator(Locators.UploadCodingRoomZipFileHeading)
+      this.UploadZip = this.page.locator(Locators.UploadZip)
+      this.ImportCourseFinalBtn = this.page.locator(Locators.ImportCourseFinalBtn)
     }
 
     async navigateToTeamsCoursesPage(){

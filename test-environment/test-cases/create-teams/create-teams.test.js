@@ -172,4 +172,15 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(joinQuizPage.EnterBtn).toHaveText(JoinQuizTestData.EnterBtnValue)
     });
 
+    test('TC - Import Course CS Awesome From Team/Courses Page', async ({ createTeams }) => {
+        await PlaywrightCore.click(createTeams.ImportCoursesBtnMainPageTeamsCourses)
+        await expect(createTeams.UploadZip).toBeVisible()
+        await expect(createTeams.UploadCodingRoomZipFileHeading).toHaveText(JoinQuizTestData.UploadCodingRoomZipFileHeadingValue)
+        await UserFunctions.UploadZip()
+        await expect(joinQuizPage.Logo).toBeVisible()
+        await expect(joinQuizPage.JoinQuizHeading).toHaveText(JoinQuizTestData.JoinQuizHeadingValue)
+        await expect(joinQuizPage.GamePinInputField).toBeVisible()
+        await expect(joinQuizPage.EnterBtn).toHaveText(JoinQuizTestData.EnterBtnValue)
+    });
+
 })

@@ -74,5 +74,8 @@
     "LessonBuilderInsideTxt":"//p[3]",
     "CSAwesomeCreationNoteTxt":"//div[contains(text(),'Note: It can take up to 2-3 minutes for the team t')]",
     "TeamsNameContainerBox":"//div[@data-rbd-droppable-id='teams']",
-    "TeamContainerFirstItem":"//div[@data-rbd-droppable-id='teams']//div[1]//div[2]"
+    "TeamContainerFirstItem":"//div[@data-rbd-droppable-id='teams']//div[1]//div[2]",
+    "UploadCodingRoomZipFileHeading":"//div[normalize-space()='Upload CodingRooms course zip file']",
+    "UploadZip":"//div[@role='presentation']//div//div[@role='presentation']",
+    "ImportCourseFinalBtn":"//a[contains(text(),'Import Course')]"
 }                   
