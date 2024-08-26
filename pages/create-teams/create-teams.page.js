@@ -48,6 +48,64 @@ exports.CreateTeams = class CreateTeams {
       this.GettingStartedHeading = this.page.locator(Locators.GettingStartedHeading)
       this.LoaderCreatingTeam = this.page.locator(Locators.LoaderCreatingTeam)
       this.JoinQuizBtn = this.page.locator(Locators.JoinQuizBtn)
+      this.ReportIssueHeading = this.page.locator(Locators.ReportIssueHeading)
+      this.ReverToOldSIteHeading = this.page.locator(Locators.ReverToOldSIteHeading)
+      this.HowItWOrksHeading = this.page.locator(Locators.HowItWOrksHeading)
+      this.JuiceMindLogo = this.page.locator(Locators.JuiceMindLogo)
+      this.CreateBtn = this.page.locator(Locators.CreateBtn)
+      this.ExploreBtn = this.page.locator(Locators.ExploreBtn)
+      this.MyQuizzesBtn = this.page.locator(Locators.MyQuizzesBtn)
+      this.SmartDoorBellBtn = this.page.locator(Locators.SmartDoorBellBtn)
+      this.ReportsBtn = this.page.locator(Locators.ReportsBtn)
+      this.MyStudentBtn = this.page.locator(Locators.MyStudentBtn)
+      this.JuiceMindRoadMapBtn = this.page.locator(Locators.JuiceMindRoadMapBtn)
+      this.MyTeamsHeading = this.page.locator(Locators.MyTeamsHeading)
+      this.ImportCodingRoomsCoursesBtn = this.page.locator(Locators.ImportCodingRoomsCoursesBtn)
+      this.ImportCoursesBtnMainPageTeamsCourses = this.page.locator(Locators.ImportCoursesBtnMainPageTeamsCourses)
+      this.ImportTeamBtnMainPageTeamsCourses = this.page.locator(Locators.ImportTeamBtnMainPageTeamsCourses)
+      this.ImportCodingMainPageTeamsCoursesDescription = this.page.locator(Locators.ImportCodingMainPageTeamsCoursesDescription)
+      this.SyncTeamsHeadingMainPage = this.page.locator(Locators.SyncTeamsHeadingMainPage)
+      this.SyncTeamsHeadingMainPageDescription = this.page.locator(Locators.SyncTeamsHeadingMainPageDescription)
+      this.ArchivedTeamHeading = this.page.locator(Locators.ArchivedTeamHeading)
+      this.UpgradeBtn = this.page.locator(Locators.UpgradeBtn)
+      this.ImportCodingRoomDotComHeading = this.page.locator(Locators.ImportCodingRoomDotComHeading)
+      this.FolderIconNoDataImage = this.page.locator(Locators.FolderIconNoDataImage)
+      this.YouDontHaveAnyDataTxt = this.page.locator(Locators.YouDontHaveAnyDataTxt)
+      this.CreateNewAssignmentOrLessonBtn = this.page.locator(Locators.CreateNewAssignmentOrLessonBtn)
+      this.PublishBtn = this.page.locator(Locators.PublishBtn)
+      this.AddALessonBtn = this.page.locator(Locators.AddALessonBtn)
+      this.PresentationMode = this.page.locator(Locators.PresentationMode)
+      this.NextBtnCSAwesome = this.page.locator(Locators.NextBtnCSAwesome)
+      this.PublishMultipleBtn = this.page.locator(Locators.PublishMultipleBtn)
+      this.DeleteMultipleBtn = this.page.locator(Locators.DeleteMultipleBtn)
+      this.StudentsGradesBtn = this.page.locator(Locators.StudentsGradesBtn)
+      this.InviteStudentsBtn = this.page.locator(Locators.InviteStudentsBtn)
+      this.UsersHeading = this.page.locator(Locators.UsersHeading)
+      this.GettingStartedANdPrimitiveTypeTxt = this.page.locator(Locators.GettingStartedANdPrimitiveTypeTxt)
+      this.LessonBuilderInsideTxt = this.page.locator(Locators.LessonBuilderInsideTxt)
+      this.CSAwesomeCreationNoteTxt = this.page.locator(Locators.CSAwesomeCreationNoteTxt)
+      this.TeamsNameContainerBox = this.page.locator(Locators.TeamsNameContainerBox)
+      this.TeamContainerFirstItem = this.page.locator(Locators.TeamContainerFirstItem)
+      this.UploadCodingRoomZipFileHeading = this.page.locator(Locators.UploadCodingRoomZipFileHeading)
+      this.UploadZip = this.page.locator(Locators.UploadZip)
+      this.ImportCourseFinalBtn = this.page.locator(Locators.ImportCourseFinalBtn)
+      this.ImportingCourse = this.page.locator(Locators.ImportingCourse)
+      this.LoaderUnzippingFile = this.page.locator(Locators.LoaderUnzippingFile)
+      this.ViewStudentsBtn = this.page.locator(Locators.ViewStudentsBtn)
+      this.ImportCourseFinalBtnCrateTeams = this.page.locator(Locators.ImportCourseFinalBtnCrateTeams)
+      this.LoaderCreateTeamsImportCourse = this.page.locator(Locators.LoaderCreateTeamsImportCourse)
+      this.ImportTeamFinalBtn = this.page.locator(Locators.ImportTeamFinalBtn)
+      this.ImportingCoursesHeading = this.page.locator(Locators.ImportingCoursesHeading)
+      this.IndexHTMLFileName = this.page.locator(Locators.IndexHTMLFileName)
+      this.HTMLCSSHeading = this.page.locator(Locators.HTMLCSSHeading)
+      this.AddNewItemBtn = this.page.locator(Locators.AddNewItemBtn)
+      this.TemplateBtn = this.page.locator(Locators.TemplateBtn)
+      this.SolutionBtn = this.page.locator(Locators.SolutionBtn)
+      this.TestBtn = this.page.locator(Locators.TestBtn)
+      this.OptionsBtn = this.page.locator(Locators.OptionsBtn)
+      this.NewUnitFolder = this.page.locator(Locators.NewUnitFolder) 
+      this.UploadReplitTeamZipFileHeading = this.page.locator(Locators.UploadReplitTeamZipFileHeading)    
+      this.ImportTeamFinalBtnCreateTeam = this.page.locator(Locators.ImportTeamFinalBtnCreateTeam) 
     }
 
     async navigateToTeamsCoursesPage(){
@@ -72,6 +130,25 @@ exports.CreateTeams = class CreateTeams {
         await PlaywrightCore.click(this.ThreeDots)
         await PlaywrightCore.click(this.DeleteTeamBtn)
         await PlaywrightCore.click(this.DeleteConfirmBtn)
+    }
+
+    async deleteAllTeams(teamName) {
+      this.createNewTeamFromScratch(teamName)
+      PlaywrightCore.click(this.BackToTheTeamsBtn)
+      await this.page.waitForTimeout(3000);
+      if(this.TeamContainerFirstItem.isVisible()){
+        const containerHandle = await this.page.waitForSelector(Locators.TeamsNameContainerBox);
+        // Get all div elements inside the container
+        const divHandles = await containerHandle.$$('div');
+        // Count the number of div elements
+        this.count = divHandles.length / 4;
+        while (this.count > 0){
+        await this.deleteFirstTeamInList()
+        // Wait for a short period before checking again
+        await this.page.waitForTimeout(3000);
+        this.count = this.count - 1;
+      }
+    }
     }
 
 }
