@@ -91,7 +91,21 @@ exports.CreateTeams = class CreateTeams {
       this.ImportCourseFinalBtn = this.page.locator(Locators.ImportCourseFinalBtn)
       this.ImportingCourse = this.page.locator(Locators.ImportingCourse)
       this.LoaderUnzippingFile = this.page.locator(Locators.LoaderUnzippingFile)
-      this.UnzippingAndValidinag = this.page.locator(Locators.UnzippingAndValidinag)
+      this.ViewStudentsBtn = this.page.locator(Locators.ViewStudentsBtn)
+      this.ImportCourseFinalBtnCrateTeams = this.page.locator(Locators.ImportCourseFinalBtnCrateTeams)
+      this.LoaderCreateTeamsImportCourse = this.page.locator(Locators.LoaderCreateTeamsImportCourse)
+      this.ImportTeamFinalBtn = this.page.locator(Locators.ImportTeamFinalBtn)
+      this.ImportingCoursesHeading = this.page.locator(Locators.ImportingCoursesHeading)
+      this.IndexHTMLFileName = this.page.locator(Locators.IndexHTMLFileName)
+      this.HTMLCSSHeading = this.page.locator(Locators.HTMLCSSHeading)
+      this.AddNewItemBtn = this.page.locator(Locators.AddNewItemBtn)
+      this.TemplateBtn = this.page.locator(Locators.TemplateBtn)
+      this.SolutionBtn = this.page.locator(Locators.SolutionBtn)
+      this.TestBtn = this.page.locator(Locators.TestBtn)
+      this.OptionsBtn = this.page.locator(Locators.OptionsBtn)
+      this.NewUnitFolder = this.page.locator(Locators.NewUnitFolder) 
+      this.UploadReplitTeamZipFileHeading = this.page.locator(Locators.UploadReplitTeamZipFileHeading)    
+      this.ImportTeamFinalBtnCreateTeam = this.page.locator(Locators.ImportTeamFinalBtnCreateTeam) 
     }
 
     async navigateToTeamsCoursesPage(){

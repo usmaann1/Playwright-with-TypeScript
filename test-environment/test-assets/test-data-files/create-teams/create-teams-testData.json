@@ -56,6 +56,17 @@
     "UploadCodingRoomZipFileHeadingValue":"Upload CodingRooms course zip file",
     "ImportCourseFinalBtnValue":"Import Course",
     "CSAwesomeCourseZipPath":"./test-environment/test-assets/test-resource-files/cs-awesome.zip",
+    "ReplitTeamsZipPath":"./test-environment/test-assets/test-resource-files/juicemind-temp-team.zip",
     "ImportingCourseValue":"Importing Course",
-    "UnzippingAndValidinagValue":"Unzipping and validating..."
+    "ImportTeamFinalBtnValue":"Import Team",
+    "UploadReplitTeamZipFileHeadingValue":"Upload Replit Team zip file",
+    "ImportingCoursesHeadingValue":"Importing Course",
+    "IndexHTMLFileNameValue":"index.html",
+    "HTMLCSSHeadingValue":"HTML, CSS, JS-info912aaaa",
+    "AddNewItemBtnValue":"Add new item",
+    "TemplateBtnValue":"Template",
+    "SolutionBtnValue":"Solution",
+    "TestBtnValue":"Tests",
+    "OptionsBtnValue":"Options",
+    "NewUnitFolderValue":"new-unit"
 }
