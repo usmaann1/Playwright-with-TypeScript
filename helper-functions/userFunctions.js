@@ -212,11 +212,7 @@ exports.UserFunctions = class UserFunctions {
       const num2Valid = await text.includes(num2);
       isValid = await (num1Valid && num2Valid);
     } else {
-      console.log(text);
-      console.log(typeof text)
-      console.log(num1);
       const num1Valid = await text.includes(num1);
-      console.log(num1Valid);
       isValid = await num1Valid;
     }
 

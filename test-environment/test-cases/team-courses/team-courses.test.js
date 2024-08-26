@@ -68,7 +68,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.pythonWithTurtle();
   });
 
-  test.only("TC: Flow Test Python with Tkinter", async ({
+  test("TC: Flow Test Python with Tkinter", async ({
     teamCoursesPage,
   }) => {
     const email = process.env.EMAIL_NUMAIR;
