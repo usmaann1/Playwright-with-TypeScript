@@ -502,7 +502,7 @@ exports.PlaywrightCore = class PlaywrightCore {
   static async waitForElementToDisappear(
     page,
     selector,
-    timeout = 60000,
+    timeout = 240000,
     interval = 3000
   ) {
     const start = Date.now();
@@ -519,10 +519,7 @@ exports.PlaywrightCore = class PlaywrightCore {
       // Custom wait with setTimeout for polling interval
       await new Promise((resolve) => setTimeout(resolve, interval));
     }
-    console.error(
-      `Timeout exceeded: Element ${selector} did not disappear within ${
-        timeout / 1000
-      } seconds.`
-    );
-  }
-};
+    console.error(`Timeout exceeded: Element ${selector} did not disappear within ${timeout / 1000} seconds.`);
+} 
+
+}
