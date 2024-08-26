@@ -194,7 +194,7 @@ exports.UserFunctions = class UserFunctions {
     return color;
   }
 
-  static async getCanvasValidations(page, path, num1, num2) {
+  static async getCanvasValidations(page, path, num1 = null, num2 = null) {
     const canvas = await page.locator("canvas");
     const dataUrl = await canvas.evaluate((canvas) => {
       return canvas.toDataURL();
@@ -205,9 +205,21 @@ exports.UserFunctions = class UserFunctions {
       data: { text },
     } = await Tesseract.recognize(`${path}canvas.png`, `eng`);
 
-    const num1Valid = await text.includes(num1);
-    const num2Valid = await text.includes(num2);
+    let isValid = false;
+    
+    if (num1 && num2) {
+      const num1Valid = await text.includes(num1);
+      const num2Valid = await text.includes(num2);
+      isValid = await (num1Valid && num2Valid);
+    } else {
+      console.log(text);
+      console.log(typeof text)
+      console.log(num1);
+      const num1Valid = await text.includes(num1);
+      console.log(num1Valid);
+      isValid = await num1Valid;
+    }
 
-    return await(num1Valid && num2Valid);
+    return  await isValid;
   }
 };

@@ -519,7 +519,23 @@ exports.PlaywrightCore = class PlaywrightCore {
       // Custom wait with setTimeout for polling interval
       await new Promise((resolve) => setTimeout(resolve, interval));
     }
-    console.error(`Timeout exceeded: Element ${selector} did not disappear within ${timeout / 1000} seconds.`);
-} 
+    console.error(
+      `Timeout exceeded: Element ${selector} did not disappear within ${
+        timeout / 1000
+      } seconds.`
+    );
+  }
 
-}
+  static async clickByPosition(locator, x, y) {
+    try {
+      await locator.click({
+        position: {
+          x,
+          y,
+        },
+      });
+    } catch (error) {
+      console.error(`Error occurred`, error);
+    }
+  }
+};

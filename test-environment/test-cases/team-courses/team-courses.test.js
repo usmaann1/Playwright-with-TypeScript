@@ -1,11 +1,14 @@
-const { UserFunctions } = require("../../../module-imports/helperFunctions.imports");
+const {
+  UserFunctions,
+} = require("../../../module-imports/helperFunctions.imports");
 const { test } = require("../../../module-imports/testFixtures.imports");
-const { TeamCoursesPage } = require("../../../pages/team-courses/team-courses.page");
+const {
+  TeamCoursesPage,
+} = require("../../../pages/team-courses/team-courses.page");
 import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses.json";
 require("dotenv").config();
 
 test.describe("TestSuite: Team/Courses", () => {
-
   test("TC: Flow Test JavaScript", async ({ teamCoursesPage, browser }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
@@ -65,7 +68,24 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.pythonWithTurtle();
   });
 
-  test.only("TC: Flow Test Python with Matplotlib", async ({ teamCoursesPage }) => {
+  test.only("TC: Flow Test Python with Tkinter", async ({
+    teamCoursesPage,
+  }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption4
+    );
+    await teamCoursesPage.pythonWithTkinter();
+  });
+
+  test("TC: Flow Test Python with Matplotlib", async ({ teamCoursesPage }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
@@ -79,5 +99,4 @@ test.describe("TestSuite: Team/Courses", () => {
     );
     await teamCoursesPage.pythonWithMatplotlib();
   });
-
 });

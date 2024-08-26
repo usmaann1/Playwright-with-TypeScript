@@ -37,9 +37,10 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.BackSpace = "Backspace";
     this.History = "History";
     this.BlackMatch = /black/g;
+    this.BtnClickedMatch = /Button clicked!/g;
     this.RedColor2 = "red";
-    this.AssetsPaths =
-      "./test-environment/test-assets/test-resource-files/";
+    this.AssetsPaths = "./test-environment/test-assets/test-resource-files/";
+    this.BtnClickedTest = "Button Clicked Test";
     this.SignInBtn = this.page.locator(Locators.SignInBtn);
     this.SignUpNavigationBtn = this.page.locator(Locators.SignUpNavigationBtn);
     this.SignUpBtn = this.page.locator(Locators.SignUpBtn);
@@ -96,6 +97,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.EditorStopBtn = this.page.locator(Locators.EditorStopBtn);
     this.FullScreenBtn = this.page.locator(Locators.FullScreenBtn);
     this.CloseFullScreenBtn = this.page.locator(Locators.CloseFullScreenBtn);
+    this.CanvasLocator = this.page.locator("canvas");
   }
 
   async NavigateToSignUpPage() {
@@ -267,6 +269,31 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       this.AssetsPaths,
       10,
       140
+    );
+    await expect(isValid).toBe(true);
+  }
+
+  async pythonWithTkinter() {
+    const { clipboardContent, codeEditorContent } =
+      await this.commonClipBoardSteps();
+    const updatedCode = clipboardContent.replace(
+      this.BtnClickedMatch,
+      this.BtnClickedTest
+    );
+    await codeEditorContent.press(this.BackSpace);
+    await codeEditorContent.fill(updatedCode);
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await PlaywrightCore.click(this.EditorPlayButton);
+    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await PlaywrightCore.click(this.FullScreenBtn.nth(1));
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    for (let i = 400; i <= 550; i = i + 5) {
+      await PlaywrightCore.clickByPosition(this.CanvasLocator, i, 67);
+    }
+    const isValid = await UserFunctions.getCanvasValidations(
+      this.page,
+      this.AssetsPaths,
+      this.BtnClickedTest
     );
     await expect(isValid).toBe(true);
   }
