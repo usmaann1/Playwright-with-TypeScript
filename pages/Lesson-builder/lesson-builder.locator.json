@@ -22,8 +22,11 @@
     "Presentation_btn":"//a[normalize-space()='Presentation Mode']",
     "Gotit_btn":"//a[normalize-space()='Got it']",
     "ExitStudentView_btn":"//a[normalize-space()='Exit Student View']",
-    "EmailStudentSignup_textfield": "input[placeholder='Email Address']",
-    "PasswordStudentSignup_textfield": "input[placeholder='Password']",
-    "SubmitStudentSignup_btn": "//a[normalize-space()='Sign up']"
+    "EmailStudentSignin_textfield": "input[placeholder='Email Address']",
+    "PasswordStudentSignin_textfield": "input[placeholder='Password']",
+    "ClickSignin_btn": "//a[normalize-space()='Sign in']",
+    "login_btn": "//a[@href='/login']",
+    "finish_btn":"//a[normalize-space()='Finish']"
+
     
 }

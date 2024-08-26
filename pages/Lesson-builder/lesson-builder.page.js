@@ -38,7 +38,8 @@ const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports
     this.EmailStudentSignup_textfield = this.page.locator(Locators.EmailStudentSignup_textfield);
     this.PasswordStudentSignup_textfield = this.page.locator(Locators.PasswordStudentSignup_textfield);
     this.SubmitStudentSignup_btn = this.page.locator(Locators.SubmitStudentSignup_btn);
-    
+    this.clickLogin_btn = this.page.locator(Locators.login_btn);
+
 
     }
 
@@ -128,10 +129,20 @@ async publishassignmentbutton(){
    
 }
 
+async clickLoginbutton(newPage){
+  await newPage.click(Locators.login_btn);
+   
+}
 
-async fillstudentsignupdata(newPage){
-  await PlaywrightCore.fill(this.EmailStudentSignup_textfield, 'usman.allaudin+13@gmail.com');
-  await PlaywrightCore.fill(this.PasswordStudentSignup_textfield, '98769876');
-  await PlaywrightCore.click(this.SubmitStudentSignup_btn);
+async clickfinishbutton(newPage){
+  await newPage.click(Locators.finish_btn);
+   
+}
+
+
+async fillstudentsignin(newPage){
+  await newPage.fill(Locators.EmailStudentSignin_textfield, 'student01@gmail.com');
+  await newPage.fill(Locators.PasswordStudentSignin_textfield, '98769876');
+  await newPage.click(Locators.ClickSignin_btn);
 }
 };

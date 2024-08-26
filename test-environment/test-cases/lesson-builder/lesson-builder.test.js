@@ -10,11 +10,12 @@ test.describe('TestSuite: Lesson Builder', () => {
 
   test.beforeEach(async ({ loginPage }) => {
     // await loginPage.setPage(chromiumPage); // Assuming setPage is a method to set the page context
+    
     await loginPage.NavigateToLoginPage();
     await loginPage.fillCredentialsAndLogin(process.env.EMAIL_USMAN, process.env.PASSWORD_USMAN);
   });
 
-  test('TC - Validate UI of Lesson Builder Page', async ({ lessonBuilder }) => {
+  test('TC - Validate UI of Lesson Builder Page', async ({ lessonBuilder, loginPage }) => {
     // Set the lessonBuilder context to the Chromium page
     // lessonBuilder.setPage(chromiumPage); // Assuming setPage is a method to set the page context
     await lessonBuilder.NavigateToTeamCoursesPage();
@@ -75,7 +76,13 @@ console.log('Copied link:', copiedLink);
 await newPage.goto(copiedLink);
 await newPage.bringToFront(); // Ensure the new page is focused
 
-await lessonBuilder.fillstudentsignupdata(newPage);
+await lessonBuilder.clickLoginbutton(newPage);
+
+await lessonBuilder.fillstudentsignin(newPage);
+
+await lessonBuilder.clickfinishbutton(newPage);
+
+
 
 
   });
