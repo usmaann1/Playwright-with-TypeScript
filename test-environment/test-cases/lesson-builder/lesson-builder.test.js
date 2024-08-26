@@ -3,6 +3,7 @@ const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helpe
 const { test, expect } = require('../../../module-imports/testFixtures.imports');
 import LessonBuilderTestData from '../../test-assets/test-data-files/lesson-builder/lesson-builder-testData.json';
 
+
 require('dotenv').config();
 
 test.describe('TestSuite: Lesson Builder', () => {
@@ -54,6 +55,12 @@ test.describe('TestSuite: Lesson Builder', () => {
   // Invite Students
 await lessonBuilder.InviteStudentsbtn();
 await lessonBuilder.CopyinviteStudentsbtn();
+
+// const copiedLinkq = await newPage.evaluate(async () => {
+//   // Access clipboard content
+//   return await navigator.clipboard.readText();
+// });
+
 await lessonBuilder.closeinvitestudentspopup();
 await lessonBuilder.publishassignmentbutton();
 
@@ -63,7 +70,8 @@ const newPage = await browser.newPage();
 
 
 // Evaluate clipboard content within the new page context
-const copiedLink = 'https://play.juicemind.com/joinTeam/1jBhE4onyItf5YO2LvZQ'
+const copiedLink = 'https://play.juicemind.com/joinTeam/i8PliqEfzSQOSbqovBcN'
+
 //const copiedLink = await newPage.evaluate(async () => {
   // Access clipboard content
   //return await navigator.clipboard.readText();
@@ -81,6 +89,19 @@ await lessonBuilder.clickLoginbutton(newPage);
 await lessonBuilder.fillstudentsignin(newPage);
 
 await lessonBuilder.clickfinishbutton(newPage);
+
+//verify heading
+const element = await newPage.locator(LessonBuilderTestData.AssignmentHeadingDiv);
+
+await expect (element).toHaveText(LessonBuilderTestData.AssignmentHeadingText);
+
+//verify assignment locked
+
+await lessonBuilder.publishassignmentbutton();
+
+const element2 = await newPage.locator(LessonBuilderTestData.AssignmentLockedDiv);
+
+await expect (element2).toHaveText(LessonBuilderTestData.AssignmentLockedText);
 
 
 

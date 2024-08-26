@@ -1,4 +1,5 @@
 const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports");
+import { expect } from "@playwright/test";
   import Locators from "./lesson-builder.locator.json";
 
   
@@ -145,4 +146,10 @@ async fillstudentsignin(newPage){
   await newPage.fill(Locators.PasswordStudentSignin_textfield, '98769876');
   await newPage.click(Locators.ClickSignin_btn);
 }
+
+async verifyAssignmentHeading(){
+
+  await expect(Locators.studentAssignmentHeading).toHaveText('Sample Lesson Plan');}
+
+
 };

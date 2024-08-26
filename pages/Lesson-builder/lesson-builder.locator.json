@@ -26,7 +26,8 @@
     "PasswordStudentSignin_textfield": "input[placeholder='Password']",
     "ClickSignin_btn": "//a[normalize-space()='Sign in']",
     "login_btn": "//a[@href='/login']",
-    "finish_btn":"//a[normalize-space()='Finish']"
+    "finish_btn":"//a[normalize-space()='Finish']",
+    "studentAssignmentHeading":"//div[@class='tiptap ProseMirror min-h-full']/h1"
 
     
 }

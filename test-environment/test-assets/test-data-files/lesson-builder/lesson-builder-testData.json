@@ -10,5 +10,10 @@
     
     "PageLockedText":"//div[contains(text(), 'Your teacher must publish')]",
     "waitingForTeacherText":"//div[contains(text(), 'Waiting for teacher to')]",
-    "ViewStuPreview_btn":"//span[normalize-space()='Preview']"
+    "ViewStuPreview_btn":"//span[normalize-space()='Preview']",
+    "AssignmentHeadingDiv":"//div[@class='tiptap ProseMirror min-h-full']/h1",
+    "AssignmentLockedDiv":"//div[normalize-space()='Page Locked!']",
+    "AssignmentLockedText":"Page Locked!",
+    "AssignmentHeadingText":"Sample Lesson Plan"
+
 }
