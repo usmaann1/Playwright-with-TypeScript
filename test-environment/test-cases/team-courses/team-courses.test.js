@@ -9,7 +9,7 @@ import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team
 require("dotenv").config();
 
 test.describe("TestSuite: Team/Courses", () => {
-  test.only("TC: Flow Test Python", async ({ teamCoursesPage, browser }) => {
+  test("TC: Flow Test Python", async ({ teamCoursesPage, browser }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
@@ -42,7 +42,7 @@ test.describe("TestSuite: Team/Courses", () => {
     // await teamCoursesPage.pythonWithMatplotlib();
   });
 
-  test.only("TC: Flow Test JavaScript", async ({ teamCoursesPage, browser }) => {
+  test("TC: Flow Test JavaScript", async ({ teamCoursesPage, browser }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -85,7 +85,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadFile(TeamCoursesData.uploadFilePath);
   });
 
-  test.only("TC: Flow Test Python with Turtle", async ({ teamCoursesPage }) => {
+  test("TC: Flow Test Python with Turtle", async ({ teamCoursesPage }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
@@ -100,7 +100,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.pythonWithTurtle();
   });
 
-  test.only("TC: Flow Test Python with Tkinter", async ({ teamCoursesPage }) => {
+  test("TC: Flow Test Python with Tkinter", async ({ teamCoursesPage }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
@@ -115,7 +115,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.pythonWithTkinter();
   });
 
-  test.only("TC: Flow Test Python with Matplotlib", async ({ teamCoursesPage }) => {
+  test("TC: Flow Test Python with Matplotlib", async ({ teamCoursesPage }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
