@@ -1,14 +1,14 @@
 // @ts-check
-const { devices } = require('@playwright/test');
+const { devices } = require("@playwright/test");
 
-let outputDirectory = String("./test-environment/test-reports/")
+let outputDirectory = String("./test-environment/test-reports/");
 
 /**
  * @see https://playwright.dev/docs/test-configuration
  * @type {import('@playwright/test').PlaywrightTestConfig}
  */
 const config = {
-  testDir: './test-environment/test-cases/',
+  testDir: "./test-environment/test-cases/",
 
   /* Maximum time one test can run for. */
   timeout: 600 * 1000,
@@ -30,20 +30,21 @@ const config = {
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   outputDir: `${outputDirectory}/trace-output/`,
   reporter: [
-    ['html', { outputFolder: `${outputDirectory}/playwright-report/` }],
+    ["html", { outputFolder: `${outputDirectory}/playwright-report/` }],
   ],
   /* Login session storage */
-  globalSetup: require.resolve('./test-environment/test-assets/global-setup'),
+  globalSetup: require.resolve("./test-environment/test-assets/global-setup"),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    browserName: 'chromium',
-    storageState: 'loginState.json',
+    browserName: "chromium",
+    storageState: "loginState.json",
     actionTimeout: 15000,
-    baseURL : 'https://play.juicemind.com/',
+    baseURL: "https://play.juicemind.com/",
     ignoreHTTPSErrors: true,
-    headless : false,
-    video: 'on',
-    trace: 'on',
+    headless: false,
+    permissions: ["clipboard-read"],
+    video: "on",
+    trace: "on",
     viewport: null,
     launchOptions: {
       slowMo: 500, //
