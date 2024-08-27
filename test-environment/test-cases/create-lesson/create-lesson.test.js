@@ -134,7 +134,7 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.hoverAndClickOnPlusBtn()
         await expect(createLesson.dropDownContainer).toBeVisible()
         await createLesson.selectElementFromDropdown(CLtd.elements.taskList)
-        await createLesson.validateElementExistOnEditor(createLesson.unOrdered)
+        await createLesson.validateElementExistOnEditorHavingAttribute(createLesson.taskList,CLtd.attributes.dataType,CLtd.attributes.value)
         await createLesson.validateElementsToAcceptInputOnEditor(createLesson.taskList)
         await createLesson.hoverOverAnyElement(createLesson.taskList)
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)

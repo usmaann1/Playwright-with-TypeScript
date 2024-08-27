@@ -54,10 +54,7 @@
             "bulletList": "ul",
             "NumberedList": "ol",
             "unOrdered": "ul",
-            "taskList": "[data-type='taskList']",
-
-            "dataType":"data-type",
-            "value": "taskList"
+            "taskList": "[data-type='taskList']"
         }
 
     }

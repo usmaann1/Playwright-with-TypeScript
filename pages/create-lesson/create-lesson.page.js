@@ -45,21 +45,23 @@ exports.CreateLesson = class CreateLesson {
         this.userEmail = this.page.locator(Locators.lessonPage.sideMenu.userEmail)
         this.userType = this.page.locator(Locators.lessonPage.sideMenu.userType)
 
-        this.dropDownContainer =this.page.locator(Locators.lessonPage.textEditor.dropDownContainer)
-        this.optionDropdownContainer =this.page.locator(Locators.lessonPage.textEditor.optionDropdownContainer)
+        this.dropDownContainer = this.page.locator(Locators.lessonPage.textEditor.dropDownContainer)
+        this.optionDropdownContainer = this.page.locator(Locators.lessonPage.textEditor.optionDropdownContainer)
 
-        this.subParent =this.page.locator(Locators.lessonPage.textEditor.subParent)
-        this.child =this.page.locator(Locators.lessonPage.textEditor.child)
-        this.buttonTag =this.page.locator(Locators.lessonPage.textEditor.button)
-        this.heading1 =this.page.locator(Locators.lessonPage.textEditor.heading1)
-        this.heading2 =this.page.locator(Locators.lessonPage.textEditor.heading2)
-        this.heading3 =this.page.locator(Locators.lessonPage.textEditor.heading3)
-        this.bulletList =this.page.locator(Locators.lessonPage.textEditor.bulletList)
-        this.NumberedList =this.page.locator(Locators.lessonPage.textEditor.NumberedList)
-        this.unOrdered =this.page.locator(Locators.lessonPage.textEditor.unOrdered)
-        this.taskList =this.page.locator(Locators.lessonPage.textEditor.taskList)
+        this.subParent = this.page.locator(Locators.lessonPage.textEditor.subParent)
+        this.child = this.page.locator(Locators.lessonPage.textEditor.child)
+        this.buttonTag = this.page.locator(Locators.lessonPage.textEditor.button)
+        this.heading1 = this.page.locator(Locators.lessonPage.textEditor.heading1)
+        this.heading2 = this.page.locator(Locators.lessonPage.textEditor.heading2)
+        this.heading3 = this.page.locator(Locators.lessonPage.textEditor.heading3)
+        this.bulletList = this.page.locator(Locators.lessonPage.textEditor.bulletList)
+        this.NumberedList = this.page.locator(Locators.lessonPage.textEditor.NumberedList)
+        this.unOrdered = this.page.locator(Locators.lessonPage.textEditor.unOrdered)
+        this.taskList = this.page.locator(Locators.lessonPage.textEditor.taskList)
+        this.dataType = this.page.locator(Locators.lessonPage.textEditor.dataType)
+        this.value = this.page.locator(Locators.lessonPage.textEditor.value)
     }
-    const 
+    const
     async clickOnAddNewItem() {
         const item = this.addNewItem
         await this.page.waitForTimeout(3000);
@@ -95,13 +97,13 @@ exports.CreateLesson = class CreateLesson {
         const ele = edit.locator(val)
         await ele.hover()
     }
-    async selectElementFromDropdown(val){
+    async selectElementFromDropdown(val) {
         const subParent = this.subParent
-        const btn = subParent.locator(this.child,{ hasText: 'Heading 1' })
+        const btn = subParent.locator(this.child, { hasText: 'Heading 1' })
         await this.page.waitForTimeout(3000);
         await PlaywrightCore.click(btn)
     }
-    async enterTextOnEditor(text){
+    async enterTextOnEditor(text) {
         await PlaywrightCore.fill(this.firstRow, 'teamName')
     }
     async hoverAndClickOnPlusBtn() {
@@ -116,14 +118,14 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.click(this.menuIcon)
         await this.page.waitForTimeout(1000);
         const subParent = this.optionDropdownContainer
-        const btn = subParent.locator(this.child,{ hasText: val }).first()
+        const btn = subParent.locator(this.child, { hasText: val }).first()
         await this.page.waitForTimeout(1000);
         await PlaywrightCore.click(btn)
         await this.page.getByRole('button', { name: 'Delete' }).click()
     }
-    async selectElementFromDropdown(val){
+    async selectElementFromDropdown(val) {
         const subParent = this.subParent
-        const btn = subParent.locator(this.child,{ hasText: val })
+        const btn = subParent.locator(this.child, { hasText: val })
         await this.page.waitForTimeout(1000);
         await PlaywrightCore.click(btn)
     }
@@ -137,7 +139,7 @@ exports.CreateLesson = class CreateLesson {
         const parent = this.textEditor
         const child = parent.locator(ele)
         const text = clTD.textForEditor
-        await PlaywrightCore.fill(child,text)
+        await PlaywrightCore.fill(child, text)
     }
     async validateRemovingOfElementEditor(ele) {
         const parent = this.textEditor
@@ -149,11 +151,11 @@ exports.CreateLesson = class CreateLesson {
         await this.page.waitForTimeout(1000);
         await expect(child).toHaveValue('');
     }
-    async validateElementExistOnEditor(ele1) {
+    async validateElementExistOnEditorHavingAttribute(ele, dataType, typeValue) {
         const parent = this.textEditor
-        const child = parent.locator(ele1)
+        const child = parent.locator(ele)
         await this.page.waitForTimeout(2000);
-        await expect(child).toHaveAttribute('data-type', 'taskList')
+        await expect(child).toHaveAttribute(dataType, typeValue)
     }
 
 }

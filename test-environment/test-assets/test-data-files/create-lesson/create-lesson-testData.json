@@ -9,9 +9,12 @@
         "bulletList": "Bullet List",
         "NumberedList": "Numbered List",
         "taskList": "Task List"
-
     },
     "options": {
         "Delete": "Delete"
+    },
+    "attributes": {
+        "dataType": "data-type",
+        "value": "taskList"
     }
 }
