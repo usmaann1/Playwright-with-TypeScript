@@ -57,5 +57,18 @@
             "taskList": "[data-type='taskList']"
         }
 
-    }
+    },
+    "EmbedEnterURL":"//input[@placeholder='Enter URL']",
+    "EmbedInsertURLHeading":"//div[@contenteditable='false']//div//div//div//h2",
+    "EmbedSubmitBtn":"//div[@contenteditable='false']//div//div//div//div//a",
+    "YoutubePlayBtn":"//div[@contenteditable='true']//div[2]",
+    "WatchOnYoutubeBtn":"//div[@class='video-setup flex flex-col items-center justify-center']",
+    "SetupBtn":"//button[normalize-space()='Setup']",
+    "OptionsBtn":"//button[normalize-space()='Options']",
+    "CurrentEmbedURLHeading":"//p[normalize-space()='Current Embed URL']",
+    "ReplaceHeading":"//p[normalize-space()='Replace']",
+    "ReplaceEmbedTxtBox":"//input[@placeholder='Paste in https://...']",
+    "SaveBtn":"//button[normalize-space()='Save']",
+    "YoutubeVideoHeading":"//a[@class='ytp-title-link yt-uix-sessionlink']",
+    "IFrameLocatorYoutube":"//iframe[@title='embed']"
 }
