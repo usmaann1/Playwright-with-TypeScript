@@ -442,6 +442,16 @@ exports.PlaywrightCore = class PlaywrightCore {
     }
   }
 
+  static async selectingDropDownByLabelExact(page, label, input) {
+    try {
+      await page.getByLabel(label).click();
+      await page.getByRole("option", { name: input, exact: true }).click();
+    } catch (error) {
+      console.warn(`An error occurred while selecting, Error:`, error);
+      throw error;
+    }
+  }
+
   static async selectingDropDownByText(page, Text, input) {
     try {
       await page.getByText(Text).click();
@@ -519,7 +529,23 @@ exports.PlaywrightCore = class PlaywrightCore {
       // Custom wait with setTimeout for polling interval
       await new Promise((resolve) => setTimeout(resolve, interval));
     }
-    console.error(`Timeout exceeded: Element ${selector} did not disappear within ${timeout / 1000} seconds.`);
-} 
+    console.error(
+      `Timeout exceeded: Element ${selector} did not disappear within ${
+        timeout / 1000
+      } seconds.`
+    );
+  }
 
-}
+  static async clickByPosition(locator, x, y) {
+    try {
+      await locator.click({
+        position: {
+          x,
+          y,
+        },
+      });
+    } catch (error) {
+      console.error(`Error occurred`, error);
+    }
+  }
+};

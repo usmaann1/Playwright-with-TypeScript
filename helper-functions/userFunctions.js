@@ -1,4 +1,6 @@
 const { PlaywrightCore } = require("./playwrightCore");
+const fs = require("fs");
+const Tesseract = require("tesseract.js");
 
 exports.UserFunctions = class UserFunctions {
   /**
@@ -183,23 +185,49 @@ exports.UserFunctions = class UserFunctions {
   }
 
   static async getCanvasBackgroundColor(page, xDim = 50, yDim = 50) {
-    // Evaluate JavaScript in the context of the page
-    const color = await page.evaluate(({ xDim, yDim }) => {
-      const canvas = document.querySelector("canvas");
-      if (!canvas) return "Canvas not found";
-  
-      const context = canvas.getContext("2d");
-      const imageData = context.getImageData(xDim, yDim, 1, 1).data;
-      const [r, g, b, a] = imageData;
-  
-      // Convert RGBA to HEX format
-      const hex = `#${((1 << 24) + (r << 16) + (g << 8) + b)
-        .toString(16)
-        .slice(1)
-        .toUpperCase()}`;
-      return hex;
-    }, { xDim, yDim });
-  
+    const color = await page.evaluate(
+      ({ xDim, yDim }) => {
+        const canvas = document.querySelector("canvas");
+        if (!canvas) return "Canvas not found";
+
+        const context = canvas.getContext("2d");
+        const imageData = context.getImageData(xDim, yDim, 1, 1).data;
+        const [r, g, b, a] = imageData;
+
+        const hex = `#${((1 << 24) + (r << 16) + (g << 8) + b)
+          .toString(16)
+          .slice(1)
+          .toUpperCase()}`;
+        return hex;
+      },
+      { xDim, yDim }
+    );
+
     return color;
+  }
+
+  static async getCanvasValidations(page, path, num1 = null, num2 = null) {
+    const canvas = await page.locator("canvas");
+    const dataUrl = await canvas.evaluate((canvas) => {
+      return canvas.toDataURL();
+    });
+    const base64Data = dataUrl.replace(/^data:image\/png;base64,/, "");
+    fs.writeFileSync(`${path}canvas.png`, base64Data, "base64");
+    const {
+      data: { text },
+    } = await Tesseract.recognize(`${path}canvas.png`, `eng`);
+
+    let isValid = false;
+    
+    if (num1 && num2) {
+      const num1Valid = await text.includes(num1);
+      const num2Valid = await text.includes(num2);
+      isValid = await (num1Valid && num2Valid);
+    } else {
+      const num1Valid = await text.includes(num1);
+      isValid = await num1Valid;
+    }
+
+    return  await isValid;
   }
 };

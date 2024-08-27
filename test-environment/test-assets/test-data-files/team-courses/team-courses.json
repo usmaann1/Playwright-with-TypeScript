@@ -10,5 +10,14 @@
   "completeName": "test test",
   "uploadFilePath": "./test-environment/test-assets/test-resource-files/teamUploadTest.js",
   "projectTypeOption1": "Javascript (Node.js)",
-  "projectTypeOption2": "Python with Turtle"
+  "projectTypeOption2": "Python with Turtle",
+  "projectTypeOption3": "Python with Pygame",
+  "projectTypeOption4": "Python with Tkinter",
+  "projectTypeOption5": "Python with PyQT",
+  "projectTypeOption6": "Python with Matplotlib",
+  "projectTypeOption7": "Python with Pillow",
+  "projectTypeOption8": "Python",
+  "pythonTestInput": "def square_numbers(numbers):\n    return [num ** 2 for num in numbers]\n\nnumbers = [1, 2, 3, 4, 5]\nsquares = square_numbers(numbers)\nprint('Original numbers:', numbers)\nprint('Squared numbers:', squares)",
+  "pythonTestOutput": "Original numbers: [1, 2, 3, 4, 5]\nSquared numbers: [1, 4, 9, 16, 25]"
+
 }

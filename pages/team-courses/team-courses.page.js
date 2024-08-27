@@ -4,6 +4,7 @@ const {
 import { expect } from "@playwright/test";
 import Locators from "./team-courses.locator.json";
 import { UserFunctions } from "../../helper-functions/userFunctions";
+import TeamCoursesData from "../../test-environment/test-assets/test-data-files/team-courses/team-courses.json";
 
 exports.TeamCoursesPage = class TeamCoursesPage {
   constructor(page) {
@@ -37,8 +38,13 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.BackSpace = "Backspace";
     this.History = "History";
     this.BlackMatch = /black/g;
+    this.BtnClickedMatch = /Greet/g;
     this.RedColor2 = "red";
-    this.SignInBtn = this.page.locator(Locators.SignInBtn);
+    this.AssetsPaths = "./test-environment/test-assets/test-resource-files/";
+    this.BtnClickedTest = "Button Greet Test";
+    this.PythonCodeString = this.SignInBtn = this.page.locator(
+      Locators.SignInBtn
+    );
     this.SignUpNavigationBtn = this.page.locator(Locators.SignUpNavigationBtn);
     this.SignUpBtn = this.page.locator(Locators.SignUpBtn);
     this.EmailAddressTxtBox = this.page.locator(Locators.EmailAddressTxtBox);
@@ -94,6 +100,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.EditorStopBtn = this.page.locator(Locators.EditorStopBtn);
     this.FullScreenBtn = this.page.locator(Locators.FullScreenBtn);
     this.CloseFullScreenBtn = this.page.locator(Locators.CloseFullScreenBtn);
+    this.CanvasLocator = this.page.locator("canvas");
   }
 
   async NavigateToSignUpPage() {
@@ -137,19 +144,27 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.CodingAssignmentCreateBtn);
   }
 
-  async IntializeIDE(ProjecttName, option) {
+  async IntializeIDE(ProjecttName, option, isExact = false) {
     await PlaywrightCore.click(this.IntializeIDEBtn);
     await PlaywrightCore.fill(this.ProjectNameInput, ProjecttName);
-    await PlaywrightCore.selectingDropDownByLabel(
-      this.page,
-      this.ProjectType,
-      option
-    );
+    if (!isExact) {
+      await PlaywrightCore.selectingDropDownByLabel(
+        this.page,
+        this.ProjectType,
+        option
+      );
+    } else {
+      await PlaywrightCore.selectingDropDownByLabelExact(
+        this.page,
+        this.ProjectType,
+        option
+      );
+    }
     await PlaywrightCore.click(this.SubmitBtn);
   }
 
   async createTest(type, oldTestType, newTestType, testName, input, output) {
-    await PlaywrightCore.waitTimeout(this.page, 5000)
+    await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.TestBtn);
     await PlaywrightCore.click(this.AddTestBtn);
     await PlaywrightCore.selectingDropDownByLabel(
@@ -190,55 +205,137 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.FinishBtn);
   }
 
-  async createStarterCode(code) {
+  async createStarterCode(code, isIgnore = false) {
     await PlaywrightCore.click(this.CreateStarterCode);
-    await PlaywrightCore.waitTimeout(this.page, 10000)
-    await this.page.getByText(this.IndexJs).nth(1).click();
-    await PlaywrightCore.waitTimeout(this.page, 10000)
+    await PlaywrightCore.waitTimeout(this.page, 10000);
+    if (!isIgnore) {
+      await this.page.getByText(this.IndexJs).nth(1).click();
+      await PlaywrightCore.waitTimeout(this.page, 10000);
+    }
     const textBox = await this.EditorTextBox.nth(1);
     await textBox.click({ clickCount: 1 });
     await textBox.press(this.SelectAll);
     await textBox.press(this.BackSpace);
-    for (const char of code) {
-      await textBox.type(char);
+    if (!isIgnore) {
+      for (const char of code) {
+        await textBox.type(char);
+      }
+    } else {
+      await textBox.fill(code);
     }
     await PlaywrightCore.click(this.EditorSubmit);
-    await PlaywrightCore.waitTimeout(this.page, 10000)
+    await PlaywrightCore.waitTimeout(this.page, 10000);
     await PlaywrightCore.click(this.SubmitBtn);
   }
 
-  async pythonWithTurtle() {
-    await PlaywrightCore.click(this.CreateStarterCode);
-    await PlaywrightCore.waitTimeout(this.page, 10000)
+  async commonClipBoardSteps() {
+    await PlaywrightCore.waitTimeout(this.page, 10000);
     await this.page.getByText(this.MainPy).nth(1).click();
-    await PlaywrightCore.waitTimeout(this.page, 10000)
+    await PlaywrightCore.waitTimeout(this.page, 10000);
     await expect(this.CloudIcon.nth(1)).toBeVisible();
-    await PlaywrightCore.waitTimeout(this.page, 20000)
+    await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
-    await PlaywrightCore.waitTimeout(this.page, 10000)
+    await PlaywrightCore.waitTimeout(this.page, 10000);
     await PlaywrightCore.click(this.EditorStopBtn);
-    await PlaywrightCore.waitTimeout(this.page, 5000)
+    await PlaywrightCore.waitTimeout(this.page, 5000);
     const codeEditorContent = await this.EditorTextBox.nth(1);
     await codeEditorContent.press(this.SelectAll);
     await codeEditorContent.press(this.Copy);
     const clipboardContent = await this.page.evaluate(async () => {
       return await navigator.clipboard.readText();
     });
-    const updatedCode = clipboardContent.replace(this.BlackMatch, this.RedColor2);
+    return { clipboardContent, codeEditorContent };
+  }
+
+  async normalCommonSteps() {
+    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await this.page.getByText(this.MainPy).nth(1).click();
+    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await expect(this.CloudIcon.nth(1)).toBeVisible();
+    const codeEditorContent = await this.EditorTextBox.nth(1);
+    await codeEditorContent.press(this.SelectAll);
+    await codeEditorContent.press(this.BackSpace);
+    await codeEditorContent.fill(TeamCoursesData.pythonTestInput);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    await PlaywrightCore.click(this.EditorPlayButton);
+    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await this.createTest(
+      TeamCoursesData.createTestType,
+      TeamCoursesData.createTestOldType,
+      TeamCoursesData.createTestNewType,
+      TeamCoursesData.createTestName,
+      TeamCoursesData.pythonTestInput,
+      TeamCoursesData.pythonTestOutput
+    );
+  }
+
+  async simplePython() {
+    await this.normalCommonSteps(this.PythonCodeString);
+  }
+
+  async pythonWithTurtle() {
+    const { clipboardContent, codeEditorContent } =
+      await this.commonClipBoardSteps();
+    const updatedCode = clipboardContent.replace(
+      this.BlackMatch,
+      this.RedColor2
+    );
     await codeEditorContent.press(this.BackSpace);
     await codeEditorContent.fill(updatedCode);
-    await PlaywrightCore.waitTimeout(this.page, 5000)
+    await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.EditorPlayButton);
-    await PlaywrightCore.waitTimeout(this.page, 10000)
+    await PlaywrightCore.waitTimeout(this.page, 10000);
     await PlaywrightCore.click(this.FullScreenBtn.nth(1));
     const isColorRed = await UserFunctions.getCanvasBackgroundColor(
       this.page,
       50,
       50
     );
-    await PlaywrightCore.waitTimeout(this.page, 5000)
+    await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.CloseFullScreenBtn);
     await expect(isColorRed).toBe(this.RedColor);
+  }
+
+  async pythonWithMatplotlib() {
+    const { clipboardContent, codeEditorContent } =
+      await this.commonClipBoardSteps();
+    const updatedCode = clipboardContent.replace(6, 10).replace(250, 140);
+    await codeEditorContent.press(this.BackSpace);
+    await codeEditorContent.fill(updatedCode);
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await PlaywrightCore.click(this.EditorPlayButton);
+    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await PlaywrightCore.click(this.FullScreenBtn.nth(1));
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    const isValid = await UserFunctions.getCanvasValidations(
+      this.page,
+      this.AssetsPaths,
+      10,
+      140
+    );
+    await expect(isValid).toBe(true);
+  }
+
+  async pythonWithTkinter() {
+    const { clipboardContent, codeEditorContent } =
+      await this.commonClipBoardSteps();
+    const updatedCode = clipboardContent.replace(
+      this.BtnClickedMatch,
+      this.BtnClickedTest
+    );
+    await codeEditorContent.press(this.BackSpace);
+    await codeEditorContent.fill(updatedCode);
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await PlaywrightCore.click(this.EditorPlayButton);
+    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await PlaywrightCore.click(this.FullScreenBtn.nth(1));
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    const isValid = await UserFunctions.getCanvasValidations(
+      this.page,
+      this.AssetsPaths,
+      this.BtnClickedTest
+    );
+    await expect(isValid).toBe(true);
   }
 
   async assertingUserAnswered(name) {
@@ -255,9 +352,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async assertingUserAnswerHistory(name, textAssertion) {
     await PlaywrightCore.ClickByText(this.page, name);
-    await PlaywrightCore.waitTimeout(this.page, 10000)
+    await PlaywrightCore.waitTimeout(this.page, 10000);
     await this.page.getByText(this.IndexJs).nth(1).click();
-    await PlaywrightCore.waitTimeout(this.page, 10000)
+    await PlaywrightCore.waitTimeout(this.page, 10000);
     await PlaywrightCore.ClickByText(this.page, this.History);
     await PlaywrightCore.slidingElement(
       this.page,
