@@ -45,7 +45,7 @@ test.describe('TestSuite: FRQ', () => {
    //verify heading
     const element = await page.locator(frqData.DelimeterParagraphDiv);
 
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(6000);
 
     await expect(element).toHaveText("Delimiters");
 
