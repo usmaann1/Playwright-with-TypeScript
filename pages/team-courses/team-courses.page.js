@@ -284,12 +284,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       input,
       output
     );
-    /* const isValid = await UserFunctions.getCanvasValidations(
-      this.page,
-      this.AssetsPaths,
-      validation
-    );
-    await expect(isValid).toBe(true); */
   }
 
   async simplePython() {
