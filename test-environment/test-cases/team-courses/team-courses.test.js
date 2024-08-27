@@ -9,7 +9,40 @@ import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team
 require("dotenv").config();
 
 test.describe("TestSuite: Team/Courses", () => {
-  test("TC: Flow Test JavaScript", async ({ teamCoursesPage, browser }) => {
+  test.only("TC: Flow Test Python", async ({ teamCoursesPage, browser }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email);
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption8,
+      true
+    );
+    await teamCoursesPage.simplePython();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.createStarterCode(
+      TeamCoursesData.pythonTestInput,
+      true
+    );
+    await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
+    // await teamCoursesPage.pythonWithMatplotlib();
+  });
+
+  test.only("TC: Flow Test JavaScript", async ({ teamCoursesPage, browser }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -50,10 +83,9 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.testInput
     );
     await teamCoursesPage.uploadFile(TeamCoursesData.uploadFilePath);
-    await newPage.close();
   });
 
-  test("TC: Flow Test Python with Turtle", async ({ teamCoursesPage }) => {
+  test.only("TC: Flow Test Python with Turtle", async ({ teamCoursesPage }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
@@ -68,9 +100,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.pythonWithTurtle();
   });
 
-  test("TC: Flow Test Python with Tkinter", async ({
-    teamCoursesPage,
-  }) => {
+  test.only("TC: Flow Test Python with Tkinter", async ({ teamCoursesPage }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
@@ -85,7 +115,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.pythonWithTkinter();
   });
 
-  test("TC: Flow Test Python with Matplotlib", async ({ teamCoursesPage }) => {
+  test.only("TC: Flow Test Python with Matplotlib", async ({ teamCoursesPage }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();

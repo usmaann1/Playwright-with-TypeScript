@@ -4,6 +4,7 @@ const {
 import { expect } from "@playwright/test";
 import Locators from "./team-courses.locator.json";
 import { UserFunctions } from "../../helper-functions/userFunctions";
+import TeamCoursesData from "../../test-environment/test-assets/test-data-files/team-courses/team-courses.json";
 
 exports.TeamCoursesPage = class TeamCoursesPage {
   constructor(page) {
@@ -37,11 +38,13 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.BackSpace = "Backspace";
     this.History = "History";
     this.BlackMatch = /black/g;
-    this.BtnClickedMatch = /Button clicked!/g;
+    this.BtnClickedMatch = /Greet/g;
     this.RedColor2 = "red";
     this.AssetsPaths = "./test-environment/test-assets/test-resource-files/";
-    this.BtnClickedTest = "Button Clicked Test";
-    this.SignInBtn = this.page.locator(Locators.SignInBtn);
+    this.BtnClickedTest = "Button Greet Test";
+    this.PythonCodeString = this.SignInBtn = this.page.locator(
+      Locators.SignInBtn
+    );
     this.SignUpNavigationBtn = this.page.locator(Locators.SignUpNavigationBtn);
     this.SignUpBtn = this.page.locator(Locators.SignUpBtn);
     this.EmailAddressTxtBox = this.page.locator(Locators.EmailAddressTxtBox);
@@ -141,14 +144,22 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.CodingAssignmentCreateBtn);
   }
 
-  async IntializeIDE(ProjecttName, option) {
+  async IntializeIDE(ProjecttName, option, isExact = false) {
     await PlaywrightCore.click(this.IntializeIDEBtn);
     await PlaywrightCore.fill(this.ProjectNameInput, ProjecttName);
-    await PlaywrightCore.selectingDropDownByLabel(
-      this.page,
-      this.ProjectType,
-      option
-    );
+    if (!isExact) {
+      await PlaywrightCore.selectingDropDownByLabel(
+        this.page,
+        this.ProjectType,
+        option
+      );
+    } else {
+      await PlaywrightCore.selectingDropDownByLabelExact(
+        this.page,
+        this.ProjectType,
+        option
+      );
+    }
     await PlaywrightCore.click(this.SubmitBtn);
   }
 
@@ -194,17 +205,23 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.FinishBtn);
   }
 
-  async createStarterCode(code) {
+  async createStarterCode(code, isIgnore = false) {
     await PlaywrightCore.click(this.CreateStarterCode);
     await PlaywrightCore.waitTimeout(this.page, 10000);
-    await this.page.getByText(this.IndexJs).nth(1).click();
-    await PlaywrightCore.waitTimeout(this.page, 10000);
+    if (!isIgnore) {
+      await this.page.getByText(this.IndexJs).nth(1).click();
+      await PlaywrightCore.waitTimeout(this.page, 10000);
+    }
     const textBox = await this.EditorTextBox.nth(1);
     await textBox.click({ clickCount: 1 });
     await textBox.press(this.SelectAll);
     await textBox.press(this.BackSpace);
-    for (const char of code) {
-      await textBox.type(char);
+    if (!isIgnore) {
+      for (const char of code) {
+        await textBox.type(char);
+      }
+    } else {
+      await textBox.fill(code);
     }
     await PlaywrightCore.click(this.EditorSubmit);
     await PlaywrightCore.waitTimeout(this.page, 10000);
@@ -228,6 +245,32 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       return await navigator.clipboard.readText();
     });
     return { clipboardContent, codeEditorContent };
+  }
+
+  async normalCommonSteps() {
+    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await this.page.getByText(this.MainPy).nth(1).click();
+    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await expect(this.CloudIcon.nth(1)).toBeVisible();
+    const codeEditorContent = await this.EditorTextBox.nth(1);
+    await codeEditorContent.press(this.SelectAll);
+    await codeEditorContent.press(this.BackSpace);
+    await codeEditorContent.fill(TeamCoursesData.pythonTestInput);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    await PlaywrightCore.click(this.EditorPlayButton);
+    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await this.createTest(
+      TeamCoursesData.createTestType,
+      TeamCoursesData.createTestOldType,
+      TeamCoursesData.createTestNewType,
+      TeamCoursesData.createTestName,
+      TeamCoursesData.pythonTestInput,
+      TeamCoursesData.pythonTestOutput
+    );
+  }
+
+  async simplePython() {
+    await this.normalCommonSteps(this.PythonCodeString);
   }
 
   async pythonWithTurtle() {
@@ -287,9 +330,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.waitTimeout(this.page, 10000);
     await PlaywrightCore.click(this.FullScreenBtn.nth(1));
     await PlaywrightCore.waitTimeout(this.page, 5000);
-    for (let i = 400; i <= 550; i = i + 5) {
-      await PlaywrightCore.clickByPosition(this.CanvasLocator, i, 67);
-    }
     const isValid = await UserFunctions.getCanvasValidations(
       this.page,
       this.AssetsPaths,

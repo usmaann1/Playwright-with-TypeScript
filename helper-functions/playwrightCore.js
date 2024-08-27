@@ -442,6 +442,16 @@ exports.PlaywrightCore = class PlaywrightCore {
     }
   }
 
+  static async selectingDropDownByLabelExact(page, label, input) {
+    try {
+      await page.getByLabel(label).click();
+      await page.getByRole("option", { name: input, exact: true }).click();
+    } catch (error) {
+      console.warn(`An error occurred while selecting, Error:`, error);
+      throw error;
+    }
+  }
+
   static async selectingDropDownByText(page, Text, input) {
     try {
       await page.getByText(Text).click();
