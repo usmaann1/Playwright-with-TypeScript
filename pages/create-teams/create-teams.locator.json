@@ -1,5 +1,5 @@
 {
-    "TeamsCoursesBtn":"//div[normalize-space()='Teams/Courses']",
+    "TeamsCoursesBtn":"text=Teams/Courses",
     "CreateNewTeamBtn":"//a[normalize-space()='Create new team']",
     "StartFromScratchBtn":"//div[normalize-space()='Start from Scratch']",
     "StartFromScratchDescription":"//p[contains(text(),'Create lessons and coding assignments from scratch')]",
