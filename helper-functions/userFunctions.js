@@ -35,6 +35,18 @@ exports.UserFunctions = class UserFunctions {
   static generateUUIDV4() {
     return require("uuid").v4();
   }
+   // This function is responsible for creating a generic alpha Numeric string of desired size
+   static generateRandomString(length) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    const charactersLength = characters.length;
+
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+}
   static generateRandomEmail(email) {
     const uuid = this.generateUUIDV4();
     const emailParts = email.split("@");
