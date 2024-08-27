@@ -39,7 +39,102 @@ test.describe("TestSuite: Team/Courses", () => {
       true
     );
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
-    // await teamCoursesPage.pythonWithMatplotlib();
+  });
+
+  test("TC: Flow Test Java", async ({ teamCoursesPage, browser }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email);
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption9,
+      true
+    );
+    await teamCoursesPage.simpleJava();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.createStarterCode(
+      TeamCoursesData.javaTestInput,
+      true
+    );
+    await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
+  });
+
+  test("TC: Flow Test CSharp", async ({ teamCoursesPage, browser }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email);
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption10,
+      true
+    );
+    await teamCoursesPage.simpleCsharp();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.createStarterCode(
+      TeamCoursesData.csharpTestInput,
+      true
+    );
+    await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
+  });
+
+  test("TC: Flow Test C++", async ({ teamCoursesPage, browser }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email);
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption11,
+      true
+    );
+    await teamCoursesPage.simpleCsharp();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.createStarterCode(
+      TeamCoursesData.cppTestInput,
+      true
+    );
+    await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
   test("TC: Flow Test JavaScript", async ({ teamCoursesPage, browser }) => {

@@ -27,6 +27,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.CreateCourse = "text='Create a course item'";
     this.IndexJs = "index.js";
     this.MainPy = "main.py";
+    this.MainJava = "Main.java";
+    this.MainCS = "main.cs";
+    this.MainCPP = "main.cpp";
     this.GreenColorStyle = /background-color:\s*(rgb\(0,\s*255,\s*0\))/;
     this.GreenColor = "rgb(0, 255, 0)";
     this.RedColor = "#FF0000";
@@ -42,9 +45,10 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.RedColor2 = "red";
     this.AssetsPaths = "./test-environment/test-assets/test-resource-files/";
     this.BtnClickedTest = "Button Greet Test";
-    this.PythonCodeString = this.SignInBtn = this.page.locator(
-      Locators.SignInBtn
-    );
+    this.PythonValidation = "Squared numbers: [1, 4, 9, 16, 25]";
+    this.TerminalClass = ".terminal.xterm.xterm-dom-renderer-owner-1";
+    this.AssertionText = "Original numbers:";
+    this.SignInBtn = this.page.locator(Locators.SignInBtn);
     this.SignUpNavigationBtn = this.page.locator(Locators.SignUpNavigationBtn);
     this.SignUpBtn = this.page.locator(Locators.SignUpBtn);
     this.EmailAddressTxtBox = this.page.locator(Locators.EmailAddressTxtBox);
@@ -223,6 +227,15 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     } else {
       await textBox.fill(code);
     }
+    if (isIgnore) {
+      await PlaywrightCore.waitTimeout(this.page, 20000);
+      await this.page.getByTestId("PlayArrowIcon").first().click();
+      await PlaywrightCore.waitTimeout(this.page, 20000);
+      const element = await this.page.$(this.TerminalClass);
+      const innerText = await element.innerText();
+      const isValid = await innerText.includes(this.AssertionText);
+      expect(isValid).toBe(true);
+    }
     await PlaywrightCore.click(this.EditorSubmit);
     await PlaywrightCore.waitTimeout(this.page, 10000);
     await PlaywrightCore.click(this.SubmitBtn);
@@ -247,30 +260,68 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     return { clipboardContent, codeEditorContent };
   }
 
-  async normalCommonSteps() {
+  async normalCommonSteps(file, input, output) {
     await PlaywrightCore.waitTimeout(this.page, 10000);
-    await this.page.getByText(this.MainPy).nth(1).click();
+    //await this.page.getByText(file).nth(1).click();
     await PlaywrightCore.waitTimeout(this.page, 10000);
     await expect(this.CloudIcon.nth(1)).toBeVisible();
     const codeEditorContent = await this.EditorTextBox.nth(1);
     await codeEditorContent.press(this.SelectAll);
     await codeEditorContent.press(this.BackSpace);
-    await codeEditorContent.fill(TeamCoursesData.pythonTestInput);
+    await codeEditorContent.fill(input);
     await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
-    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    const element = await this.page.$(this.TerminalClass);
+    const innerText = await element.innerText();
+    const isValid = await innerText.includes(this.AssertionText);
+    expect(isValid).toBe(true);
     await this.createTest(
       TeamCoursesData.createTestType,
       TeamCoursesData.createTestOldType,
       TeamCoursesData.createTestNewType,
       TeamCoursesData.createTestName,
+      input,
+      output
+    );
+    /* const isValid = await UserFunctions.getCanvasValidations(
+      this.page,
+      this.AssetsPaths,
+      validation
+    );
+    await expect(isValid).toBe(true); */
+  }
+
+  async simplePython() {
+    await this.normalCommonSteps(
+      this.MainPy,
       TeamCoursesData.pythonTestInput,
       TeamCoursesData.pythonTestOutput
     );
   }
 
-  async simplePython() {
-    await this.normalCommonSteps(this.PythonCodeString);
+  async simpleJava() {
+    await this.normalCommonSteps(
+      this.MainJava,
+      TeamCoursesData.javaTestInput,
+      TeamCoursesData.javaTestOutput
+    );
+  }
+
+  async simpleCsharp() {
+    await this.normalCommonSteps(
+      this.MainCS,
+      TeamCoursesData.csharpTestInput,
+      TeamCoursesData.csharpTestOutput
+    );
+  }
+
+  async simpleCPP() {
+    await this.normalCommonSteps(
+      this.MainCPP,
+      TeamCoursesData.cppTestInput,
+      TeamCoursesData.cppTestOutput
+    );
   }
 
   async pythonWithTurtle() {
@@ -350,23 +401,27 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await expect(backgroundColorStyle).toBe(this.GreenColor);
   }
 
-  async assertingUserAnswerHistory(name, textAssertion) {
+  async assertingUserAnswerHistory(name, textAssertion, duration = null) {
     await PlaywrightCore.ClickByText(this.page, name);
     await PlaywrightCore.waitTimeout(this.page, 10000);
-    await this.page.getByText(this.IndexJs).nth(1).click();
+    if (!duration) {
+      await this.page.getByText(this.IndexJs).nth(1).click();
+    }
     await PlaywrightCore.waitTimeout(this.page, 10000);
     await PlaywrightCore.ClickByText(this.page, this.History);
     await PlaywrightCore.slidingElement(
       this.page,
       this.Slider,
       this.ArrLeft,
-      textAssertion
+      textAssertion,
+      duration
     );
     await PlaywrightCore.slidingElement(
       this.page,
       this.Slider,
       this.ArrRight,
-      textAssertion
+      textAssertion,
+      duration
     );
     const textBox = await this.EditorTextBox.nth(1);
     const editorText = await textBox.textContent();
