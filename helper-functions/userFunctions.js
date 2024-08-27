@@ -9,8 +9,8 @@ exports.UserFunctions = class UserFunctions {
     static getTestResourceFilePath(fileName = "") {
         return require('path').join(__dirname, '..', 'test-environment', 'test-assets', 'test-resource-files', fileName)
     }
-    static getTestDataFilePath(fileName=""){
-        return require('path').join(__dirname,'..','test-environment','test-assets','test-data-files','server-manager',fileName)
+    static getTestDataFilePath(fileName = "") {
+        return require('path').join(__dirname, '..', 'test-environment', 'test-assets', 'test-data-files', 'server-manager', fileName)
     }
     /**
      * Generates a version 4 UUID using the uuid package and returns it as a string.
@@ -28,6 +28,18 @@ exports.UserFunctions = class UserFunctions {
         }
         const randomEmail = `${emailParts[0]}+${uuid}@${emailParts[1]}`;
         return randomEmail;
+    }
+    // This function is responsible for creating a generic alpha Numeric string of desired size
+    static generateRandomString(length) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        const charactersLength = characters.length;
+
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+
+        return result;
     }
     /**
      * Reads the contents of a file at the specified file path using the fs.readFile() method and returns a Promise.
@@ -130,16 +142,14 @@ exports.UserFunctions = class UserFunctions {
     static getCurrentDateTime(formatString) {
         const moment = require('moment');
         return moment().format(formatString);
-      }
-    static getCurrentTimeStamp()
-    {
+    }
+    static getCurrentTimeStamp() {
         return Date.now();
     }
-    static async createNewBrowserInstance()
-    {
+    static async createNewBrowserInstance() {
         const browser = await PlaywrightCore.chromiumLaunch()
         const context = await PlaywrightCore.newBrowserContext(browser)
-        const page =  await PlaywrightCore.newPage(context)
+        const page = await PlaywrightCore.newPage(context)
         return page;
     }
 }

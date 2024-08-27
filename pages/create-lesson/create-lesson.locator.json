@@ -1,0 +1,64 @@
+{
+    "addNewItem": "//div[contains(text(),'Add new item')]",
+    "itemContainer": "//body/div[@id='root']/div/div/div/div/div/div[2]/div[1]",
+    "addItemLesson": "//div[contains(text(),'Lesson')]",
+    "createLessonUI": {
+        "lessonNameTxtBox": "//input[@placeholder='Item name']",
+        "backButton": "//p[normalize-space()='Back']",
+        "title": "//div[normalize-space()='Create a lesson']",
+        "createBtn": "//a[normalize-space()='Create']"
+    },
+    "lessonPage": {
+        "lessonTitle": "h1",
+        "sideMenu": {
+            "backToTeamBtn": "//a[normalize-space()='Back to Teams']",
+            "viewStudentsBtn": "//a[normalize-space()='View Students']",
+            "studentGradesBtn": "//div[@data-panel-collapsible='true']//div//div//div//a[contains(text(),'Student Grades')]",
+            "PublishMultiple": "//a[normalize-space()='Publish Multiple']",
+            "deleteMultiple": "//a[normalize-space()='Delete Multiple']",
+            "SideMenuLessonName": "//div[@draggable='true']",
+            "AddNewItem": "//div[contains(text(),'Add new item')]",
+            "ShareItems": "//div[contains(text(),'Share Items')]",
+
+            "hideRightSideMenuBtn":"//span[2]//button[1]//*[name()='svg']",
+            "rightSIdeMenu":"//body/div[@id='root']/div/div/div/div/div/div[@data-panel-group-direction='horizontal']/div[5]/div[1]",
+            "stdntGradesBtn":"a[contains(text(),'Student Grades')]",
+            "InviteStudents":"//div[contains(text(),'Invite students')]",
+            "userListTitle":"//h2[normalize-space()='Users']",
+            "userEmail":"//div[contains(text(),'syedhassaanzfr@gmail.com')]",
+            "userType":"//div[normalize-space()='Owner']",
+            "bouncingMsg": "//*[@id='root']/div/div/div/div/div/div/div[5]/div/div[2]/div",
+            "bouncingMsgCloseBtn": "[aria-label='close']"
+        },
+        "mainPage": {
+            "addLessonPlan": "//a[normalize-space()='Add lesson plan']",
+            "presnetationMode": "//a[normalize-space()='Presentation Mode']",
+            "PublishToggle":"//input[@type='checkbox']",
+            "textEditor": ".lexical-editor"
+        },
+        "textEditor":{
+            "plusIcon": ".lucide-plus",
+            "menuIcon": ".lucide-grip-vertical",
+            "emptyEditorLine": ".is-empty",
+            "dropDownContainer": ".grid",
+            "optionDropdownContainer": ".flex",
+
+            "parent" : ".tippy-box",
+            "subParent": ".grid",
+            "child": "button",
+            "button":"button",
+
+            "heading1": "h1",
+            "heading2": "h2",
+            "heading3": "h3",
+            "bulletList": "ul",
+            "NumberedList": "ol",
+            "unOrdered": "ul",
+            "taskList": "[data-type='taskList']",
+
+            "dataType":"data-type",
+            "value": "taskList"
+        }
+
+    }
+}

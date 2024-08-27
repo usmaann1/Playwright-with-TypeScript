@@ -1,0 +1,17 @@
+{
+    "teamName": "LessonTeam",
+    "lessonName": "lesson for Beginners",
+    "textForEditor": "abcd1234",
+    "elements": {
+        "heading1": "Heading 1",
+        "heading2": "Heading 2",
+        "heading3": "Heading 3",
+        "bulletList": "Bullet List",
+        "NumberedList": "Numbered List",
+        "taskList": "Task List"
+
+    },
+    "options": {
+        "Delete": "Delete"
+    }
+}
