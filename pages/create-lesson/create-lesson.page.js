@@ -70,6 +70,11 @@ exports.CreateLesson = class CreateLesson {
         this.ReplaceEmbedTxtBox = this.page.locator(Locators.ReplaceEmbedTxtBox)
         this.SaveBtn = this.page.locator(Locators.SaveBtn)
         this.YoutubeVideoHeading = this.page.locator(Locators.YoutubeVideoHeading)
+        this.ChooseFileBox = this.page.locator(Locators.ChooseFileBox)
+        this.JuiceMindZipAfterUploaded = this.page.locator(Locators.JuiceMindZipAfterUploaded)
+        this.DeleteBtnAfterUpload = this.page.locator(Locators.DeleteBtnAfterUpload)
+        this.HTMLNode = this.page.locator(Locators.HTMLNode)
+        this.HTMLTextBox = this.page.locator(Locators.HTMLTextBox)
     }
     const
     async clickOnAddNewItem() {

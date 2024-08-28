@@ -2,6 +2,7 @@ const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helpe
 const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import CLtd from '../../test-assets/test-data-files/create-lesson/create-lesson-testData.json'
 import CTtd from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
+import CreateTeamsTestData from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
 require('dotenv').config()
 
 test.describe('TestSuite: Create Lesson Insert', () => {
@@ -40,7 +41,6 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
         await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('TC - Create Lesson Insert - Embed Replace URL', async ({ createLesson }) => {
@@ -64,6 +64,30 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await PlaywrightCore.click(createLesson.SaveBtn)
         await PlaywrightCore.click(createLesson.SetupBtn)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.WayOfTearsVideoHeadingValue)
+    });
+
+    test('TC - Create Lesson Insert - Insert File', async ({ createLesson }) => {
+        await createLesson.selectElementFromDropdown(CLtd.elements.insertFiles)
+        await PlaywrightCore.fileUpload(createLesson.ChooseFileBox, CreateTeamsTestData.ReplitTeamsZipPath)
+        await PlaywrightCore.waitFor(createLesson.JuiceMindZipAfterUploaded)
+        await expect(createLesson.JuiceMindZipAfterUploaded).toHaveText(CLtd.JuiceMindZipAfterUploadedValue)
+        await expect(createLesson.DeleteBtnAfterUpload).toHaveText(CLtd.DeleteBtnAfterUploadValue)
+        await PlaywrightCore.click(createLesson.DeleteBtnAfterUpload)
+        await expect(createLesson.DeleteBtnAfterUpload).not.toBeVisible()
+        await expect(createLesson.JuiceMindZipAfterUploaded).not.toBeVisible()
+    });
+
+    test('TC - Create Lesson Insert - HTML', async ({ createLesson }) => {
+        await createLesson.selectElementFromDropdown(CLtd.elements.html)
+        await expect(createLesson.HTMLNode).toBeVisible()
+        await PlaywrightCore.click(createLesson.HTMLNode)
+        await PlaywrightCore.fill(createLesson.HTMLTextBox, CLtd.HTMLText)
+        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
+        await PlaywrightCore.click(createLesson.SaveBtn)
+        await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue)
+    });
+
+    test.afterEach(async ({ createLesson }) => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 

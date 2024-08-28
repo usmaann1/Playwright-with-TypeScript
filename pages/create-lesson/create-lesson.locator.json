@@ -70,5 +70,10 @@
     "ReplaceEmbedTxtBox":"//input[@placeholder='Paste in https://...']",
     "SaveBtn":"//button[normalize-space()='Save']",
     "YoutubeVideoHeading":"//a[@class='ytp-title-link yt-uix-sessionlink']",
-    "IFrameLocatorYoutube":"//iframe[@title='embed']"
+    "IFrameLocatorYoutube":"//iframe[@title='embed']",
+    "ChooseFileBox":"input[type='file']",
+    "JuiceMindZipAfterUploaded":"//a[normalize-space()='juicemind-temp-team.zip']",
+    "DeleteBtnAfterUpload":"//button[normalize-space()='Delete']",
+    "HTMLNode":"div[class='html-node'] div",
+    "HTMLTextBox":"//textarea[normalize-space()='[object Object]']"
 }
