@@ -75,5 +75,15 @@
     "JuiceMindZipAfterUploaded":"//a[normalize-space()='juicemind-temp-team.zip']",
     "DeleteBtnAfterUpload":"//button[normalize-space()='Delete']",
     "HTMLNode":"div[class='html-node'] div",
-    "HTMLTextBox":"//textarea[normalize-space()='[object Object]']"
+    "HTMLTextBox":"//textarea[normalize-space()='[object Object]']",
+    "MultipleChoiceQuestionHeadingBox":"//body/div[@id='root']/div/div/div/div/div/div[@data-panel-group-direction='horizontal']/div/div/div/div[@data-panel-group-direction='horizontal']/div/div/div/div/div/div[@aria-expanded='false']/div[@contenteditable='true']/div[@contenteditable='false']/div/div/div/div/div/div[1]",
+    "MultipleChoiceFormBox1":"//form//div[1]//div[1]//div[1]//div[1]",
+    "MultipleChoiceFormBox2":"//body//div[@id='root']//div[@contenteditable='false']//div//div//div[2]//div[1]//div[1]//div[1]",
+    "MultipleChoiceFormBox3":"//body//div[@id='root']//div[@data-panel-group-direction='horizontal']//div[@data-panel-group-direction='horizontal']//div//div//div//div[3]//div[1]//div[1]//div[1]",
+    "MultipleChoiceFormBox4DeleteBtn":"//div[4]//button[1]",
+    "MultipleChoiceAddChoiceBtn":"//button[normalize-space()='Add Choice']",
+    "MultipleChoiceFormBox4":"//body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[4]/div[1]/div[1]/div[1]",
+    "MultipleChoicePointsInput":"//input[@placeholder='Total']",
+    "PointsTxt":"//span[normalize-space()='points']",
+    "PublishToggleBtn":"//input[@type='checkbox']"
 }

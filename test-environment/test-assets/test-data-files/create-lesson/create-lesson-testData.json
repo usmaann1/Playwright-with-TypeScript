@@ -11,7 +11,8 @@
         "taskList": "Task List",
         "embed":"Embed",
         "insertFiles":"Insert Files",
-        "html":"HTML"
+        "html":"HTML",
+        "multipleChoice":"Multiple Choice"
     },
     "options": {
         "Delete": "Delete"
