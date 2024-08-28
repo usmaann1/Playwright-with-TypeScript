@@ -8,3 +8,4 @@ node_modules/
 .env
 loginState.json
 package-lock.json
+eng.traineddata

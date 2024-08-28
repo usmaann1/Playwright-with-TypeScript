@@ -46,5 +46,16 @@
     "EditorPlayButton": "svg[data-testid='PlayArrowIcon']",
     "EditorStopBtn": "svg[data-testid='StopIcon']",
     "FullScreenBtn": "svg[data-testid='FullscreenIcon']",
-    "CloseFullScreenBtn": "svg[data-testid='CloseFullscreenIcon']"
+    "CloseFullScreenBtn": "svg[data-testid='CloseFullscreenIcon']",
+    "Terminal": ".terminal.xterm.xterm-dom-renderer-owner-1",
+    "Canvas": "canvas",
+    "HtmlWebView": "//iframe[@title='Web Preview']",
+    "PlayArrowIcon": "PlayArrowIcon",
+    "ProjectType": "Project type",
+    "TestType": "Test Type",
+    "CreateCourse": "text='Create a course item'",
+    "IndexJs": "index.js",
+    "MainPy": "main.py",
+    "Slider": "slider",
+    "History": "History"
 }
