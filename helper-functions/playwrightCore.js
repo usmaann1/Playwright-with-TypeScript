@@ -1,6 +1,7 @@
 const { chromium, expect } = require("@playwright/test");
 
 exports.PlaywrightCore = class PlaywrightCore {
+
   static async allTextContents(locator) {
     try {
       return await locator.allTextContents();
@@ -548,4 +549,5 @@ exports.PlaywrightCore = class PlaywrightCore {
       console.error(`Error occurred`, error);
     }
   }
+  
 };

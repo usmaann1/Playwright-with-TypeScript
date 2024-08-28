@@ -44,10 +44,8 @@ exports.CreateLesson = class CreateLesson {
         this.userListTitle = this.page.locator(Locators.lessonPage.sideMenu.userListTitle)
         this.userEmail = this.page.locator(Locators.lessonPage.sideMenu.userEmail)
         this.userType = this.page.locator(Locators.lessonPage.sideMenu.userType)
-
         this.dropDownContainer = this.page.locator(Locators.lessonPage.textEditor.dropDownContainer)
         this.optionDropdownContainer = this.page.locator(Locators.lessonPage.textEditor.optionDropdownContainer)
-
         this.subParent = this.page.locator(Locators.lessonPage.textEditor.subParent)
         this.child = this.page.locator(Locators.lessonPage.textEditor.child)
         this.buttonTag = this.page.locator(Locators.lessonPage.textEditor.button)
@@ -60,6 +58,23 @@ exports.CreateLesson = class CreateLesson {
         this.taskList = this.page.locator(Locators.lessonPage.textEditor.taskList)
         this.dataType = this.page.locator(Locators.lessonPage.textEditor.dataType)
         this.value = this.page.locator(Locators.lessonPage.textEditor.value)
+        this.EmbedEnterURL = this.page.locator(Locators.EmbedEnterURL) 
+        this.EmbedInsertURLHeading = this.page.locator(Locators.EmbedInsertURLHeading) 
+        this.EmbedSubmitBtn = this.page.locator(Locators.EmbedSubmitBtn) 
+        this.YoutubePlayBtn = this.page.locator(Locators.YoutubePlayBtn) 
+        this.WatchOnYoutubeBtn = this.page.locator(Locators.WatchOnYoutubeBtn) 
+        this.SetupBtn = this.page.locator(Locators.SetupBtn)
+        this.OptionsBtn = this.page.locator(Locators.OptionsBtn)
+        this.CurrentEmbedURLHeading = this.page.locator(Locators.CurrentEmbedURLHeading)
+        this.ReplaceHeading = this.page.locator(Locators.ReplaceHeading)
+        this.ReplaceEmbedTxtBox = this.page.locator(Locators.ReplaceEmbedTxtBox)
+        this.SaveBtn = this.page.locator(Locators.SaveBtn)
+        this.YoutubeVideoHeading = this.page.locator(Locators.YoutubeVideoHeading)
+        this.ChooseFileBox = this.page.locator(Locators.ChooseFileBox)
+        this.JuiceMindZipAfterUploaded = this.page.locator(Locators.JuiceMindZipAfterUploaded)
+        this.DeleteBtnAfterUpload = this.page.locator(Locators.DeleteBtnAfterUpload)
+        this.HTMLNode = this.page.locator(Locators.HTMLNode)
+        this.HTMLTextBox = this.page.locator(Locators.HTMLTextBox)
     }
     const
     async clickOnAddNewItem() {
@@ -158,4 +173,8 @@ exports.CreateLesson = class CreateLesson {
         await expect(child).toHaveAttribute(dataType, typeValue)
     }
 
+    async valiadteYoutubeVideoHeading(name){
+        const iframeElement = this.page.frameLocator(Locators.IFrameLocatorYoutube);         
+        await expect(iframeElement.locator(Locators.YoutubeVideoHeading)).toHaveText(name)
+    }
 }

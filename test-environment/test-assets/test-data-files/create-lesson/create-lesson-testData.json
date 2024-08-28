@@ -8,7 +8,10 @@
         "heading3": "Heading 3",
         "bulletList": "Bullet List",
         "NumberedList": "Numbered List",
-        "taskList": "Task List"
+        "taskList": "Task List",
+        "embed":"Embed",
+        "insertFiles":"Insert Files",
+        "html":"HTML"
     },
     "options": {
         "Delete": "Delete"
@@ -16,5 +19,20 @@
     "attributes": {
         "dataType": "data-type",
         "value": "taskList"
-    }
+    },
+    "EmbedInsertURLHeadingValue":"Insert URL",
+    "EmbedSubmitBtnValue":"Submit",
+    "EmbedLink":"https://www.youtube.com/watch?v=1_mC_d2Ne_g",
+    "EmbedLinkReplace":"https://www.youtube.com/watch?v=aW2gng4Hu70",
+    "SetupBtnValue":"Setup",
+    "OptionsBtnValue":"Options",
+    "CurrentEmbedURLHeadingValue":"Current Embed URL",
+    "ReplaceHeadingValue":"Replace",
+    "SaveBtnValue":"Save",
+    "WayOfTearsVideoHeadingValue":"\"The Way of Tears\" Relaxing Sad Arabic Nasheed | Voice Cover by Jawad Ahmad",
+    "RelaxingRecitationVideoHeadingValue":"Relaxing Recitation of Surah Taha for Stress Relief and Soul Healing Shikh Ismail Annuri",
+    "JuiceMindZipAfterUploadedValue":"juicemind-temp-team.zip",
+    "DeleteBtnAfterUploadValue":"Delete",
+    "HTMLText":"<h1>This is heading 1</h1>",
+    "HTMLNodeValue":"This is heading 1"
 }
