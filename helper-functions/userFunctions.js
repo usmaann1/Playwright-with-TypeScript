@@ -1,6 +1,7 @@
 const { PlaywrightCore } = require("./playwrightCore");
 const fs = require("fs");
 const Tesseract = require("tesseract.js");
+const getColors = require("get-image-colors");
 
 exports.UserFunctions = class UserFunctions {
   /**
@@ -37,18 +38,19 @@ exports.UserFunctions = class UserFunctions {
   static generateUUIDV4() {
     return require("uuid").v4();
   }
-   // This function is responsible for creating a generic alpha Numeric string of desired size
-   static generateRandomString(length) {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
+  // This function is responsible for creating a generic alpha Numeric string of desired size
+  static generateRandomString(length) {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
     const charactersLength = characters.length;
 
     for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
 
     return result;
-}
+  }
   static generateRandomEmail(email) {
     const uuid = this.generateUUIDV4();
     const emailParts = email.split("@");
@@ -218,7 +220,7 @@ exports.UserFunctions = class UserFunctions {
     } = await Tesseract.recognize(`${path}canvas.png`, `eng`);
 
     let isValid = false;
-    
+
     if (num1 && num2) {
       const num1Valid = await text.includes(num1);
       const num2Valid = await text.includes(num2);
@@ -228,6 +230,19 @@ exports.UserFunctions = class UserFunctions {
       isValid = await num1Valid;
     }
 
-    return  await isValid;
+    return await isValid;
+  }
+
+  static async getAllColorsFromCanvas(page, path) {
+    const canvas = await page.locator("canvas");
+    const dataUrl = await canvas.evaluate((canvas) => {
+      return canvas.toDataURL();
+    });
+    const base64Data = await dataUrl.replace(/^data:image\/png;base64,/, "");
+    await fs.writeFileSync(`${path}canvas.png`, base64Data, "base64");
+    const colors = await getColors(`${path}canvas.png`);
+    const hexColors = colors.map((color) => color.hex());
+    console.log("Colors detected in the canvas:", hexColors);
+    return hexColors;
   }
 };

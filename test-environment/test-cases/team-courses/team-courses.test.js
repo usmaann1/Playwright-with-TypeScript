@@ -180,7 +180,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadFile(TeamCoursesData.uploadFilePath);
   });
 
-  test.only("TC: Flow Test HTML", async ({ teamCoursesPage, browser }) => {
+  test("TC: Flow Test HTML", async ({ teamCoursesPage, browser }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
@@ -229,6 +229,21 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption4
     );
     await teamCoursesPage.pythonWithTkinter();
+  });
+
+  test("TC: Flow Test Java with Swing", async ({ teamCoursesPage }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.ProjectTypeOption13
+    );
+    await teamCoursesPage.javaWithSwing();
   });
 
   test("TC: Flow Test Python with Matplotlib", async ({ teamCoursesPage }) => {

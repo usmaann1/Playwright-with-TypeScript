@@ -21,6 +21,7 @@
   "projectTypeOption10": "C#",
   "projectTypeOption11": "C++",
   "ProjectTypeOption12": "HTML/CSS/JS",
+  "ProjectTypeOption13": "Java with Swing",
   "pythonTestInput": "def square_numbers(numbers):\n    return [num ** 2 for num in numbers]\n\nnumbers = [1, 2, 3, 4, 5]\nsquares = square_numbers(numbers)\nprint('Original numbers:', numbers)\nprint('Squared numbers:', squares)",
   "pythonTestOutput": "Original numbers: [1, 2, 3, 4, 5]\nSquared numbers: [1, 4, 9, 16, 25]",
   "javaTestInput":"public class Main {\n    public static void main(String[] args) {\n        int[] numbers = {1, 2, 3, 4, 5};\n        int[] squares = new int[numbers.length];\n        \n        for (int i = 0; i < numbers.length; i++) {\n            squares[i] = numbers[i] * numbers[i];\n        }\n        \n        System.out.println(\"Original numbers: \");\n        for (int num : numbers) {\n            System.out.print(num + \" \");\n        }\n        \n        System.out.println(\"\\nSquared numbers: \");\n        for (int square : squares) {\n            System.out.print(square + \" \");\n        }\n    }\n}",

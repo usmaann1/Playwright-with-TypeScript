@@ -34,6 +34,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.History = Locators.History;
     this.BlackMatch = /black/g;
     this.BtnClickedMatch = /Greet/g;
+    this.JavaSwing = /Color.BLACK/g;
+    this.JavaSwingReplace = "Color.RED";
     this.ProjectType = Locators.ProjectType;
     this.TestType = Locators.TestType;
     this.CreateCourse = Locators.CreateCourse;
@@ -236,9 +238,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.SubmitBtn);
   }
 
-  async commonClipBoardSteps() {
+  async commonClipBoardSteps(isTrue = true) {
     await PlaywrightCore.waitTimeout(this.page, 10000);
-    await this.page.getByText(this.MainPy).nth(1).click();
+    if (isTrue) await this.page.getByText(this.MainPy).nth(1).click();
     await PlaywrightCore.waitTimeout(this.page, 10000);
     await expect(this.CloudIcon.nth(1)).toBeVisible();
     await PlaywrightCore.waitTimeout(this.page, 20000);
@@ -376,6 +378,28 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       10,
       140
     );
+    await expect(isValid).toBe(true);
+  }
+
+  async javaWithSwing() {
+    const { clipboardContent, codeEditorContent } =
+      await this.commonClipBoardSteps(false);
+    const updatedCode = clipboardContent.replace(
+      this.JavaSwing,
+      this.JavaSwingReplace
+    );
+    await codeEditorContent.press(this.BackSpace);
+    await codeEditorContent.fill(updatedCode);
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await PlaywrightCore.click(this.EditorPlayButton);
+    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await PlaywrightCore.click(this.FullScreenBtn.nth(1));
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    const Colors = await UserFunctions.getAllColorsFromCanvas(
+      this.page,
+      TeamCoursesData.AssetsPaths
+    );
+    const isValid = await Colors.includes("#fc0404");
     await expect(isValid).toBe(true);
   }
 
