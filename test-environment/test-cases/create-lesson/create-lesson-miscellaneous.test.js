@@ -28,7 +28,7 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
     });
 
-    test('TC - Create Lesson Insert - Embed', async ({ createLesson }) => {
+    test('TC - Create Lesson Insert - Multiple Choice', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         
         await expect(createLesson.EmbedEnterURL).toBeVisible()
