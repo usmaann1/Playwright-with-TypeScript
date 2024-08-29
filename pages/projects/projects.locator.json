@@ -1,0 +1,29 @@
+{
+    "DelimetersFrq": "(//div[@class='_shell_e81lq_12'])[1]",
+    "ApCalendarFrq": "(//div[@class='_shell_e81lq_12'])[2]",
+    "WordMatchFrq": "(//div[@class='_shell_e81lq_12'])[3]",
+    "CombinedTableFrq": "(//div[@class='_shell_e81lq_12'])[4]",
+    "ClubMembersFrq": "(//div[@class='_shell_e81lq_12'])[5]",
+    "ArrayResizerFrq": "(//div[@class='_shell_e81lq_12'])[6]",
+    "TextBookFrq": "(//div[@class='_shell_e81lq_12'])[7]",
+    "ReviewAnalysisFrq": "(//div[@class='_shell_e81lq_12'])[8]",
+    "AppointmentBookFrq": "(//div[@class='_shell_e81lq_12'])[9]",
+    "SignFrq": "(//div[@class='_shell_e81lq_12'])[10]",
+    "WeatherDataFrq": "(//div[@class='_shell_e81lq_12'])[11]",
+    "BoxOfCandyFrq": "(//div[@class='_shell_e81lq_12'])[12]",
+
+    "DelimeterParagraph":"(//p[@class='is-empty'])[2]",
+    "GotItBtn":"//a[normalize-space()='Got it.']",
+    "StartCourseBtn":"//a[normalize-space()='Start Course']",
+    "ConfirmBtn":"//a[normalize-space()='Confirm']",
+    "TeamDropDown":"//div[@id='demo-simple-select']",
+    "TeamOption":"(//li[@role='option'])[2]",
+
+    "ProjectsButton": "//div[normalize-space()='Projects']",
+    "PictureLabButton":"//div[normalize-space()='Picture Lab']"
+
+
+    
+
+    
+}
