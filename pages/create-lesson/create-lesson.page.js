@@ -75,8 +75,24 @@ exports.CreateLesson = class CreateLesson {
         this.DeleteBtnAfterUpload = this.page.locator(Locators.DeleteBtnAfterUpload)
         this.HTMLNode = this.page.locator(Locators.HTMLNode)
         this.HTMLTextBox = this.page.locator(Locators.HTMLTextBox)
+        this.MultipleChoiceQuestionHeadingBox = this.page.locator(Locators.MultipleChoiceQuestionHeadingBox)
+        this.MultipleChoiceFormBox1 = this.page.locator(Locators.MultipleChoiceFormBox1)
+        this.MultipleChoiceFormBox2 = this.page.locator(Locators.MultipleChoiceFormBox2)
+        this.MultipleChoiceFormBox3 = this.page.locator(Locators.MultipleChoiceFormBox3)
+        this.MultipleChoiceFormBox4DeleteBtn = this.page.locator(Locators.MultipleChoiceFormBox4DeleteBtn)
+        this.MultipleChoiceAddChoiceBtn = this.page.locator(Locators.MultipleChoiceAddChoiceBtn)
+        this.MultipleChoiceFormBox4 = this.page.locator(Locators.MultipleChoiceFormBox4)
+        this.MultipleChoicePointsInput = this.page.locator(Locators.MultipleChoicePointsInput)
+        this.PointsTxt = this.page.locator(Locators.PointsTxt)
+        this.PublishToggleBtn = this.page.locator(Locators.PublishToggleBtn)
+        this.MultipleChoiceOptionsRule1 = this.page.locator(Locators.MultipleChoiceOptionsRule1)
+        this.MultipleChoiceOptionsRule2 = this.page.locator(Locators.MultipleChoiceOptionsRule2)
+        this.MultipleChoiceOptionsRule3 = this.page.locator(Locators.MultipleChoiceOptionsRule3)
+        this.MultipleChoiceOptionsRule4 = this.page.locator(Locators.MultipleChoiceOptionsRule4)
+        this.MultipleChoiceOptionsRule5 = this.page.locator(Locators.MultipleChoiceOptionsRule5)
+        this.MultipleChoiceSelectBox2 = this.page.locator(Locators.MultipleChoiceSelectBox2)
     }
-    const
+   
     async clickOnAddNewItem() {
         const item = this.addNewItem
         await this.page.waitForTimeout(3000);

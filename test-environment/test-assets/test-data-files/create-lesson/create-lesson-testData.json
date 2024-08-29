@@ -35,5 +35,15 @@
     "JuiceMindZipAfterUploadedValue":"juicemind-temp-team.zip",
     "DeleteBtnAfterUploadValue":"Delete",
     "HTMLText":"<h1>This is heading 1</h1>",
-    "HTMLNodeValue":"This is heading 1"
+    "HTMLNodeValue":"This is heading 1",
+    "MultipleChoiceOptionsRule1Value":"Each learner will see the options provided in random order.",
+    "MultipleChoiceOptionsRule2Value":"Allow learners to check their answer.",
+    "MultipleChoiceOptionsRule3Value":"Learners can gain a percentage of the maximum points by getting portions of the block correct.",
+    "MultipleChoiceOptionsRule4Value":"Multiple Select. Learners can choose more than one option.",
+    "MultipleChoiceOptionsRule5Value":"For polls/surveys. No correct answer. Any response will be marked correct.",
+    "Heading1plus1":"1 + 1 =",
+    "One":"1",
+    "Two":"2",
+    "Three":"3",
+    "Four":"4"
 }

@@ -82,8 +82,14 @@
     "MultipleChoiceFormBox3":"//body//div[@id='root']//div[@data-panel-group-direction='horizontal']//div[@data-panel-group-direction='horizontal']//div//div//div//div[3]//div[1]//div[1]//div[1]",
     "MultipleChoiceFormBox4DeleteBtn":"//div[4]//button[1]",
     "MultipleChoiceAddChoiceBtn":"//button[normalize-space()='Add Choice']",
-    "MultipleChoiceFormBox4":"//body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[4]/div[1]/div[1]/div[1]",
+    "MultipleChoiceFormBox4":"//div[4]//div[1]//div[1]//div[1]",
     "MultipleChoicePointsInput":"//input[@placeholder='Total']",
     "PointsTxt":"//span[normalize-space()='points']",
-    "PublishToggleBtn":"//input[@type='checkbox']"
+    "PublishToggleBtn":"//input[@type='checkbox']",
+    "MultipleChoiceOptionsRule1":"//label[contains(text(),'Each learner will see the options provided in rand')]",
+    "MultipleChoiceOptionsRule2":"//label[normalize-space()='Allow learners to check their answer.']",
+    "MultipleChoiceOptionsRule3":"//label[contains(text(),'Learners can gain a percentage of the maximum poin')]",
+    "MultipleChoiceOptionsRule4":"//label[contains(text(),'Multiple Select. Learners can choose more than one')]",
+    "MultipleChoiceOptionsRule5":"//label[contains(text(),'For polls/surveys. No correct answer. Any response')]",
+    "MultipleChoiceSelectBox2":"//form//div[2]//input[1]"
 }
