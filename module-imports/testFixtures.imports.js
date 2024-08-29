@@ -5,7 +5,8 @@ const { SignUpPage } = require('../pages/sign-up/sign-up.page')
 const { LessonBuilder } = require('../pages/Lesson-builder/lesson-builder.page')
 const{frq} = require('../pages/frq/frq.page')
 const{projects} = require('../pages/projects/projects.page')
-const{quizzes} = require('../pages/quizzes/quizzes.page')
+const{grouping} = require('../pages/grouping/grouping.page')
+
 
 
 exports.test = base.test.extend({
@@ -33,9 +34,9 @@ exports.test = base.test.extend({
     projects: async ({ page }, use) => {
         await use(new projects(page));
     },
-
-    quizzes: async ({ page }, use) => {
-        await use(new quizzes(page));
+    
+    grouping: async ({ page }, use) => {
+        await use(new grouping(page));
     },
     
 });
