@@ -14,7 +14,12 @@
     "AssignmentHeadingDiv":"//div[@class='tiptap ProseMirror min-h-full']/h1",
     "AssignmentLockedDiv":"//div[normalize-space()='Page Locked!']",
     "AssignmentLockedText":"Page Locked!",
-    "AssignmentHeadingText":"Sample Lesson Plan"
+    "AssignmentHeadingText":"Sample Lesson Plan",
+    "CreateNewProjectDiv":"//div[@class='_header_1frfr_1']",
+    "CreateNewProjectText":"Create new project",
+    "GroupedStudentEmail": "(//div[normalize-space()='student01@gmail.com'])[4]",
+    "StudentEmailText":"student01@gmail.com"
+
 
     
 

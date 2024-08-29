@@ -39,11 +39,12 @@ exports.grouping = class grouping {
         this.SubmitStudentSignup_btn = this.page.locator(Locators.SubmitStudentSignup_btn);
         this.clickLogin_btn = this.page.locator(Locators.login_btn);
 
-        this.InitiliazeJuiceMind_IDE = this.page.locator(Locators.InitializeJuiceMindIDE);
+        this.InitiliazeJuiceMind_IDE = this.page.locator(Locators.Initialize_JuiceMind_IDE);
         this.ProjectName_TextBox = this.page.locator(Locators.ProjectNameTextBox);
         this.ProjectType_DropDown = this.page.locator(Locators.ProjectTypeDropDown);
         this.ProjectType_Java = this.page.locator(Locators.ProjectTypeJava);
         this.GroupProject_Toggle = this.page.locator(Locators.GroupProjectToggle);
+        this.AddGroupButton=this.page.locator(Locators.AddGroupBtn)
         
     }
 
@@ -153,8 +154,8 @@ exports.grouping = class grouping {
         await expect(Locators.studentAssignmentHeading).toHaveText('Sample Lesson Plan');
     }
 
-    async ClickInitiliazeJuiceMindIDE() {
-        await PlaywrightCore.click(this.InitiliazeJuiceMind_IDE);
+    async ClickInitiliazeJuiceMindIDE(page) {
+        await PlaywrightCore.click(this.InitiliazeJuiceMind_IDE)
     }
     
     async FillProjectNameTextBox() {
@@ -167,6 +168,10 @@ exports.grouping = class grouping {
     
     async ClickProjectTypeJava() {
         await PlaywrightCore.click(this.ProjectType_Java);
+    }
+
+    async ClickAddGroup() {
+        await PlaywrightCore.click(this.AddGroupButton);
     }
     
     async ClickGroupProjectToggle() {

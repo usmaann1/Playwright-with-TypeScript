@@ -33,7 +33,7 @@
     "ProjectNameTextBox": "//input[@placeholder='Project name']",
     "ProjectTypeDropDown":"//div[@id='demo-simple-select']",
     "ProjectTypeJava": "//li[@data-value='java']",
-    "GroupProjectToggle":"(//span[@class='MuiSwitch-thumb css-19gndve'])[2]"
-
+    "GroupProjectToggle":"(//span[@class='MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-1mo6cvn'])[2]",
+    "AddGroupBtn":"//a[normalize-space()='Add Group']" 
     
 }
