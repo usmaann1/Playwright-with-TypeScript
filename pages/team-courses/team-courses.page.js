@@ -207,7 +207,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.CreateStarterCode);
     await PlaywrightCore.waitTimeout(this.page, 10000);
     if (!isIgnore) {
-      await this.page.getByText(this.IndexJs).nth(1).click();
+      await this.page.getByText(Locators.IndexJs).nth(1).click();
       await PlaywrightCore.waitTimeout(this.page, 10000);
     }
     const textBox = await this.EditorTextBox.nth(1);
@@ -228,8 +228,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       const element = await this.page.$(Locators.Terminal);
       await PlaywrightCore.waitTimeout(this.page, 20000);
       const innerText = await element.innerText();
-      console.log(innerText);
-      console.log(TeamCoursesData.AssertionText);
       const isValid = await innerText.includes(TeamCoursesData.AssertionText);
       expect(isValid).toBe(true);
     }
@@ -270,8 +268,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     if (!isHtml) {
       const element = await this.page.$(Locators.Terminal);
       await PlaywrightCore.waitTimeout(this.page, 20000);
-      const innerText = await element.innerText();
-      console.log(innerText);
       const isValid = await innerText.includes(TeamCoursesData.AssertionText);
       expect(isValid).toBe(true);
       await this.createTest(
@@ -441,7 +437,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.ClickByText(this.page, name);
     await PlaywrightCore.waitTimeout(this.page, 10000);
     if (!duration) {
-      await this.page.getByText(this.IndexJs).nth(1).click();
+      await this.page.getByText(Locators.IndexJs).nth(1).click();
     }
     await PlaywrightCore.waitTimeout(this.page, 10000);
     await PlaywrightCore.ClickByText(this.page, this.History);
