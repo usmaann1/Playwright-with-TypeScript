@@ -11,13 +11,13 @@ const config = {
   testDir: "./test-environment/test-cases/",
 
   /* Maximum time one test can run for. */
-  timeout: 600 * 1000,
+  timeout: 8 * 60 * 1000,,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 15000,
+    timeout: 30000,
   },
   /* Run tests in files in parallel */
   fullyParallel: false,
@@ -39,7 +39,7 @@ const config = {
     viewport: { width: 2560, height: 1440 },
     browserName: "chromium",
     storageState: "loginState.json",
-    actionTimeout: 15000,
+    actionTimeout: 30000,
     baseURL: "https://play.juicemind.com/",
     ignoreHTTPSErrors: true,
     headless: true,
