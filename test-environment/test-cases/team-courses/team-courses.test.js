@@ -15,6 +15,7 @@ test.describe("TestSuite: Team/Courses", () => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
+    await teamCoursesPage.zoomOut();
     await teamCoursesPage.signInUser(email, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
