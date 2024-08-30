@@ -12,13 +12,10 @@ jobs:
       with:
         node-version: lts/*
     - name: Install dependencies
-      working-directory: Automation
       run: npm ci
     - name: Install Playwright Browsers
-      working-directory: Automation
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      working-directory: Automation
       run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=html
     - uses: actions/upload-artifact@v4
       if: always()
