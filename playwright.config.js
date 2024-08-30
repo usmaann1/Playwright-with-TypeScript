@@ -11,7 +11,7 @@ const config = {
   testDir: "./test-environment/test-cases/",
 
   /* Maximum time one test can run for. */
-  timeout: 8 * 60 * 1000,,
+  timeout: 8 * 60 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -30,7 +30,7 @@ const config = {
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   outputDir: `${outputDirectory}/trace-output/`,
   reporter: [
-    ["html", { outputFolder: `${outputDirectory}/playwright-report/` }],
+    ["html", { outputFolder: `${outputDirectory}` }],
   ],
   /* Login session storage */
   globalSetup: require.resolve("./test-environment/test-assets/global-setup"),
