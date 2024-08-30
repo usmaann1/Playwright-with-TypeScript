@@ -6,6 +6,7 @@ const { LessonBuilder } = require('../pages/Lesson-builder/lesson-builder.page')
 const{frq} = require('../pages/frq/frq.page')
 const{projects} = require('../pages/projects/projects.page')
 const{grouping} = require('../pages/grouping/grouping.page')
+const{csawsome} = require('../pages/csawesome-questions-validation/csawesome-questions-validation.page')
 
 
 
@@ -37,6 +38,9 @@ exports.test = base.test.extend({
     
     grouping: async ({ page }, use) => {
         await use(new grouping(page));
+    },
+    csawsome: async ({ page }, use) => {
+        await use(new csawsome(page));
     },
     
 });
