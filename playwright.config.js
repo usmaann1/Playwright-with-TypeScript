@@ -23,4 +23,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: playwright-report
-        path: ./test-environment/test-reports/playwright-report/
+        path: ./test-environment
