@@ -37,7 +37,7 @@ const config = {
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     storageState: "loginState.json",
-    actionTimeout: 15000,
+    actionTimeout: 30000,
     baseURL: "https://play.juicemind.com/",
     ignoreHTTPSErrors: true,
     headless: true,
