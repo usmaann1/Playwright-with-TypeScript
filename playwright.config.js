@@ -36,7 +36,7 @@ const config = {
   globalSetup: require.resolve("./test-environment/test-assets/global-setup"),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    viewport: null,
+    viewport: { width: 2560, height: 1440 },
     browserName: "chromium",
     storageState: "loginState.json",
     actionTimeout: 15000,
