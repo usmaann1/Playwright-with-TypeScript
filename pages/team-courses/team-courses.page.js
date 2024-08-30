@@ -125,7 +125,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async CreateTeam(teamName) {
     await this.zoomOut();
-    await PlaywrightCore.waitTimeout(5000);
+    await PlaywrightCore.waitTimeout(this.page,5000);
     await PlaywrightCore.click(this.CoursesBtn);
     await PlaywrightCore.click(this.CoursesBtn);
     await PlaywrightCore.click(this.CreateNewTeam);
