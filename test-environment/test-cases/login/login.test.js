@@ -11,7 +11,7 @@ test.describe('TestSuite: Login', () => {
         await loginPage.NavigateToLoginPage()
       });
 
-    test('TC: UI Validations', async ({loginPage}) => {
+    test.only('TC: UI Validations', async ({loginPage}) => {
         await expect(loginPage.Logo).toBeVisible()
         await expect(loginPage.LoginHeading).toHaveText(LoginCredentials.LoginHeadingValue)
         await expect(loginPage.EmailAddressTxtBox).toBeVisible()
