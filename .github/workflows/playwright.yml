@@ -5,7 +5,7 @@ on:
 
 jobs:
   test:
-    runs-on: windows-latest # Run on Windows
+    runs-on: ubuntu-latest # Run on Windows
     steps:
       - uses: actions/checkout@v4 # Use the latest version of the checkout action
 
