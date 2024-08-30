@@ -47,7 +47,7 @@ const config = {
     trace: "on",
     viewport: {width:1920, height:1080},
     launchOptions: {
-      slowMo: 500, //
+      slowMo: 0, //
       args: ["--start-maximized"],
     },
   },
