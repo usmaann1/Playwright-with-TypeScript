@@ -41,14 +41,14 @@ const config = {
     actionTimeout: 30000,
     baseURL: "https://play.juicemind.com/",
     ignoreHTTPSErrors: true,
-    headless: true,
+    headless: false,
     permissions: ["clipboard-read"],
     video: "on",
     trace: "on",
-    viewport: {width:1920, height:1080},
+    viewport: null,
     launchOptions: {
       slowMo: 500, //
-      args: ["--start-fullscreen"],
+      args: ["--start-maximized"],
     },
   },
 };

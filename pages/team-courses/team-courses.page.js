@@ -115,6 +115,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async signInUser(username, password) {
     await PlaywrightCore.goTo(this.page, this.LoginURL);
+    await this.zoomOut();
     username && (await PlaywrightCore.fill(this.EmailAddressTxtBox, username));
     password && (await PlaywrightCore.fill(this.PasswordTxtBox, password));
     await console.log(this.page.url());
@@ -469,10 +470,10 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   async breakPoint() {
     await this.page.pause();
   }
-  
+
   async zoomOut() {
     await this.page.evaluate(() => {
-    document.body.style.zoom = '50%'; // Adjust the percentage as needed
-  });
+      document.body.style.zoom = "50%";
+    });
   }
 };
