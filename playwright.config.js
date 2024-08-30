@@ -1,7 +1,7 @@
 // @ts-check
 const { devices } = require("@playwright/test");
 
-let outputDirectory = String("./test-environment/test-reports/");
+let outputDirectory = String("./test-environment/");
 
 /**
  * @see https://playwright.dev/docs/test-configuration
