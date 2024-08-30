@@ -117,6 +117,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.goTo(this.page, this.LoginURL);
     username && (await PlaywrightCore.fill(this.EmailAddressTxtBox, username));
     password && (await PlaywrightCore.fill(this.PasswordTxtBox, password));
+    await console.log(this.page.url());
     await PlaywrightCore.waitFor(this.SignInBtn);
     await PlaywrightCore.click(this.SignInBtn);
   }
