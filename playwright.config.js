@@ -36,7 +36,6 @@ const config = {
   globalSetup: require.resolve("./test-environment/test-assets/global-setup"),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    browserName: "chromium",
     storageState: "loginState.json",
     actionTimeout: 15000,
     baseURL: "https://play.juicemind.com/",
@@ -46,11 +45,41 @@ const config = {
     video: "on",
     trace: "on",
     viewport: { width: 1920, height: 1080 },
+    trace: {
+      mode: 'retain-on-failure',
+      attachments: true,
+      screenshots: true,
+      snapshots: true,
+      sources: true,
+    },
     launchOptions: {
       slowMo: 500, //
       args: ["--start-maximized"],
     },
   },
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    // Uncomment to test against mobile viewports or branded browsers
+    // {
+    //   name: 'Mobile Chrome',
+    //   use: { ...devices['Pixel 5'] },
+    // },
+    // {
+    //   name: 'Mobile Safari',
+    //   use: { ...devices['iPhone 12'] },
+    // },
+    // {
+    //   name: 'Microsoft Edge',
+    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    // },
+    // {
+    //   name: 'Google Chrome',
+    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    // },
+  ],
 };
 
 module.exports = config;
