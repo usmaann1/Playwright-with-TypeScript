@@ -44,7 +44,7 @@ const config = {
     permissions: ["clipboard-read"],
     video: "on",
     trace: "on",
-    viewport: { width: 1920, height: 1080 },
+    viewport: { width: 3280, height: 1672 },
     trace: {
       mode: 'retain-on-failure',
       attachments: true,
