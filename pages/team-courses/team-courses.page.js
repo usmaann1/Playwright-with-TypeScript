@@ -469,4 +469,10 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   async breakPoint() {
     await this.page.pause();
   }
+  
+  async zoomOut() {
+    await this.page.evaluate(() => {
+    document.body.style.zoom = '50%'; // Adjust the percentage as needed
+  });
+  }
 };
