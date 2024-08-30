@@ -9,12 +9,13 @@ import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team
 require("dotenv").config();
 
 test.describe("TestSuite: Team/Courses", () => {
+  test("TC: Flow Test Python", async ({ teamCoursesPage, browser }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
-    await teamCoursesPage.zoomOut();
+    //await teamCoursesPage.zoomOut();
     await teamCoursesPage.signInUser(email, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
