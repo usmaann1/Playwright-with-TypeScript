@@ -38,7 +38,7 @@ const config = {
   use: {
     browserName: "chromium",
     storageState: "loginState.json",
-    actionTimeout: 15000,
+    actionTimeout: 30000,
     baseURL: "https://play.juicemind.com/",
     ignoreHTTPSErrors: true,
     headless: true,
@@ -47,7 +47,7 @@ const config = {
     trace: "on",
     viewport: {width:1920, height:1080},
     launchOptions: {
-      slowMo: 0, //
+      slowMo: 500, //
       args: ["--start-fullscreen"],
     },
   },
