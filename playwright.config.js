@@ -1,33 +1,26 @@
-// playwright.config.js
-module.exports = {
-  testDir: './test-environment/test-cases/',
-  timeout: 600 * 1000,
-  expect: {
-    timeout: 15000,
-  },
-  fullyParallel: false,
-  forbidOnly: !!process.env.CI,
-  retries: 1,
-  workers: process.env.CI ? 1 : 3,
-  outputDir: './test-environment/test-reports/trace-output/',
-  reporter: [
-    ['html', { outputFolder: './test-environment/test-reports/playwright-report/' }],
-  ],
-  globalSetup: require.resolve('./test-environment/test-assets/global-setup'),
-  use: {
-    viewport: null,
-    browserName: 'chromium',
-    storageState: 'loginState.json',
-    actionTimeout: 15000,
-    baseURL: 'https://play.juicemind.com/',
-    ignoreHTTPSErrors: true,
-    headless: true,
-    permissions: ['clipboard-read'],
-    video: 'on', // Enable video recording
-    trace: 'on',
-    launchOptions: {
-      slowMo: 500,
-      args: ["--start-maximized"],
-    },
-  },
-};
+
+name: Playwright Tests
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    timeout-minutes: 120
+    runs-on: ubuntu-latest
+   
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - name: Install dependencies
+      run: npm install
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+    - name: Run Playwright tests
+      run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=html
+    - uses: actions/upload-artifact@v4
+    - name: Upload Playwright report
+      uses: actions/upload-artifact@v4
+      with:
+        name: playwright-report
+        path: ./test-environment/test-reports/playwright-report/
