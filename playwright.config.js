@@ -48,7 +48,7 @@ const config = {
     viewport: {width:1920, height:1080},
     launchOptions: {
       slowMo: 0, //
-      args: ["--start-maximized"],
+      args: ["--start-fullscreen"],
     },
   },
 };
