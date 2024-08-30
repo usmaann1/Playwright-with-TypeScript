@@ -41,7 +41,7 @@ const config = {
     actionTimeout: 30000,
     baseURL: "https://play.juicemind.com/",
     ignoreHTTPSErrors: true,
-    headless: false,
+    headless: true,
     permissions: ["clipboard-read"],
     video: "on",
     trace: "on",
