@@ -36,12 +36,13 @@ const config = {
   globalSetup: require.resolve("./test-environment/test-assets/global-setup"),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    viewport: { width: 1920, height: 1080 },
     browserName: "chromium",
     storageState: "loginState.json",
     actionTimeout: 15000,
     baseURL: "https://play.juicemind.com/",
     ignoreHTTPSErrors: true,
-    headless: false,
+    headless: true,
     permissions: ["clipboard-read"],
     video: "on",
     trace: "on",
