@@ -45,5 +45,12 @@
     "One":"1",
     "Two":"2",
     "Three":"3",
-    "Four":"4"
+    "Four":"4",
+    "ViewingStudentModeTxtValue":"Viewing Student: PreviewExit Student View",
+    "PresentationModePopUpHeadingValue":"Presentation Mode",
+    "PresentationModePopUpDescriptionValue":"View the exact display from the student perspective. You can interact with the code and activities just as a student would.",
+    "GotItBtnValue":"Got it",
+    "ExitStudentModeBtnValue":"Exit Student View",
+    "CheckAnswerBtnValue":"Check Answer",
+    "IncorrectTxtBoxValue":"Incorrect"
 }

@@ -91,5 +91,22 @@
     "MultipleChoiceOptionsRule3":"//label[contains(text(),'Learners can gain a percentage of the maximum poin')]",
     "MultipleChoiceOptionsRule4":"//label[contains(text(),'Multiple Select. Learners can choose more than one')]",
     "MultipleChoiceOptionsRule5":"//label[contains(text(),'For polls/surveys. No correct answer. Any response')]",
-    "MultipleChoiceSelectBox2":"//form//div[2]//input[1]"
+    "MultipleChoiceSelectBox2":"//form//div[2]//input[1]",
+    "PresentationModePopUpHeading":"//div[normalize-space()='Presentation Mode']",
+    "PresentationModePopUpDescription":"//div[contains(text(),'View the exact display from the student perspectiv')]",
+    "GotItBtn":"//a[normalize-space()='Got it']",
+    "ViewingStudentModeTxt":"//body/div[@id='root']/div/div/div/div/div/div/div[3]/div[1]",
+    "ExitStudentModeBtn":"//a[normalize-space()='Exit Student View']",
+    "CheckAnswerBtn":"//span[normalize-space()='Check Answer']",
+    "OptionsCheckBox1":"//div[@contenteditable='false']//div//div[1]//input[1]",
+    "OptionsCheckBox3":"//body//div[@id='root']//div[@data-panel-group-direction='horizontal']//div//div//div//div[3]//input[1]",
+    "OptionsCheckBox4":"//div[4]//input[1]",
+    "OptionsCheckBox5":"//div[@data-panel-group-direction='horizontal']//div//div[5]//input[1]",
+    "IncorrectTxtBox":"//div[contains(text(),'Incorrect')]",
+    "OnePlus1TxtPresentationMode":"//p[normalize-space()='1 + 1 =']",
+    "OneTxtPresentationMode":"//p[normalize-space()='1']",
+    "TwoTxtPresentationMode":"//p[normalize-space()='2']",
+    "ThreeTxtPresentationMode":"//p[normalize-space()='3']",
+    "FourTxtPresentationMode":"//p[normalize-space()='4']",
+    "PresentationModeOptionWrong":"//body//div[@id='root']//div[@contenteditable='false']//div[@contenteditable='false']//div//div//div[1]//input[1]"
 }

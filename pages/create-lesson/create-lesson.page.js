@@ -91,6 +91,23 @@ exports.CreateLesson = class CreateLesson {
         this.MultipleChoiceOptionsRule4 = this.page.locator(Locators.MultipleChoiceOptionsRule4)
         this.MultipleChoiceOptionsRule5 = this.page.locator(Locators.MultipleChoiceOptionsRule5)
         this.MultipleChoiceSelectBox2 = this.page.locator(Locators.MultipleChoiceSelectBox2)
+        this.PresentationModePopUpHeading = this.page.locator(Locators.PresentationModePopUpHeading)
+        this.PresentationModePopUpDescription = this.page.locator(Locators.PresentationModePopUpDescription)
+        this.GotItBtn = this.page.locator(Locators.GotItBtn)
+        this.ViewingStudentModeTxt = this.page.locator(Locators.ViewingStudentModeTxt)
+        this.ExitStudentModeBtn = this.page.locator(Locators.ExitStudentModeBtn)
+        this.CheckAnswerBtn = this.page.locator(Locators.CheckAnswerBtn)
+        this.OptionsCheckBox1 = this.page.locator(Locators.OptionsCheckBox1)
+        this.OptionsCheckBox3 = this.page.locator(Locators.OptionsCheckBox3)
+        this.OptionsCheckBox4 = this.page.locator(Locators.OptionsCheckBox4)
+        this.OptionsCheckBox5 = this.page.locator(Locators.OptionsCheckBox5)
+        this.IncorrectTxtBox = this.page.locator(Locators.IncorrectTxtBox)
+        this.OnePlus1TxtPresentationMode = this.page.locator(Locators.OnePlus1TxtPresentationMode)
+        this.OneTxtPresentationMode = this.page.locator(Locators.OneTxtPresentationMode)
+        this.TwoTxtPresentationMode = this.page.locator(Locators.TwoTxtPresentationMode)
+        this.ThreeTxtPresentationMode = this.page.locator(Locators.ThreeTxtPresentationMode)
+        this.FourTxtPresentationMode = this.page.locator(Locators.FourTxtPresentationMode)
+        this.PresentationModeOptionWrong = this.page.locator(Locators.PresentationModeOptionWrong)
     }
    
     async clickOnAddNewItem() {
