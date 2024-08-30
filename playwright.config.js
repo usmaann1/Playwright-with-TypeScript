@@ -15,7 +15,7 @@ module.exports = {
   ],
   globalSetup: require.resolve('./test-environment/test-assets/global-setup'),
   use: {
-    viewport: { width: 1920, height: 1080 },
+    viewport: null,
     browserName: 'chromium',
     storageState: 'loginState.json',
     actionTimeout: 15000,
@@ -27,7 +27,7 @@ module.exports = {
     trace: 'on',
     launchOptions: {
       slowMo: 500,
-      args: [],
+      args: ["--start-maximized"],
     },
   },
 };
