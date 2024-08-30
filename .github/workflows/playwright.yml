@@ -18,6 +18,11 @@ jobs:
         run: npm install
         working-directory: ./test-environment/test-cases/
 
+      - name: Install dependencies
+        run: npx playwright install --with-deps
+        working-directory: ./test-environment/test-cases/
+  
+      
       - name: Run Playwright tests
         run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=html
         working-directory: ./test-environment/test-cases/
