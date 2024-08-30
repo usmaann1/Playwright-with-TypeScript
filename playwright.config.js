@@ -45,7 +45,7 @@ const config = {
     permissions: ["clipboard-read"],
     video: "on",
     trace: "on",
-    viewport: null,
+    viewport: {width:1920, height:1080},
     launchOptions: {
       slowMo: 500, //
       args: ["--start-maximized"],
