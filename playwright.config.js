@@ -1,7 +1,7 @@
 // @ts-check
 const { devices } = require("@playwright/test");
 
-let outputDirectory = String("./test-environment/");
+let outputDirectory = String("./test-environment/test-reports/");
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -38,17 +38,17 @@ const config = {
   use: {
     browserName: "chromium",
     storageState: "loginState.json",
-    actionTimeout: 30000,
+    actionTimeout: 15000,
     baseURL: "https://play.juicemind.com/",
     ignoreHTTPSErrors: true,
     headless: true,
     permissions: ["clipboard-read"],
     video: "on",
     trace: "on",
-    viewport: null,
+    viewport: { width: 1920, height: 1080 },
     launchOptions: {
       slowMo: 500, //
-      args: ["--start-maximized"],
+      args: ["--start-fullscreen"],
     },
   },
 };

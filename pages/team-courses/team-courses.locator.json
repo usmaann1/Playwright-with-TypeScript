@@ -4,7 +4,7 @@
     "EmailAddressTxtBox":"input[placeholder='Email Address']",
     "PasswordTxtBox" : "input[placeholder='Password']",
     "SignInBtn" : "//a[normalize-space()='Sign in']",
-    "CoursesBtn": "//div[normalize-space()='Teams/Courses']",
+    "CoursesBtn": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[6]/a[1]",
     "CreateNewTeam": "//a[normalize-space()='Create new team']",
     "StartFromScratch": "//div[normalize-space()='Start from Scratch']",
     "StartFromScratchText": "Start from Scratch",
