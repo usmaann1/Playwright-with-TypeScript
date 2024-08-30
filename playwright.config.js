@@ -24,7 +24,7 @@ const config = {
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: 2,
+  retries: 1,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : 3,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -36,6 +36,7 @@ const config = {
   globalSetup: require.resolve("./test-environment/test-assets/global-setup"),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    viewport: { width: 1920, height: 1080 },
     browserName: "chromium",
     storageState: "loginState.json",
     actionTimeout: 15000,
@@ -45,7 +46,6 @@ const config = {
     permissions: ["clipboard-read"],
     video: "on",
     trace: "on",
-    viewport: null,
     launchOptions: {
       slowMo: 500, //
       args: ["--start-maximized"],

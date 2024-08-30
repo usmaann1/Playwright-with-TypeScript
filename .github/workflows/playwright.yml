@@ -7,12 +7,12 @@ jobs:
     steps:
       # Step 1: Checkout the repository
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       # Step 2: Set up Node.js environment
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18' # Specify the Node.js version
+          node-version: lts/*
       # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
@@ -21,10 +21,10 @@ jobs:
         run: npx playwright install --with-deps
       # Step 5: Run Playwright tests
       - name: Run Playwright tests
-        run: npx playwright test --reporter=html
+        run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=html --config=playwright.config.js
       # Step 6: Upload test results as artifacts
       - name: Upload Playwright report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: playwright-report
           path: playwright-report/
