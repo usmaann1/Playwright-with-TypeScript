@@ -45,6 +45,8 @@ exports.grouping = class grouping {
         this.ProjectType_Java = this.page.locator(Locators.ProjectTypeJava);
         this.GroupProject_Toggle = this.page.locator(Locators.GroupProjectToggle);
         this.AddGroupButton=this.page.locator(Locators.AddGroupBtn)
+        this.CrossGroupIcon = this.page.locator(Locators.GroupCrossIcon)
+        this.SubmitGroupData = this.page.locator(Locators.SubmitBtn) 
         
     }
 
@@ -128,6 +130,10 @@ exports.grouping = class grouping {
         await PlaywrightCore.click(this.copy_InviteStudentsBtn);
     }
 
+    async ClickCrossGroupIcon() {
+        await PlaywrightCore.click(this.CrossGroupIcon);
+    }
+
     async closeinvitestudentspopup() {
         await PlaywrightCore.click(this.invitestudents_closeBtn);
     }
@@ -146,6 +152,12 @@ exports.grouping = class grouping {
 
     async fillstudentsignin(newPage) {
         await newPage.fill(Locators.EmailStudentSignin_textfield, 'student01@gmail.com');
+        await newPage.fill(Locators.PasswordStudentSignin_textfield, '98769876');
+        await newPage.click(Locators.ClickSignin_btn);
+    }
+
+    async fillstudentsignin_2(newPage) {
+        await newPage.fill(Locators.EmailStudentSignin_textfield, 'student02@gmail.com');
         await newPage.fill(Locators.PasswordStudentSignin_textfield, '98769876');
         await newPage.click(Locators.ClickSignin_btn);
     }
@@ -176,6 +188,10 @@ exports.grouping = class grouping {
     
     async ClickGroupProjectToggle() {
         await PlaywrightCore.click(this.GroupProject_Toggle);
+    }
+
+    async ClickSubmitBtn() {
+        await PlaywrightCore.click(this.SubmitGroupData);
     }
     
 };

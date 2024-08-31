@@ -42,66 +42,51 @@ test.describe('TestSuite: Lesson Builder', () => {
     await lessonBuilder.AssignmentCreateBtn();
 
     // Presentation Mode
-      await lessonBuilder.waitForFunction();
-      await lessonBuilder.PresentationMode()
-      await lessonBuilder.GotItButton();
-      await expect.toHaveText(LessonBuilderTestData.ViewStuPreview_btn);
-      await lessonBuilder.ExitStudentView();
-    
+    await lessonBuilder.waitForFunction();
+    await lessonBuilder.PresentationMode()
+    await lessonBuilder.GotItButton();
+    await expect.toHaveText(LessonBuilderTestData.ViewStuPreview_btn);
+    await lessonBuilder.ExitStudentView();
+  
 
-      //deleting default lesson
-      //await lessonBuilder.thirdsixdot();
+// Invite Students
+    await lessonBuilder.InviteStudentsbtn();
+    await lessonBuilder.CopyinviteStudentsbtn();
 
-  // Invite Students
-await lessonBuilder.InviteStudentsbtn();
-await lessonBuilder.CopyinviteStudentsbtn();
+    const InviteLink = await page.evaluate(async () => {
+      // Access clipboard content
+      return await navigator.clipboard.readText();
+      });
 
-// const copiedLinkq = await newPage.evaluate(async () => {
-//   // Access clipboard content
-//   return await navigator.clipboard.readText();
-// });
+      await lessonBuilder.closeinvitestudentspopup();
+      await lessonBuilder.publishassignmentbutton();
 
-await lessonBuilder.closeinvitestudentspopup();
-await lessonBuilder.publishassignmentbutton();
+      // Open a new page
+      const browser = await chromium.launch();
+      const newPage = await browser.newPage(); 
 
-// Open a new page
-const browser = await chromium.launch();
-const newPage = await browser.newPage(); 
+      // Navigate to the copied link
+      await newPage.goto(InviteLink);
+      await newPage.bringToFront(); // Ensure the new page is focused
 
+      await lessonBuilder.clickLoginbutton(newPage);
 
-// Evaluate clipboard content within the new page context
-const copiedLink = 'https://play.juicemind.com/joinTeam/i8PliqEfzSQOSbqovBcN'
+      await lessonBuilder.fillstudentsignin(newPage);
 
-//const copiedLink = await newPage.evaluate(async () => {
-  // Access clipboard content
-  //return await navigator.clipboard.readText();
-//});
+      await lessonBuilder.clickfinishbutton(newPage);
 
+      //verify heading
+      const element = await newPage.locator(LessonBuilderTestData.AssignmentHeadingDiv);
 
-console.log('Copied link:', copiedLink);
+      await expect (element).toHaveText(LessonBuilderTestData.AssignmentHeadingText);
 
-// Navigate to the copied link
-await newPage.goto(copiedLink);
-await newPage.bringToFront(); // Ensure the new page is focused
+      //verify assignment locked
 
-await lessonBuilder.clickLoginbutton(newPage);
+      await lessonBuilder.publishassignmentbutton();
 
-await lessonBuilder.fillstudentsignin(newPage);
+      const element2 = await newPage.locator(LessonBuilderTestData.AssignmentLockedDiv);
 
-await lessonBuilder.clickfinishbutton(newPage);
-
-//verify heading
-const element = await newPage.locator(LessonBuilderTestData.AssignmentHeadingDiv);
-
-await expect (element).toHaveText(LessonBuilderTestData.AssignmentHeadingText);
-
-//verify assignment locked
-
-await lessonBuilder.publishassignmentbutton();
-
-const element2 = await newPage.locator(LessonBuilderTestData.AssignmentLockedDiv);
-
-await expect (element2).toHaveText(LessonBuilderTestData.AssignmentLockedText);
+      await expect (element2).toHaveText(LessonBuilderTestData.AssignmentLockedText);
 
 
 

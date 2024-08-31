@@ -46,9 +46,16 @@ const config = {
     trace: 'on',
     viewport: null,
     launchOptions: {
-      slowMo: 500, //
-      args: ["--start-maximized"],
+      slowMo: 500, // Slow down actions by 500ms
+      args: [
+        "--start-maximized",
+        '--disable-features=IsolateOrigins,site-per-process',
+        '--disable-web-security',
+        '--unsafely-treat-insecure-origin-as-secure=http://example.com', // Replace with your actual URL if not HTTPS
+        '--disable-notifications', // Disable all notifications
+      ],
     },
+    permissions: ['clipboard-read', 'clipboard-write'], // Grant clipboard permissions
   },
 };
 

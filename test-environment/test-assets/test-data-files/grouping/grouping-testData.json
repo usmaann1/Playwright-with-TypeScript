@@ -17,8 +17,11 @@
     "AssignmentHeadingText":"Sample Lesson Plan",
     "CreateNewProjectDiv":"//div[@class='_header_1frfr_1']",
     "CreateNewProjectText":"Create new project",
-    "GroupedStudentEmail": "(//div[normalize-space()='student01@gmail.com'])[4]",
-    "StudentEmailText":"student01@gmail.com"
+    "GroupedStudentEmail": "(//div[normalize-space()='student01@gmail.com'])[1]",
+    "GroupedStudentEmail_2": "(//div[normalize-space()='student02@gmail.com'])[1]",
+    "StudentEmailText":"student01@gmail.com",
+    "StudentEmailText_2":"student02@gmail.com",
+    "GroupBoxes": "//div[@style='padding-bottom: 5px;']"
 
 
     

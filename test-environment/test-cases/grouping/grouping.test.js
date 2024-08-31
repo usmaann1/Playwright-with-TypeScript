@@ -13,6 +13,7 @@ test.describe('TestSuite: Grouping', () => {
     });
 
     test('TC1 - Validate Grouping', async ({ grouping, page }) => {
+        
         await grouping.NavigateToTeamCoursesPage();
         
         await grouping.ClickOnCreateNewTeamBtn();
@@ -27,26 +28,43 @@ test.describe('TestSuite: Grouping', () => {
         await grouping.AssignmentCreateBtn();
 
         // Invite Students
-        await grouping.InviteStudentsbtn();
+        await grouping.InviteStudentsbtn();      
         await grouping.CopyinviteStudentsbtn();
+
+        const InviteLink = await page.evaluate(async () => {
+            // Access clipboard content
+            return await navigator.clipboard.readText();
+            });
+
         await grouping.closeinvitestudentspopup();
         await grouping.publishassignmentbutton();
 
 
-        // Open a new page
-        const browser = await chromium.launch();
-        const newPage = await browser.newPage();
+        // Open a new page for student 1
+        const browser1 = await chromium.launch();
+        const newPage = await browser1.newPage();
 
-        // Evaluate clipboard content within the new page context
-        const copiedLink = 'https://play.juicemind.com/joinTeam/0lViTkxfxCGOmZt33fYc';
-        console.log('Copied link:', copiedLink);
+        // Open a new page for student 2
 
-        await newPage.goto(copiedLink);
+        const browser2 = await chromium.launch();
+        const newPage2 = await browser2.newPage();
+
+        await newPage.goto(InviteLink);
         await newPage.bringToFront(); // Ensure the new page is focused
 
+        await newPage2.goto(InviteLink);
+        await newPage2.bringToFront(); // Ensure the new page is focused
+
+        // fill login for first student 
         await grouping.clickLoginbutton(newPage);
         await grouping.fillstudentsignin(newPage);
         await grouping.clickfinishbutton(newPage);
+
+        // fill login for second student 
+        await grouping.clickLoginbutton(newPage2);
+        await grouping.fillstudentsignin_2(newPage2);
+        await grouping.clickfinishbutton(newPage2);
+
 
         grouping.ClickInitiliazeJuiceMindIDE(newPage);
         await page.waitForTimeout(5000);
@@ -73,16 +91,44 @@ test.describe('TestSuite: Grouping', () => {
         grouping.ClickAddGroup();
         await page.waitForTimeout(5000);
 
-        //Verify Unassigned Student Email 
+        grouping.ClickAddGroup();
 
-        const stdName = page.locator(groupingData.GroupedStudentEmail);
+        //Verify Unassigned Student 1 Email 
 
-        await expect(stdName).toHaveText(groupingData.StudentEmailText);
+        const stdName_1 = page.locator(groupingData.GroupedStudentEmail);
+
+        await expect(stdName_1).toHaveText(groupingData.StudentEmailText);
+
+        //Verify Unassigned Student 2 Email 
+
+        const stdName_2 = page.locator(groupingData.GroupedStudentEmail_2);
+
+        await expect(stdName_2).toHaveText(groupingData.StudentEmailText_2);
+
+        //Verify two groups boxes appear
 
         await page.waitForTimeout(5000);
 
-        await page.locator(stdName).dragTo('PlaceYourLocatorwhereyouwanttodrag');
+        const locator = page.locator(groupingData.GroupBoxes);
+        const count = await locator.count();
+        expect(count).toBe(2);
 
+        await grouping.ClickCrossGroupIcon();
+        await page.waitForTimeout(5000);
+
+        //Verify one group left
+        const count_1 = await locator.count();
+        expect(count_1).toBe(1);
+
+        //drag and drop student
+        
+        await page.locator(groupingData.GroupedStudentEmail).hover();
+        await page.mouse.down();
+        await page.locator(groupingData.GroupBoxes).hover();
+        await page.mouse.up();
+
+        await page.waitForTimeout(2000);
+        await grouping.ClickSubmitBtn()
 
 
         
