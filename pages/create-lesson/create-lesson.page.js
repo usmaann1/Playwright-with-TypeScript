@@ -108,6 +108,13 @@ exports.CreateLesson = class CreateLesson {
         this.ThreeTxtPresentationMode = this.page.locator(Locators.ThreeTxtPresentationMode)
         this.FourTxtPresentationMode = this.page.locator(Locators.FourTxtPresentationMode)
         this.PresentationModeOptionWrong = this.page.locator(Locators.PresentationModeOptionWrong)
+        this.PresentationModeOpt1CheckBox = this.page.locator(Locators.PresentationModeOpt1CheckBox)
+        this.IncorrectAndCorrectAnswerHeading = this.page.locator(Locators.IncorrectAndCorrectAnswerHeading)
+        this.PointScoreMsg = this.page.locator(Locators.PointScoreMsg)
+        this.CloseBtn = this.page.locator(Locators.CloseBtn)
+        this.IncorrectMsg = this.page.locator(Locators.IncorrectMsg)
+        this.CorrectMsg = this.page.locator(Locators.CorrectMsg)
+        this.PresentationModeOpt2 = this.page.locator(Locators.PresentationModeOpt2)
     }
    
     async clickOnAddNewItem() {

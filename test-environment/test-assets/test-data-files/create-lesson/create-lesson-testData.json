@@ -52,5 +52,13 @@
     "GotItBtnValue":"Got it",
     "ExitStudentModeBtnValue":"Exit Student View",
     "CheckAnswerBtnValue":"Check Answer",
-    "IncorrectTxtBoxValue":"Incorrect"
+    "IncorrectTxtBoxValue":"Incorrect",
+    "PointsTxtValue":"points",
+    "IncorrectAnswerTxt":"Incorrect Answer!",
+    "CorrectAnswerTxt":"Correct Answer!",
+    "PointScore0Txt":"Points scored: 0",
+    "PointScore4Txt":"Points scored: 4",
+    "CloseBtnValue":"Close",
+    "IncorrectMsgValue":"Incorrect",
+    "CorrectMsgValue":"Correct"
 }

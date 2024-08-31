@@ -108,5 +108,12 @@
     "TwoTxtPresentationMode":"//p[normalize-space()='2']",
     "ThreeTxtPresentationMode":"//p[normalize-space()='3']",
     "FourTxtPresentationMode":"//p[normalize-space()='4']",
-    "PresentationModeOptionWrong":"//body//div[@id='root']//div[@contenteditable='false']//div[@contenteditable='false']//div//div//div[1]//input[1]"
+    "PresentationModeOptionWrong":"//body//div[@id='root']//div[@contenteditable='false']//div[@contenteditable='false']//div//div//div[1]//input[1]",
+    "PresentationModeOpt1CheckBox":"//form//div[1]//input[1]",
+    "IncorrectAndCorrectAnswerHeading":"//h2[@id='modal-title']",
+    "PointScoreMsg":"//p[@id='modal-description']",
+    "CloseBtn":"//button[normalize-space()='Close']",
+    "IncorrectMsg":"//div[contains(text(),'Incorrect')]",
+    "CorrectMsg":"//div[contains(text(),'Correct')]",
+    "PresentationModeOpt2":"//form//div[2]//input[1]"
 }
