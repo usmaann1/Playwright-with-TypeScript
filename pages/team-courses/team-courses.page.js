@@ -479,4 +479,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       document.body.style.zoom = "50%";
     });
   }
+  
+  async waitFortime(time) {
+    await PlaywrightCore.waitTimeout(this.page, time);
+  }
 };
