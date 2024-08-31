@@ -13,7 +13,19 @@
     "ArrayListClick":"//span[text() = '7. ArrayList']",
     "TwoDArrayClick":"//span[text() = '8. 2D Arrays']",
     "InheritenceClick":"//span[text() = '9. Inheritance']",   
-    "RescursionClick":"//span[text() = '10. Recursion']"
+    "RescursionClick":"//span[text() = '10. Recursion']",
+    "PoatTestAndSurveyClick":"//span[text() = '11. Post Test and Survey']",
+    "PrepareForExamClick":"//span[text() = '12. Preparing for the Exam']",
+    "TimedMCQExam":"//span[text() = '13. Timed Multiple-Choice Exams']",
+    "MixedUpcode":"//span[text() = '14. Mixed Up Code - Free Response Practice']",
+    "FreeResponsePractise":"//span[text() = '15. Free Response Practice']",
+    "Stories":"//span[text() = '16. Stories']"
+
+
+
+
+
+
 
 
 

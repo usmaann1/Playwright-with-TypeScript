@@ -25,6 +25,15 @@ import { expect } from "@playwright/test";
       this.TwoDArray = this.page.locator(Locators.TwoDArrayClick)
       this.Inheritence = this.page.locator(Locators.InheritenceClick)
       this.Recursion = this.page.locator(Locators.RescursionClick)
+      this.PostTestAndSurvey = this.page.locator(Locators.PoatTestAndSurveyClick)
+      this.PrepareForExam = this.page.locator(Locators.PrepareForExamClick)
+      this.TimedMcq = this.page.locator(Locators.TimedMCQExam)
+      this.MixedUpCode = this.page.locator(Locators.MixedUpcode)
+      this.FreeResponsePractise = this.page.locator(Locators.FreeResponsePractise)
+      this.StoriesClick = this.page.locator(Locators.Stories)
+
+
+
 
 
     }
@@ -77,6 +86,24 @@ import { expect } from "@playwright/test";
     }
     async ClickRecursionButton(){
       await PlaywrightCore.click(this.Recursion);
+    }
+    async ClickPostTestAndSurveyButton(){
+      await PlaywrightCore.click(this.PostTestAndSurvey);
+    }
+    async ClickPrepareForExamButton(){
+      await PlaywrightCore.click(this.PrepareForExam);
+    }
+    async ClickTimedMCQButton(){
+      await PlaywrightCore.click(this.TimedMcq);
+    }
+    async ClickMixedUpCodeButton(){
+      await PlaywrightCore.click(this.MixedUpCode);
+    }
+    async ClickFreeResponsePractise(){
+      await PlaywrightCore.click(this.FreeResponsePractise);
+    }
+    async ClickStories(){
+      await PlaywrightCore.click(this.StoriesClick);
     }
 
 

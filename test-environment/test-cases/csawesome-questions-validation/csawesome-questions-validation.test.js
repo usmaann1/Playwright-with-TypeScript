@@ -453,4 +453,267 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
+  test('TC - 11. Post Test and Survey', async ({ csawsome, page }) => {
+
+    await csawsome.NavigateToTeamCoursesPage();
+    
+    await expect(csawsome.CreateNewTeamBtn).toBeVisible();
+    
+    // Interact with elements on the page
+    await csawsome.ClickOnCreateNewTeamBtn();
+    await csawsome.ClickOnCSawesome();
+    await csawsome.FillTeamNameTxtBox();
+    await csawsome.Submitbtn();
+
+     await page.waitForTimeout(60000);
+
+    await csawsome.ClickPostTestAndSurveyButton()
+    await page.waitForTimeout(5000);
+
+
+    const noOfFolders = 12;
+    const targetTextElement = await page.locator(".text-3xl.font-bold");
+
+    for (let i = 12; i <= noOfFolders; i++) {
+      const xpath = `(//div[contains(@class, '_root_yw9yb_1')]/div/div/div/span[2])[${i}]`;
+      const element = await page.locator(`xpath=${xpath}`);
+
+      if (await element.count() > 0) {
+
+        await element.click();
+        await page.waitForTimeout(2000);
+        const targetText = await targetTextElement.textContent();
+        const text = await element.textContent();
+        
+        // await expect(text).toBe(targetText);
+        console.log(`Element ${i} text:`, text);
+      } else {
+        console.log(`Element ${i} not found`);
+      }
+    }
+
+    await csawsome.ClickPostTestAndSurveyButton()
+
+    
+  });
+
+  test('TC - 12. Preparing For Exams', async ({ csawsome, page }) => {
+
+    await csawsome.NavigateToTeamCoursesPage();
+    
+    await expect(csawsome.CreateNewTeamBtn).toBeVisible();
+    
+    // Interact with elements on the page
+    await csawsome.ClickOnCreateNewTeamBtn();
+    await csawsome.ClickOnCSawesome();
+    await csawsome.FillTeamNameTxtBox();
+    await csawsome.Submitbtn();
+
+     await page.waitForTimeout(60000);
+
+    await csawsome.ClickPrepareForExamButton()
+    await page.waitForTimeout(5000);
+
+
+    const noOfFolders = 19;
+    const targetTextElement = await page.locator(".text-3xl.font-bold");
+
+    for (let i = 13; i <= noOfFolders; i++) {
+      const xpath = `(//div[contains(@class, '_root_yw9yb_1')]/div/div/div/span[2])[${i}]`;
+      const element = await page.locator(`xpath=${xpath}`);
+
+      if (await element.count() > 0) {
+
+        await element.click();
+        await page.waitForTimeout(2000);
+        const targetText = await targetTextElement.textContent();
+        const text = await element.textContent();
+        
+        // await expect(text).toBe(targetText);
+        console.log(`Element ${i} text:`, text);
+      } else {
+        console.log(`Element ${i} not found`);
+      }
+    }
+
+    await csawsome.ClickPrepareForExamButton()
+
+    
+  });
+
+  test('TC - 13. Timed Multiple Choice Exam', async ({ csawsome, page }) => {
+
+    await csawsome.NavigateToTeamCoursesPage();
+    
+    await expect(csawsome.CreateNewTeamBtn).toBeVisible();
+    
+    // Interact with elements on the page
+    await csawsome.ClickOnCreateNewTeamBtn();
+    await csawsome.ClickOnCSawesome();
+    await csawsome.FillTeamNameTxtBox();
+    await csawsome.Submitbtn();
+
+     await page.waitForTimeout(60000);
+
+    await csawsome.ClickTimedMCQButton()
+    await page.waitForTimeout(5000);
+
+
+    const noOfFolders = 18;
+    const targetTextElement = await page.locator(".text-3xl.font-bold");
+
+    for (let i = 14; i <= noOfFolders; i++) {
+      const xpath = `(//div[contains(@class, '_root_yw9yb_1')]/div/div/div/span[2])[${i}]`;
+      const element = await page.locator(`xpath=${xpath}`);
+
+      if (await element.count() > 0) {
+
+        await element.click();
+        await page.waitForTimeout(2000);
+        const targetText = await targetTextElement.textContent();
+        const text = await element.textContent();
+        
+        // await expect(text).toBe(targetText);
+        console.log(`Element ${i} text:`, text);
+      } else {
+        console.log(`Element ${i} not found`);
+      }
+    }
+
+    await csawsome.ClickTimedMCQButton()
+
+    
+  });
+
+  test('TC - 14. Mixed Up Code - Free Response Practice', async ({ csawsome, page }) => {
+
+    await csawsome.NavigateToTeamCoursesPage();
+    
+    await expect(csawsome.CreateNewTeamBtn).toBeVisible();
+    
+    // Interact with elements on the page
+    await csawsome.ClickOnCreateNewTeamBtn();
+    await csawsome.ClickOnCSawesome();
+    await csawsome.FillTeamNameTxtBox();
+    await csawsome.Submitbtn();
+
+     await page.waitForTimeout(60000);
+
+    await csawsome.ClickMixedUpCodeButton()
+    await page.waitForTimeout(5000);
+
+
+    const noOfFolders = 19;
+    const targetTextElement = await page.locator(".text-3xl.font-bold");
+
+    for (let i = 15; i <= noOfFolders; i++) {
+      const xpath = `(//div[contains(@class, '_root_yw9yb_1')]/div/div/div/span[2])[${i}]`;
+      const element = await page.locator(`xpath=${xpath}`);
+
+      if (await element.count() > 0) {
+
+        await element.click();
+        await page.waitForTimeout(2000);
+        const targetText = await targetTextElement.textContent();
+        const text = await element.textContent();
+        
+        // await expect(text).toBe(targetText);
+        console.log(`Element ${i} text:`, text);
+      } else {
+        console.log(`Element ${i} not found`);
+      }
+    }
+
+    await csawsome.ClickMixedUpCodeButton()
+
+    
+  });
+
+  test('TC - 15. Free Response Practise', async ({ csawsome, page }) => {
+
+    await csawsome.NavigateToTeamCoursesPage();
+    
+    await expect(csawsome.CreateNewTeamBtn).toBeVisible();
+    
+    // Interact with elements on the page
+    await csawsome.ClickOnCreateNewTeamBtn();
+    await csawsome.ClickOnCSawesome();
+    await csawsome.FillTeamNameTxtBox();
+    await csawsome.Submitbtn();
+
+     await page.waitForTimeout(60000);
+
+    await csawsome.ClickFreeResponsePractise()
+    await page.waitForTimeout(5000);
+
+
+    const noOfFolders = 29;
+    const targetTextElement = await page.locator(".text-3xl.font-bold");
+
+    for (let i = 16; i <= noOfFolders; i++) {
+      const xpath = `(//div[contains(@class, '_root_yw9yb_1')]/div/div/div/span[2])[${i}]`;
+      const element = await page.locator(`xpath=${xpath}`);
+
+      if (await element.count() > 0) {
+
+        await element.click();
+        await page.waitForTimeout(2000);
+        const targetText = await targetTextElement.textContent();
+        const text = await element.textContent();
+        
+        // await expect(text).toBe(targetText);
+        console.log(`Element ${i} text:`, text);
+      } else {
+        console.log(`Element ${i} not found`);
+      }
+    }
+
+    await csawsome.ClickFreeResponsePractise()
+
+    
+  });
+  test('TC - 16. Stories', async ({ csawsome, page }) => {
+
+    await csawsome.NavigateToTeamCoursesPage();
+    
+    await expect(csawsome.CreateNewTeamBtn).toBeVisible();
+    
+    // Interact with elements on the page
+    await csawsome.ClickOnCreateNewTeamBtn();
+    await csawsome.ClickOnCSawesome();
+    await csawsome.FillTeamNameTxtBox();
+    await csawsome.Submitbtn();
+
+     await page.waitForTimeout(60000);
+
+    await csawsome.ClickStories()
+    await page.waitForTimeout(5000);
+
+
+    const noOfFolders = 32;
+    const targetTextElement = await page.locator(".text-3xl.font-bold");
+
+    for (let i = 17; i <= noOfFolders; i++) {
+      const xpath = `(//div[contains(@class, '_root_yw9yb_1')]/div/div/div/span[2])[${i}]`;
+      const element = await page.locator(`xpath=${xpath}`);
+
+      if (await element.count() > 0) {
+
+        await element.click();
+        await page.waitForTimeout(2000);
+        const targetText = await targetTextElement.textContent();
+        const text = await element.textContent();
+        
+        // await expect(text).toBe(targetText);
+        console.log(`Element ${i} text:`, text);
+      } else {
+        console.log(`Element ${i} not found`);
+      }
+    }
+
+    await csawsome.ClickStories()
+
+    
+  });
+
 });
