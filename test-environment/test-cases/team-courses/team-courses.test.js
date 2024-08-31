@@ -5,7 +5,7 @@ const { test } = require("../../../module-imports/testFixtures.imports");
 const {
   TeamCoursesPage,
 } = require("../../../pages/team-courses/team-courses.page");
-import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses.json";
+import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
 require("dotenv").config();
 
 test.describe("TestSuite: Team/Courses", () => {
@@ -39,7 +39,102 @@ test.describe("TestSuite: Team/Courses", () => {
       true
     );
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
-    // await teamCoursesPage.pythonWithMatplotlib();
+  });
+
+  test("TC: Flow Test Java", async ({ teamCoursesPage, browser }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email);
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption9,
+      true
+    );
+    await teamCoursesPage.simpleJava();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.createStarterCode(
+      TeamCoursesData.javaTestInput,
+      true
+    );
+    await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
+  });
+
+  test("TC: Flow Test CSharp", async ({ teamCoursesPage, browser }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email);
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption10,
+      true
+    );
+    await teamCoursesPage.simpleCsharp();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.createStarterCode(
+      TeamCoursesData.csharpTestInput,
+      true
+    );
+    await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
+  });
+
+  test("TC: Flow Test C++", async ({ teamCoursesPage, browser }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email);
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption11,
+      true
+    );
+    await teamCoursesPage.simpleCsharp();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.createStarterCode(
+      TeamCoursesData.cppTestInput,
+      true
+    );
+    await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
   test("TC: Flow Test JavaScript", async ({ teamCoursesPage, browser }) => {
@@ -85,6 +180,27 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadFile(TeamCoursesData.uploadFilePath);
   });
 
+  test("TC: Flow Test HTML", async ({ teamCoursesPage, browser }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email);
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.ProjectTypeOption12,
+      true
+    );
+    const link = await teamCoursesPage.simpleHTML();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    newTeamCoursesPageInstance.getHtmlData(link)
+  });
+
+
   test("TC: Flow Test Python with Turtle", async ({ teamCoursesPage }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
@@ -113,6 +229,21 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption4
     );
     await teamCoursesPage.pythonWithTkinter();
+  });
+
+  test("TC: Flow Test Java with Swing", async ({ teamCoursesPage }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.ProjectTypeOption13
+    );
+    await teamCoursesPage.javaWithSwing();
   });
 
   test("TC: Flow Test Python with Matplotlib", async ({ teamCoursesPage }) => {

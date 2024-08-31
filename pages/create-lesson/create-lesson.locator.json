@@ -54,7 +54,22 @@
             "bulletList": "ul",
             "NumberedList": "ol",
             "unOrdered": "ul",
-            "taskList": "[data-type='taskList']"
+            "taskList": "[data-type='taskList']",
+            "list": "li p",
+            "code": "pre",
+            "table": "table tbody",
+            "row": "tr",
+            "col": "td",
+            "inputBox": "label input",
+            "checkBox": "[type='checkbox']",
+            "uploadImageContainer": ".node-imageUpload",
+            "uploadImage":"input[type='file']",
+            
+
+            "parentQuotetag": "figure",
+            "quoteTag": "blockquote",
+            "quoteCaptionTag": "figcaption",
+            "placeHolderTag": "data-placeholder"
         }
 
     },

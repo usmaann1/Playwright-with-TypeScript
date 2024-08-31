@@ -3,8 +3,10 @@ node_modules/
 /playwright-report/
 /playwright/.cache/
 /test-environment/test-reports/
+/test-environment/test-assets/test-resource-files/canvas.png
 .vs
 .git
 .env
 loginState.json
 package-lock.json
+eng.traineddata

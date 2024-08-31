@@ -73,7 +73,7 @@ test.describe('TestSuite: Create Lesson', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
         await createLesson.selectElementFromDropdown(CLtd.elements.heading1)
         await createLesson.validateElementsExistOnEditor(createLesson.heading1)
-        await createLesson.validateElementsToAcceptInputOnEditor(createLesson.heading1)
+        await createLesson.validateElementsToAcceptInputOnEditor(createLesson.heading1,CLtd.textForEditor)
         await createLesson.hoverOverAnyElement(createLesson.heading1)
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
         // Heading 2
@@ -82,7 +82,7 @@ test.describe('TestSuite: Create Lesson', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
         await createLesson.selectElementFromDropdown(CLtd.elements.heading2)
         await createLesson.validateElementsExistOnEditor(createLesson.heading2)
-        await createLesson.validateElementsToAcceptInputOnEditor(createLesson.heading2)
+        await createLesson.validateElementsToAcceptInputOnEditor(createLesson.heading2,CLtd.textForEditor)
         await createLesson.hoverOverAnyElement(createLesson.heading2)
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
         // Heading 3
@@ -91,7 +91,7 @@ test.describe('TestSuite: Create Lesson', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
         await createLesson.selectElementFromDropdown(CLtd.elements.heading3)
         await createLesson.validateElementsExistOnEditor(createLesson.heading3)
-        await createLesson.validateElementsToAcceptInputOnEditor(createLesson.heading3)
+        await createLesson.validateElementsToAcceptInputOnEditor(createLesson.heading3,CLtd.textForEditor)
         await createLesson.hoverOverAnyElement(createLesson.heading3)
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
 
@@ -104,11 +104,13 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.hoverAndClickOnPlusBtn()
         await expect(createLesson.dropDownContainer).toBeVisible()
         await createLesson.selectElementFromDropdown(CLtd.elements.bulletList)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        await createLesson.hoverOverFirstRow()
         await createLesson.hoverAndClickOnPlusBtn()
         await expect(createLesson.dropDownContainer).toBeVisible()
         await createLesson.selectElementFromDropdown(CLtd.elements.bulletList)
         await createLesson.validateElementsExistOnEditor(createLesson.bulletList)
-        await createLesson.validateElementsToAcceptInputOnEditor(createLesson.bulletList)
+        await createLesson.validateAddingMultipleBulletOnEditor(createLesson.bulletList)
         await createLesson.hoverOverAnyElement(createLesson.bulletList)
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
@@ -123,7 +125,7 @@ test.describe('TestSuite: Create Lesson', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
         await createLesson.selectElementFromDropdown(CLtd.elements.NumberedList)
         await createLesson.validateElementsExistOnEditor(createLesson.NumberedList)
-        await createLesson.validateElementsToAcceptInputOnEditor(createLesson.NumberedList)
+        await createLesson.validateElementsToAcceptInputOnEditor(createLesson.NumberedList,CLtd.textForEditor)
         await createLesson.hoverOverAnyElement(createLesson.NumberedList)
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
@@ -135,8 +137,58 @@ test.describe('TestSuite: Create Lesson', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
         await createLesson.selectElementFromDropdown(CLtd.elements.taskList)
         await createLesson.validateElementExistOnEditorHavingAttribute(createLesson.taskList,CLtd.attributes.dataType,CLtd.attributes.value)
-        await createLesson.validateElementsToAcceptInputOnEditor(createLesson.taskList)
+        await createLesson.validateElementsToAcceptInputOnEditor(createLesson.taskList,CLtd.textForEditor)
+        await createLesson.valdiateCheckboxSelection(CLtd.attributes.type,CLtd.attributes.valueCb)
         await createLesson.hoverOverAnyElement(createLesson.taskList)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+    });
+    test('TC - validate adding new Quote element inside the editor', async ({ createLesson }) => {
+        await createLesson.createALesson(lessonName)
+        await createLesson.setVisibility()
+        await createLesson.hoverOverFirstRow()
+        await createLesson.hoverAndClickOnPlusBtn()
+        await expect(createLesson.dropDownContainer).toBeVisible()
+        await createLesson.selectElementFromDropdown(CLtd.elements.quote)
+
+        await createLesson.validateTagExistOnEditorHavingTag(createLesson.parentQuotetag,createLesson.quoteTag) // Quote
+        await createLesson.validateTagExistOnEditorHavingTag(createLesson.parentQuotetag,createLesson.quoteCaptionTag) // Author
+        await createLesson.enterTextInQuoteAndAuthorFields()
+        // await createLesson.validatePlaceHoldersOnQuoteElement()// place holder value not showing up on console hene its not getting fetched.
+        await createLesson.hoverOverAnyElement(createLesson.quoteTag)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+    });
+    test('TC - validate adding new Code element inside the editor', async ({ createLesson }) => {
+        await createLesson.createALesson(lessonName)
+        await createLesson.setVisibility()
+        await createLesson.hoverOverFirstRow()
+        await createLesson.hoverAndClickOnPlusBtn()
+        await expect(createLesson.dropDownContainer).toBeVisible()
+        await createLesson.selectElementFromDropdown(CLtd.elements.codeBlock)
+        await createLesson.validateElementsExistOnEditor(createLesson.code)
+        await createLesson.validateElementsToAcceptInputOnEditor(createLesson.code,CLtd.text.code)
+        await createLesson.hoverOverAnyElement(createLesson.code)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+    });
+    test('TC - validate adding new Table element inside the editor', async ({ createLesson }) => {
+        await createLesson.createALesson(lessonName)
+        await createLesson.setVisibility()
+        await createLesson.hoverOverFirstRow()
+        await createLesson.hoverAndClickOnPlusBtn()
+        await expect(createLesson.dropDownContainer).toBeVisible()
+        await createLesson.selectElementFromDropdown(CLtd.elements.table)
+        await createLesson.validateElementsExistOnEditor(createLesson.table)
+        await createLesson.fillTableRowsAndColumns()
+        await createLesson.hoverOverAnyElement(createLesson.table)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+    });
+    test('TC - validate adding new Image element inside the editor', async ({ createLesson }) => {
+        await createLesson.createALesson(lessonName)
+        await createLesson.setVisibility()
+        await createLesson.hoverOverFirstRow()
+        await createLesson.hoverAndClickOnPlusBtn()
+        await expect(createLesson.dropDownContainer).toBeVisible()
+        await createLesson.selectElementFromDropdown(CLtd.elements.uploadImage)
+        await createLesson.uploadImage()
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 })

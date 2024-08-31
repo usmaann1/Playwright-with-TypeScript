@@ -55,6 +55,7 @@ exports.CreateLesson = class CreateLesson {
         this.bulletList = this.page.locator(Locators.lessonPage.textEditor.bulletList)
         this.NumberedList = this.page.locator(Locators.lessonPage.textEditor.NumberedList)
         this.unOrdered = this.page.locator(Locators.lessonPage.textEditor.unOrdered)
+        this.list = this.page.locator(Locators.lessonPage.textEditor.list)
         this.taskList = this.page.locator(Locators.lessonPage.textEditor.taskList)
         this.dataType = this.page.locator(Locators.lessonPage.textEditor.dataType)
         this.value = this.page.locator(Locators.lessonPage.textEditor.value)
@@ -75,6 +76,18 @@ exports.CreateLesson = class CreateLesson {
         this.DeleteBtnAfterUpload = this.page.locator(Locators.DeleteBtnAfterUpload)
         this.HTMLNode = this.page.locator(Locators.HTMLNode)
         this.HTMLTextBox = this.page.locator(Locators.HTMLTextBox)
+        this.parentQuotetag = this.page.locator(Locators.lessonPage.textEditor.parentQuotetag)
+        this.quoteTag = this.page.locator(Locators.lessonPage.textEditor.quoteTag)
+        this.quoteCaptionTag = this.page.locator(Locators.lessonPage.textEditor.quoteCaptionTag)
+        this.placeHolderTag = this.page.locator(Locators.lessonPage.textEditor.placeHolderTag)
+        this.code = this.page.locator(Locators.lessonPage.textEditor.code)
+        this.table = this.page.locator(Locators.lessonPage.textEditor.table)
+        this.row = this.page.locator(Locators.lessonPage.textEditor.row)
+        this.col = this.page.locator(Locators.lessonPage.textEditor.col)
+        this.inputBox = this.page.locator(Locators.lessonPage.textEditor.inputBox)
+        this.checkBox = this.page.locator(Locators.lessonPage.textEditor.checkBox)
+        this.uploadImageContainer = this.page.locator(Locators.lessonPage.textEditor.uploadImageContainer)
+        this.Image = this.page.locator(Locators.lessonPage.textEditor.uploadImage)
         this.MultipleChoiceQuestionHeadingBox = this.page.locator(Locators.MultipleChoiceQuestionHeadingBox)
         this.MultipleChoiceFormBox1 = this.page.locator(Locators.MultipleChoiceFormBox1)
         this.MultipleChoiceFormBox2 = this.page.locator(Locators.MultipleChoiceFormBox2)
@@ -152,9 +165,9 @@ exports.CreateLesson = class CreateLesson {
         const ele = edit.locator(val)
         await ele.hover()
     }
-    async selectElementFromDropdown(val) {
+    async selectElementFromDropdown() {
         const subParent = this.subParent
-        const btn = subParent.locator(this.child, { hasText: 'Heading 1' })
+        const btn = subParent.locator(this.child, { hasText: 'Heading 1' }).nth(0)
         await this.page.waitForTimeout(3000);
         await PlaywrightCore.click(btn)
     }
@@ -180,7 +193,7 @@ exports.CreateLesson = class CreateLesson {
     }
     async selectElementFromDropdown(val) {
         const subParent = this.subParent
-        const btn = subParent.locator(this.child, { hasText: val })
+        const btn = subParent.getByRole('button', { name: val, exact: true })
         await this.page.waitForTimeout(1000);
         await PlaywrightCore.click(btn)
     }
@@ -190,11 +203,22 @@ exports.CreateLesson = class CreateLesson {
         await this.page.waitForTimeout(2000);
         await expect(child).toBeVisible()
     }
-    async validateElementsToAcceptInputOnEditor(ele) {
+    async validateElementsToAcceptInputOnEditor(ele, txt) {
         const parent = this.textEditor
         const child = parent.locator(ele)
+        // const text = clTD.textForEditor
+        await this.page.waitForTimeout(1000);
+        await PlaywrightCore.fill(child, txt)
+    }
+    async validateAddingMultipleBulletOnEditor(ele) {
+        const parent = this.textEditor
+        const child = parent.locator(ele)
+        const row = child.locator(this.list)
         const text = clTD.textForEditor
         await PlaywrightCore.fill(child, text)
+        await PlaywrightCore.click(row)
+        await PlaywrightCore.press(row, 'Enter')
+        await this.page.waitForTimeout(2000);
     }
     async validateRemovingOfElementEditor(ele) {
         const parent = this.textEditor
@@ -212,9 +236,65 @@ exports.CreateLesson = class CreateLesson {
         await this.page.waitForTimeout(2000);
         await expect(child).toHaveAttribute(dataType, typeValue)
     }
-
+    async validateTagExistOnEditorHavingTag(ele, tag) {
+        const parent = this.textEditor
+        const child = parent.locator(ele)
+        await this.page.waitForTimeout(2000);
+        await expect(child.locator(tag)).toBeVisible()
+    }
+    async validatePlaceHoldersOnQuoteElement() {
+        const parent = this.textEditor
+        const child = parent.locator(this.parentQuotetag)
+        const quo = child.locator(this.quoteTag)
+        const tag = quo.locator(this.quoteCaptionTag)
+        const ph = tag.locator(this.placeHolderTag).textContent();
+    }
     async valiadteYoutubeVideoHeading(name){
         const iframeElement = this.page.frameLocator(Locators.IFrameLocatorYoutube);         
         await expect(iframeElement.locator(Locators.YoutubeVideoHeading)).toHaveText(name)
+        await this.page.waitForTimeout(2000);
+        await expect(ph).toEqual(clTD.placeHolder.quote)
+    }
+    async enterTextInQuoteAndAuthorFields() {
+        const parent = this.textEditor
+        const child = parent.locator(this.parentQuotetag)
+        const quote = child.locator(this.quoteTag)
+        const author = child.locator(this.quoteCaptionTag)
+        await PlaywrightCore.fill(quote, clTD.text.Quote)
+
+        await PlaywrightCore.fill(author, clTD.text.Author)
+
+    }
+    async fillTableRowsAndColumns() {
+        const parent = this.textEditor
+        const table = parent.locator(this.table)
+        const tRow = this.row
+        const tCol = this.col
+        await this.page.waitForTimeout(1000)
+        // Get the count of rows and columns
+        const rowCount = await table.locator(tRow).count()
+        const colCount = await table.locator(tRow).first().locator(tCol).count()
+        console.log(`Row count: ${rowCount}`)
+        console.log(`Column count: ${colCount}`)
+        for (let row = 0; row < rowCount; row++) {
+            for (let col = 0; col < colCount; col++) {
+                const targetCell = table.locator(tRow).nth(row).locator(tCol).nth(col)
+                await targetCell.fill('row:'+ row + ' ' + 'col: ' + col  )
+            }
+        }
+    }
+    async valdiateCheckboxSelection(dataType,typeValue) {
+        const parent = this.textEditor
+        const child = parent.locator(this.taskList)
+        const input = child.locator(this.inputBox)
+        await this.page.waitForTimeout(2000);
+        await expect(input).toHaveAttribute(dataType, typeValue)
+        await PlaywrightCore.click(input)
+        const verifyChecked = child.locator('li')
+        await expect(verifyChecked).toHaveAttribute(clTD.attributes.datachecked, clTD.attributes.checkedTrue)
+    }
+    async uploadImage() {
+        await this.Image.setInputFiles('./test-environment/test-assets/test-resource-files/corolla.jpg')
+        await this.page.waitForTimeout(3000);
     }
 }
