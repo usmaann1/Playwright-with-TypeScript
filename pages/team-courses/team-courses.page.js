@@ -272,6 +272,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     if (!isHtml) {
       const element = await this.page.$(Locators.Terminal);
       await PlaywrightCore.waitTimeout(this.page, 20000);
+      const innerText = await element.innerText();
       const isValid = await innerText.includes(TeamCoursesData.AssertionText);
       expect(isValid).toBe(true);
       await this.createTest(
@@ -399,7 +400,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       this.page,
       TeamCoursesData.AssetsPaths
     );
-    const isValid = await Colors.includes("#fc0404");
+    const isValid = await Colors.includes("#fb0404");
     await expect(isValid).toBe(true);
   }
 

@@ -10,6 +10,8 @@ require("dotenv").config();
 
 test.describe("TestSuite: Team/Courses", () => {
   test("TC: Flow Test Python1", async ({ teamCoursesPage, browser }) => {
+    console.log(process.env.EMAIL_NUMAIR);
+    console.log(process.env.PASSWORD_NUMAIR);
     const email = process.env.EMAIL_NUMAIR ?? "numair@test.com";
     const password = process.env.PASSWORD_NUMAIR ?? "Test@123";
     const randomName = await UserFunctions.generateName();
@@ -198,9 +200,8 @@ test.describe("TestSuite: Team/Courses", () => {
     const link = await teamCoursesPage.simpleHTML();
     const newPage = await browser.newPage();
     const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
-    newTeamCoursesPageInstance.getHtmlData(link)
+    newTeamCoursesPageInstance.getHtmlData(link);
   });
-
 
   test("TC: Flow Test Python with Turtle", async ({ teamCoursesPage }) => {
     const email = process.env.EMAIL_NUMAIR;
