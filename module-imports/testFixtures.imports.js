@@ -7,6 +7,7 @@ const{frq} = require('../pages/frq/frq.page')
 const{projects} = require('../pages/projects/projects.page')
 const{grouping} = require('../pages/grouping/grouping.page')
 const{csawsome} = require('../pages/csawesome-questions-validation/csawesome-questions-validation.page')
+const{quizzes} = require('../pages/quizzes/quizzes.page')
 
 
 
@@ -41,6 +42,9 @@ exports.test = base.test.extend({
     },
     csawsome: async ({ page }, use) => {
         await use(new csawsome(page));
+    },
+    quizzes: async ({ page }, use) => {
+        await use(new quizzes(page));
     },
     
 });
