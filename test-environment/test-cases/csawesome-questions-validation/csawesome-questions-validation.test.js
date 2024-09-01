@@ -46,7 +46,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
 
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
@@ -89,7 +89,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
         
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
@@ -133,7 +133,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
         
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
@@ -177,7 +177,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
         
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
@@ -221,7 +221,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
         
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
@@ -265,7 +265,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
         
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
@@ -309,7 +309,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
         
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
@@ -353,7 +353,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
         
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
@@ -397,7 +397,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
         
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
@@ -441,7 +441,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
         
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
@@ -485,7 +485,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
         
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
@@ -529,7 +529,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
         
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
@@ -573,7 +573,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
         
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
@@ -617,7 +617,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
         
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
@@ -661,7 +661,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
         const targetText = await targetTextElement.textContent();
         const text = await element.textContent();
         
-        // await expect(text).toBe(targetText);
+        await expect(text).toBe(targetText);
         console.log(`Element ${i} text:`, text);
       } else {
         console.log(`Element ${i} not found`);
