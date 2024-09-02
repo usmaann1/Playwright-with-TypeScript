@@ -130,5 +130,8 @@
     "CloseBtn":"//button[normalize-space()='Close']",
     "IncorrectMsg":"//div[contains(text(),'Incorrect')]",
     "CorrectMsg":"//div[contains(text(),'Correct')]",
-    "PresentationModeOpt2":"//form//div[2]//input[1]"
+    "PresentationModeOpt2":"//form//div[2]//input[1]",
+    "InviteStudentBtn":"//a[normalize-space()='Invite students']",
+    "CopyURLBtn":"//a[normalize-space()='Copy']",
+    "Opt2StudentMode":"//body//div[@id='root']//div[@contenteditable='false']//div[@contenteditable='false']//div[2]//input[1]"
 }
