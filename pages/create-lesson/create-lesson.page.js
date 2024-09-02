@@ -88,9 +88,48 @@ exports.CreateLesson = class CreateLesson {
         this.checkBox = this.page.locator(Locators.lessonPage.textEditor.checkBox)
         this.uploadImageContainer = this.page.locator(Locators.lessonPage.textEditor.uploadImageContainer)
         this.Image = this.page.locator(Locators.lessonPage.textEditor.uploadImage)
-
-
+        this.MultipleChoiceQuestionHeadingBox = this.page.locator(Locators.MultipleChoiceQuestionHeadingBox)
+        this.MultipleChoiceFormBox1 = this.page.locator(Locators.MultipleChoiceFormBox1)
+        this.MultipleChoiceFormBox2 = this.page.locator(Locators.MultipleChoiceFormBox2)
+        this.MultipleChoiceFormBox3 = this.page.locator(Locators.MultipleChoiceFormBox3)
+        this.MultipleChoiceFormBox4DeleteBtn = this.page.locator(Locators.MultipleChoiceFormBox4DeleteBtn)
+        this.MultipleChoiceAddChoiceBtn = this.page.locator(Locators.MultipleChoiceAddChoiceBtn)
+        this.MultipleChoiceFormBox4 = this.page.locator(Locators.MultipleChoiceFormBox4)
+        this.MultipleChoicePointsInput = this.page.locator(Locators.MultipleChoicePointsInput)
+        this.PointsTxt = this.page.locator(Locators.PointsTxt)
+        this.PublishToggleBtn = this.page.locator(Locators.PublishToggleBtn)
+        this.MultipleChoiceOptionsRule1 = this.page.locator(Locators.MultipleChoiceOptionsRule1)
+        this.MultipleChoiceOptionsRule2 = this.page.locator(Locators.MultipleChoiceOptionsRule2)
+        this.MultipleChoiceOptionsRule3 = this.page.locator(Locators.MultipleChoiceOptionsRule3)
+        this.MultipleChoiceOptionsRule4 = this.page.locator(Locators.MultipleChoiceOptionsRule4)
+        this.MultipleChoiceOptionsRule5 = this.page.locator(Locators.MultipleChoiceOptionsRule5)
+        this.MultipleChoiceSelectBox2 = this.page.locator(Locators.MultipleChoiceSelectBox2)
+        this.PresentationModePopUpHeading = this.page.locator(Locators.PresentationModePopUpHeading)
+        this.PresentationModePopUpDescription = this.page.locator(Locators.PresentationModePopUpDescription)
+        this.GotItBtn = this.page.locator(Locators.GotItBtn)
+        this.ViewingStudentModeTxt = this.page.locator(Locators.ViewingStudentModeTxt)
+        this.ExitStudentModeBtn = this.page.locator(Locators.ExitStudentModeBtn)
+        this.CheckAnswerBtn = this.page.locator(Locators.CheckAnswerBtn)
+        this.OptionsCheckBox1 = this.page.locator(Locators.OptionsCheckBox1)
+        this.OptionsCheckBox3 = this.page.locator(Locators.OptionsCheckBox3)
+        this.OptionsCheckBox4 = this.page.locator(Locators.OptionsCheckBox4)
+        this.OptionsCheckBox5 = this.page.locator(Locators.OptionsCheckBox5)
+        this.IncorrectTxtBox = this.page.locator(Locators.IncorrectTxtBox)
+        this.OnePlus1TxtPresentationMode = this.page.locator(Locators.OnePlus1TxtPresentationMode)
+        this.OneTxtPresentationMode = this.page.locator(Locators.OneTxtPresentationMode)
+        this.TwoTxtPresentationMode = this.page.locator(Locators.TwoTxtPresentationMode)
+        this.ThreeTxtPresentationMode = this.page.locator(Locators.ThreeTxtPresentationMode)
+        this.FourTxtPresentationMode = this.page.locator(Locators.FourTxtPresentationMode)
+        this.PresentationModeOptionWrong = this.page.locator(Locators.PresentationModeOptionWrong)
+        this.PresentationModeOpt1CheckBox = this.page.locator(Locators.PresentationModeOpt1CheckBox)
+        this.IncorrectAndCorrectAnswerHeading = this.page.locator(Locators.IncorrectAndCorrectAnswerHeading)
+        this.PointScoreMsg = this.page.locator(Locators.PointScoreMsg)
+        this.CloseBtn = this.page.locator(Locators.CloseBtn)
+        this.IncorrectMsg = this.page.locator(Locators.IncorrectMsg)
+        this.CorrectMsg = this.page.locator(Locators.CorrectMsg)
+        this.PresentationModeOpt2 = this.page.locator(Locators.PresentationModeOpt2)
     }
+   
     async clickOnAddNewItem() {
         const item = this.addNewItem
         await this.page.waitForTimeout(3000);
@@ -180,23 +219,6 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.click(row)
         await PlaywrightCore.press(row, 'Enter')
         await this.page.waitForTimeout(2000);
-
-        // const inputSelector = child.locator(this.list); // Replace with your actual selector
-        // const position = 4; // 0-based index, so 4 means the 5th character
-
-        // // Locate the input field and focus on it
-        // await PlaywrightCore.click(inputSelector);
-
-        // // Set the cursor position using evaluate, wrapping arguments in an object
-        // await this.page.evaluate(({ selector, pos }) => {
-        //     const input = document.querySelector(selector);
-        //     if (input) {
-        //         input.setSelectionRange(pos, pos);
-        //     } else {
-        //         throw new Error('Element not found or not interactable');
-        //     }
-        // }, { selector: inputSelector, pos: position });
-
     }
     async validateRemovingOfElementEditor(ele) {
         const parent = this.textEditor
