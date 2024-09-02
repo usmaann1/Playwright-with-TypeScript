@@ -10,14 +10,11 @@ require("dotenv").config();
 
 test.describe("TestSuite: Team/Courses", () => {
   test("TC: Flow Test Python1", async ({ teamCoursesPage, browser }) => {
-    console.log(process.env.EMAIL_NUMAIR);
-    console.log(process.env.PASSWORD_NUMAIR);
-    const email = process.env.EMAIL_NUMAIR ?? "numair@test.com";
-    const password = process.env.PASSWORD_NUMAIR ?? "Test@123";
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
-    //await teamCoursesPage.zoomOut();
     await teamCoursesPage.signInUser(email, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
@@ -200,7 +197,10 @@ test.describe("TestSuite: Team/Courses", () => {
     const link = await teamCoursesPage.simpleHTML();
     const newPage = await browser.newPage();
     const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
-    newTeamCoursesPageInstance.getHtmlData(link);
+    newTeamCoursesPageInstance.getHtmlData(
+      TeamCoursesData.HTMLTestOutput,
+      link
+    );
   });
 
   test("TC: Flow Test Python with Turtle", async ({ teamCoursesPage }) => {
@@ -276,8 +276,9 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption8,
       true
     );
+    await teamCoursesPage.waitFortime(10000);
     await teamCoursesPage.uploadFile(TeamCoursesData.PythonFile);
-    await teamCoursesPage.waitFortime(40000);
+    await teamCoursesPage.uploadProgrammingFile();
   });
 
   test("TC: Upload JAVA file", async ({ teamCoursesPage }) => {
@@ -293,7 +294,9 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption9,
       true
     );
+    await teamCoursesPage.waitFortime(10000);
     await teamCoursesPage.uploadFile(TeamCoursesData.JavaFile);
+    await teamCoursesPage.uploadProgrammingFile();
   });
 
   test("TC: Upload CSharp file", async ({ teamCoursesPage }) => {
@@ -309,7 +312,9 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption10,
       true
     );
+    await teamCoursesPage.waitFortime(10000);
     await teamCoursesPage.uploadFile(TeamCoursesData.CSharpFile);
+    await teamCoursesPage.uploadProgrammingFile();
   });
 
   test("TC: Upload CPP file", async ({ teamCoursesPage }) => {
@@ -325,7 +330,9 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption11,
       true
     );
+    await teamCoursesPage.waitFortime(10000);
     await teamCoursesPage.uploadFile(TeamCoursesData.CPPFile);
+    await teamCoursesPage.uploadProgrammingFile();
   });
 
   test("TC: Upload JavaScript file", async ({ teamCoursesPage }) => {
@@ -340,10 +347,12 @@ test.describe("TestSuite: Team/Courses", () => {
       randomName,
       TeamCoursesData.projectTypeOption1
     );
+    await teamCoursesPage.waitFortime(10000);
     await teamCoursesPage.uploadFile(TeamCoursesData.JSFile);
+    await teamCoursesPage.uploadProgrammingFile();
   });
 
-  test("TC: Upload HTML file", async ({ teamCoursesPage }) => {
+  test("TC: Upload HTML file", async ({ teamCoursesPage, browser }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
@@ -356,37 +365,17 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.ProjectTypeOption12,
       true
     );
-    await teamCoursesPage.uploadFile(TeamCoursesData.CSVFile);
-  });
-
-  test("TC: Upload JPG file", async ({ teamCoursesPage }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
-    const randomName = await UserFunctions.generateName();
-    const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
-    await teamCoursesPage.CreateTeam(randomName);
-    await teamCoursesPage.CreateAssignment(randomAssignment);
-    await teamCoursesPage.IntializeIDE(
-      randomName,
-      TeamCoursesData.projectTypeOption1
+    await teamCoursesPage.waitFortime(10000);
+    const link = await teamCoursesPage.uploadProgrammingFile(
+      TeamCoursesData.HTMLFile,
+      true
     );
-    await teamCoursesPage.uploadFile(TeamCoursesData.JPGFile);
-  });
-
-  test("TC: Upload PNG file", async ({ teamCoursesPage }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
-    const randomName = await UserFunctions.generateName();
-    const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
-    await teamCoursesPage.CreateTeam(randomName);
-    await teamCoursesPage.CreateAssignment(randomAssignment);
-    await teamCoursesPage.IntializeIDE(
-      randomName,
-      TeamCoursesData.projectTypeOption1
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    newTeamCoursesPageInstance.getHtmlData(
+      TeamCoursesData.HTMLFileUploadTest,
+      link
     );
-    await teamCoursesPage.uploadFile(TeamCoursesData.PNGFile);
   });
 
   test("TC: Upload CSV file", async ({ teamCoursesPage }) => {
@@ -401,6 +390,8 @@ test.describe("TestSuite: Team/Courses", () => {
       randomName,
       TeamCoursesData.projectTypeOption1
     );
+    await teamCoursesPage.waitFortime(10000);
     await teamCoursesPage.uploadFile(TeamCoursesData.CSVFile);
+    await teamCoursesPage.uploadCSV();
   });
 });
