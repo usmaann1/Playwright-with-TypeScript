@@ -128,6 +128,9 @@ exports.CreateLesson = class CreateLesson {
         this.IncorrectMsg = this.page.locator(Locators.IncorrectMsg)
         this.CorrectMsg = this.page.locator(Locators.CorrectMsg)
         this.PresentationModeOpt2 = this.page.locator(Locators.PresentationModeOpt2)
+        this.InviteStudentBtn = this.page.locator(Locators.InviteStudentBtn)
+        this.CopyURLBtn = this.page.locator(Locators.CopyURLBtn)
+        this.Opt2StudentMode = this.page.locator(Locators.Opt2StudentMode)
     }
    
     async clickOnAddNewItem() {
@@ -206,7 +209,6 @@ exports.CreateLesson = class CreateLesson {
     async validateElementsToAcceptInputOnEditor(ele, txt) {
         const parent = this.textEditor
         const child = parent.locator(ele)
-        // const text = clTD.textForEditor
         await this.page.waitForTimeout(1000);
         await PlaywrightCore.fill(child, txt)
     }

@@ -203,6 +203,18 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     return clipboardContent;
   }
 
+  async PublishAndInviteCreateLesson() {
+    await PlaywrightCore.check(this.PublishCheckBox.nth(0));
+    await PlaywrightCore.click(this.InviteStudentBtn);
+    await PlaywrightCore.click(this.CopyBtn);
+    const handle = await this.page.evaluateHandle(() =>
+      navigator.clipboard.readText()
+    );
+    const clipboardContent = await handle.jsonValue();
+    await PlaywrightCore.click(this.ModalCloseBtn);
+    return clipboardContent;
+  }
+
   async afterInviteSignUp(url, userName, password, firstName, lastName) {
     await this.page.goto(url);
     await this.signUpUser(userName, password);
