@@ -238,7 +238,7 @@ exports.UserFunctions = class UserFunctions {
     const {
       data: { text },
     } = await Tesseract.recognize(`${path}canvas.png`, `eng`);
-    console.log(text);
+    return text;
   }
 
   static async getAllColorsFromCanvas(page, path) {

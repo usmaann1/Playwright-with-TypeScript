@@ -531,15 +531,18 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await expect(isValid).toBe(true);
   }
 
-  async uploadJPG(fileName) {
+  async AssertImages(fileName) {
     await PlaywrightCore.waitTimeout(this.page, 5000);
     // await PlaywrightCore.click(this.FileExplorerBtnOpen);
     await this.page.getByText(fileName).first().click();
-    await UserFunctions.imageTextValidation(
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    const text = await UserFunctions.imageTextValidation(
       this.ImageEditor,
       TeamCoursesData.AssetsPaths,
-      "TEST"
+      TeamCoursesData.ImagesTextAssertion
     );
+    const isValid = await text.includes(TeamCoursesData.ImagesTextAssertion);
+    await expect(isValid).toBe(true);
   }
 
   async breakPoint() {

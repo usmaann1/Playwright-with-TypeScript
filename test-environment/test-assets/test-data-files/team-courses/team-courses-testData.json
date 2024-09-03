@@ -52,5 +52,6 @@
   "MenuItem": "menuItem",
   "UploadZip": "Upload zip",
   "TestJPG": "fileTest.jpg",
-  "TestPNG": "fileTest.png"
+  "TestPNG": "fileTest.png",
+  "ImagesTextAssertion": "TEST"
 }
