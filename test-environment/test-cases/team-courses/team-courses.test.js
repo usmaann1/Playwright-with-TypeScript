@@ -1,17 +1,15 @@
-const {
-  UserFunctions,
-} = require("../../../module-imports/helperFunctions.imports");
+const { UserFunctions,} = require("../../../module-imports/helperFunctions.imports");
 const { test } = require("../../../module-imports/testFixtures.imports");
-const {
-  TeamCoursesPage,
-} = require("../../../pages/team-courses/team-courses.page");
+const { TeamCoursesPage } = require("../../../pages/team-courses/team-courses.page");
 import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
+import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 require("dotenv").config();
 
 test.describe("TestSuite: Team/Courses", () => {
+
   test("TC: Flow Test Python1", async ({ teamCoursesPage, browser }) => {
-    const email = "numair@test.com";
-    const password = "Test@123";
+    const email = Credentials.EMAIL_NUMAIR;
+    const password = Credentials.PASSWORD_NUMAIR;
     console.log(email);
     console.log(password);
     const randomName = await UserFunctions.generateName();
