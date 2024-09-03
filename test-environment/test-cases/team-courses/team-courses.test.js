@@ -10,8 +10,8 @@ require("dotenv").config();
 
 test.describe("TestSuite: Team/Courses", () => {
   test("TC: Flow Test Python1", async ({ teamCoursesPage, browser }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
+    const email = "numair@test.com";
+    const password = "Test@123";
     console.log(email);
     console.log(password);
     const randomName = await UserFunctions.generateName();
