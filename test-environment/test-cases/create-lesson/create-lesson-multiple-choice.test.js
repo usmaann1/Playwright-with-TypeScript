@@ -14,7 +14,6 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
     const userPwd = process.env.PASSWORD_HASSAAN
     const teamName = CLtd.teamName + randomNumber
     const lessonName = CLtd.lessonName + '-' + randomNumber
-    const randomEmail = UserFunctions.generateRandomEmail(userEmail)
 
     test.beforeEach(async ({ loginPage, createTeams, createLesson }) => {
         await loginPage.NavigateToLoginPage()
@@ -219,6 +218,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
 
 
     test('TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer - Multiple Selections Allowed - Student Mode', async ({ createLesson, teamCoursesPage, browser }) => {
+        const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
         await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)

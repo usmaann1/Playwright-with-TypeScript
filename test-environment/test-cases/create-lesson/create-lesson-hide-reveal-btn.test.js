@@ -15,7 +15,6 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
     const userPwd = process.env.PASSWORD_HASSAAN
     const teamName = CLtd.teamName + randomNumber
     const lessonName = CLtd.lessonName + '-' + randomNumber
-    const randomEmail = UserFunctions.generateRandomEmail(userEmail)
 
     test.beforeEach(async ({ loginPage, createTeams, createLesson }) => {
         await loginPage.NavigateToLoginPage()
@@ -76,6 +75,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
     });
 
     test('TC - Create Lesson Insert - Hide & Reveal Button - Student Login Check', async ({ createLesson, teamCoursesPage, browser }) => {
+        const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.selectElementFromDropdown(CLtd.elements.hideAndRevealButton)
         await expect(createLesson.HideRevealTextBox).toBeVisible()
         await PlaywrightCore.fill(createLesson.HideRevealTextBox, CLHRtd.HideRevealTxtHeadingValue)
