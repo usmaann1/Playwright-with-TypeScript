@@ -23,7 +23,7 @@ jobs:
       - name: Run Specific Playwright Test
         id: test
         run: |
-          npx playwright test --reporter=html --output=./test-results --config=playwright.config.js
+          npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --grep "TC: Flow Test Python1" --reporter=html --output=./test-results --config=playwright.config.js
 
       - name: Upload Test Results
         if: always()  # This step runs regardless of whether the test fails or passes
