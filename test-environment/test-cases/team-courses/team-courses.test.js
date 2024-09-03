@@ -1,17 +1,18 @@
-const { UserFunctions,} = require("../../../module-imports/helperFunctions.imports");
+const {
+  UserFunctions,
+} = require("../../../module-imports/helperFunctions.imports");
 const { test } = require("../../../module-imports/testFixtures.imports");
-const { TeamCoursesPage } = require("../../../pages/team-courses/team-courses.page");
+const {
+  TeamCoursesPage,
+} = require("../../../pages/team-courses/team-courses.page");
 import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 require("dotenv").config();
 
 test.describe("TestSuite: Team/Courses", () => {
-
+  const email = Credentials.EMAIL_NUMAIR;
+  const password = Credentials.PASSWORD_NUMAIR;
   test("TC: Flow Test Python1", async ({ teamCoursesPage, browser }) => {
-    const email = Credentials.EMAIL_NUMAIR;
-    const password = Credentials.PASSWORD_NUMAIR;
-    console.log(email);
-    console.log(password);
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -42,8 +43,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Flow Test Java", async ({ teamCoursesPage, browser }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -74,8 +73,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Flow Test CSharp", async ({ teamCoursesPage, browser }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -106,8 +103,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Flow Test C++", async ({ teamCoursesPage, browser }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -138,8 +133,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Flow Test JavaScript", async ({ teamCoursesPage, browser }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomEmail = await UserFunctions.generateRandomEmail(email);
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
@@ -181,8 +174,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Flow Test HTML", async ({ teamCoursesPage, browser }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -204,8 +195,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Flow Test Python with Turtle", async ({ teamCoursesPage }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -219,8 +208,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Flow Test Python with Tkinter", async ({ teamCoursesPage }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -234,8 +221,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Flow Test Java with Swing", async ({ teamCoursesPage }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -249,8 +234,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Flow Test Python with Matplotlib", async ({ teamCoursesPage }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -264,8 +247,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Upload Python file", async ({ teamCoursesPage }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -282,8 +263,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Upload JAVA file", async ({ teamCoursesPage }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -300,8 +279,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Upload CSharp file", async ({ teamCoursesPage }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -318,8 +295,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Upload CPP file", async ({ teamCoursesPage }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -336,8 +311,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Upload JavaScript file", async ({ teamCoursesPage }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -353,8 +326,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Upload HTML file", async ({ teamCoursesPage, browser }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -379,8 +350,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Upload CSV file", async ({ teamCoursesPage }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -396,8 +365,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Upload JPG file", async ({ teamCoursesPage }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -412,8 +379,6 @@ test.describe("TestSuite: Team/Courses", () => {
   });
 
   test("TC: Upload PNG file", async ({ teamCoursesPage }) => {
-    const email = process.env.EMAIL_NUMAIR;
-    const password = process.env.PASSWORD_NUMAIR;
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
