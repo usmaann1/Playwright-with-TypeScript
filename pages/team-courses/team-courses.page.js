@@ -533,7 +533,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async AssertImages(fileName) {
     await PlaywrightCore.waitTimeout(this.page, 5000);
-    // await PlaywrightCore.click(this.FileExplorerBtnOpen);
     await this.page.getByText(fileName).first().click();
     await PlaywrightCore.waitTimeout(this.page, 20000);
     const text = await UserFunctions.imageTextValidation(
