@@ -10,15 +10,12 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: lts/*
+        node-version: '18'
     - name: Install dependencies
-      working-directory: Automation
-      run: npm ci
+      run: npm install
     - name: Install Playwright Browsers
-      working-directory: Automation
-      run: npx playwright install --with-deps
+      run: npx playwright install
     - name: Run Playwright tests
-      working-directory: Automation
       run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --grep "TC:Flow Test Python1" --reporter=html
     - uses: actions/upload-artifact@v4
       if: always()
