@@ -41,10 +41,12 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.CreateCourse = Locators.CreateCourse;
     this.IndexJs = Locators.IndexFile;
     this.MainPy = Locators.MainPy;
+    this.ZipUpload = this.page.locator(Locators.ZipUpload);
     this.PlayArrowIcon = this.page.getByTestId(Locators.PlayArrowIcon).first();
     this.SignInBtn = this.page.locator(Locators.SignInBtn);
     this.SignUpNavigationBtn = this.page.locator(Locators.SignUpNavigationBtn);
     this.SignUpBtn = this.page.locator(Locators.SignUpBtn);
+    this.VertIcon = this.page.locator(Locators.VertIcons);
     this.EmailAddressTxtBox = this.page.locator(Locators.EmailAddressTxtBox);
     this.PasswordTxtBox = this.page.locator(Locators.PasswordTxtBox);
     this.CoursesBtn = this.page.locator(Locators.CoursesBtn);
@@ -68,6 +70,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.ProjectTypeSelect = this.page.locator(Locators.ProjectTypeSelect);
     this.TemplateBtn = this.page.locator(Locators.TemplateBtn);
     this.FileExplorerBtnOpen = this.page.locator(Locators.FileExplorerBtnOpen);
+    this.OverWriteFile = this.page.locator(Locators.OverWriteFile);
     this.FileExplorerBtnClose = this.page.locator(
       Locators.FileExplorerBtnClose
     );
@@ -99,6 +102,10 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.FullScreenBtn = this.page.locator(Locators.FullScreenBtn);
     this.CloseFullScreenBtn = this.page.locator(Locators.CloseFullScreenBtn);
     this.HtmlWebView = this.page.locator(Locators.HtmlWebView);
+    this.OverRideProjectFiles = this.page.locator(
+      Locators.OverRideProjectFiles
+    );
+    this.ImageEditor = this.page.locator(Locators.ImageEditor);
   }
 
   async NavigateToSignUpPage() {
@@ -118,14 +125,13 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await this.zoomOut();
     username && (await PlaywrightCore.fill(this.EmailAddressTxtBox, username));
     password && (await PlaywrightCore.fill(this.PasswordTxtBox, password));
-    await console.log(this.page.url());
     await PlaywrightCore.waitFor(this.SignInBtn);
     await PlaywrightCore.click(this.SignInBtn);
   }
 
   async CreateTeam(teamName) {
     await this.zoomOut();
-    await PlaywrightCore.waitTimeout(this.page,5000);
+    await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.CoursesBtn);
     await PlaywrightCore.click(this.CoursesBtn);
     await PlaywrightCore.click(this.CreateNewTeam);
@@ -344,10 +350,10 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     return url;
   }
 
-  async getHtmlData(url) {
+  async getHtmlData(data, url) {
     await this.page.goto(url);
     const htmlContent = await this.page.content();
-    const isValid = await htmlContent.includes(TeamCoursesData.HTMLTestOutput);
+    const isValid = await htmlContent.includes(data);
     expect(isValid).toBe(true);
   }
 
@@ -482,6 +488,62 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.fileUpload(this.UploadFile, path);
   }
 
+  async uploadProgrammingFile(path = null, isHtml = false) {
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    if (!isHtml) {
+      await PlaywrightCore.click(this.OverWriteFile);
+      await PlaywrightCore.waitTimeout(this.page, 20000);
+      await this.PlayArrowIcon.click();
+      await PlaywrightCore.waitTimeout(this.page, 20000);
+      const element = await this.page.$(Locators.Terminal);
+      await PlaywrightCore.waitTimeout(this.page, 20000);
+      const innerText = await element.innerText();
+      const isValid = await innerText.includes(1);
+      await expect(isValid).toBe(true);
+    } else {
+      await PlaywrightCore.click(this.FileExplorerBtnOpen);
+      await PlaywrightCore.waitTimeout(this.page, 5000);
+      await this.VertIcon.first().click();
+      await PlaywrightCore.waitTimeout(this.page, 5000);
+      await PlaywrightCore.getByRoleItem(
+        this.page,
+        TeamCoursesData.MenuItem,
+        TeamCoursesData.UploadZip
+      );
+      await PlaywrightCore.waitTimeout(this.page, 10000);
+      await PlaywrightCore.fileUpload(this.ZipUpload, path);
+      await PlaywrightCore.click(this.OverRideProjectFiles);
+      await PlaywrightCore.waitTimeout(this.page, 20000);
+      await this.PlayArrowIcon.click();
+      await PlaywrightCore.waitTimeout(this.page, 20000);
+      const src = await this.HtmlWebView.evaluate((el) => el.src);
+      return src;
+    }
+  }
+
+  async uploadCSV(path) {
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await this.page.getByText(TeamCoursesData.CSVFileName).first().click();
+    await PlaywrightCore.waitTimeout(this.page, 10000);
+    const textBox = await this.EditorTextBox.nth(1);
+    const editorText = await textBox.textContent();
+    const isValid = await editorText.includes(5);
+    await expect(isValid).toBe(true);
+  }
+
+  async AssertImages(fileName) {
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await this.page.getByText(fileName).first().click();
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    const text = await UserFunctions.imageTextValidation(
+      this.ImageEditor,
+      TeamCoursesData.AssetsPaths,
+      TeamCoursesData.ImagesTextAssertion
+    );
+    const isValid = await text.includes(TeamCoursesData.ImagesTextAssertion);
+    await expect(isValid).toBe(true);
+  }
+
   async breakPoint() {
     await this.page.pause();
   }
@@ -490,5 +552,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await this.page.evaluate(() => {
       document.body.style.zoom = "50%";
     });
+  }
+
+  async waitFortime(time) {
+    await PlaywrightCore.waitTimeout(this.page, time);
   }
 };

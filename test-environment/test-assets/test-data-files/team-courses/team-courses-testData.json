@@ -36,5 +36,22 @@
   "BtnClickedTest": "Button Greet Test",
   "PythonValidation": "Squared numbers: [1, 4, 9, 16, 25]",
   "HTMLTestInput": "<!DOCTYPE html><html><head><title>Page Title</title><link href='styles.css' rel='stylesheet' /></head><body><h1>Hello World!!!</h1><p>what a lovely day</p><script src='script.js'></script></body></html>",
-  "HTMLTestOutput": "what a lovely day"
+  "HTMLTestOutput": "what a lovely day",
+  "PythonFile": "./test-environment/test-assets/test-resource-files/main.py",
+  "JavaFile": "./test-environment/test-assets/test-resource-files/Main.java",
+  "CSharpFile": "./test-environment/test-assets/test-resource-files/main.cs",
+  "CPPFile": "./test-environment/test-assets/test-resource-files/main.cpp",
+  "JSFile": "./test-environment/test-assets/test-resource-files/index.js",
+  "HTMLFile": "./test-environment/test-assets/test-resource-files/testFile.zip",
+  "JPGFile": "./test-environment/test-assets/test-resource-files/fileTest.jpg",
+  "PNGFile": "./test-environment/test-assets/test-resource-files/fileTest.png",
+  "CSVFile": "./test-environment/test-assets/test-resource-files/fileTest.csv",
+  "HTMLFileUploadTest": "this is a test",
+  "ZoomOut": "50%",
+  "CSVFileName": "fileTest.csv",
+  "MenuItem": "menuItem",
+  "UploadZip": "Upload zip",
+  "TestJPG": "fileTest.jpg",
+  "TestPNG": "fileTest.png",
+  "ImagesTextAssertion": "TEST"
 }

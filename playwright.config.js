@@ -20,13 +20,13 @@ const config = {
     timeout: 15000,
   },
   /* Run tests in files in parallel */
-  fullyParallel: false,
+  fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 1 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: 1,
+  workers: 5,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   outputDir: `${outputDirectory}/trace-output/`,
   reporter: [
@@ -41,7 +41,7 @@ const config = {
     actionTimeout: 15000,
     baseURL: "https://play.juicemind.com/",
     ignoreHTTPSErrors: true,
-    headless: true,
+    headless: false,
     permissions: ["clipboard-read"],
     video: "on",
     trace: "on",

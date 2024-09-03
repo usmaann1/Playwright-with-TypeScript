@@ -197,7 +197,10 @@ test.describe("TestSuite: Team/Courses", () => {
     const link = await teamCoursesPage.simpleHTML();
     const newPage = await browser.newPage();
     const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
-    newTeamCoursesPageInstance.getHtmlData(link);
+    newTeamCoursesPageInstance.getHtmlData(
+      TeamCoursesData.HTMLTestOutput,
+      link
+    );
   });
 
   test("TC: Flow Test Python with Turtle", async ({ teamCoursesPage }) => {
@@ -258,5 +261,169 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption6
     );
     await teamCoursesPage.pythonWithMatplotlib();
+  });
+
+  test("TC: Upload Python file", async ({ teamCoursesPage }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption8,
+      true
+    );
+    await teamCoursesPage.waitFortime(10000);
+    await teamCoursesPage.uploadFile(TeamCoursesData.PythonFile);
+    await teamCoursesPage.uploadProgrammingFile();
+  });
+
+  test("TC: Upload JAVA file", async ({ teamCoursesPage }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption9,
+      true
+    );
+    await teamCoursesPage.waitFortime(10000);
+    await teamCoursesPage.uploadFile(TeamCoursesData.JavaFile);
+    await teamCoursesPage.uploadProgrammingFile();
+  });
+
+  test("TC: Upload CSharp file", async ({ teamCoursesPage }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption10,
+      true
+    );
+    await teamCoursesPage.waitFortime(10000);
+    await teamCoursesPage.uploadFile(TeamCoursesData.CSharpFile);
+    await teamCoursesPage.uploadProgrammingFile();
+  });
+
+  test("TC: Upload CPP file", async ({ teamCoursesPage }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption11,
+      true
+    );
+    await teamCoursesPage.waitFortime(10000);
+    await teamCoursesPage.uploadFile(TeamCoursesData.CPPFile);
+    await teamCoursesPage.uploadProgrammingFile();
+  });
+
+  test("TC: Upload JavaScript file", async ({ teamCoursesPage }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption1
+    );
+    await teamCoursesPage.waitFortime(10000);
+    await teamCoursesPage.uploadFile(TeamCoursesData.JSFile);
+    await teamCoursesPage.uploadProgrammingFile();
+  });
+
+  test("TC: Upload HTML file", async ({ teamCoursesPage, browser }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.ProjectTypeOption12,
+      true
+    );
+    await teamCoursesPage.waitFortime(10000);
+    const link = await teamCoursesPage.uploadProgrammingFile(
+      TeamCoursesData.HTMLFile,
+      true
+    );
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    newTeamCoursesPageInstance.getHtmlData(
+      TeamCoursesData.HTMLFileUploadTest,
+      link
+    );
+  });
+
+  test("TC: Upload CSV file", async ({ teamCoursesPage }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption1
+    );
+    await teamCoursesPage.waitFortime(10000);
+    await teamCoursesPage.uploadFile(TeamCoursesData.CSVFile);
+    await teamCoursesPage.uploadCSV();
+  });
+
+  test.only("TC: Upload JPG file", async ({ teamCoursesPage }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption1
+    );
+    await teamCoursesPage.uploadFile(TeamCoursesData.JPGFile);
+    await teamCoursesPage.AssertImages(TeamCoursesData.TestJPG);
+  });
+
+  test.only("TC: Upload PNG file", async ({ teamCoursesPage }) => {
+    const email = process.env.EMAIL_NUMAIR;
+    const password = process.env.PASSWORD_NUMAIR;
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption1
+    );
+    await teamCoursesPage.uploadFile(TeamCoursesData.PNGFile);
+    await teamCoursesPage.AssertImages(TeamCoursesData.TestPNG);
   });
 });

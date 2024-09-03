@@ -1,7 +1,6 @@
 const { chromium, expect } = require("@playwright/test");
 
 exports.PlaywrightCore = class PlaywrightCore {
-
   static async allTextContents(locator) {
     try {
       return await locator.allTextContents();
@@ -463,6 +462,14 @@ exports.PlaywrightCore = class PlaywrightCore {
     }
   }
 
+  static async getByRoleItem(page, item, textname) {
+    try {
+      page.getByRole(item, { name: textname }).click();
+    } catch (e) {
+      console.log("An error occurred");
+    }
+  }
+
   static async ClickByText(page, Text) {
     try {
       await page.getByText(Text).click();
@@ -549,5 +556,4 @@ exports.PlaywrightCore = class PlaywrightCore {
       console.error(`Error occurred`, error);
     }
   }
-  
 };
