@@ -43,7 +43,6 @@ const config = {
     ignoreHTTPSErrors: true,
     headless: true,
     permissions: ["clipboard-read"],
-    video: "on",
     trace: "on",
     viewport: null,
     launchOptions: {
