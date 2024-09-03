@@ -2,13 +2,14 @@ const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helpe
 const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import CreateTeamsTestData from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
 import JoinQuizTestData from '../../test-assets/test-data-files/join-quiz/join-quiz-testData.json'
+import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 require('dotenv').config()
 
 test.describe('TestSuite: Create Teams', () => {
 
     test.beforeEach(async ({ loginPage, createTeams }) => {
         await loginPage.NavigateToLoginPage()
-        await loginPage.fillCredentialsAndLogin(process.env.EMAIL, process.env.PASSWORD)
+        await loginPage.fillCredentialsAndLogin(Credentials.EMAIL, Credentials.PASSWORD)
         await expect(loginPage.ProfilePicture).toBeVisible()
         await expect(createTeams.TeamsCoursesBtn).toHaveText(CreateTeamsTestData.TeamsCoursesBtnValue)
         await createTeams.navigateToTeamsCoursesPage()

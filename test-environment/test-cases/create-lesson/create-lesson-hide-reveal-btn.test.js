@@ -6,13 +6,14 @@ import CTtd from '../../test-assets/test-data-files/create-teams/create-teams-te
 const { TeamCoursesPage } = require("../../../pages/team-courses/team-courses.page")
 const { CreateLesson } = require("../../../pages/create-lesson/create-lesson.page");
 import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
+import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 require('dotenv').config()
 
 test.describe('TestSuite: Create Lesson Multiple Choice', () => {
 
     const randomNumber = UserFunctions.generateRandomString(5)
-    const userEmail = process.env.EMAIL_HASSAAN
-    const userPwd = process.env.PASSWORD_HASSAAN
+    const userEmail = Credentials.EMAIL_HASSAAN
+    const userPwd = Credentials.PASSWORD_HASSAAN
     const teamName = CLtd.teamName + randomNumber
     const lessonName = CLtd.lessonName + '-' + randomNumber
 
