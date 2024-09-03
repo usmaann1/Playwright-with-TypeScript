@@ -133,5 +133,9 @@
     "PresentationModeOpt2":"//form//div[2]//input[1]",
     "InviteStudentBtn":"//a[normalize-space()='Invite students']",
     "CopyURLBtn":"//a[normalize-space()='Copy']",
-    "Opt2StudentMode":"//body//div[@id='root']//div[@contenteditable='false']//div[@contenteditable='false']//div[2]//input[1]"
+    "Opt2StudentMode":"//body//div[@id='root']//div[@contenteditable='false']//div[@contenteditable='false']//div[2]//input[1]",
+    "HideRevealTextBox":"//div[@contenteditable='false']//div//div//div//div//div[@contenteditable='true']",
+    "HideContentBtn":"//button[normalize-space()='Hide Content']",
+    "RevealContentButton":"//button[normalize-space()='Reveal Content']",
+    "StudentModeHideContentText":"//p[normalize-space()='Hello World']"
 }
