@@ -16,7 +16,8 @@
         "codeBlock": "Code Block",
         "table": "Table",
         "uploadImage": "Image",
-        "multipleChoice":"Multiple Choice"
+        "multipleChoice":"Multiple Choice",
+        "hideAndRevealButton":"Hide/Reveal Button"
     },
     "options": {
         "Delete": "Delete"

@@ -131,6 +131,10 @@ exports.CreateLesson = class CreateLesson {
         this.InviteStudentBtn = this.page.locator(Locators.InviteStudentBtn)
         this.CopyURLBtn = this.page.locator(Locators.CopyURLBtn)
         this.Opt2StudentMode = this.page.locator(Locators.Opt2StudentMode)
+        this.HideRevealTextBox = this.page.locator(Locators.HideRevealTextBox)
+        this.HideContentBtn = this.page.locator(Locators.HideContentBtn)
+        this.RevealContentButton = this.page.locator(Locators.RevealContentButton)
+        this.StudentModeHideContentText = this.page.locator(Locators.StudentModeHideContentText)
     }
    
     async clickOnAddNewItem() {
