@@ -1,61 +1,58 @@
-// @ts-check
-const { devices } = require("@playwright/test");
+import { defineConfig, devices, PlaywrightTestConfig } from '@playwright/test';
+import { on } from 'events';
 
-let outputDirectory = String("./test-environment/test-reports/");
 
 /**
- * @see https://playwright.dev/docs/test-configuration
- * @type {import('@playwright/test').PlaywrightTestConfig}
+ * Read environment variables from file.
+ * https://github.com/motdotla/dotenv
  */
-const config = {
-  testDir: "./test-environment/test-cases/",
+// require('dotenv').config();
 
-  /* Maximum time one test can run for. */
-  timeout: 600 * 1000,
-  expect: {
-    /**
-     * Maximum time expect() should wait for the condition to be met.
-     * For example in `await expect(locator).toHaveText();`
-     */
-    timeout: 15000,
-  },
+/**
+ * See https://playwright.dev/docs/test-configuration.
+ */
+export default defineConfig({
+  testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 1 : 0,
+  retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: 5,
+  workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  outputDir: `${outputDirectory}/trace-output/`,
-  reporter: [
-    ['html', { outputFolder: 'playwright-report' }],
-  ],
-  /* Login session storage */
-  globalSetup: require.resolve("./test-environment/test-assets/global-setup"),
+  reporter: [ ['html', { outputFolder: 'playwright-report' }] ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  timeout: 8 * 60 * 1000,
   use: {
-    browserName: "chromium",
-    storageState: "loginState.json",
-    actionTimeout: 15000,
-    baseURL: "https://play.juicemind.com/",
-    ignoreHTTPSErrors: true,
-    headless: true,
-    permissions: ["clipboard-read"],
-    trace: "on",
-    viewport: null,
-    launchOptions: {
-      slowMo: 500, //
-      args: ["--start-maximized"],
-    },
+    viewport: {width:1920, height: 1080},
+    /* Base URL to use in actions like `await page.goto('/')`. */
+    // baseURL: 'http://127.0.0.1:3000',
+    headless:true,
+    permissions: ['notifications'],
+    screenshot:'on',
+
+    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    trace:
+    {
+      mode:'retain-on-failure',
+      attachments: true,
+      screenshots:true,
+      snapshots:true,
+      sources:true
+    } 
   },
+  reporter: [['html', { open: 'never' }]],
+
+  /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    },
-    // Uncomment to test against mobile viewports or branded browsers
+    }
+
+    /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] },
@@ -64,6 +61,8 @@ const config = {
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
     // },
+
+    /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
@@ -74,12 +73,10 @@ const config = {
     // },
   ],
 
-  // Uncomment if you need to run your local dev server before starting the tests
+  /* Run your local dev server before starting the tests */
   // webServer: {
   //   command: 'npm run start',
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-};
-
-module.exports = config;
+});
