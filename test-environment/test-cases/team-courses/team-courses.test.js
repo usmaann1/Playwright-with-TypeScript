@@ -12,6 +12,8 @@ test.describe("TestSuite: Team/Courses", () => {
   test("TC: Flow Test Python1", async ({ teamCoursesPage, browser }) => {
     const email = process.env.EMAIL_NUMAIR;
     const password = process.env.PASSWORD_NUMAIR;
+    console.log(email);
+    console.log(password);
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
