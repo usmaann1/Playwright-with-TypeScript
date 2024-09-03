@@ -1,7 +1,7 @@
 {
     "GamePinTextLocator": "//div[@variant='h1']",
-    "LoginLink": "https://play.juicemind.com/login"
-  
-
-
+    "LoginLink": "https://play.juicemind.com/login",
+    "StdCode_1": "public class Main {\n    public static void main(String[] args) {\n\n        System.out.println(\"African elephant\");\n\n    }\n}",
+    "StdCode_2": "public class Main {\n    public static void main(String[] args) {\n\n        System.out.println(\"African elephant\");\n\n    }\n}",
+    "StdCode_3": "public class Main {\n    public static void main(String[] args) {\n\n        System.out.println(\"African elephant\");\n\n    }\n}"
 }

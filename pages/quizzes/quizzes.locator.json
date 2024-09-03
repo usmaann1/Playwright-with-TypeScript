@@ -19,6 +19,8 @@
     "AnswerChoice_3": "(//h1[@class ='_choiceLetter_1h2ot_22'])[3]",
     "AnswerChoice_4": "(//h1[@class ='_choiceLetter_1h2ot_22'])[4]",
     "Next": "(//a[normalize-space()='Next'])[1]",
+    "WriteCodeInEditor":"(//div[@class='ace_line'])[3]",
+    "ExecuteButton": "//*[@data-testid='PlayArrowIcon']",
 
     "Presentation_btn":"//a[normalize-space()='Presentation Mode']",
     "Gotit_btn":"//a[normalize-space()='Got it']",

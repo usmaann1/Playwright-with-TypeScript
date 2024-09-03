@@ -106,12 +106,51 @@ test.describe('TestSuite: Quizzes', () => {
 
         }
 
-        else if(i==5 || i==6)
+        else if( i==5)
         {
+
+          //first
+          await newPage.evaluate(() => {
+            const editor = ace.edit(document.querySelector('.ace_editor'));
+            editor.setValue("public class Main {\n    public static void main(String[] args) {\n\n        System.out.println(\"African elephant\");\n\n    }\n}");
+          });
+
+          await quizzes.ClickExecute(newPage)
+
+          //second
+          await newPage2.evaluate(() => {
+            const editor = ace.edit(document.querySelector('.ace_editor'));
+            editor.setValue("public class Main {\n    public static void main(String[] args) {\n\n        System.out.println(\"\");\n\n    }\n}");
+          });
+
+          await quizzes.ClickExecute(newPage2)
+
           await page.waitForTimeout(110000);
 
         }
-         
+
+        else if(i==6)
+        {
+           //first
+           await newPage.evaluate(() => {
+            const editor = ace.edit(document.querySelector('.ace_editor'));
+            editor.setValue("public class Main {\n    public static void main(String[] args) {\n\n        System.out.println(\"Beluga whale\");\n\n    }\n}");
+          });
+
+          await quizzes.ClickExecute(newPage)
+
+          //second
+          await newPage2.evaluate(() => {
+            const editor = ace.edit(document.querySelector('.ace_editor'));
+            editor.setValue("public class Main {\n    public static void main(String[] args) {\n\n        System.out.println(\"\");\n\n    }\n}");
+          });
+
+          await quizzes.ClickExecute(newPage2)
+
+          await page.waitForTimeout(110000);
+
+        }   
+                
         await quizzes.ClickNextButton()
 
         await page.waitForTimeout(5000);
@@ -121,22 +160,7 @@ test.describe('TestSuite: Quizzes', () => {
       }
       
 
-
-
-
-
-
-
-
-
-
-
-
-
   });
-
-  
-
-  
+ 
 
 });

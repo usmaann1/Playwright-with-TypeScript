@@ -107,11 +107,23 @@ exports.quizzes = class quizzes {
         await newPage.click(Locators.ErrorLine)
 
     }
+    async ClickExecute(newPage) {
+        await newPage.click(Locators.ExecuteButton)
+
+    }
     async EnterGamePin(newPage, pin) {
         await newPage.fill(Locators.GamePin, pin);
         await newPage.click(Locators.Enter)
 
     }
+
+    async WriteCode(newPage, code) {
+        await newPage.click(Locators.WriteCodeInEditor)
+
+        await newPage.fill(Locators.WriteCodeInEditor, code);
+
+    }
+
 
        
 };
