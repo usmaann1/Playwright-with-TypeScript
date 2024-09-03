@@ -16,7 +16,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install
     - name: Run Playwright tests
-      run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --grep "TC: Flow Test Python1"
+      run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=html
     - uses: actions/upload-artifact@v4
       if: always()
       with:
