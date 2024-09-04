@@ -33,7 +33,7 @@ jobs:
       if: always()  # Always send a notification, even if previous steps fail
       run: |
         curl -X POST -H 'Content-type: application/json' \
-        --data '{"text":"GitHub Actions workflow completed. Job Status: ${{ job.status }}. Details: <${REPORT_URL}|View Report>\"}' \
+        --data '{"text":"GitHub Actions workflow completed. Job Status: ${{ job.status }}. Details: View Report\"}' \
         https://hooks.slack.com/services/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
         
   reports:
