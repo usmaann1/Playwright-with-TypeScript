@@ -25,42 +25,55 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install
 
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
-
-    - name: Install dependencies
-      run: npm install
-
     - name: Run Playwright Tests
       run: |
         npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --grep "TC: Flow Test Python1" --reporter=json > results.json
+        zip -r test-results.zip results.json
 
     - name: Upload test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: test-results
-        path: results.json
+        path: test-results.zip
 
-    - name: Parse Test Results
-      id: parse-results
+  parse-and-notify:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+    - name: Download test results
+      uses: actions/download-artifact@v4
+      with:
+        name: test-results
+        path: downloaded-report
+
+    - name: Install jq and unzip
+      run: sudo apt-get install -y jq unzip
+
+    - name: Extract the Zip File
       run: |
-        PASSED=$(jq '[.suites[].tests[].results[] | select(.status=="passed")] | length' results.json)
-        FAILED=$(jq '[.suites[].tests[].results[] | select(.status=="failed")] | length' results.json)
-        echo "PASSED=$PASSED" >> $GITHUB_ENV
-        echo "FAILED=$FAILED" >> $GITHUB_ENV
+        unzip downloaded-report/test-results.zip -d extracted-report
+
+    - name: Count Test Cases
+      id: count-tests
+      run: |
+        # Check the structure of the JSON file for correctness
+        jq '.' extracted-report/results.json
+
+        # Count the number of passed and failed test cases
+        PASSED=$(jq '[.suites[].suites[].tests[].results[] | select(.status=="passed")] | length' extracted-report/results.json)
+        FAILED=$(jq '[.suites[].suites[].tests[].results[] | select(.status=="failed")] | length' extracted-report/results.json)
+
+        # Use default values if results are empty or null
+        echo "PASSED=${PASSED:-0}" >> $GITHUB_ENV
+        echo "FAILED=${FAILED:-0}" >> $GITHUB_ENV
 
     - name: Display Results
       run: |
         echo "Total Passed: ${{ env.PASSED }}, Total Failed: ${{ env.FAILED }}"
-        
+
     - name: Notify Slack
       if: always()  # Always send a notification, even if previous steps fail
       run: |
         curl -X POST -H 'Content-type: application/json' \
-        --data '{"text":"GitHub Actions workflow completed. Number of failed tests: ${{ env.FAILED }}. Number of passed tests: ${{ env.PASSED }}."}' \
+        --data "{\"text\":\"GitHub Actions workflow completed. Number of failed tests: ${{ env.FAILED }}. Number of passed tests: ${{ env.PASSED }}.\"}" \
         https://hooks.slack.com/services/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
