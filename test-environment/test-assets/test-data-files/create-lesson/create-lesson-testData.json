@@ -2,6 +2,9 @@
     "teamName": "LessonTeam",
     "lessonName": "lesson for Beginners",
     "textForEditor": "abcd1234",
+    "Answer": "Test",
+    "wrongAnswer": "Tests",
+    "validationError": "Wrong answer",
     "elements": {
         "heading1": "Heading 1",
         "heading2": "Heading 2",
@@ -15,14 +18,19 @@
         "quote": "Quote",
         "codeBlock": "Code Block",
         "table": "Table",
-        "uploadImage": "Image"
+        "uploadImage": "Image",
+        "fillInBlank": "Fill in the blank",
+        "fileUpload": "File Upload",
+        "shortAnswer": "Short Answer"
     },
     "options": {
         "Delete": "Delete"
     },
     "attributes": {
         "dataType": "data-type",
-        "value": "taskList"
+        "value": "taskList",
+        "datachecked": "data-checked",
+        "checkedTrue": "true"
     },
     "EmbedInsertURLHeadingValue": "Insert URL",
     "EmbedSubmitBtnValue": "Submit",
@@ -42,8 +50,6 @@
     "value": "taskList",
     "type": "type",
     "valueCb": "checkbox",
-    "datachecked": "data-checked",
-    "checkedTrue": "true",
     "checkedFalse": "false",
     "placeHolder": {
         "quote": "Enter a quote",
@@ -53,5 +59,23 @@
         "Quote": "this is a famous quote",
         "Author": "famous author",
         "code": "console.log('Hello, World!');"
+    },
+    "fileUpload":{
+        "optionField": "Allow learners to check their answer.",
+        "correctOptionColorVal": "rgb(144, 238, 144)"
+    },
+    "shortAnswer": {
+        "promptTxt": "What is your Name",
+        "answerTemplateTxt": "Raul",
+         "successLabelColor": "rgb(211, 211, 211)"
+    },
+    "dragDrop":{
+        "dragAndDrop": "Drag and Drop"
+    },
+    "tip": {
+        "tipElement": "Tip",
+        "backgroundYellow": "rgb(244, 190, 48)",
+        "backgroundBlue": "rgb(82, 110, 210)",
+        "backgroundPink": "rgb(254, 91, 127)"
     }
 }

@@ -2,6 +2,8 @@
     "addNewItem": "//div[contains(text(),'Add new item')]",
     "itemContainer": "//body/div[@id='root']/div/div/div/div/div/div[2]/div[1]",
     "addItemLesson": "//div[contains(text(),'Lesson')]",
+    "exitStudentViewBtn": "//body/div[@id='root']/div/div/div/div/div/div[1] //a[normalize-space()='Exit Student View']",
+    "textField": ".tiptap",
     "createLessonUI": {
         "lessonNameTxtBox": "//input[@placeholder='Item name']",
         "backButton": "//p[normalize-space()='Back']",
@@ -19,35 +21,38 @@
             "SideMenuLessonName": "//div[@draggable='true']",
             "AddNewItem": "//div[contains(text(),'Add new item')]",
             "ShareItems": "//div[contains(text(),'Share Items')]",
-
-            "hideRightSideMenuBtn":"//span[2]//button[1]//*[name()='svg']",
-            "rightSIdeMenu":"//body/div[@id='root']/div/div/div/div/div/div[@data-panel-group-direction='horizontal']/div[5]/div[1]",
-            "stdntGradesBtn":"a[contains(text(),'Student Grades')]",
-            "InviteStudents":"//div[contains(text(),'Invite students')]",
-            "userListTitle":"//h2[normalize-space()='Users']",
-            "userEmail":"//div[contains(text(),'syedhassaanzfr@gmail.com')]",
-            "userType":"//div[normalize-space()='Owner']",
+            "hideRightSideMenuBtn": "//span[2]//button[1]//*[name()='svg']",
+            "rightSIdeMenu": "//body/div[@id='root']/div/div/div/div/div/div[@data-panel-group-direction='horizontal']/div[5]/div[1]",
+            "stdntGradesBtn": "a[contains(text(),'Student Grades')]",
+            "InviteStudents": "//div[contains(text(),'Invite students')]",
+            "userListTitle": "//h2[normalize-space()='Users']",
+            "userEmail": "//div[contains(text(),'syedhassaanzfr@gmail.com')]",
+            "userType": "//div[normalize-space()='Admin']",
             "bouncingMsg": "//*[@id='root']/div/div/div/div/div/div/div[5]/div/div[2]/div",
             "bouncingMsgCloseBtn": "[aria-label='close']"
         },
         "mainPage": {
             "addLessonPlan": "//a[normalize-space()='Add lesson plan']",
             "presnetationMode": "//a[normalize-space()='Presentation Mode']",
-            "PublishToggle":"//input[@type='checkbox']",
-            "textEditor": ".lexical-editor"
+            "PublishToggle": "//div[normalize-space()='Publish']//span//span//input[@type='checkbox']",
+            "textEditor": ".lexical-editor",
+            "gotItBtn": "//a[normalize-space()='Got it']",
+            "input": ".MuiInputBase-input",
+            "checkAnswerBtn": "//span[normalize-space()='Check Answer']",
+            "closeBtn": "//button[normalize-space()='Close']",
+            "lineError": ".MuiFormHelperText-filled",
+            "obtainedPoints": "span"
         },
-        "textEditor":{
+        "textEditor": {
             "plusIcon": ".lucide-plus",
             "menuIcon": ".lucide-grip-vertical",
             "emptyEditorLine": ".is-empty",
             "dropDownContainer": ".grid",
             "optionDropdownContainer": ".flex",
-
-            "parent" : ".tippy-box",
+            "parent": ".tippy-box",
             "subParent": ".grid",
             "child": "button",
-            "button":"button",
-
+            "button": "button",
             "heading1": "h1",
             "heading2": "h2",
             "heading3": "h3",
@@ -63,32 +68,99 @@
             "inputBox": "label input",
             "checkBox": "[type='checkbox']",
             "uploadImageContainer": ".node-imageUpload",
-            "uploadImage":"input[type='file']",
-            
-
+            "uploadImage": "input[type='file']",
             "parentQuotetag": "figure",
             "quoteTag": "blockquote",
             "quoteCaptionTag": "figcaption",
-            "placeHolderTag": "data-placeholder"
-        }
+            "placeHolderTag": "data-placeholder",
+            "fillInBlankContainer": {
+                "container": ".node-fillInTheBlank",
+                "setupBtn": "//button[normalize-space()='Setup']",
+                "Option": "//button[normalize-space()='Options']",
+                "browseOptionInput": ".tiptap",
+                "addBlankBtn": "//button[normalize-space()='Add Blank']",
+                "textInputField": "textarea",
+                "BlankType": "#demo-simple-select",
+                "answer": "//textarea[@placeholder='Add answer...']",
+                "pointsInputField": "//input[@placeholder='Total']",
+                "options": {
+                    "item1": "//body//div[@id='root']//div[@contenteditable='false']//div//div//div[1]",
+                    "checkBox1": "(//input[@id='instantFeedback'])[1]",
+                    "text1": "//label[normalize-space()='Allow learners to check their answer.']",
+                    "item2": "//body//div[@id='root']//div[@contenteditable='false']//div//div//div[2]",
+                    "checkBox2": "(//input[@id='instantFeedback'])[2]",
+                    "text2": "//label[contains(text(),'Learners can gain a percentage of the maximum poin')]"
+                }
+            },
+            "fileUpload": {
+                "dragDrop":"input[type='file']",
+                "optionText":"//label[normalize-space()='Allow learners to check their answer.']",
+                "optionCheckBox": "//input[@id='instantFeedback']",
+                "unSubmittedFileName": "//div[contains(text(),'corolla.jpg')]",
+                "correctLabelIcon": "//div[contains(text(),'Correct')]",
+                "deleteIcon": "//button[@aria-label='Mark for Removal']//*[name()='svg']",
+                "undoDeleteIcon": "//button[@aria-label='Undo Remove']//*[name()='svg']",
+                "points": "//body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/span[1]"
+            },
+            "shortAnswer": {
+                "promptInput": "//div[@contenteditable='false']//div//div[1]//div[1]//div[1]//div[1]",
+                "answerTemplate": ".tiptap",
+                "modelSolutionTab": "//button[normalize-space()='Model Solution']",
+                "modelSolutionInput":".tiptap",
+                "resetTotemplateBtn": "//button[normalize-space()='Reset to template']",
+                "optionTxt1": "//label[normalize-space()='Allow learners to check their answer.']",
+                "optionTxt2": "//label[contains(text(),'Learners can gain a percentage of the maximum poin')]",
+                "optionCb1":"//div[@contenteditable='false']//div//div[1]//input[1]",
+                "optionCb2": "(//input[@id='instantFeedback'])[2]",
+                "PresentationInput": ".tiptap",
+                "submitBtn": "//div[@draggable='true']//div//div//div//div//button",
+                "submitSucces": "//div[contains(text(),'Submitted')]"
 
-    },
-    "EmbedEnterURL":"//input[@placeholder='Enter URL']",
-    "EmbedInsertURLHeading":"//div[@contenteditable='false']//div//div//div//h2",
-    "EmbedSubmitBtn":"//div[@contenteditable='false']//div//div//div//div//a",
-    "YoutubePlayBtn":"//div[@contenteditable='true']//div[2]",
-    "WatchOnYoutubeBtn":"//div[@class='video-setup flex flex-col items-center justify-center']",
-    "SetupBtn":"//button[normalize-space()='Setup']",
-    "OptionsBtn":"//button[normalize-space()='Options']",
-    "CurrentEmbedURLHeading":"//p[normalize-space()='Current Embed URL']",
-    "ReplaceHeading":"//p[normalize-space()='Replace']",
-    "ReplaceEmbedTxtBox":"//input[@placeholder='Paste in https://...']",
-    "SaveBtn":"//button[normalize-space()='Save']",
-    "YoutubeVideoHeading":"//a[@class='ytp-title-link yt-uix-sessionlink']",
-    "IFrameLocatorYoutube":"//iframe[@title='embed']",
-    "ChooseFileBox":"input[type='file']",
-    "JuiceMindZipAfterUploaded":"//a[normalize-space()='juicemind-temp-team.zip']",
-    "DeleteBtnAfterUpload":"//button[normalize-space()='Delete']",
-    "HTMLNode":"div[class='html-node'] div",
-    "HTMLTextBox":"//textarea[normalize-space()='[object Object]']"
+                
+            },
+            "dragDrop": {
+                "section": "//body/div[@id='root']/div/div/div/div/div/div[@data-panel-group-direction='horizontal']/div/div/div/div[@data-panel-group-direction='horizontal']/div/div/div/div/div/div[@aria-expanded='false']/div[@contenteditable='true']/div[@contenteditable='false']/div/div[3]/div[1]",
+                "distractor": {
+                    "optionList": "[data-rbd-droppable-id='options']",
+                    "optionContainer": "[data-rbd-draggable-context-id='3']",
+                    "option": "MuiOutlinedInput-input",
+                    "threeDot":"[data-testid='MoreVertIcon']",
+                    "deleteButton": "[data-testid='DeleteIcon']"
+                },
+                "solution": {
+                    "solutionList": "[data-rbd-droppable-id='containers']",
+                    "solutionContainer": ".MuiPaper-elevation",
+                    "div1": {
+                        "option": "MuiOutlinedInput-input",
+                        "threeDot":"[data-testid='MoreVertIcon']",
+                        "deleteButton": "[data-testid='DeleteIcon']"
+                    }
+           
+                }
+            },
+            "tip":{
+                "infoIcon":"//*[name()='path' and contains(@d,'M12 2C6.48')]",
+                "tipEle": ".node-tip .allow-dragging",
+                "typeDropDown": "//div[@contenteditable='false']//div//div//div//select"
+            }
+        },
+        "EmbedEnterURL": "//input[@placeholder='Enter URL']",
+        "EmbedInsertURLHeading": "//div[@contenteditable='false']//div//div//div//h2",
+        "EmbedSubmitBtn": "//div[@contenteditable='false']//div//div//div//div//a",
+        "YoutubePlayBtn": "//div[@contenteditable='true']//div[2]",
+        "WatchOnYoutubeBtn": "//div[@class='video-setup flex flex-col items-center justify-center']",
+        "SetupBtn": "//button[normalize-space()='Setup']",
+        "OptionsBtn": "//button[normalize-space()='Options']",
+        "CurrentEmbedURLHeading": "//p[normalize-space()='Current Embed URL']",
+        "ReplaceHeading": "//p[normalize-space()='Replace']",
+        "ReplaceEmbedTxtBox": "//input[@placeholder='Paste in https://...']",
+        "SaveBtn": "//button[normalize-space()='Save']",
+        "YoutubeVideoHeading": "//a[@class='ytp-title-link yt-uix-sessionlink']",
+        "IFrameLocatorYoutube": "//iframe[@title='embed']",
+        "ChooseFileBox": "input[type='file']",
+        "JuiceMindZipAfterUploaded": "//a[normalize-space()='juicemind-temp-team.zip']",
+        "DeleteBtnAfterUpload": "//button[normalize-space()='Delete']",
+        "HTMLNode": "div[class='html-node'] div",
+        "HTMLTextBox": "//textarea[normalize-space()='[object Object]']"
+    }
 }
