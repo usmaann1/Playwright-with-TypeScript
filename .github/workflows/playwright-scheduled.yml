@@ -38,8 +38,8 @@ jobs:
       id: parse-results
       run: |
         # Count failed tests from the JSON report
-        FAILED=$(jq '[.tests[] | select(.status == "failed")] | length' downloaded-report/*.json)
-        PASSED=$(jq '[.tests[] | select(.status == "passed")] | length' downloaded-report/*.json)
+        FAILED=$(jq '[.tests[] | select(.status == "failed")] | length' playwright-report/*.json)
+        PASSED=$(jq '[.tests[] | select(.status == "passed")] | length' playwright-report/*.json)
         echo "FAILED=$FAILED" >> $GITHUB_ENV
         echo "PASSED=$PASSED" >> $GITHUB_ENV
         
