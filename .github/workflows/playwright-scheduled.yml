@@ -60,8 +60,8 @@ jobs:
         jq '.' extracted-report/results.json
 
         # Count the number of passed and failed test cases
-        PASSED=$(jq '[.suites[].suites[].tests[].results[] | select(.status=="passed")] | length' extracted-report/results.json)
-        FAILED=$(jq '[.suites[].suites[].tests[].results[] | select(.status=="failed")] | length' extracted-report/results.json)
+        PASSED=$(jq '[.suites[]?.suites[]?.tests[]?.results[]? | select(.status=="passed")] | length' extracted-report/results.json)
+        FAILED=$(jq '[.suites[]?.suites[]?.tests[]?.results[]? | select(.status=="failed")] | length' extracted-report/results.json)
 
         # Use default values if results are empty or null
         echo "PASSED=${PASSED:-0}" >> $GITHUB_ENV
