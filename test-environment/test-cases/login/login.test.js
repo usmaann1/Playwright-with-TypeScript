@@ -1,7 +1,7 @@
 const { PlaywrightCore } = require('../../../module-imports/helperFunctions.imports')
 const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import LoginCredentials from '../../test-assets/test-data-files/login/login-testData.json'
-require('dotenv').config()
+import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
 test.describe('TestSuite: Login', () => {
 
