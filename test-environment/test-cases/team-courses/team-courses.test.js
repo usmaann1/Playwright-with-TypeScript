@@ -114,7 +114,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption11,
       true
     );
-    await teamCoursesPage.simpleCsharp();
+    await teamCoursesPage.simpleCPP();
     const link = await teamCoursesPage.PublishAndInvite();
     const newPage = await browser.newPage();
     const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
