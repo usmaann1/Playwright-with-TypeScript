@@ -20,7 +20,7 @@ jobs:
     - name: Run Specific Playwright Test
       id: test
       run: |
-       npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --grep "TC: Flow Test Python1" --reporter=html --output=./test-results --config=playwright.config.js
+       npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --grep "TC: Flow Test Python1" --reporter=json --output=./test-results --config=playwright.config.js
 
     - uses: actions/upload-artifact@v4
       if: always()
@@ -38,8 +38,8 @@ jobs:
       id: parse-results
       run: |
         # Count failed tests from the JSON report
-        FAILED=$(jq '[.tests[] | select(.status == "failed")] | length' playwright-report/*.html)
-        PASSED=$(jq '[.tests[] | select(.status == "passed")] | length' playwright-report/*.html)
+        FAILED=$(jq '[.tests[] | select(.status == "failed")] | length' playwright-report/*.json)
+        PASSED=$(jq '[.tests[] | select(.status == "passed")] | length' playwright-report/*.json)
         echo "FAILED=$FAILED" >> $GITHUB_ENV
         echo "PASSED=$PASSED" >> $GITHUB_ENV
         
