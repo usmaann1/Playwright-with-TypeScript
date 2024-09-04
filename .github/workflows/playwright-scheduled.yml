@@ -64,7 +64,7 @@ jobs:
         FAILED=$(jq '[.suites[]?.suites[]?.tests[]?.results[]? | select(.status=="failed")] | length' extracted-report/results.json)
 
         # Use default values if results are empty or null
-        echo $(jq '[.suites[]?.suites[])
+        echo $(jq '[.suites[]?.suites[]')
         echo PASSED
         echo FAILED
         echo "PASSED=${PASSED:-0}" >> $GITHUB_ENV
