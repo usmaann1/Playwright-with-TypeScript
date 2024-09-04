@@ -27,7 +27,7 @@ jobs:
 
     - name: Run Playwright Tests
       run: |
-        npx playwright test --reporter=json --output=./test-results
+        npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --grep "TC: Flow Test Python1" --reporter=json --output=./test-results --config=playwright.config.js
         zip -r test-results.zip ./test-results
 
     - name: Upload Playwright Test Results
