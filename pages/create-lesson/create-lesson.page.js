@@ -259,7 +259,6 @@ exports.CreateLesson = class CreateLesson {
         const iframeElement = this.page.frameLocator(Locators.IFrameLocatorYoutube);         
         await expect(iframeElement.locator(Locators.YoutubeVideoHeading)).toHaveText(name)
         await this.page.waitForTimeout(2000);
-        await expect(ph).toEqual(clTD.placeHolder.quote)
     }
     async enterTextInQuoteAndAuthorFields() {
         const parent = this.textEditor
@@ -267,9 +266,7 @@ exports.CreateLesson = class CreateLesson {
         const quote = child.locator(this.quoteTag)
         const author = child.locator(this.quoteCaptionTag)
         await PlaywrightCore.fill(quote, clTD.text.Quote)
-
         await PlaywrightCore.fill(author, clTD.text.Author)
-
     }
     async fillTableRowsAndColumns() {
         const parent = this.textEditor

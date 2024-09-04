@@ -6,7 +6,6 @@ const { TeamCoursesPage } = require("../../../pages/team-courses/team-courses.pa
 const { CreateLesson } = require("../../../pages/create-lesson/create-lesson.page");
 import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
-require('dotenv').config()
 
 test.describe('TestSuite: Create Lesson Multiple Choice', () => {
 

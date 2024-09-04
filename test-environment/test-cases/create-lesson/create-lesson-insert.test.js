@@ -4,7 +4,6 @@ import CLtd from '../../test-assets/test-data-files/create-lesson/create-lesson-
 import CTtd from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
 import CreateTeamsTestData from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
-require('dotenv').config()
 
 test.describe('TestSuite: Create Lesson Insert', () => {
 
