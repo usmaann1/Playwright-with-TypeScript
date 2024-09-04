@@ -24,16 +24,16 @@
             "rightSIdeMenu":"//body/div[@id='root']/div/div/div/div/div/div[@data-panel-group-direction='horizontal']/div[5]/div[1]",
             "stdntGradesBtn":"a[contains(text(),'Student Grades')]",
             "InviteStudents":"//div[contains(text(),'Invite students')]",
-            "userListTitle":"//h2[normalize-space()='Users']",
+            "userListTitle":"//div[normalize-space()='Admin']",
             "userEmail":"//div[contains(text(),'syedhassaanzfr@gmail.com')]",
-            "userType":"//div[normalize-space()='Owner']",
+            "userType":"//div[normalize-space()='Admin']",
             "bouncingMsg": "//*[@id='root']/div/div/div/div/div/div/div[5]/div/div[2]/div",
             "bouncingMsgCloseBtn": "[aria-label='close']"
         },
         "mainPage": {
             "addLessonPlan": "//a[normalize-space()='Add lesson plan']",
             "presnetationMode": "//a[normalize-space()='Presentation Mode']",
-            "PublishToggle":"//input[@type='checkbox']",
+            "PublishToggle":"//div[normalize-space()='Publish']//span//span//input[@type='checkbox']",
             "textEditor": ".lexical-editor"
         },
         "textEditor":{

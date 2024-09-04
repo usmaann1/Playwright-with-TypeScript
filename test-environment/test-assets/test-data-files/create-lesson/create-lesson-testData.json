@@ -24,7 +24,10 @@
     },
     "attributes": {
         "dataType": "data-type",
-        "value": "taskList"
+        "value": "taskList",
+        "type": "type",
+        "valueCb": "checkbox",
+        "datachecked": "data-checked"
     },
     "EmbedInsertURLHeadingValue": "Insert URL",
     "EmbedSubmitBtnValue": "Submit",
