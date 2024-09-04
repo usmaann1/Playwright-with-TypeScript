@@ -29,6 +29,13 @@ jobs:
         path: playwright-report
         retention-days: 30
         
+    - name: Notify Slack
+      if: always()  # Always send a notification, even if previous steps fail
+      run: |
+        curl -X POST -H 'Content-type: application/json' \
+        --data '{"text":"GitHub Actions workflow completed. Check the results here: [Insert Link]"}' \
+        ${https://hooks.slack.com/services/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}
+        
   reports:
       runs-on: ubuntu-latest
       needs: test
