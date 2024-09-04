@@ -33,7 +33,7 @@ const config = {
     ['html', { outputFolder: `${outputDirectory}/playwright-report/` }],
   ],
   /* Login session storage */
-  globalSetup: require.resolve('./test-environment/test-assets/global-setup'),
+  //globalSetup: require.resolve('./test-environment/test-assets/global-setup'),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     browserName: 'chromium',

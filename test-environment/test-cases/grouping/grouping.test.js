@@ -2,6 +2,7 @@ const { chromium } = require('playwright');
 const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helperFunctions.imports');
 const { test, expect } = require('../../../module-imports/testFixtures.imports');
 import groupingData from '../../test-assets/test-data-files/grouping/grouping-testData.json';
+import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
 require('dotenv').config();
 
@@ -9,7 +10,7 @@ test.describe('TestSuite: Grouping', () => {
 
     test.beforeEach(async ({ loginPage }) => {
         await loginPage.NavigateToLoginPage();
-        await loginPage.fillCredentialsAndLogin(process.env.EMAIL_USMAN, process.env.PASSWORD_USMAN);
+        await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
     });
 
     test('TC1 - Validate Grouping', async ({ grouping, page }) => {

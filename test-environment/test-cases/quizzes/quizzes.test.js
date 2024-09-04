@@ -2,6 +2,7 @@ const { chromium } = require('playwright');
 const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helperFunctions.imports');
 const { test, expect } = require('../../../module-imports/testFixtures.imports');
 import quizzesData from '../../test-assets/test-data-files/quizzes/quizzes-testData.json';
+import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
 
 require('dotenv').config();
@@ -12,7 +13,7 @@ test.describe('TestSuite: Quizzes', () => {
   test.beforeEach(async ({ loginPage }) => {
     
     await loginPage.NavigateToLoginPage();
-    await loginPage.fillCredentialsAndLogin(process.env.EMAIL_USMAN, process.env.PASSWORD_USMAN);
+    await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
   });
 
   test('TC1 - Validate Quizzes', async ({ quizzes, page }) => {
@@ -39,7 +40,7 @@ test.describe('TestSuite: Quizzes', () => {
 
         // Open a new page for student 3
        const browser3 = await chromium.launch();
-       const newPage3 = await browser2.newPage();
+       const newPage3 = await browser3.newPage();
 
          // first login
        await newPage.goto(quizzesData.LoginLink);

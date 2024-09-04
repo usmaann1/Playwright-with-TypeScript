@@ -2,6 +2,7 @@ const { chromium } = require('playwright');
 const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helperFunctions.imports');
 const { test, expect } = require('../../../module-imports/testFixtures.imports');
 import projectsData from '../../test-assets/test-data-files/projects/projects-testData.json';
+import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
 
 require('dotenv').config();
@@ -12,7 +13,7 @@ test.describe('TestSuite: Projects', () => {
   test.beforeEach(async ({ loginPage }) => {
     
     await loginPage.NavigateToLoginPage();
-    await loginPage.fillCredentialsAndLogin(process.env.EMAIL_USMAN, process.env.PASSWORD_USMAN);
+    await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
   });
 
   test('TC1 - Validate Projects', async ({ projects, page }) => {

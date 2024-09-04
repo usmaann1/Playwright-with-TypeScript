@@ -1,5 +1,6 @@
 {
     "CreateNewTeamBtnValue": "Create new team",
+    "ClickAssignment": "//*[@data-testid='CodeIcon']",
     "CreateNewTeamURL": "https://play.juicemind.com/dashboard/teams/create/create",
     "NoData": "You don't have any Data!",
     "ClassName": "Java Class",
@@ -15,5 +16,6 @@
     "AssignmentLockedDiv":"//div[normalize-space()='Page Locked!']",
     "AssignmentLockedText":"Page Locked!",
     "AssignmentHeadingText":"Sample Lesson Plan"
+    
 
 }

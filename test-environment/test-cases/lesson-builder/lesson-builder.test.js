@@ -2,7 +2,7 @@ const { chromium } = require('playwright');
 const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helperFunctions.imports');
 const { test, expect } = require('../../../module-imports/testFixtures.imports');
 import LessonBuilderTestData from '../../test-assets/test-data-files/lesson-builder/lesson-builder-testData.json';
-
+import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
 require('dotenv').config();
 
@@ -10,15 +10,14 @@ test.describe('TestSuite: Lesson Builder', () => {
 
 
   test.beforeEach(async ({ loginPage }) => {
-    // await loginPage.setPage(chromiumPage); // Assuming setPage is a method to set the page context
+    
     
     await loginPage.NavigateToLoginPage();
-    await loginPage.fillCredentialsAndLogin(process.env.EMAIL_USMAN, process.env.PASSWORD_USMAN);
+    await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
   });
 
-  test('TC - Validate UI of Lesson Builder Page', async ({ lessonBuilder, loginPage }) => {
-    // Set the lessonBuilder context to the Chromium page
-    // lessonBuilder.setPage(chromiumPage); // Assuming setPage is a method to set the page context
+  test('TC - Validate UI of Lesson Builder Page', async ({ lessonBuilder, page }) => {
+
     await lessonBuilder.NavigateToTeamCoursesPage();
     
     // Ensure "Create New Team" button is visible before interaction
@@ -49,7 +48,7 @@ test.describe('TestSuite: Lesson Builder', () => {
     await lessonBuilder.ExitStudentView();
   
 
-// Invite Students
+    // Invite Students
     await lessonBuilder.InviteStudentsbtn();
     await lessonBuilder.CopyinviteStudentsbtn();
 
@@ -74,6 +73,8 @@ test.describe('TestSuite: Lesson Builder', () => {
       await lessonBuilder.fillstudentsignin(newPage);
 
       await lessonBuilder.clickfinishbutton(newPage);
+
+      await newPage.click(LessonBuilderTestData.ClickAssignment)
 
       //verify heading
       const element = await newPage.locator(LessonBuilderTestData.AssignmentHeadingDiv);

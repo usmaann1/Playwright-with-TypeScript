@@ -1,6 +1,7 @@
 const { chromium } = require('playwright');
 const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helperFunctions.imports');
 const { test, expect } = require('../../../module-imports/testFixtures.imports');
+import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
 
 require('dotenv').config();
@@ -12,7 +13,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     // await loginPage.setPage(chromiumPage); // Assuming setPage is a method to set the page context
     
     await loginPage.NavigateToLoginPage();
-    await loginPage.fillCredentialsAndLogin(process.env.EMAIL_USMAN, process.env.PASSWORD_USMAN);
+    await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
   });
 
   test('TC - 1. Getting Started and Primitive Types', async ({ csawsome, page }) => {
