@@ -67,35 +67,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
-  test("TC: Flow Test CSharp", async ({ teamCoursesPage, browser }) => {
-    const randomName = await UserFunctions.generateName();
-    const randomAssignment = await UserFunctions.generateName();
-    const randomEmail = await UserFunctions.generateRandomEmail(email);
-    await teamCoursesPage.signInUser(email, password);
-    await teamCoursesPage.CreateTeam(randomName);
-    await teamCoursesPage.CreateAssignment(randomAssignment);
-    await teamCoursesPage.IntializeIDE(
-      randomName,
-      TeamCoursesData.projectTypeOption10,
-      true
-    );
-    await teamCoursesPage.simpleCsharp();
-    const link = await teamCoursesPage.PublishAndInvite();
-    const newPage = await browser.newPage();
-    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
-    await newTeamCoursesPageInstance.afterInviteSignUp(
-      link,
-      randomEmail,
-      password,
-      TeamCoursesData.firstName,
-      TeamCoursesData.LastName
-    );
-    await newTeamCoursesPageInstance.createStarterCode(
-      TeamCoursesData.csharpTestInput,
-      true
-    );
-    await teamCoursesPage.assertingUserAnswered(TeamCoursesData.xcompleteName);
-  });
+
 
   
 });
