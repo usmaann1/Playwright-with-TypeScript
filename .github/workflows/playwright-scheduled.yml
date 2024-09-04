@@ -29,11 +29,19 @@ jobs:
         path: playwright-report
         retention-days: 30
         
+    - name: Parse Test Results
+      id: parse-results
+      run: |
+        PASSED=$(grep -o '"status":"passed"' downloaded-report/*.json | wc -l)
+        FAILED=$(grep -o '"status":"failed"' downloaded-report/*.json | wc -l)
+        echo "PASSED=$PASSED" >> $GITHUB_ENV
+        echo "FAILED=$FAILED" >> $GITHUB_ENV
+        
     - name: Notify Slack
       if: always()  # Always send a notification, even if previous steps fail
       run: |
         curl -X POST -H 'Content-type: application/json' \
-        --data '{"text":"GitHub Actions workflow completed. Job Status: ${{ job.status }}. Details: <${REPORT_URL}|View Report>\"}' \
+        --data '{"text":"GitHub Actions workflow completed. Job Status: ${{ job.status }}. Passed tests: ${{ env.PASSED }}. Failed tests: ${{ env.FAILED }}.\"}" \
         https://hooks.slack.com/services/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
         
   reports:
