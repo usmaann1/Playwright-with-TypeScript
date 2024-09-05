@@ -23,61 +23,19 @@ jobs:
       run: npx playwright install
 
     - name: Run Playwright tests
-      run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js
+      run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=html
 
     - name: Upload Playwright report
       uses: actions/upload-artifact@v4
       with:
         name: playwright-report
         path: ./test-results
-
-    - name: Parse test results and send to Slack
+    - name: Notify Slack
       env:
         SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
-      run: |
-        # Install dependencies for the report parser
-        npm install axios
-        # Create a script to parse the report and send results to Slack
-        echo "const fs = require('fs');" > parse-report.js
-        echo "const path = require('path');" >> parse-report.js
-        echo "const axios = require('axios');" >> parse-report.js
-        echo "" >> parse-report.js
-        echo "const reportFilePath = path.join(__dirname, 'test-results', 'report.json');" >> parse-report.js
-        echo "const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL;" >> parse-report.js
-        echo "" >> parse-report.js
-        echo "async function sendToSlack(message) {" >> parse-report.js
-        echo "  try {" >> parse-report.js
-        echo "    await axios.post(slackWebhookUrl, { text: message });" >> parse-report.js
-        echo "    console.log('Message sent to Slack');" >> parse-report.js
-        echo "  } catch (error) {" >> parse-report.js
-        echo "    console.error('Error sending message to Slack:', error);" >> parse-report.js
-        echo "  }" >> parse-report.js
-        echo "}" >> parse-report.js
-        echo "" >> parse-report.js
-        echo "function parseReport() {" >> parse-report.js
-        echo "  if (!fs.existsSync(reportFilePath)) {" >> parse-report.js
-        echo "    console.error('Report file not found:', reportFilePath);" >> parse-report.js
-        echo "    return;" >> parse-report.js
-        echo "  }" >> parse-report.js
-        echo "" >> parse-report.js
-        echo "  const reportData = JSON.parse(fs.readFileSync(reportFilePath, 'utf-8'));" >> parse-report.js
-        echo "  let passed = 0;" >> parse-report.js
-        echo "  let failed = 0;" >> parse-report.js
-        echo "" >> parse-report.js
-        echo "  for (const testSuite of reportData.suites) {" >> parse-report.js
-        echo "    for (const testCase of testSuite.tests) {" >> parse-report.js
-        echo "      if (testCase.status === 'passed') {" >> parse-report.js
-        echo "        passed += 1;" >> parse-report.js
-        echo "      } else if (testCase.status === 'failed') {" >> parse-report.js
-        echo "        failed += 1;" >> parse-report.js
-        echo "      }" >> parse-report.js
-        echo "    }" >> parse-report.js
-        echo "  }" >> parse-report.js
-        echo "" >> parse-report.js
-        echo "  const message = \`Test Results:\nPassed: \${passed}\nFailed: \${failed}\`;" >> parse-report.js
-        echo "  sendToSlack(message);" >> parse-report.js
-        echo "}" >> parse-report.js
-        echo "" >> parse-report.js
-        echo "parseReport();" >> parse-report.js
-        # Run the report parsing script
-        node parse-report.js
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"Playwright tests completed! Check out the report: [Playwright Report](https://github.com/${{ github.repository }}/suites/${{ github.run_id }}/artifacts/)}"}' \
+          $SLACK_WEBHOOK_URL
+
+   
