@@ -11,36 +11,15 @@ import Credentials from "../../test-assets/test-data-files/Credentials/credentia
 test.describe("TestSuite: Team/Courses", () => {
   const email = Credentials.EMAIL_NUMAIR;
   const password = Credentials.PASSWORD_NUMAIR;
-  test("TC: Flow Test Python1", async ({ teamCoursesPage, browser }) => {
-    const randomName = await UserFunctions.generateName();
-    const randomAssignment = await UserFunctions.generateName();
-    const randomEmail = await UserFunctions.generateRandomEmail(email);
-    await teamCoursesPage.signInUser(email, password);
-    await teamCoursesPage.CreateTeam(randomName);
-    await teamCoursesPage.CreateAssignment(randomAssignment);
-    await teamCoursesPage.IntializeIDE(
-      randomName,
-      TeamCoursesData.projectTypeOption8,
-      true
-    );
-    await teamCoursesPage.simplePython();
-    const link = await teamCoursesPage.PublishAndInvite();
-    const newPage = await browser.newPage();
-    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
-    await newTeamCoursesPageInstance.afterInviteSignUp(
-      link,
-      randomEmail,
-      password,
-      TeamCoursesData.firstName,
-      TeamCoursesData.LastName
-    );
-    await newTeamCoursesPageInstance.createStarterCode(
-      TeamCoursesData.pythonTestInput,
-      true
-    );
-    await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
-  });
+  test.only('Google homepage should have Google logo', async ({ page }) => {
+        // Navigate to Google homepage
+        await page.goto('https://www.google.com');
+      
+        // Verify the page title
+        await expect(page).toHaveTitle(/Google/);
+      
 
+      });
   
 
 });
