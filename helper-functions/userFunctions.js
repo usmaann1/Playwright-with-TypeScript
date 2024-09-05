@@ -187,15 +187,7 @@ exports.UserFunctions = class UserFunctions {
   }
 
   static async getCanvasBackgroundColor(page, xDim = 50, yDim = 50) {
-    const canvas = await page.locator("canvas");
-    const dataUrl = await canvas.evaluate((canvas) => {
-      return canvas.toDataURL();
-    });
-    const base64Data = dataUrl.replace(/^data:image\/png;base64,/, "");
-    fs.writeFileSync(`${path}canvas.png`, base64Data, "base64");
-
-    
-    /* const color = await page.evaluate(
+    const color = await page.evaluate(
       ({ xDim, yDim }) => {
         const canvas = document.querySelector("canvas");
         if (!canvas) return "Canvas not found";
@@ -212,7 +204,7 @@ exports.UserFunctions = class UserFunctions {
       },
       { xDim, yDim }
     );
- */
+
     return color;
   }
 
