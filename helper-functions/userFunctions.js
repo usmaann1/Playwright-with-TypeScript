@@ -233,6 +233,14 @@ exports.UserFunctions = class UserFunctions {
     return await isValid;
   }
 
+  static async imageTextValidation(imageElement, path, match) {
+    await imageElement.screenshot({ path: `${path}canvas.png` });
+    const {
+      data: { text },
+    } = await Tesseract.recognize(`${path}canvas.png`, `eng`);
+    return text;
+  }
+
   static async getAllColorsFromCanvas(page, path) {
     const canvas = await page.locator("canvas");
     const dataUrl = await canvas.evaluate((canvas) => {

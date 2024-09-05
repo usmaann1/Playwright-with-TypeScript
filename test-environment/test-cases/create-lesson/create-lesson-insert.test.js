@@ -3,13 +3,13 @@ const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import CLtd from '../../test-assets/test-data-files/create-lesson/create-lesson-testData.json'
 import CTtd from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
 import CreateTeamsTestData from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
-require('dotenv').config()
+import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
 test.describe('TestSuite: Create Lesson Insert', () => {
 
     const randomNumber = UserFunctions.generateRandomString(5)
-    const userEmail = process.env.EMAIL_HASSAAN
-    const userPwd = process.env.PASSWORD_HASSAAN
+    const userEmail = Credentials.EMAIL_HASSAAN
+    const userPwd = Credentials.PASSWORD_HASSAAN
     const teamName = CLtd.teamName + randomNumber
     const lessonName = CLtd.lessonName + '-' + randomNumber
 
@@ -41,6 +41,7 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
         await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('TC - Create Lesson Insert - Embed Replace URL', async ({ createLesson }) => {
@@ -64,6 +65,7 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await PlaywrightCore.click(createLesson.SaveBtn)
         await PlaywrightCore.click(createLesson.SetupBtn)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.WayOfTearsVideoHeadingValue)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('TC - Create Lesson Insert - Insert File', async ({ createLesson }) => {
@@ -85,9 +87,6 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue)
-    });
-
-    test.afterEach(async ({ createLesson }) => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 

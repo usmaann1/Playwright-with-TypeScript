@@ -2,12 +2,12 @@ const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helpe
 const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import CLtd from '../../test-assets/test-data-files/create-lesson/create-lesson-testData.json'
 import CTtd from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
-require('dotenv').config()
+import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
 test.describe('TestSuite: Create Lesson', () => {
     const randomNumber = UserFunctions.generateRandomString(5)
-    const userEmail = process.env.EMAIL_HASSAAN
-    const userPwd = process.env.PASSWORD_HASSAAN
+    const userEmail = Credentials.EMAIL_HASSAAN
+    const userPwd = Credentials.PASSWORD_HASSAAN
     const teamName = CLtd.teamName + randomNumber
     const lessonName = CLtd.lessonName + '-' + randomNumber
     test.beforeEach(async ({ loginPage, createTeams, createLesson }) => {
