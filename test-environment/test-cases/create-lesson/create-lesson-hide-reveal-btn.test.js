@@ -105,7 +105,6 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         const newTeamCoursesPageInstance = new TeamCoursesPage(newPage)
         const newCreateLessonPageInstance = new CreateLesson(newPage)
         await newTeamCoursesPageInstance.afterInviteSignUp(link,randomEmail,userPwd,TeamCoursesData.firstName,TeamCoursesData.LastName)
-        await PlaywrightCore.click(createLesson.HideContentBtn)
         await expect(newCreateLessonPageInstance.StudentModeHideContentText).toHaveText(CLHRtd.HideRevealTxtHeadingValue)
         await PlaywrightCore.click(newCreateLessonPageInstance.HideContentBtn)
         await expect(newCreateLessonPageInstance.HideRevealTextBox).not.toBeVisible()

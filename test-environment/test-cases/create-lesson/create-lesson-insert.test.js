@@ -41,6 +41,7 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
         await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('TC - Create Lesson Insert - Embed Replace URL', async ({ createLesson }) => {
@@ -64,6 +65,7 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await PlaywrightCore.click(createLesson.SaveBtn)
         await PlaywrightCore.click(createLesson.SetupBtn)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.WayOfTearsVideoHeadingValue)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('TC - Create Lesson Insert - Insert File', async ({ createLesson }) => {
@@ -85,9 +87,6 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue)
-    });
-
-    test.afterEach(async ({ createLesson }) => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
