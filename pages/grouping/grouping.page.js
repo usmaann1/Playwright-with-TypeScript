@@ -150,28 +150,28 @@ exports.grouping = class grouping {
         await newPage.click(Locators.finish_btn);
     }
 
-    async fillstudentsignin(newPage) {
-        await newPage.fill(Locators.EmailStudentSignin_textfield, 'student01@gmail.com');
-        await newPage.fill(Locators.PasswordStudentSignin_textfield, '98769876');
+    async fillstudentsignin(newPage, Email, Password) {
+        await newPage.fill(Locators.EmailStudentSignin_textfield, Email);
+        await newPage.fill(Locators.PasswordStudentSignin_textfield, Password);
         await newPage.click(Locators.ClickSignin_btn);
     }
 
-    async fillstudentsignin_2(newPage) {
-        await newPage.fill(Locators.EmailStudentSignin_textfield, 'student02@gmail.com');
-        await newPage.fill(Locators.PasswordStudentSignin_textfield, '98769876');
+    async fillstudentsignin_2(newPage, Email, Password) {
+        await newPage.fill(Locators.EmailStudentSignin_textfield, Email);
+        await newPage.fill(Locators.PasswordStudentSignin_textfield, Password);
         await newPage.click(Locators.ClickSignin_btn);
     }
 
-    async verifyAssignmentHeading() {
-        await expect(Locators.studentAssignmentHeading).toHaveText('Sample Lesson Plan');
+    async verifyAssignmentHeading(SLP) {
+        await expect(Locators.studentAssignmentHeading).toHaveText(SLP);
     }
 
     async ClickInitiliazeJuiceMindIDE(page) {
         await PlaywrightCore.click(this.InitiliazeJuiceMind_IDE)
     }
     
-    async FillProjectNameTextBox() {
-    await PlaywrightCore.fill(this.ProjectName_TextBox, 'Sample');    
+    async FillProjectNameTextBox(ProjectNametxt) {
+    await PlaywrightCore.fill(this.ProjectName_TextBox, ProjectNametxt);    
 }
     
     async ClickProjectTypeDropDown() {

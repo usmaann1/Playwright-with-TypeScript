@@ -11,18 +11,11 @@
     "SignFrq": "(//div[@class='_shell_e81lq_12'])[10]",
     "WeatherDataFrq": "(//div[@class='_shell_e81lq_12'])[11]",
     "BoxOfCandyFrq": "(//div[@class='_shell_e81lq_12'])[12]",
-
-
-
     "DelimeterParagraph":"(//p[@class='is-empty'])[2]",
     "GotItBtn":"//a[normalize-space()='Got it.']",
     "StartCourseBtn":"//a[normalize-space()='Start Course']",
     "ConfirmBtn":"//a[normalize-space()='Confirm']",
     "TeamDropDown":"//div[@id='demo-simple-select']",
     "TeamOption":"(//li[@role='option'])[2]"
-
-
-    
-
     
 }

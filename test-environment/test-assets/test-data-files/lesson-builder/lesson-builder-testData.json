@@ -15,7 +15,9 @@
     "AssignmentHeadingDiv":"//div[@class='tiptap ProseMirror min-h-full']/h1",
     "AssignmentLockedDiv":"//div[normalize-space()='Page Locked!']",
     "AssignmentLockedText":"Page Locked!",
-    "AssignmentHeadingText":"Sample Lesson Plan"
+    "AssignmentHeadingText":"Sample Lesson Plan",
+    "Student1Email": "student01@gmail.com",
+    "Student1Password": "98769876"
     
 
 }

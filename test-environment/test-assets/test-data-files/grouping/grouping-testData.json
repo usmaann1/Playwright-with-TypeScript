@@ -7,7 +7,6 @@
     "AssignementName": "Java Assignment",
     "Publishbuttondisableclass": "MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-1mo6cvn",
     "LockIconClass": "MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-vubbuv",
-    
     "PageLockedText":"//div[contains(text(), 'Your teacher must publish')]",
     "waitingForTeacherText":"//div[contains(text(), 'Waiting for teacher to')]",
     "ViewStuPreview_btn":"//span[normalize-space()='Preview']",
@@ -21,7 +20,12 @@
     "GroupedStudentEmail_2": "(//div[normalize-space()='student02@gmail.com'])[1]",
     "StudentEmailText":"student01@gmail.com",
     "StudentEmailText_2":"student02@gmail.com",
-    "GroupBoxes": "//div[@style='padding-bottom: 5px;']"
+    "GroupBoxes": "//div[@style='padding-bottom: 5px;']",
+    "Student1Email": "student01@gmail.com",
+    "Student1Password": "98769876",
+    "Student2Email": "student02@gmail.com",
+    "Student2Password": "98769876",
+    "ProjectName": "Sample"
 
 
     

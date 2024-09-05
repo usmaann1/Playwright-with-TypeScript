@@ -58,12 +58,12 @@ test.describe('TestSuite: Grouping', () => {
 
         // fill login for first student 
         await grouping.clickLoginbutton(newPage);
-        await grouping.fillstudentsignin(newPage);
+        await grouping.fillstudentsignin(newPage, groupingData.Student1Email, groupingData.Student1Password);
         await grouping.clickfinishbutton(newPage);
 
         // fill login for second student 
         await grouping.clickLoginbutton(newPage2);
-        await grouping.fillstudentsignin_2(newPage2);
+        await grouping.fillstudentsignin_2(newPage2, groupingData.Student2Email, groupingData.Student2Password);
         await grouping.clickfinishbutton(newPage2);
 
 
@@ -77,7 +77,7 @@ test.describe('TestSuite: Grouping', () => {
         await expect(myElementLocator).toHaveText(groupingData.CreateNewProjectText);
 
         
-        grouping.FillProjectNameTextBox();
+        grouping.FillProjectNameTextBox(groupingData.ProjectName);
         await page.waitForTimeout(5000);
 
         grouping.ClickProjectTypeDropDown();

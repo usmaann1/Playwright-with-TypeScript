@@ -1,6 +1,7 @@
 const { PlaywrightCore } = require("../../module-imports/helperFunctions.imports");
 import { expect } from "@playwright/test";
-  import Locators from "./lesson-builder.locator.json";
+import Locators from "./lesson-builder.locator.json";
+
 
   
   exports.LessonBuilder = class LessonBuilder {
@@ -141,9 +142,9 @@ async clickfinishbutton(newPage){
 }
 
 
-async fillstudentsignin(newPage){
-  await newPage.fill(Locators.EmailStudentSignin_textfield, 'student01@gmail.com');
-  await newPage.fill(Locators.PasswordStudentSignin_textfield, '98769876');
+async fillstudentsignin(newPage, Email, Password){
+  await newPage.fill(Locators.EmailStudentSignin_textfield, Email);
+  await newPage.fill(Locators.PasswordStudentSignin_textfield, Password);
   await newPage.click(Locators.ClickSignin_btn);
 }
 

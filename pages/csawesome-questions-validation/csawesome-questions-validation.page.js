@@ -31,11 +31,6 @@ import { expect } from "@playwright/test";
       this.MixedUpCode = this.page.locator(Locators.MixedUpcode)
       this.FreeResponsePractise = this.page.locator(Locators.FreeResponsePractise)
       this.StoriesClick = this.page.locator(Locators.Stories)
-
-
-
-
-
     }
 
     async NavigateToTeamCoursesPage(){

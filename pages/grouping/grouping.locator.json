@@ -36,7 +36,7 @@
     "GroupProjectToggle":"(//span[@class='MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-1mo6cvn'])[2]",
     "AddGroupBtn":"//a[normalize-space()='Add Group']" ,
     "GroupCrossIcon":"(//a[contains(@style, 'cursor')])[2]",
-    "SubmitButton" :"//a[normalize-space()='Submit']"
-
+    "SubmitButton" :"//a[normalize-space()='Submit']",
+    "DefaultLesson": "Sample Lesson Plan"
     
 }
