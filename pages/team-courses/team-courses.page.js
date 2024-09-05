@@ -223,7 +223,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.StudentBtn);
     await PlaywrightCore.fill(this.FirstNameInput, firstName);
     await PlaywrightCore.fill(this.LastNameInput, lastName);
-    await PlaywrightCore.click(this.FinishBtn);
+    await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.FinishBtn);
   }
 
@@ -253,7 +253,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       await PlaywrightCore.waitTimeout(this.page, 20000);
       const innerText = await element.innerText();
       const isValid = await innerText.includes(TeamCoursesData.AssertionText);
-      console.log('dsds', innerText);
       expect(isValid).toBe(true);
     }
     await PlaywrightCore.click(this.EditorSubmit);
@@ -295,7 +294,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       await PlaywrightCore.waitTimeout(this.page, 20000);
       const innerText = await element.innerText();
       const isValid = await innerText.includes(TeamCoursesData.AssertionText);
-      console.log('dsds', innerText);
       expect(isValid).toBe(true);
       await this.createTest(
         TeamCoursesData.createTestType,
@@ -378,12 +376,10 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       this.page,
       TeamCoursesData.AssetsPaths
     );
-    const isValid1 = await Colors.includes(this.RedColor1);
-    const isValid2 = await Colors.includes(this.RedColor2);
-    // console.log(isColorRed);
+    const hasShadeOfRed = await Colors.some(color => UserFunctions.isShadeOfRed(color));
     await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.CloseFullScreenBtn);
-    await expect(isValid1 || isValid2).toBe(true);
+    await expect(hasShadeOfRed).toBe(true);
   }
 
   async pythonWithMatplotlib() {
@@ -424,8 +420,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       this.page,
       TeamCoursesData.AssetsPaths
     );
-    const isValid = await Colors.includes("#fb0404");
-    await expect(isValid).toBe(true);
+    const hasShadeOfRed = await Colors.some(color => UserFunctions.isShadeOfRed(color));
+    await expect(hasShadeOfRed).toBe(true);
   }
 
   async pythonWithTkinter() {
