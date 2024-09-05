@@ -23,20 +23,13 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install
 
-    - name: Run Playwright Tests and Generate HTML Report
+    - name: Run Playwright Tests
       run: |
-        npx playwright test npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --grep "TC: Flow Test Python1" --reporter=html,json --output=playwright-report
-        zip -r test-results.zip playwright-report || echo "::error::Playwright tests failed."
+        npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --grep "TC: Flow Test Python1" --reporter=json > results.json
+        zip -r test-results.zip results.json || echo "::error::Playwright tests failed."
       continue-on-error: true
 
-    - name: Upload Test Results (HTML Report)
-      uses: actions/upload-artifact@v4
-      with:
-        name: playwright-html-report
-        path: playwright-report
-        retention-days: 7  # Keep the report for 7 days
-
-    - name: Upload JSON Test Results
+    - name: Upload test results
       uses: actions/upload-artifact@v4
       with:
         name: test-results
@@ -86,6 +79,3 @@ jobs:
         curl -X POST -H 'Content-type: application/json' \
         --data "{\"text\":\"GitHub Actions workflow completed. Number of failed tests: ${{ env.FAILED }}. Number of passed tests: ${{ env.PASSED }}.\"}" \
         https://hooks.slack.com/services/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
-
-    - name: Post HTML Report Link (Optional)
-      run: echo "The HTML report has been uploaded as an artifact. You can download it from the 'playwright-html-report' artifact in the Actions tab."
