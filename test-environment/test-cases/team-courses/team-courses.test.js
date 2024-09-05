@@ -7,6 +7,7 @@ const {
 } = require("../../../pages/team-courses/team-courses.page");
 import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
+const { test, expect } = require('../../../module-imports/testFixtures.imports')
 
 test.describe("TestSuite: Team/Courses", () => {
   const email = Credentials.EMAIL_NUMAIR;
