@@ -36,7 +36,7 @@ jobs:
         SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
       run: |
         curl -X POST -H 'Content-type: application/json' \
-        --data '{"text":"Playwright tests completed! Check out the report: [Playwright Report](https://github.com/${{ github.repository }}/suites/${{ github.run_id }}/artifacts/)}"}' \
+        --data '{"text":"Playwright tests completed! Check out the report: [Playwright Report](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ github.artifact_id }})}"}' \
         $SLACK_WEBHOOK_URL
 
    
