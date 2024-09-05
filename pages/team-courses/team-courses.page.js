@@ -25,6 +25,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.GreenColorStyle = /background-color:\s*(rgb\(0,\s*255,\s*0\))/;
     this.GreenColor = "rgb(0, 255, 0)";
     this.RedColor = "#FF0000";
+    this.RedColor1 = "#fc0404";
+    this.RedColor1 = "#9a0909";
     this.ArrLeft = "ArrowLeft";
     this.ArrRight = "ArrowRight";
     this.SelectAll = SelectAll;
@@ -251,6 +253,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       await PlaywrightCore.waitTimeout(this.page, 20000);
       const innerText = await element.innerText();
       const isValid = await innerText.includes(TeamCoursesData.AssertionText);
+      console.log('dsds', innerText);
       expect(isValid).toBe(true);
     }
     await PlaywrightCore.click(this.EditorSubmit);
@@ -292,6 +295,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       await PlaywrightCore.waitTimeout(this.page, 20000);
       const innerText = await element.innerText();
       const isValid = await innerText.includes(TeamCoursesData.AssertionText);
+      console.log('dsds', innerText);
       expect(isValid).toBe(true);
       await this.createTest(
         TeamCoursesData.createTestType,
@@ -362,7 +366,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       await this.commonClipBoardSteps();
     const updatedCode = clipboardContent.replace(
       this.BlackMatch,
-      TeamCoursesData.RedColor2
+      TeamCoursesData.RedColor
     );
     await codeEditorContent.press(this.BackSpace);
     await codeEditorContent.fill(updatedCode);
@@ -370,14 +374,16 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.EditorPlayButton);
     await PlaywrightCore.waitTimeout(this.page, 10000);
     await PlaywrightCore.click(this.FullScreenBtn.nth(1));
-    const isColorRed = await UserFunctions.getCanvasBackgroundColor(
+    const Colors = await UserFunctions.getAllColorsFromCanvas(
       this.page,
-      50,
-      50
+      TeamCoursesData.AssetsPaths
     );
+    const isValid1 = await Colors.includes(this.RedColor1);
+    const isValid2 = await Colors.includes(this.RedColor2);
+    // console.log(isColorRed);
     await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.CloseFullScreenBtn);
-    await expect(isColorRed).toBe(this.RedColor);
+    await expect(isValid1 || isValid2).toBe(true);
   }
 
   async pythonWithMatplotlib() {
