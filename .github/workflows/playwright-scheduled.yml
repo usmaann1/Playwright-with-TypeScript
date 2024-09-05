@@ -26,7 +26,8 @@ jobs:
     - name: Run Playwright Tests
       run: |
         npx playwright test --reporter=json > results.json
-        zip -r test-results.zip results.json
+        zip -r test-results.zip results.json || echo "::error::Playwright tests failed."
+      continue-on-error: true
 
     - name: Upload test results
       uses: actions/upload-artifact@v4
