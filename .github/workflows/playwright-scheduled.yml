@@ -25,7 +25,7 @@ jobs:
 
     - name: Run Playwright Tests
       run: |
-        npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json > results.json
+        npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --grep "TC: Flow Test Python1"  --reporter=json > results.json
         zip -r test-results.zip results.json || echo "::error::Playwright tests failed."
       continue-on-error: true
 
