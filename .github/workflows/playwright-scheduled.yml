@@ -25,6 +25,7 @@ jobs:
 
     - name: Run Playwright Tests
       run: |
+        mkdir -p test-results
         npx playwright test test-environment/test-cases/team-courses/team-courses.test.js  --reporter=json > results.json --config=playwright.config.js
         zip -r test-results.zip results.json || echo "::error::Playwright tests failed."
       continue-on-error: true
