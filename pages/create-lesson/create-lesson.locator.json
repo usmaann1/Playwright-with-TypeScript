@@ -72,7 +72,8 @@
             "parentQuotetag": "figure",
             "quoteTag": "blockquote",
             "quoteCaptionTag": "figcaption",
-            "placeHolderTag": "data-placeholder",
+            "placeHolderTag": "data-placeholder"
+        },
             "fillInBlankContainer": {
                 "container": ".node-fillInTheBlank",
                 "setupBtn": "//button[normalize-space()='Setup']",
@@ -143,8 +144,7 @@
                 "infoIcon":"//*[name()='path' and contains(@d,'M12 2C6.48')]",
                 "tipEle": ".node-tip .allow-dragging",
                 "typeDropDown": "//div[@contenteditable='false']//div//div//div//select"
-            }
-        },
+            },
     "EmbedEnterURL":"//input[@placeholder='Enter URL']",
     "EmbedInsertURLHeading":"//div[@contenteditable='false']//div//div//div//h2",
     "EmbedSubmitBtn":"//div[@contenteditable='false']//div//div//div//div//a",
