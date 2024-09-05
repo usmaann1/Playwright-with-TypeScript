@@ -5,78 +5,78 @@ on:
 
 jobs:
   test:
-    timeout-minutes: 120
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Install Playwright Browsers
-      run: npx playwright install
+      - name: Run Playwright tests
+        run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js
 
-    - name: Run Playwright Tests
-      run: |
-        mkdir -p test-results
-        npx playwright test test-environment/test-cases/team-courses/team-courses.test.js  --reporter=json --output=test-results
-        zip -r test-results.zip test-results || echo "::error::Playwright tests failed."
-      continue-on-error: true
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report
+          path: ./test-results
 
-    - name: Upload test results
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-results
-        path: test-results.zip
+      - name: Parse test results and send to Slack
+        env:
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+        run: |
+          # Install dependencies for the report parser
+          npm install axios
 
-  parse-and-notify:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-    - name: Download test results
-      uses: actions/download-artifact@v4
-      with:
-        name: test-results
-        path: downloaded-report
+          # Create a script to parse the report and send results to Slack
+          echo "const fs = require('fs');" > parse-report.js
+          echo "const path = require('path');" >> parse-report.js
+          echo "const axios = require('axios');" >> parse-report.js
+          echo "" >> parse-report.js
+          echo "const reportFilePath = path.join(__dirname, 'test-results', 'report.json');" >> parse-report.js
+          echo "const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL;" >> parse-report.js
+          echo "" >> parse-report.js
+          echo "async function sendToSlack(message) {" >> parse-report.js
+          echo "  try {" >> parse-report.js
+          echo "    await axios.post(slackWebhookUrl, { text: message });" >> parse-report.js
+          echo "    console.log('Message sent to Slack');" >> parse-report.js
+          echo "  } catch (error) {" >> parse-report.js
+          echo "    console.error('Error sending message to Slack:', error);" >> parse-report.js
+          echo "  }" >> parse-report.js
+          echo "}" >> parse-report.js
+          echo "" >> parse-report.js
+          echo "function parseReport() {" >> parse-report.js
+          echo "  if (!fs.existsSync(reportFilePath)) {" >> parse-report.js
+          echo "    console.error('Report file not found:', reportFilePath);" >> parse-report.js
+          echo "    return;" >> parse-report.js
+          echo "  }" >> parse-report.js
+          echo "" >> parse-report.js
+          echo "  const reportData = JSON.parse(fs.readFileSync(reportFilePath, 'utf-8'));" >> parse-report.js
+          echo "  let passed = 0;" >> parse-report.js
+          echo "  let failed = 0;" >> parse-report.js
+          echo "" >> parse-report.js
+          echo "  for (const testSuite of reportData.suites) {" >> parse-report.js
+          echo "    for (const testCase of testSuite.tests) {" >> parse-report.js
+          echo "      if (testCase.status === 'passed') {" >> parse-report.js
+          echo "        passed += 1;" >> parse-report.js
+          echo "      } else if (testCase.status === 'failed') {" >> parse-report.js
+          echo "        failed += 1;" >> parse-report.js
+          echo "      }" >> parse-report.js
+          echo "    }" >> parse-report.js
+          echo "  }" >> parse-report.js
+          echo "" >> parse-report.js
+          echo "  const message = \`Test Results:\nPassed: \${passed}\nFailed: \${failed}\`;" >> parse-report.js
+          echo "  sendToSlack(message);" >> parse-report.js
+          echo "}" >> parse-report.js
+          echo "" >> parse-report.js
+          echo "parseReport();" >> parse-report.js
 
-    - name: Install jq and unzip
-      run: sudo apt-get install -y jq unzip
-
-    - name: Extract the Zip File
-      run: |
-        unzip downloaded-report/test-results.zip -d extracted-report
-
-    - name: Count Test Cases
-      id: count-tests
-      run: |
-        # Check the structure of the JSON file for correctness
-        jq '.' extracted-report/results.json
-
-        # Count the number of passed and failed test cases
-        PASSED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="passed")] | length' extracted-report/results.json)
-        FAILED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="failed")] | length' extracted-report/results.json)
-
-        # Use default values if results are empty or null
-        echo $(jq '[.suites[]?.suites[]')
-        echo PASSED
-        echo FAILED
-        echo "PASSED=${PASSED:-0}" >> $GITHUB_ENV
-        echo "FAILED=${FAILED:-0}" >> $GITHUB_ENV
-
-    - name: Display Results
-      run: |
-        echo "Total Passed: ${{ env.PASSED }}, Total Failed: ${{ env.FAILED }}"
-
-    - name: Notify Slack
-      if: always()  # Always send a notification, even if previous steps fail
-      run: |
-        curl -X POST -H 'Content-type: application/json' \
-        --data "{\"text\":\"GitHub Actions workflow completed. Number of failed tests: ${{ env.FAILED }}. Number of passed tests: ${{ env.PASSED }}.\"}" \
-        https://hooks.slack.com/services/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
+          # Run the report parsing script
+          node parse-report.js
