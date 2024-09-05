@@ -94,5 +94,7 @@
     "TestBtn":"//button[normalize-space()='Tests']",
     "OptionsBtn":"//button[normalize-space()='Options']",
     "NewUnitFolder":"//div[contains(@data-panel-collapsible,'true')]//div//ul//div//div//div[contains(@draggable,'true')]",
-    "ImportTeamFinalBtnCreateTeam":"//body/div[@role='presentation']/div/div/a[1]"
+    "ImportTeamFinalBtnCreateTeam":"//body/div[@role='presentation']/div/div/a[1]",
+    "ChatIFrame":"//iframe[4]",
+    "ChatCLoseBtn":"div[aria-label='Close']"
 }                   

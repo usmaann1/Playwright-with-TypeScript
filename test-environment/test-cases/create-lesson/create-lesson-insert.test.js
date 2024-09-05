@@ -40,6 +40,7 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
         await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
         await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
+        await PlaywrightCore.waitTimeout(createLesson.page, 3000)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });

@@ -520,7 +520,7 @@ exports.PlaywrightCore = class PlaywrightCore {
   static async waitForElementToDisappear(
     page,
     selector,
-    timeout = 240000,
+    timeout = 300000,
     interval = 3000
   ) {
     const start = Date.now();

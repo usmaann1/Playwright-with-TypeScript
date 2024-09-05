@@ -151,4 +151,10 @@ exports.CreateTeams = class CreateTeams {
     }
     }
 
+    async clickOnCrossMessage(){
+      const iframeElement = this.page.frameLocator(Locators.ChatIFrame);         
+      await PlaywrightCore.click(iframeElement.locator(Locators.ChatCLoseBtn))
+      await this.page.waitForTimeout(2000);
+  }
+
 }
