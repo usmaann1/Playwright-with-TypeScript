@@ -1,0 +1,42 @@
+name: Playwright Tests
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    timeout-minutes: 120
+    runs-on: ubuntu-latest
+   
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    - name: Install dependencies
+      run: npm install
+    - name: Install Playwright Browsers
+      run: npx playwright install
+    - name: Run Specific Playwright Test
+      id: test
+      run: |
+       npx playwright test --reporter=html --output=./test-results --config=playwright.config.js
+
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-report
+        path: playwright-report
+        retention-days: 30
+        
+  reports:
+      runs-on: ubuntu-latest
+      needs: test
+  
+      steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+  
+      - name: Download reports
+        uses: actions/download-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report
