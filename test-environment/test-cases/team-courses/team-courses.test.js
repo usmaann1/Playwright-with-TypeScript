@@ -1,18 +1,12 @@
-const {
-  UserFunctions,
-} = require("../../../module-imports/helperFunctions.imports");
-const { test } = require("../../../module-imports/testFixtures.imports");
-const {
-  TeamCoursesPage,
-} = require("../../../pages/team-courses/team-courses.page");
-import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
-import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
+const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helperFunctions.imports')
 const { test, expect } = require('../../../module-imports/testFixtures.imports')
+import SignUpTestData from '../../test-assets/test-data-files/sign-up/sign-up-testData.json'
+import LoginTestData from '../../test-assets/test-data-files/login/login-testData.json'
+import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
-test.describe("TestSuite: Team/Courses", () => {
-  const email = Credentials.EMAIL_NUMAIR;
-  const password = Credentials.PASSWORD_NUMAIR;
-  test('Google homepage should have Google logo', async ({ page }) => {
+test.describe('TestSuite: Sign Up', () => {
+
+    test('Google homepage should have Google logo', async ({ page }) => {
         // Navigate to Google homepage
         await page.goto('https://www.google.com');
       
@@ -21,6 +15,5 @@ test.describe("TestSuite: Team/Courses", () => {
       
 
       });
-  
-
-});
+    
+})
