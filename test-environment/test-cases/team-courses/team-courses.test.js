@@ -11,7 +11,7 @@ import Credentials from "../../test-assets/test-data-files/Credentials/credentia
 test.describe("TestSuite: Team/Courses", () => {
   const email = Credentials.EMAIL_NUMAIR;
   const password = Credentials.PASSWORD_NUMAIR;
-  test.only('Google homepage should have Google logo', async ({ page }) => {
+  test('Google homepage should have Google logo', async ({ page }) => {
         // Navigate to Google homepage
         await page.goto('https://www.google.com');
       
