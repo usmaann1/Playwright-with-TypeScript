@@ -52,12 +52,6 @@ jobs:
         name: test-results
         path: downloaded-report
 
-    - name: Download HTML Report
-      uses: actions/download-artifact@v4
-      with:
-        name: playwright-html-report
-        path: downloaded-html-report
-
     - name: Install jq and unzip
       run: sudo apt-get install -y jq unzip
 
