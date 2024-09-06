@@ -32,10 +32,11 @@ jobs:
     - name: Install `ctrf-io` CLI
       run: npm install -g ctrf
       
-       echo ctrf report send --report results.json
-    - name: Send test results to Slack
+       
+    - name: Send Report to Slack
       run: |
-        curl -X POST -H 'Content-type: application/json' \
-        ctrf report send --report results.json --slack-webhook-url https://hooks.slack.com/services/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
-
-
+       echo "Sending report to Slack..."
+       ctrf report send --report results.json --slack-webhook-url https://hooks.slack.com/services/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
+       echo "Report sent (if successful)"
+      env:
+        SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
