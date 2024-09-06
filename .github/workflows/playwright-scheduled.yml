@@ -74,10 +74,10 @@ jobs:
             {
               attachments: [{
                 color: '${{ job.status }}' === 'success' ? 'good' : 'danger',
-                title: `Playwright Demo Automation Results :test_tube:`,
+                title: `Playwright Automation Results :test_tube:`,
                 fields: [{
                   title: 'Site Under Test',
-                  value: '${{ env.APP_URL }}',
+                  value: 'play.juicemind.com',
                   short: true
                 },
                 {
