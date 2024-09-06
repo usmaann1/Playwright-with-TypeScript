@@ -19,6 +19,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        
+      - name: Install `ctrf` CLI
+        run: npm install -g ctrf
 
       - name: Run Playwright tests
         run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=slack-ctrf
