@@ -37,10 +37,7 @@ jobs:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         # Fetch artifact ID from the current run
-        ARTIFACT_ID=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" \
-        "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts" \
-        | jq -r '.artifacts[] | select(.name == "playwright-report") | .id')
-
+        ARTIFACT_ID=$(echo "$RESPONSE" | jq -r '.artifacts[] | select(.name == "playwright-report") | .id')
           echo "Artifact ID: $ARTIFACT_ID"
           echo "ARTIFACT_ID=$ARTIFACT_ID" >> $GITHUB_ENV    
     - name: Notify Slack
