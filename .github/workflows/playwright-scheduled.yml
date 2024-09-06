@@ -100,8 +100,8 @@ jobs:
                   short: true
                 },
                 {
-                  title: 'Total Tests',
-                  value: (`${{ env.FAILURES }}`.match(/.spec.ts/g) || []).length + (`${{ env.PASSED }}`.match(/.spec.ts/g) || []).length,
+                  title: 'Total Passed',
+                  value: `${env.PASSED}`,
                   short: true
                 },
                 {
