@@ -26,7 +26,7 @@ export default defineConfig({
     [
       "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
       {
-        channels: ["pw-tests", "ci"], // provide one or more Slack channels
+        slackWebHookUrl: "https://hooks.slack.com/services/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",
         sendResults: "always", // "always" , "on-failure", "off"
       },
     ],
