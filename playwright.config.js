@@ -1,4 +1,5 @@
 import { defineConfig, devices, PlaywrightTestConfig } from '@playwright/test';
+const { JsonSummaryReporter } = require('playwright-json-summary-reporter');
 import { on } from 'events';
 
 
@@ -23,7 +24,7 @@ export default defineConfig({
   workers: 8,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['playwright-json-summary-reporter'],
+    [JsonSummaryReporter, { outputFile: 'test-results/summary.json' }],
     ['html'], // other reporters
     ['dot']
   ],
