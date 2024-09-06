@@ -1,6 +1,5 @@
 const { chromium} = require('@playwright/test');
 const { LoginPage } = require('../../pages/login/login.page')
-import LoginCredentials from './test-data-files/login/login-testData.json'
 require('dotenv').config()
 
 module.exports = async loginConfig => {
