@@ -100,7 +100,7 @@ jobs:
                   short: true
                 },
                 {
-                  title: 'Passed',
+                  title: 'Failed',
                   value: `${{env.PASSED}}`,
                   short: true
                 },
