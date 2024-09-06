@@ -2,6 +2,9 @@
     "teamName": "LessonTeam",
     "lessonName": "lesson for Beginners",
     "textForEditor": "abcd1234",
+    "Answer": "Test",
+    "wrongAnswer": "Tests",
+    "validationError": "Wrong answer",
     "elements": {
         "heading1": "Heading 1",
         "heading2": "Heading 2",
@@ -16,6 +19,9 @@
         "codeBlock": "Code Block",
         "table": "Table",
         "uploadImage": "Image",
+        "fillInBlank": "Fill in the blank",
+        "fileUpload": "File Upload",
+        "shortAnswer": "Short Answer",
         "multipleChoice":"Multiple Choice",
         "hideAndRevealButton":"Hide/Reveal Button"
     },
@@ -25,6 +31,7 @@
     "attributes": {
         "dataType": "data-type",
         "value": "taskList",
+        "checkedTrue": "true",
         "type": "type",
         "valueCb": "checkbox",
         "datachecked": "data-checked"
@@ -47,8 +54,6 @@
     "value": "taskList",
     "type": "type",
     "valueCb": "checkbox",
-    "datachecked": "data-checked",
-    "checkedTrue": "true",
     "checkedFalse": "false",
     "placeHolder": {
         "quote": "Enter a quote",
@@ -58,6 +63,27 @@
         "Quote": "this is a famous quote",
         "Author": "famous author",
         "code": "console.log('Hello, World!');"
+    },
+    "fileUpload":{
+        "optionField": "Allow learners to check their answer.",
+        "correctOptionColorVal": "rgb(144, 238, 144)"
+    },
+    "shortAnswer": {
+        "promptTxt": "What is your Name",
+        "answerTemplateTxt": "Raul",
+         "successLabelColor": "rgb(211, 211, 211)"
+    },
+    "dragDrop":{
+        "dragAndDrop": "Drag and Drop"
+    },
+    "tip": {
+        "tipElement": "Tip",
+        "backgroundYellow": "rgb(244, 190, 48)",
+        "backgroundBlue": "rgb(82, 110, 210)",
+        "backgroundPink": "rgb(254, 91, 127)",
+        "optionInfo": "Info",
+        "optionTip": "Tip",
+        "optionWarning": "Warning"
     },
     "MultipleChoiceOptionsRule1Value":"Each learner will see the options provided in random order.",
     "MultipleChoiceOptionsRule2Value":"Allow learners to check their answer.",
