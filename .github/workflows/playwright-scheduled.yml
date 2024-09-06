@@ -100,12 +100,12 @@ jobs:
                 },
                 {
                   title: 'Passed',
-                  value: `${env.PASSED}`,
+                  value: `${{env.PASSED}}`,
                   short: true
                 },
                 {
                   title: 'Failed',
-                  value: `${env.FAILURES}`,
+                  value: `${{env.FAILURES}}`,
                   short: true
                 },
                 {
