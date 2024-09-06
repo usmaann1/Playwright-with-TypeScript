@@ -43,7 +43,7 @@ jobs:
         path: downloaded-report
 
     - name: Merge into JSON Report
-      run: npx playwright merge-reports --reporter json ./test-results > merged_tests_results.json
+      run: npx playwright merge-reports --reporter json ./test-results.zip > merged_tests_results.json
 
     - name: View merged results
       run: cat ${GITHUB_WORKSPACE}/merged_tests_results.json
