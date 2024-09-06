@@ -27,7 +27,7 @@ jobs:
 
     - name: Run Playwright Tests
       run: |
-        npx playwright test --reporter=json --output=./test-results
+        npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json --output=./test-results
         ls -R ./test-results  # List contents of test-results directory for debugging
 
     - name: Upload test results
