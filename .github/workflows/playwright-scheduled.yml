@@ -84,8 +84,8 @@ jobs:
                   short: true
                 },
                 {
-                  title: 'Repo',
-                  value: `${process.env.AS_REPO}`,
+                  title: 'Failed',
+                  value: `${{env.FAILED}}`,
                   short: true
                 },
                 {
