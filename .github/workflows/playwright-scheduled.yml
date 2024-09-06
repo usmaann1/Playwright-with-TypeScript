@@ -100,21 +100,3 @@ jobs:
             }  
       env:
           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
-
-
-
-
-
-
-
-
-         
-    - name: Notify Slack
-      env:
-        SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
-      run: |
-        curl -X POST -H 'Content-type: application/json' \
-        --data '{"text":"GitHub Actions workflow completed. Number of failed tests: ${{  env.artifacts/playwright-report.zip }}."}' \
-        https://hooks.slack.com/services/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
-
-   
