@@ -34,24 +34,8 @@ jobs:
        echo ctrf report send --report results.json
        
     - name: Send test results to Slack
-      uses: slackapi/slack-github-action@v1
-      with:
-          payload: |
-            {
-              "text": "Playwright Test Report",
-              "attachments": [
-                {
-                  "title": "Test Report",
-                  "fields": [
-                    {
-                      "title": "Results",
-                      "value": "Playwright tests have completed. Check the results here: ${{ steps.upload-artifact.outputs.artifact-url }}",
-                      "short": false
-                    }
-                  ]
-                }
-              ]
-            }
       env:
           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+      run: |
+         slack-ctrf report send --report results.json --slack-webhook-url  $SLACK_WEBHOOK_URL  --verbose
      
