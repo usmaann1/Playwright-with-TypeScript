@@ -7,7 +7,7 @@ import Credentials from "../../test-assets/test-data-files/Credentials/credentia
 test.describe("TestSuite: Team/Courses", () => {
   const email = Credentials.EMAIL_NUMAIR;
   const password = Credentials.PASSWORD_NUMAIR;
-  test.only('Google title should be correct', async ({ page }) => {
+  test('Google title should be correct', async ({ page }) => {
     await page.goto('https://www.google.com');
 
         // Verify the page title
