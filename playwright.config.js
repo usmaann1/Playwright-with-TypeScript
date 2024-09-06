@@ -22,7 +22,11 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: 8,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['json', { outputFile: 'playwright-report.json' }], ['slack-ctrf']],
+  reporter: [
+    ['playwright-json-summary-reporter'],
+    ['html'], // other reporters
+    ['dot']
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   timeout: 8 * 60 * 1000,
   use: {
