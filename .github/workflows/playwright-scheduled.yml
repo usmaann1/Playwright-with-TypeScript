@@ -27,7 +27,7 @@ jobs:
 
     - name: Run Playwright Tests
       run: |
-        npx playwright test test-environment/test-cases/team-courses/team-courses.test.js
+        npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --report=json
 
     - name: Download blob reports from GitHub Actions Artifacts
       uses: actions/download-artifact@v3
