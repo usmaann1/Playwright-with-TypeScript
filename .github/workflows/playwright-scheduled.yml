@@ -46,6 +46,7 @@ jobs:
     
     - name: Send Slack Notification
       if: always()
+      uses: 8398a7/action-slack@v3 
       with:
           status: custom
           fields: repo,eventName,workflow,job,took
