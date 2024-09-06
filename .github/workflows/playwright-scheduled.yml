@@ -53,12 +53,12 @@ jobs:
     - name: Read Summary Report to Get Test Results
       if: always()
       run: |
-          STATUS=$(cat ./playwirght-summary/summary.json | jq -r '.status')
+          STATUS=$(jq -r '.status')
           echo "STATUS=$STATUS" >> $GITHUB_ENV 
-          PASSED=$(cat ./playwirght-summary/summary.json | jq -r '.passed[]' | tr '\n' ' ')
+          PASSED=$(jq -r '.passed[]' | tr '\n' ' ')
           echo "PASSED=$PASSED" >> $GITHUB_ENV 
-          TIMEOUT=$(cat ./playwirght-summary/summary.json | jq -r '.timedOut[]' | tr '\n' ' ' | sed 's/ /--->TIMEOUT /g')
-          FAILURES=$(cat ./playwirght-summary/summary.json | jq -r '.failed[]' | tr '\n' ' ')
+          TIMEOUT=$(jq -r '.timedOut[]' | tr '\n' ' ' | sed 's/ /--->TIMEOUT /g')
+          FAILURES=$(jq -r '.failed[]' | tr '\n' ' ')
           FAILURES+=$TIMEOUT
           echo "FAILURES=$FAILURES" >> $GITHUB_ENV
     
