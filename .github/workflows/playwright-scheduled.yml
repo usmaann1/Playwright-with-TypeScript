@@ -70,6 +70,78 @@ jobs:
           status: custom
           fields: repo,eventName,workflow,job,took
           custom_payload: |
+            name: Playwright Tests
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Runs every 5 minutes
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  test:
+    timeout-minutes: 120
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+      
+    - name: json summary reporter
+      run: npm install playwright-json-summary-reporter
+      
+    - name: Install Playwright Browsers
+      run: npx playwright install
+
+   
+    - name: Run Playwright tests
+      run: APP_URL=${{ env.APP_URL}} npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json > summary.json
+      
+    - name: List files in directory
+      run: ls -la
+
+    - name: Check for summary.json
+      run: |
+        if [ -f summary.json ]; then
+          echo "summary.json exists."
+        else
+          echo "summary.json does not exist."
+        fi
+    - name: Upload Playwright Summary Report as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: playwright-summary
+        path: summary.json  # Adjust path if necessary
+    - name: Count Test Cases
+      id: count-tests
+      run: |
+        # Check the structure of the JSON file for correctness
+        jq '.' summary.json
+    - name: Read Summary Report to Get Test Results
+      if: always()
+      run: |
+          
+          PASSED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="passed")] | length' summary.json)
+          echo "PASSED=$PASSED" >> $GITHUB_ENV 
+          FAILURES=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="failed")] | length' summary.json)
+          
+    
+    - name: Send Slack Notification
+      if: always()
+      uses: 8398a7/action-slack@v3 
+      with:
+          status: custom
+          fields: repo,eventName,workflow,job,took
+          custom_payload: |
             {
               attachments: [{
                 color: '${{ job.status }}' === 'success' ? 'good' : 'danger',
@@ -100,8 +172,18 @@ jobs:
                   short: true
                 },
                 {
-                  title: 'Total Passed',
-                  value: `${{ env.PASSED }}`,
+                  title: 'Passed',
+                  value: `${env.PASSED}`,
+                  short: true
+                },
+                {
+                  title: 'Failed',
+                  value: `${env.FAILURES}`,
+                  short: true
+                },
+                {
+                  title: 'Total Tests',
+                  value: (`${{ env.FAILURES }}`.match(/.spec.ts/g) || []).length + (`${{ env.PASSED }}`.match(/.spec.ts/g) || []).length,
                   short: true
                 },
                 {
@@ -111,11 +193,18 @@ jobs:
                 },
                 {
                   title: 'Failures',
-                  value: `${{ env.FAILURES }}`,
-                  short: true
+                  value: `${{ env.FAILURES }}` === '' ? 'No failures' : `${{ env.FAILURES }}`.match(/.spec.ts/g).length > 10 ? `Too many failures to print. Please go to GitHub to see full list of failures` : '```${{ env.FAILURES }}```'.replace(/ /g, '\n'),
+                  short: false
                 }]
               }]
             }  
+      env:
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+
+
+
+     
+  
       env:
           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
 
