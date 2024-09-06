@@ -30,7 +30,7 @@ jobs:
         npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json > results.json
 
     - name: Install `ctrf-io` CLI
-      run: npm install -g ctrf-io-cli
+      run: npx slack-ctrf results /path/to/ctrf-report.json
 
     - name: Send test results to Slack
       run: |
