@@ -19,21 +19,19 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        
-      - name: Install `ctrf` CLI
-        run: npm install -g ctrf
 
       - name: Run Playwright tests
-        run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=slack-ctrf
+        run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json
 
-      - name: Upload Playwright report
+      - name: Upload Playwright JSON report
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
           path: playwright-report.json
 
-      - name: Send report to Slack
+      - name: Generate and Send CTRF Report to Slack
         env:
-           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
         run: |
-           curl -X POST -H 'Content-type: application/json' --data '{"text":"Playwright test report: <URL to your report>"}' https://hooks.slack.com/services/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
+          npx slack-ctrf results playwright-report.json
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Playwright test report sent to Slack."}' https://hooks.slack.com/services/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
