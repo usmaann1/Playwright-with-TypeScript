@@ -1,4 +1,4 @@
-name: failed Playwright Testsssss
+name: Playwright Testsssss
 
 on:
   workflow_dispatch:  # Allows manual triggering
@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Step 4: Install Playwright browsers
+      # Step 4: Install Playwright Browsers
       - name: Install Playwright Browsers
         run: npx playwright install
 
@@ -31,30 +31,41 @@ jobs:
         id: run_tests
         run: |
           npx playwright test test-environment/test-cases/team-courses/team-courses.test.js \
-          --reporter=json \
+          --reporter=json,html \
           --output=./test-results \
           --config=playwright.config.js
-        continue-on-error: true  # Ensure the following steps run even if tests fail
+        continue-on-error: true
 
-      # Step 6: Archive test results
-      - name: Archive test results
-        run: |
-          mkdir -p archive
-          find ./test-results -name '*.json' -print0 | xargs -0 zip -r archive/test-results.zip
-
-      # Step 7: Upload test results
-      - name: Upload test results
+      # Step 6: Upload HTML report as an artifact
+      - name: Upload Playwright HTML Report
         uses: actions/upload-artifact@v3
         with:
-          name: test-results
-          path: archive/test-results.zip
+          name: Playwright Test Report
+          path: ./test-results/report/index.html  # Path to HTML report
 
-      # Step 8: Count failed tests from .last-run.json and output the count
-      - name: Count failed tests
+  notify:
+    runs-on: ubuntu-latest
+    needs: test  # Depends on the test job completion
+
+    steps:
+      # Step 1: Construct and echo the artifact URL
+      - name: Echo Artifact URL
         run: |
-          if [ -f ./test-results/.last-run.json ]; then
-            failed_count=$(jq '.failedTests | length' ./test-results/.last-run.json)
-            echo "Number of failed tests: $failed_count"
-          else
-            echo "No .last-run.json file found!"
-          fi
+          REPORT_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifact"
+          echo "The artifact URL is: $REPORT_URL"
+
+      # Step 2: Notify Slack with the link to the report
+      - name: Notify Slack
+        if: always()  # Always send a notification, even if previous steps fail
+        run: |
+          REPORT_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifact"
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{
+            "text": "GitHub Actions workflow completed. You can download the Playwright report here: '"$REPORT_URL"'",
+            "attachments": [
+              {
+                "title": "Download Playwright Test Report",
+                "title_link": "'"$REPORT_URL"'"
+              }
+            ]
+          }' https://hooks.slack.com/services/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
