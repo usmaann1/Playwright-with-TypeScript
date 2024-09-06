@@ -27,8 +27,7 @@ jobs:
 
     - name: Run Playwright Tests
       run: |
-        npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json > results.json
-        zip -r test-results.zip results.json
+        npx playwright test test-environment/test-cases/team-courses/team-courses.test.js
 
     - name: Upload test results
       uses: actions/upload-artifact@v4
