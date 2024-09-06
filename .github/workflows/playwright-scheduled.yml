@@ -56,8 +56,8 @@ jobs:
     - name: Read Summary Report to Get Test Results
       if: always()
       run: |          
-          PASSED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="passed")] | length' summary.json)
           FAILED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="failed")] | length' summary.json)
+          
           echo "PASSED=$PASSED" >> $GITHUB_ENV 
           
           
