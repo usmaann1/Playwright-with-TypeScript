@@ -42,9 +42,9 @@ jobs:
           echo "FAILURES=$FAILURES" >> $GITHUB_ENV
     
     - name: Send Slack Notification
-        if: always()
-        uses: 8398a7/action-slack@v3
-        with:
+      if: always()
+      uses: 8398a7/action-slack@v3
+      with:
           status: custom
           fields: repo,eventName,workflow,job,took
           custom_payload: |
@@ -94,7 +94,7 @@ jobs:
                 }]
               }]
             }  
-        env:
+      env:
           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
 
 
