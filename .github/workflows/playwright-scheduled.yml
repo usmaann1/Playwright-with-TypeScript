@@ -49,7 +49,11 @@ jobs:
       with:
         name: playwright-summary
         path: summary.json  # Adjust path if necessary
-
+    - name: Count Test Cases
+      id: count-tests
+      run: |
+        # Check the structure of the JSON file for correctness
+        jq '.' summary.json
     - name: Read Summary Report to Get Test Results
       if: always()
       run: |
