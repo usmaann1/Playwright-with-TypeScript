@@ -80,7 +80,10 @@
         "tipElement": "Tip",
         "backgroundYellow": "rgb(244, 190, 48)",
         "backgroundBlue": "rgb(82, 110, 210)",
-        "backgroundPink": "rgb(254, 91, 127)"
+        "backgroundPink": "rgb(254, 91, 127)",
+        "optionInfo": "Info",
+        "optionTip": "Tip",
+        "optionWarning": "Warning"
     },
     "MultipleChoiceOptionsRule1Value":"Each learner will see the options provided in random order.",
     "MultipleChoiceOptionsRule2Value":"Allow learners to check their answer.",

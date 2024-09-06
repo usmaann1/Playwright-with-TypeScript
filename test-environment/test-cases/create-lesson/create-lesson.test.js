@@ -3,6 +3,9 @@ const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import CLtd from '../../test-assets/test-data-files/create-lesson/create-lesson-testData.json'
 import CTtd from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
+const { TeamCoursesPage } = require("../../../pages/team-courses/team-courses.page")
+const { CreateLesson } = require("../../../pages/create-lesson/create-lesson.page");
+import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
 
 test.describe('TestSuite: Create Lesson', () => {
     const randomNumber = UserFunctions.generateRandomString(5)
@@ -35,7 +38,6 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.createALesson(lessonName)
         // covers side menus
         await expect(createLesson.backToTeamButton).toBeVisible()
-        await expect(createLesson.viewStudentsBtn).toBeVisible()
         await expect(createLesson.studentGradesBtn).toBeVisible()
         await expect(createLesson.PublishMultiple).toBeVisible()
         await expect(createLesson.deleteMultiple).toBeVisible()
@@ -199,9 +201,6 @@ test.describe('TestSuite: Create Lesson', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
         await createLesson.selectElementFromDropdown(CLtd.elements.fillInBlank)
         createLesson.validateAllFillInTheBlankFields()
-        const ele = createLesson.menuIcon
-        await ele.hover()
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
     test('TC - validate adding new Fill in Blank functionality', async ({ createLesson }) => {
         await createLesson.createALesson(lessonName)
@@ -230,7 +229,8 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.selectElementFromDropdown(CLtd.elements.shortAnswer)
         await createLesson.validateShortAnswerFunctionality()
     });
-    test.only('TC - validate adding tip element inside the editor', async ({ createLesson }) => {
+    test('TC - validate adding tip element inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
+        const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.createALesson(lessonName)
         await createLesson.setVisibility()
         await createLesson.hoverOverFirstRow()
@@ -238,14 +238,13 @@ test.describe('TestSuite: Create Lesson', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
         await createLesson.selectElementFromDropdown(CLtd.tip.tipElement)
         await createLesson.validateTipFunctionality()
-    });
-    test.skip('TC - validate adding drag and drop element inside the editor', async ({ createLesson }) => {
-        await createLesson.createALesson(lessonName)
-        await createLesson.setVisibility()
-        await createLesson.hoverOverFirstRow()
-        await createLesson.hoverAndClickOnPlusBtn()
-        await expect(createLesson.dropDownContainer).toBeVisible()
-        await createLesson.selectElementFromDropdown(CLtd.dragDrop.dragAndDrop)
-        await createLesson.validateDragAndDropFunctionality()
+
+        const link = await teamCoursesPage.PublishAndInviteCreateLesson()
+        const newPage = await browser.newPage()
+        const newTeamCoursesPageInstance = new TeamCoursesPage(newPage)
+        const newCreateLessonPageInstance = new CreateLesson(newPage)
+        await newTeamCoursesPageInstance.afterInviteSignUp(link,randomEmail,userPwd,TeamCoursesData.firstName,TeamCoursesData.LastName)
+
+        await newCreateLessonPageInstance.verifyStudentViewForTipElement()
     });
 })

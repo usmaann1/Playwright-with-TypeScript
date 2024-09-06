@@ -12,6 +12,7 @@ exports.CreateLesson = class CreateLesson {
 
     intializePage(page) {
         this.page = page;
+        this.exitStudentView = this.page.locator(Locators.exitStudentView)
         this.textField = this.page.locator(Locators.textField)
         this.obtainedPoints = this.page.locator(Locators.lessonPage.mainPage.obtainedPoints)
         this.lineError = this.page.locator(Locators.lessonPage.mainPage.lineError)
@@ -193,6 +194,7 @@ exports.CreateLesson = class CreateLesson {
         this.HideContentBtn = this.page.locator(Locators.HideContentBtn)
         this.RevealContentButton = this.page.locator(Locators.RevealContentButton)
         this.StudentModeHideContentText = this.page.locator(Locators.StudentModeHideContentText)
+
     }
    
     async clickOnAddNewItem() {
@@ -408,11 +410,11 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.click(this.checkAnswerBtn)
         await PlaywrightCore.click(this.closeBtn)
         await expect(this.lineError).toHaveText(clTD.validationError)
+        await this.page.waitForTimeout(3000);
         await PlaywrightCore.fill(verifyAnswer, clTD.Answer)
         await this.page.waitForTimeout(3000);
         await PlaywrightCore.click(this.checkAnswerBtn)
         await PlaywrightCore.click(this.closeBtn)
-        // const verifyCorrectAnswer = await parent.locator(this.inputTag).textContent()
         const toVerify = await parent.locator(this.obtainedPoints).nth(1).textContent()
         expect(toVerify).toContain('1')
     }
@@ -508,9 +510,38 @@ exports.CreateLesson = class CreateLesson {
         await expect(outerTip).toBeVisible()
         await expect(this.tipEle).toBeVisible()
         await expect(this.infoIcon).toBeVisible()
+        await PlaywrightCore.fill(innerTip,clTD.teamName)
         const test = parent.locator(this.tipEle)
         await this.checkBackgroundColor(test,clTD.tip.backgroundYellow)
-        await PlaywrightCore.click(this.typeDropDown)
-        await this.selectElementFromDropdown()
+        await PlaywrightCore.click(this.typeDropDown,{ force: true })
+
+        await PlaywrightCore.click(this.PresentationMode)
+        await PlaywrightCore.click(this.gotItBtn)
+        await this.checkBackgroundColor(test,clTD.tip.backgroundYellow)
+        await PlaywrightCore.click(this.exitStudentView)
+
+        const subParent = this.typeDropDown
+        await subParent.selectOption([clTD.tip.optionTip])
+        await this.page.waitForTimeout(1000);
+        await this.checkBackgroundColor(test,clTD.tip.backgroundBlue)
+
+        await PlaywrightCore.click(this.PresentationMode)
+        await PlaywrightCore.click(this.gotItBtn)
+        await this.checkBackgroundColor(test,clTD.tip.backgroundBlue)
+        await PlaywrightCore.click(this.exitStudentView)
+
+        await subParent.selectOption([clTD.tip.optionWarning])
+        await this.page.waitForTimeout(1000);
+        await this.checkBackgroundColor(test,clTD.tip.backgroundPink)
+
+        await PlaywrightCore.click(this.PresentationMode)
+        await PlaywrightCore.click(this.gotItBtn)
+        await this.checkBackgroundColor(test,clTD.tip.backgroundPink)
+        await PlaywrightCore.click(this.exitStudentView)
+    }
+    async verifyStudentViewForTipElement() {
+        const parent = this.textEditor
+        const test = parent.locator(this.tipEle)
+        await this.checkBackgroundColor(test,clTD.tip.backgroundPink)
     }
 }

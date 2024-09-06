@@ -4,6 +4,7 @@
     "addItemLesson": "//div[contains(text(),'Lesson')]",
     "exitStudentViewBtn": "//body/div[@id='root']/div/div/div/div/div/div[1] //a[normalize-space()='Exit Student View']",
     "textField": ".tiptap",
+    "exitStudentView": "//a[normalize-space()='Exit Student View']",
     "createLessonUI": {
         "lessonNameTxtBox": "//input[@placeholder='Item name']",
         "backButton": "//p[normalize-space()='Back']",
@@ -72,8 +73,7 @@
             "parentQuotetag": "figure",
             "quoteTag": "blockquote",
             "quoteCaptionTag": "figcaption",
-            "placeHolderTag": "data-placeholder"
-        },
+            "placeHolderTag": "data-placeholder",
             "fillInBlankContainer": {
                 "container": ".node-fillInTheBlank",
                 "setupBtn": "//button[normalize-space()='Setup']",
@@ -92,8 +92,8 @@
                     "checkBox2": "(//input[@id='instantFeedback'])[2]",
                     "text2": "//label[contains(text(),'Learners can gain a percentage of the maximum poin')]"
                 }
-            }
-        },
+            },
+        
             "fileUpload": {
                 "dragDrop":"input[type='file']",
                 "optionText":"//label[normalize-space()='Allow learners to check their answer.']",
@@ -143,8 +143,10 @@
             "tip":{
                 "infoIcon":"//*[name()='path' and contains(@d,'M12 2C6.48')]",
                 "tipEle": ".node-tip .allow-dragging",
-                "typeDropDown": "//div[@contenteditable='false']//div//div//div//select"
-            },
+                "typeDropDown": "select"
+            }
+        }
+        },
     "EmbedEnterURL":"//input[@placeholder='Enter URL']",
     "EmbedInsertURLHeading":"//div[@contenteditable='false']//div//div//div//h2",
     "EmbedSubmitBtn":"//div[@contenteditable='false']//div//div//div//div//a",
