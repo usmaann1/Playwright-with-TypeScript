@@ -13,4 +13,34 @@ test.describe("TestSuite: Team/Courses", () => {
         // Verify the page title
     await expect(page).toHaveTitle(/Google/);
   });
+  test('Google title should be correct', async ({ page }) => {
+    await page.goto('https://www.google.com');
+
+        // Verify the page title
+    await expect(page).toHaveTitle(/Google/);
+  });
+  test('Google title should be correct', async ({ page }) => {
+    await page.goto('https://www.google.com');
+
+        // Verify the page title
+    await expect(page).toHaveTitle(/Google/);
+  });
+  test('Google title should be correct', async ({ page }) => {
+    await page.goto('https://www.google.com');
+
+        // Verify the page title
+    await expect(page).toHaveTitle(/Google/);
+  });
+  test('Google title should be correct', async ({ page }) => {
+    await page.goto('https://www.google.com');
+
+        // Verify the page title
+    await expect(page).toHaveTitle(/Google/);
+  });
+  test('Google title should be correct', async ({ page }) => {
+    await page.goto('https://www.google.com');
+
+        // Verify the page title
+    await expect(page).toHaveTitle(/Google/);
+  });
 });
