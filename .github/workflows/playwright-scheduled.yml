@@ -58,8 +58,9 @@ jobs:
       run: |
           
           PASSED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="passed")] | length' summary.json)
-          echo "PASSED=$PASSED" >> $GITHUB_ENV 
           FAILURES=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="failed")] | length' summary.json)
+          echo "PASSED=$PASSED" >> $GITHUB_ENV 
+          
           
     
     - name: Send Slack Notification
