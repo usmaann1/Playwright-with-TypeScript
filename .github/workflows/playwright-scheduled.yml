@@ -31,12 +31,24 @@ jobs:
         name: playwright-report
         path: ./test-results
         
+    - name: Fetch artifact ID
+      id: fetch-artifact-id
+      env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        # Fetch artifact ID from the current run
+        ARTIFACT_ID=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" \
+        "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts" \
+        | jq -r '.artifacts[] | select(.name == "playwright-report") | .id')
+
+          echo "Artifact ID: $ARTIFACT_ID"
+          echo "ARTIFACT_ID=$ARTIFACT_ID" >> $GITHUB_ENV    
     - name: Notify Slack
       env:
         SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
       run: |
         curl -X POST -H 'Content-type: application/json' \
-        --data '{"text":"GitHub Actions workflow completed. Number of failed tests: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.upload.outputs.artifact-id }}."}' \
+        --data '{"text":"GitHub Actions workflow completed. Number of failed tests: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{  env.ARTIFACT_ID }}."}' \
         https://hooks.slack.com/services/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
 
    
