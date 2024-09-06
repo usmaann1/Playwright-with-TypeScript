@@ -32,8 +32,18 @@ jobs:
 
    
     - name: Run Playwright tests
-      run: APP_URL=${{ env.APP_URL}} npx playwright test test-environment/test-cases/team-courses/team-courses.test.js 
+      run: APP_URL=${{ env.APP_URL}} npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json-summary
+      
+    - name: List files in directory
+      run: ls -la
 
+    - name: Check for summary.json
+      run: |
+        if [ -f summary.json ]; then
+          echo "summary.json exists."
+        else
+          echo "summary.json does not exist."
+        fi
     - name: Upload Playwright Summary Report as artifact
       uses: actions/upload-artifact@v4
       with:
