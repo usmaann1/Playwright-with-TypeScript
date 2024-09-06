@@ -4,9 +4,6 @@ const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import frqData from '../../test-assets/test-data-files/frq/frq-testData.json';
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
-
-require('dotenv').config();
-
 test.describe('TestSuite: FRQ', () => {
 
 
@@ -58,13 +55,14 @@ test.describe('TestSuite: FRQ', () => {
 
     await page.waitForTimeout(20000);
     
-    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+    const count = await page.locator(frqData.TestStatusDiv).count();
 
     for (let i = 1; i <=count ; i++) {
-      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
-      expect(text.trim()).toBe(frqData.TestStatus);
-  }
 
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
 
   });
 
@@ -110,11 +108,12 @@ test.describe('TestSuite: FRQ', () => {
 
     await page.waitForTimeout(20000);
 
-    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+    const count = await page.locator(frqData.TestStatusDiv).count();
 
-    for (let i = 1; i <=count ; i++) 
-    {
-      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
       expect(text.trim()).toBe(frqData.TestStatus);
     }
 
@@ -162,14 +161,14 @@ test.describe('TestSuite: FRQ', () => {
 
     await page.waitForTimeout(20000);
 
-    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();   
+    const count = await page.locator(frqData.TestStatusDiv).count();
 
-    for (let i = 1; i <=count ; i++) 
-    {
-      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
       expect(text.trim()).toBe(frqData.TestStatus);
     }
-
 
   });
 
@@ -215,11 +214,12 @@ test.describe('TestSuite: FRQ', () => {
 
     await page.waitForTimeout(20000);
 
-    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();   
+    const count = await page.locator(frqData.TestStatusDiv).count();
 
-    for (let i = 1; i <=count ; i++) 
-    {
-      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
       expect(text.trim()).toBe(frqData.TestStatus);
     }
 
@@ -268,11 +268,12 @@ test.describe('TestSuite: FRQ', () => {
 
     await page.waitForTimeout(20000);
 
-    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+    const count = await page.locator(frqData.TestStatusDiv).count();
 
-    for (let i = 1; i <=count ; i++) 
-    {
-      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
       expect(text.trim()).toBe(frqData.TestStatus);
     }
 
@@ -321,11 +322,12 @@ test.describe('TestSuite: FRQ', () => {
 
     await page.waitForTimeout(20000);
 
-    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+    const count = await page.locator(frqData.TestStatusDiv).count();
 
-    for (let i = 1; i <=count ; i++) 
-    {
-      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
       expect(text.trim()).toBe(frqData.TestStatus);
     }
 
@@ -375,14 +377,14 @@ test.describe('TestSuite: FRQ', () => {
 
     await page.waitForTimeout(20000);
 
-    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+    const count = await page.locator(frqData.TestStatusDiv).count();
 
-    for (let i = 1; i <=count ; i++) 
-    {
-      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
       expect(text.trim()).toBe(frqData.TestStatus);
     }
-
 
   });
 
@@ -428,11 +430,12 @@ test.describe('TestSuite: FRQ', () => {
 
     await page.waitForTimeout(20000);
 
-    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+    const count = await page.locator(frqData.TestStatusDiv).count();
 
-    for (let i = 1; i <=count ; i++) 
-    {
-      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
       expect(text.trim()).toBe(frqData.TestStatus);
     }
 
@@ -480,11 +483,12 @@ test.describe('TestSuite: FRQ', () => {
 
     await page.waitForTimeout(20000);
 
-    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+    const count = await page.locator(frqData.TestStatusDiv).count();
 
-    for (let i = 1; i <=count ; i++) 
-    {
-      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
       expect(text.trim()).toBe(frqData.TestStatus);
     }
 
@@ -532,11 +536,12 @@ test.describe('TestSuite: FRQ', () => {
 
     await page.waitForTimeout(20000);
 
-    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+    const count = await page.locator(frqData.TestStatusDiv).count();
 
-    for (let i = 1; i <=count ; i++) 
-    {
-      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
       expect(text.trim()).toBe(frqData.TestStatus);
     }
 
@@ -584,11 +589,12 @@ test.describe('TestSuite: FRQ', () => {
 
     await page.waitForTimeout(20000);
 
-    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+    const count = await page.locator(frqData.TestStatusDiv).count();
 
-    for (let i = 1; i <=count ; i++) 
-    {
-      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
       expect(text.trim()).toBe(frqData.TestStatus);
     }
 
@@ -636,11 +642,12 @@ test.describe('TestSuite: FRQ', () => {
 
     await page.waitForTimeout(20000);
 
-    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+    const count = await page.locator(frqData.TestStatusDiv).count();
 
-    for (let i = 1; i <=count ; i++) 
-    {
-      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
       expect(text.trim()).toBe(frqData.TestStatus);
     }
 
