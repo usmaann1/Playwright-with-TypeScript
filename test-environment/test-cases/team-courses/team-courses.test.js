@@ -44,6 +44,6 @@ test.describe("TestSuite: Team/Courses", () => {
     await page.goto('https://www.google.com');
 
         // Verify the page title
-    await expect(page).toHaveTitle(/Google/);
+    await expect(page).toHaveTitle(/Gole/);
   });
 });
