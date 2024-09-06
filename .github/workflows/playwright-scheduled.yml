@@ -34,6 +34,6 @@ jobs:
 
     - name: Send test results to Slack
       run: |
-        ctrf report send --report results.json --slack-webhook-url https://hooks.slack.com/services/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
+        -- data ctrf report send --report results.json --slack-webhook-url https://hooks.slack.com/services/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
 
 
