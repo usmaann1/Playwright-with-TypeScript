@@ -58,8 +58,9 @@ jobs:
       run: |
         PASSED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="failed")] | length' summary.json)
         FAILED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="failed")] | length' summary.json)
+        echo "PASSED=$PASSED" >> $GITHUB_ENV 
+        echo "FAILED=$FAILED" >> $GITHUB_ENV 
           
-          echo "PASSED=$PASSED" >> $GITHUB_ENV 
           
           
     
@@ -95,8 +96,13 @@ jobs:
                   short: true
                 },
                 {
-                  title: 'Failed',
+                  title: 'PASSED',
                   value: `${{env.PASSED}}`,
+                  short: true
+                },
+                {
+                  title: 'Failed',
+                  value: `${{env.FAILED}}`,
                   short: true
                 }]
               }]
