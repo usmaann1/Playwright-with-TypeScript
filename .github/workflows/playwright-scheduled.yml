@@ -39,8 +39,8 @@ jobs:
 
     - name: Check for summary.json
       run: |
-        if [ -f test-results/summary.json ]; then
-          echo "test-results/summary.json exists."
+        if [ -f summary.json ]; then
+          echo "summary.json exists."
         else
           echo "summary.json does not exist."
         fi
@@ -48,7 +48,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: playwright-summary
-        path: test-results/summary.json  # Adjust path if necessary
+        path: summary.json  # Adjust path if necessary
 
     - name: Read Summary Report to Get Test Results
       if: always()
