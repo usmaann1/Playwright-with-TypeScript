@@ -4,8 +4,6 @@ const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import groupingData from '../../test-assets/test-data-files/grouping/grouping-testData.json';
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
-require('dotenv').config();
-
 test.describe('TestSuite: Grouping', () => {
 
     test.beforeEach(async ({ loginPage }) => {

@@ -4,10 +4,6 @@ const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import LessonBuilderTestData from '../../test-assets/test-data-files/lesson-builder/lesson-builder-testData.json';
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
-
-
-require('dotenv').config();
-
 test.describe('TestSuite: Lesson Builder', () => {
 
 

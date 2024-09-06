@@ -4,9 +4,6 @@ const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import frqData from '../../test-assets/test-data-files/frq/frq-testData.json';
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
-
-require('dotenv').config();
-
 test.describe('TestSuite: FRQ', () => {
 
 

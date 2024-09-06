@@ -3,9 +3,6 @@ const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helpe
 const { test, expect } = require('../../../module-imports/testFixtures.imports');
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
-
-require('dotenv').config();
-
 test.describe('TestSuite: CsAwesome Questions Validation', () => {
 
 

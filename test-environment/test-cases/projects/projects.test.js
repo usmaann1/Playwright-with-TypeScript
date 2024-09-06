@@ -4,9 +4,6 @@ const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import projectsData from '../../test-assets/test-data-files/projects/projects-testData.json';
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
-
-require('dotenv').config();
-
 test.describe('TestSuite: Projects', () => {
 
 
