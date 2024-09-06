@@ -33,5 +33,7 @@ jobs:
 
        echo ctrf report send --report results.json
     - name: Send test results to Slack
+      env:
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
       run: |
-        npx slack-ctrf report send --report results.json --slack-webhook-url https://hooks.slack.com/services/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 ==verbose
+        npx slack-ctrf report send --report results.json --slack-webhook-url  --verbose
