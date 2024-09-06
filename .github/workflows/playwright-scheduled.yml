@@ -32,7 +32,13 @@ jobs:
 
    
     - name: Run Playwright tests
-      run: APP_URL=${{ env.APP_URL}} npx playwright test test-environment/test-cases/team-courses/team-courses.test.js
+      run: APP_URL=${{ env.APP_URL}} npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json-summary
+
+    - name: Upload Playwright Summary Report as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: playwright-summary
+        path: summary.json  # Adjust path if necessary
 
     - name: Read Summary Report to Get Test Results
       if: always()
