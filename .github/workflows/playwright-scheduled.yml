@@ -34,4 +34,5 @@ jobs:
        echo ctrf report send --report results.json
     - name: Send test results to Slack
       run: |
+        curl -X POST -H 'Content-type: application/json' \
         ctrf report send --report results.json --slack-webhook-url https://hooks.slack.com/services/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
