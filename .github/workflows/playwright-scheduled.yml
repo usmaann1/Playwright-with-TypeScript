@@ -52,7 +52,7 @@ jobs:
           {
             "attachments": [
               {
-                "color": "${{ job.status == 'success' ? 'good' : 'danger' }}",
+                "color": "${{ job.status == 'success' && 'good' || 'danger' }}",
                 "title": "Playwright Test Results :test_tube:",
                 "fields": [
                   {
