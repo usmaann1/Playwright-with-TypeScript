@@ -27,9 +27,11 @@ jobs:
 
     - name: Run Playwright Tests
       run: |
+        mkdir -p ./test-results
         npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json --output=./test-results
+        ls -R ./test-results  # Ensure results are created
         zip -r test-results.zip ./test-results
-        ls -R ./test-results  # List contents for debugging
+        ls -l test-results.zip  # Confirm zip file is created
 
     - name: Upload test results
       uses: actions/upload-artifact@v4
@@ -44,13 +46,14 @@ jobs:
         path: all-blob-reports
 
     - name: View downloaded results
-      run: ls -R ./all-blob-reports  # List contents to confirm file presence
+      run: |
+        ls -R ./all-blob-reports  # Verify that the artifact was downloaded
+        ls -R ./all-blob-reports/test-results  # Ensure the correct path to results
 
     - name: Merge into JSON Report
       run: |
-        # Assuming the results are in 'all-blob-reports/test-results/results.json'
         npx playwright merge-reports --reporter json ./all-blob-reports/test-results > merged_tests_results.json
-        ls -l merged_tests_results.json  # List merged report for debugging
+        ls -l merged_tests_results.json  # Confirm merged results are created
 
     - name: View merged results
       run: cat merged_tests_results.json
