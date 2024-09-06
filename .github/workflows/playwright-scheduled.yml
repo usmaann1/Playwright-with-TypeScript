@@ -9,7 +9,9 @@ jobs:
   test:
     timeout-minutes: 120
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      actions: read
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
