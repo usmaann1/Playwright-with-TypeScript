@@ -25,59 +25,19 @@ jobs:
     - name: Run Playwright tests
       run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json --output=./test-results
 
-    - name: List test-results directory
-      run: ls -R ./test-results || echo "Directory ./test-results does not exist."
+    - name: Download blob reports from GitHub Actions Artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: all-blob-reports
+        path: all-blob-reports
+    - name: Merge into JSON Report
+      run: npx playwright merge-reports --reporter json ./all-blob-reports > merged_tests_results.json
 
-    - name: Parse Test Results
-      id: parse_results
-      run: |
-        if [ -f ./test-results/results.json ]; then
-          PASSED=$(jq -r '.tests | map(select(.status == "passed")) | length' ./test-results/results.json)
-          FAILED=$(jq -r '.tests | map(select(.status == "failed")) | length' ./test-results/results.json)
-          echo "PASSED=$PASSED" >> $GITHUB_ENV
-          echo "FAILED=$FAILED" >> $GITHUB_ENV
-        else
-          echo "No results.json file found!"
-          echo "PASSED=0" >> $GITHUB_ENV
-          echo "FAILED=0" >> $GITHUB_ENV
-        fi
-
+    - name: View merged results
+      run: cat ${GITHUB_WORKSPACE}/merged_tests_results.json
+     
     - name: Send Slack Notification
       if: always()
-      uses: 8398a7/action-slack@v3
-      with:
-        status: ${{ job.status }}
-        fields: repo,eventName,workflow,job,took
-        custom_payload: |
-          {
-            "attachments": [
-              {
-                "color": "${{ job.status == 'success' && 'good' || 'danger' }}",
-                "title": "Playwright Test Results :test_tube:",
-                "fields": [
-                  {
-                    "title": "Tests Passed",
-                    "value": "${{ env.PASSED }}",
-                    "short": true
-                  },
-                  {
-                    "title": "Tests Failed",
-                    "value": "${{ env.FAILED }}",
-                    "short": true
-                  },
-                  {
-                    "title": "Workflow",
-                    "value": "${{ github.workflow }}",
-                    "short": true
-                  },
-                  {
-                    "title": "Job",
-                    "value": "${{ job.name }}",
-                    "short": true
-                  }
-                ]
-              }
-            ]
-          }
       env:
         SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+        run: npx playwright-slack-report --config="${GITHUB_WORKSPACE}/cli_config.json" --json-results="${GITHUB_WORKSPACE}/merged_tests_results.json"
