@@ -7,36 +7,31 @@ on:
 
 jobs:
   test:
-    timeout-minutes: 120
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Install Playwright Browsers
-      run: npx playwright install
+      - name: Run Playwright tests
+        run: npx playwright test --reporter=slack-ctrf
 
-    - name: Run Playwright Tests
-      run: |
-        npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json > results.json
-
-    - name: Install `ctrf-io` CLI
-      run: npm install -g ctrf
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report
+          path: playwright-report.json
       
-       
-    - name: Send Report to Slack
-      run: |
-       echo "Sending report to Slack..."
-       ctrf report send --report results.json --slack-webhook-url https://hooks.slack.com/services/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
-       echo "Report sent (if successful)"
-      env:
-        SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+      - name: Send report to Slack
+        env:
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Playwright test report: <URL to your report>"}' https://hooks.slack.com/services/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
+      
