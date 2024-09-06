@@ -25,6 +25,9 @@ jobs:
     - name: Install Json summary report
       run: npm install playwright-json-summary-reporter
 
+    - name: List test-results directory
+      run: ls -R ./test-results
+
     - name: Run Playwright tests
       run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json --output=./test-results
 
