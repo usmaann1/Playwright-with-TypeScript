@@ -4,6 +4,9 @@ const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import frqData from '../../test-assets/test-data-files/frq/frq-testData.json';
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
+
+require('dotenv').config();
+
 test.describe('TestSuite: FRQ', () => {
 
 
@@ -47,6 +50,22 @@ test.describe('TestSuite: FRQ', () => {
 
     await expect(element).toHaveText("Delimiters");
 
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+    
+    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+
+    for (let i = 1; i <=count ; i++) {
+      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+  }
+
+
   });
 
   test('TC3 - Validate ApCalendar', async ({ frq, page }) => {
@@ -82,6 +101,22 @@ test.describe('TestSuite: FRQ', () => {
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("APCalendar");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+
+    for (let i = 1; i <=count ; i++) 
+    {
+      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
 
   });
 
@@ -119,6 +154,23 @@ test.describe('TestSuite: FRQ', () => {
 
     await expect(element).toHaveText("WordMatch");
 
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();   
+
+    for (let i = 1; i <=count ; i++) 
+    {
+      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
+
+
   });
 
   test('TC7 - Validate CombinedTable', async ({ frq, page }) => {
@@ -155,9 +207,26 @@ test.describe('TestSuite: FRQ', () => {
 
     await expect(element).toHaveText("CombinedTable");
 
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();   
+
+    for (let i = 1; i <=count ; i++) 
+    {
+      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
+
+
   });
 
-  test('TC9 - Validate Club Memebers', async ({ frq, page }) => {
+  test('TC9 - Validate Club Members', async ({ frq, page }) => {
     
     await frq.ClickClubMembers();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -173,7 +242,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('TC10 - Validate CombinedTable', async ({ frq, page }) => {
+  test('TC10 - Validate Club Members', async ({ frq, page }) => {
     
     await frq.ClickClubMembers();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -190,6 +259,23 @@ test.describe('TestSuite: FRQ', () => {
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("ClubMembers");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+
+    for (let i = 1; i <=count ; i++) 
+    {
+      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
+
 
   });
 
@@ -227,6 +313,22 @@ test.describe('TestSuite: FRQ', () => {
 
     await expect(element).toHaveText("ArrayResizer");
 
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+
+    for (let i = 1; i <=count ; i++) 
+    {
+      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
+
   });
 
   test('TC13 - TextBook', async ({ frq, page }) => {
@@ -242,6 +344,8 @@ test.describe('TestSuite: FRQ', () => {
     const element = await page.locator(frqData.DelimeterParagraphDiv);
 
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
+
+    
 
   });
 
@@ -262,6 +366,23 @@ test.describe('TestSuite: FRQ', () => {
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("Textbook");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+
+    for (let i = 1; i <=count ; i++) 
+    {
+      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
+
 
   });
 
@@ -299,6 +420,22 @@ test.describe('TestSuite: FRQ', () => {
 
     await expect(element).toHaveText("ReviewAnalysis");
 
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+
+    for (let i = 1; i <=count ; i++) 
+    {
+      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
+
   });
 
   test('TC17 - AppointmentBook', async ({ frq, page }) => {
@@ -334,6 +471,22 @@ test.describe('TestSuite: FRQ', () => {
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("AppointmentBook");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+
+    for (let i = 1; i <=count ; i++) 
+    {
+      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
 
   });
 
@@ -371,6 +524,22 @@ test.describe('TestSuite: FRQ', () => {
 
     await expect(element).toHaveText("Sign");
 
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+
+    for (let i = 1; i <=count ; i++) 
+    {
+      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
+
   });
 
   test('TC21 - WeatherData', async ({ frq, page }) => {
@@ -407,6 +576,22 @@ test.describe('TestSuite: FRQ', () => {
 
     await expect(element).toHaveText("WeatherData");
 
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+
+    for (let i = 1; i <=count ; i++) 
+    {
+      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
+
   });
 
   test('TC23 - Box Of Candy', async ({ frq, page }) => {
@@ -442,6 +627,22 @@ test.describe('TestSuite: FRQ', () => {
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("BoxOfCandy");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator("//div[@class='_testItem_151kr_39']/div[3]/div").count();
+
+    for (let i = 1; i <=count ; i++) 
+    {
+      const text = await page.locator(`(//div[@class='_testItem_151kr_39']/div[3]/div)[${i}]`).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
 
   });
 
