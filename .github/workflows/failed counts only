@@ -1,1 +1,60 @@
+name: failed Playwright Testsssss
 
+on:
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Step 3: Install project dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Install Playwright browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install
+
+      # Step 5: Run Playwright tests
+      - name: Run Playwright tests
+        id: run_tests
+        run: |
+          npx playwright test test-environment/test-cases/team-courses/team-courses.test.js \
+          --reporter=json \
+          --output=./test-results \
+          --config=playwright.config.js
+        continue-on-error: true  # Ensure the following steps run even if tests fail
+
+      # Step 6: Archive test results
+      - name: Archive test results
+        run: |
+          mkdir -p archive
+          find ./test-results -name '*.json' -print0 | xargs -0 zip -r archive/test-results.zip
+
+      # Step 7: Upload test results
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: archive/test-results.zip
+
+      # Step 8: Count failed tests from .last-run.json and output the count
+      - name: Count failed tests
+        run: |
+          if [ -f ./test-results/.last-run.json ]; then
+            failed_count=$(jq '.failedTests | length' ./test-results/.last-run.json)
+            echo "Number of failed tests: $failed_count"
+          else
+            echo "No .last-run.json file found!"
+          fi
