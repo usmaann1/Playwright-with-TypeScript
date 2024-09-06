@@ -28,6 +28,10 @@ import { expect } from "@playwright/test";
       this.SignFrq = this.page.locator(Locators.SignFrq)
       this.WeatherDataFrq = this.page.locator(Locators.WeatherDataFrq)
       this.BoxOfCandyFrq = this.page.locator(Locators.BoxOfCandyFrq)
+      this.SolutionButton = this.page.locator(Locators.SolutionBtn)
+      this.RunButton = this.page.locator(Locators.RunBtn)
+      this.TestsButton = this.page.locator(Locators.TestsBtn)
+
 
 
     }
@@ -117,6 +121,18 @@ import { expect } from "@playwright/test";
     // Function to click the Box Of Candy element
     async ClickBoxOfCandy() {
       await PlaywrightCore.click(this.BoxOfCandyFrq);
+    }
+
+    async ClickSolutionButton() {
+      await PlaywrightCore.click(this.SolutionButton);
+    }
+
+    async ClickRunButton() {
+      await PlaywrightCore.click(this.RunButton);
+    }
+
+    async ClickTestsButton() {
+      await PlaywrightCore.click(this.TestsButton);
     }
 
 
