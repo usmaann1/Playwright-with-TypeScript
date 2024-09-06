@@ -1,0 +1,23 @@
+{
+    "CreateNewTeamBtnValue": "Create new team",
+    "ClickAssignment": "//*[@data-testid='CodeIcon']",
+    "CreateNewTeamURL": "https://play.juicemind.com/dashboard/teams/create/create",
+    "NoData": "You don't have any Data!",
+    "ClassName": "Java Class",
+    "SampleLessonplan": "Sample Lesson Plan",
+    "AssignementName": "Java Assignment",
+    "Publishbuttondisableclass": "MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-1mo6cvn",
+    "LockIconClass": "MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-vubbuv",
+    
+    "PageLockedText":"//div[contains(text(), 'Your teacher must publish')]",
+    "waitingForTeacherText":"//div[contains(text(), 'Waiting for teacher to')]",
+    "ViewStuPreview_btn":"//span[normalize-space()='Preview']",
+    "AssignmentHeadingDiv":"//div[@class='tiptap ProseMirror min-h-full']/h1",
+    "AssignmentLockedDiv":"//div[normalize-space()='Page Locked!']",
+    "AssignmentLockedText":"Page Locked!",
+    "AssignmentHeadingText":"Sample Lesson Plan",
+    "Student1Email": "student01@gmail.com",
+    "Student1Password": "98769876"
+    
+
+}

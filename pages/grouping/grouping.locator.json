@@ -1,0 +1,42 @@
+{
+    "TeamCoursesBtn": "//div[normalize-space()='Teams/Courses']",
+    "CreateNewTeamBtn": "//a[normalize-space()='Create new team']",
+    "StartfromScratch": "img[src='/assets/teams/start-from-scratch.png']",
+    "TeamNametxtbox": "//input[@placeholder='Team name']",
+    "SubmitBtn": "//a[normalize-space()='Submit']",
+    "CreatenewassignmentBtn": "//a[normalize-space()='Create new Assignment or Lesson']",
+    "CodingAssignmentBtn": "//div[normalize-space()='Coding Assignment']",
+    "CodingAssignmentName": "//input[@placeholder='Item name']",
+    "CodingAssignmentCreateBtn": "//a[normalize-space()='Create']",
+    "PublishButton": "div[class='flex flex-row items-center gap-x-1.5']",
+    "thirdsixdot_btn": "//button[@type='button']//*[name()='svg']",
+    "PresentationModeBtn": "#root > div > div > div > div > div > div > div:nth-child(4) > div > div > div > div:nth-child(1) > div > div:nth-child(1) > div > a",
+
+    "arrowBtnLeftSideBar":"//button[@class='flex group items-center justify-center border text-sm font-semibold rounded-md disabled:opacity-50 whitespace-nowrap border-transparent text-neutral-500 dark:text-neutral-400 hover:bg-black/5 hover:text-neutral-700 active:bg-black/10 active:text-neutral-800 dark:hover:bg-white/10 dark:hover:text-neutral-300 dark:active:text-neutral-200 h-8 gap-0.5 min-w-3 px-1 w-auto bg-transparent']//*[name()='svg']",
+    "invite_StudentsBtn":"//a[normalize-space()='Invite students']",
+    "copy_InviteStudentsBtn":"//a[normalize-space()='Copy']",
+    "invitestudents_closeBtn": "body div[role='presentation'] div a:nth-child(1) svg",
+    "Publish_AssignmentBtn":"//input[@type='checkbox']",
+
+    "addnewitem_btn":"//div[contains(text(),'Add new item')]",
+    "Presentation_btn":"//a[normalize-space()='Presentation Mode']",
+    "Gotit_btn":"//a[normalize-space()='Got it']",
+    "ExitStudentView_btn":"//a[normalize-space()='Exit Student View']",
+    "EmailStudentSignin_textfield": "input[placeholder='Email Address']",
+    "PasswordStudentSignin_textfield": "input[placeholder='Password']",
+    "ClickSignin_btn": "//a[normalize-space()='Sign in']",
+    "login_btn": "//a[@href='/login']",
+    "finish_btn":"//a[normalize-space()='Finish']",
+    "studentAssignmentHeading":"//div[@class='tiptap ProseMirror min-h-full']/h1",
+
+    "Initialize_JuiceMind_IDE": "//a[normalize-space()='Initialize JuiceMind IDE']",
+    "ProjectNameTextBox": "//input[@placeholder='Project name']",
+    "ProjectTypeDropDown":"//div[@id='demo-simple-select']",
+    "ProjectTypeJava": "//li[@data-value='java']",
+    "GroupProjectToggle":"(//span[@class='MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-1mo6cvn'])[2]",
+    "AddGroupBtn":"//a[normalize-space()='Add Group']" ,
+    "GroupCrossIcon":"(//a[contains(@style, 'cursor')])[2]",
+    "SubmitButton" :"//a[normalize-space()='Submit']",
+    "DefaultLesson": "Sample Lesson Plan"
+    
+}

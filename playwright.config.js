@@ -34,6 +34,7 @@ export default defineConfig({
     headless:true,
     permissions: ['notifications'],
     screenshot: 'on',
+    permissions: ['clipboard-read', 'clipboard-write'], // Grant clipboard permissions
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace:

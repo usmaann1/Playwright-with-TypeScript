@@ -1,0 +1,7 @@
+{
+    "DelimeterParagraphText": "Sample",
+    "DelimeterParagraphDiv":"//div[@class='tiptap ProseMirror min-h-full']/h1"
+
+
+
+}
