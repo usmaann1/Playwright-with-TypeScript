@@ -111,7 +111,7 @@ jobs:
                 },
                 {
                   title: 'Failures',
-                  value:  value: `${{ env.FAILURES }}`,
+                  value: `${{ env.FAILURES }}`,
                   short: true
                 }]
               }]
