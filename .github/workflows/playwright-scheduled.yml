@@ -21,7 +21,10 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-
+      
+    - name: json summary reporter
+      run: npm install playwright-json-summary-reporter
+      
     - name: Install Playwright Browsers
       run: npx playwright install
 
