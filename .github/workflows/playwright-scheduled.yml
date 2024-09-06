@@ -23,7 +23,7 @@ jobs:
       run: npx playwright install
 
     - name: Install Json summary report
-      run: npm install playwright-json-summary-reporter
+      run: npm install playwright-slack-report -D
 
     - name: Run Playwright tests
       run: npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json --output=./test-results/summary.json
