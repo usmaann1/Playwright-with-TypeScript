@@ -23,6 +23,7 @@ export default defineConfig({
   workers: 8,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
+    ['json-summary', { outputFile: 'summary.json' }],
     ['playwright-json-summary-reporter'],
     ['html'], // other reporters
     ['dot']
