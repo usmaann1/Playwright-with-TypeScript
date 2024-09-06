@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Playwright Test Report
-          path: ./test-results/report/index.html  # Path to HTML report
+          path: ./test-results/index.html  # Path to HTML report
 
   notify:
     runs-on: ubuntu-latest
