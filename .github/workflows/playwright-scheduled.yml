@@ -31,7 +31,8 @@ jobs:
 
     - name: Install `ctrf-io` CLI
       run: npm install -g ctrf
-
+      
+       echo ctrf report send --report results.json
     - name: Send test results to Slack
       run: |
         curl -X POST -H 'Content-type: application/json' \
