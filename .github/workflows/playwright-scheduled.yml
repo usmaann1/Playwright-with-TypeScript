@@ -53,14 +53,14 @@ jobs:
     - name: Read Summary Report to Get Test Results
       if: always()
       run: |
-          STATUS=$(jq -r '.status')
+          STATUS=$(jq -r '.status // "unknown"' summary.json)
           echo "STATUS=$STATUS" >> $GITHUB_ENV 
-          PASSED=$(jq -r '.passed[]' | tr '\n' ' ')
+          PASSED=$(jq -r '.passed // [] | join(" ")' summary.json)
           echo "PASSED=$PASSED" >> $GITHUB_ENV 
-          TIMEOUT=$(jq -r '.timedOut[]' | tr '\n' ' ' | sed 's/ /--->TIMEOUT /g')
-          FAILURES=$(jq -r '.failed[]' | tr '\n' ' ')
+          TIMEOUT=$(jq -r '.timedOut // [] | join(" ")' summary.json | sed 's/ /--->TIMEOUT /g')
+          FAILURES=$(jq -r '.failed // [] | join(" ")' summary.json)
           FAILURES+=$TIMEOUT
-          echo "FAILURES=$FAILURES" >> $GITHUB_ENV
+          echo "FAILURES=$FAILURES" >> $GITHUB_ENV 
     
     - name: Send Slack Notification
       if: always()
