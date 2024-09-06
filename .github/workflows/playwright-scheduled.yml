@@ -36,10 +36,24 @@ jobs:
       env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        # Fetch artifact ID from the current run
-        ARTIFACT_ID=$(echo "$RESPONSE" | jq -r '.artifacts[] | select(.name == "playwright-report") | .id')
+        # Fetch the list of artifacts for the current run
+          RESPONSE=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts")
+          
+          # Output the response for debugging
+          echo "API Response: $RESPONSE"
+          
+          # Extract artifact ID
+          ARTIFACT_ID=$(echo "$RESPONSE" | jq -r '.artifacts[] | select(.name == "playwright-report") | .id')
+
+          # Debug if ARTIFACT_ID is null or empty
+          if [ -z "$ARTIFACT_ID" ] || [ "$ARTIFACT_ID" == "null" ]; then
+            echo "Artifact not found or no artifact with the expected name."
+            exit 1
+          fi
+
           echo "Artifact ID: $ARTIFACT_ID"
-          echo "ARTIFACT_ID=$ARTIFACT_ID" >> $GITHUB_ENV    
+          echo "ARTIFACT_ID=$ARTIFACT_ID" >> $GITHUB_ENV   
     - name: Notify Slack
       env:
         SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
