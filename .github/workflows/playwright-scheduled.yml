@@ -101,7 +101,7 @@ jobs:
                 },
                 {
                   title: 'Total Passed',
-                  value: `${{ env.PASSED }}`
+                  value: `${{ env.PASSED }}`,
                   short: true
                 },
                 {
