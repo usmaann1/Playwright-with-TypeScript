@@ -27,7 +27,8 @@ jobs:
 
     - name: Run Playwright Tests
       run: |
-        npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json
+        npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json > results.json
+        zip -r test-results.zip results.json
         
     - name: Upload test results
       uses: actions/upload-artifact@v4
@@ -38,8 +39,8 @@ jobs:
     - name: Download blob reports from GitHub Actions Artifacts
       uses: actions/download-artifact@v4
       with:
-        name: all-blob-reports
-        path: all-blob-reports
+        name: test-results
+        path: downloaded-report
 
     - name: Merge into JSON Report
       run: npx playwright merge-reports --reporter json ./all-blob-reports > merged_tests_results.json
