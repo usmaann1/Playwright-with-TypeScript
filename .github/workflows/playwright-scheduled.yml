@@ -112,7 +112,7 @@ jobs:
                 {
                   title: 'Failures',
                   value:  value: `${{ env.FAILURES }}`,
-                  short: false
+                  short: true
                 }]
               }]
             }  
