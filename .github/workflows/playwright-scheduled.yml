@@ -31,7 +31,7 @@ jobs:
 
    
     - name: Run Playwright tests
-      run: APP_URL=${{ env.APP_URL}} npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json > summary.json
+      run: APP_URL=${{ env.APP_URL}} npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json > summary.json || true
       
     - name: List files in directory
       run: ls -la
@@ -55,9 +55,8 @@ jobs:
         jq '.' summary.json
     - name: Read Summary Report to Get Test Results
       if: always()
-      run: |
-          
-          
+      run: |          
+          PASSED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="passed")] | length' summary.json)
           FAILURES=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="failed")] | length' summary.json)
           echo "PASSED=$PASSED" >> $GITHUB_ENV 
           
