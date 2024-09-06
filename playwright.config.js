@@ -22,16 +22,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: 8,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-    [
-      "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
-      {
-        slackWebHookUrl: "https://hooks.slack.com/services/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",
-        sendResults: "always", // "always" , "on-failure", "off"
-      },
-    ],
-    ["dot"], // other reporters
-  ],
+  reporter: [['html', { outputFolder: 'playwright-report' }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   timeout: 8 * 60 * 1000,
   use: {
