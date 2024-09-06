@@ -32,15 +32,15 @@ jobs:
 
    
     - name: Run Playwright tests
-      run: APP_URL=${{ env.APP_URL}} npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json
+      run: APP_URL=${{ env.APP_URL}} npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json > test-results/summary.json
       
     - name: List files in directory
       run: ls -la
 
     - name: Check for summary.json
       run: |
-        if [ -f summary.json ]; then
-          echo "summary.json exists."
+        if [ -f test-results/summary.json ]; then
+          echo "test-results/summary.json exists."
         else
           echo "summary.json does not exist."
         fi
@@ -48,7 +48,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: playwright-summary
-        path: summary.json  # Adjust path if necessary
+        path: test-results/summary.json  # Adjust path if necessary
 
     - name: Read Summary Report to Get Test Results
       if: always()
