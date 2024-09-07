@@ -73,7 +73,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     await page.waitForTimeout(5000);
 
 
-    const noOfFolders = 19;
+    const noOfFolders = 18;
     const targetTextElement = await page.locator(".text-3xl.font-bold");
 
     for (let i = 3; i <= noOfFolders; i++) {

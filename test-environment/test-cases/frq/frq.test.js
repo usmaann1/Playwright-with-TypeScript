@@ -24,7 +24,7 @@ test.describe('TestSuite: FRQ', () => {
 
    //verify heading
     const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -77,7 +77,7 @@ test.describe('TestSuite: FRQ', () => {
 
    //verify heading
     const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -130,7 +130,7 @@ test.describe('TestSuite: FRQ', () => {
 
    //verify heading
     const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -183,7 +183,7 @@ test.describe('TestSuite: FRQ', () => {
 
    //verify heading
     const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -237,7 +237,7 @@ test.describe('TestSuite: FRQ', () => {
 
    //verify heading
     const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -291,7 +291,7 @@ test.describe('TestSuite: FRQ', () => {
 
    //verify heading
     const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -344,7 +344,7 @@ test.describe('TestSuite: FRQ', () => {
 
    //verify heading
     const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
     
@@ -399,7 +399,7 @@ test.describe('TestSuite: FRQ', () => {
 
    //verify heading
     const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -452,7 +452,7 @@ test.describe('TestSuite: FRQ', () => {
 
    //verify heading
     const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -505,7 +505,7 @@ test.describe('TestSuite: FRQ', () => {
 
    //verify heading
     const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -558,7 +558,7 @@ test.describe('TestSuite: FRQ', () => {
 
    //verify heading
     const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -611,7 +611,7 @@ test.describe('TestSuite: FRQ', () => {
 
    //verify heading
     const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
