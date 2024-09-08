@@ -71,7 +71,7 @@ import { expect } from "@playwright/test";
       await PlaywrightCore.click(this.arrays);
     }
     async ClickArraysListButton(){
-      await PlaywrightCore.click(this.ArrayListClick);
+      await PlaywrightCore.click(this.arraylist);
     }
     async ClickTwoDArraysButton(){
       await PlaywrightCore.click(this.TwoDArray);
