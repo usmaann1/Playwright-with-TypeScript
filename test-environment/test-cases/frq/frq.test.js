@@ -3,6 +3,7 @@ const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helpe
 const { test, expect } = require('../../../module-imports/testFixtures.imports');
 import frqData from '../../test-assets/test-data-files/frq/frq-testData.json';
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
+import Locators from "../../../pages/frq/frq.locator.json";
 
 test.describe('TestSuite: FRQ', () => {
 
@@ -23,8 +24,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickDelimetersFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -41,8 +42,7 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+   const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(6000);
 
     await expect(element).toHaveText("Delimiters");
@@ -76,8 +76,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -94,8 +94,7 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("APCalendar");
@@ -129,8 +128,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -147,8 +146,7 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("WordMatch");
@@ -182,8 +180,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -200,8 +198,7 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("CombinedTable");
@@ -236,8 +233,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -254,8 +251,7 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("ClubMembers");
@@ -290,8 +286,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -308,8 +304,7 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("ArrayResizer");
@@ -343,8 +338,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
     
@@ -363,8 +358,7 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("Textbook");
@@ -398,8 +392,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -416,8 +410,7 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("ReviewAnalysis");
@@ -451,8 +444,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -469,8 +462,7 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("AppointmentBook");
@@ -504,8 +496,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -522,8 +514,7 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("Sign");
@@ -557,8 +548,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -575,8 +566,7 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("WeatherData");
@@ -610,8 +600,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -628,8 +618,7 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("BoxOfCandy");

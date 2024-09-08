@@ -77,7 +77,8 @@ test.describe('TestSuite: Quizzes', () => {
        await quizzes.EnterNickName(newPage2, "Student 2")
        
        await quizzes.EnterNickName(newPage3, "Student 3")
-
+       
+       await page.waitForTimeout(5000);
        await quizzes.ClickStartQuizAfterPlayerJoined()
 
        //give answers of qustions logic
