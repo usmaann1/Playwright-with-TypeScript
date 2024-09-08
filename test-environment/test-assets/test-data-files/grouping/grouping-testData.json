@@ -18,13 +18,22 @@
     "CreateNewProjectText":"Create new project",
     "GroupedStudentEmail": "(//div[normalize-space()='student01@gmail.com'])[1]",
     "GroupedStudentEmail_2": "(//div[normalize-space()='student02@gmail.com'])[1]",
+    "GroupedStudentEmail_3": "(//div[normalize-space()='student03@gmail.com'])[1]",
+    "GroupedStudentEmail_4": "(//div[normalize-space()='student04@gmail.com'])[1]",
     "StudentEmailText":"student01@gmail.com",
     "StudentEmailText_2":"student02@gmail.com",
     "GroupBoxes": "//div[@style='padding-bottom: 5px;']",
+    "GroupBox_1": "(//div[@style='padding-bottom: 5px;'])[1]",
+    "GroupBox_2": "(//div[@style='padding-bottom: 5px;'])[2]",
     "Student1Email": "student01@gmail.com",
     "Student1Password": "98769876",
     "Student2Email": "student02@gmail.com",
     "Student2Password": "98769876",
+    "Student3Email": "student03@gmail.com",
+    "Student3Password": "98769876",
+    "Student4Email": "student04@gmail.com",
+    "Student4Password": "98769876",
+    "Code":"System.out.println('Sample');",   
     "ProjectName": "Sample"
 
 

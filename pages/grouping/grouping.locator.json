@@ -17,6 +17,7 @@
     "copy_InviteStudentsBtn":"//a[normalize-space()='Copy']",
     "invitestudents_closeBtn": "body div[role='presentation'] div a:nth-child(1) svg",
     "Publish_AssignmentBtn":"//input[@type='checkbox']",
+    "CreateStarterCodeBtn": "//a[text() = 'Create starter code']",
 
     "addnewitem_btn":"//div[contains(text(),'Add new item')]",
     "Presentation_btn":"//a[normalize-space()='Presentation Mode']",
@@ -28,6 +29,11 @@
     "login_btn": "//a[@href='/login']",
     "finish_btn":"//a[normalize-space()='Finish']",
     "studentAssignmentHeading":"//div[@class='tiptap ProseMirror min-h-full']/h1",
+    "CodeEditorTargetLineLocator": "(//div[@class='cm-line'])[8]",
+    "CodeEditorTargetLineLocatorSecondStd": "(//div[@class='cm-line'])[7]",
+
+    "codePlayIcon": "//*[@data-testid='PlayArrowIcon']",
+
 
     "Initialize_JuiceMind_IDE": "//a[normalize-space()='Initialize JuiceMind IDE']",
     "ProjectNameTextBox": "//input[@placeholder='Project name']",

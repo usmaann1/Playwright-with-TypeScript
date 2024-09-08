@@ -47,6 +47,7 @@ exports.grouping = class grouping {
         this.AddGroupButton=this.page.locator(Locators.AddGroupBtn)
         this.CrossGroupIcon = this.page.locator(Locators.GroupCrossIcon)
         this.SubmitGroupData = this.page.locator(Locators.SubmitBtn) 
+        this.CodeStarterButton = this.page.locator(Locators.CreateStarterCodeBtn)
         
     }
 
@@ -192,6 +193,20 @@ exports.grouping = class grouping {
 
     async ClickSubmitBtn() {
         await PlaywrightCore.click(this.SubmitGroupData);
+    }
+
+    async ClickCodeStarterButton(newPage) {
+        await newPage.click(Locators.CreateStarterCodeBtn);
+    }
+
+    async PlayCode(newPage) {
+        await newPage.click(Locators.codePlayIcon);
+    }
+
+    async fillCodeEditor(newPage, codeLine) {
+        await newPage.click(Locators.CodeEditorTargetLineLocator);
+        await newPage.fill(Locators.CodeEditorTargetLineLocator, codeLine);
+
     }
     
 };
