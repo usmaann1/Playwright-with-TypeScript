@@ -62,5 +62,6 @@
     "OverWriteFile": "//a[normalize-space()='Overwrite']",
     "ZipUpload": "input[type='file'][accept='application/zip,.zip']",
     "OverRideProjectFiles": "//a[normalize-space()='Override Project Files']",
-    "ImageEditor": "xpath=(//div[contains(@class, 'codeEditorContainer')]//img)[1]"
+    "ImageEditor": "xpath=(//div[contains(@class, 'codeEditorContainer')]//img)[1]",
+    "PillowImage": "(//div[contains(@class, 'codeEditorContainer')]//div[contains(@class, 'root')]//img)[2]" 
 }
