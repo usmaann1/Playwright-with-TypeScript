@@ -12,6 +12,15 @@ exports.CreateLesson = class CreateLesson {
 
     intializePage(page) {
         this.page = page;
+        this.exitStudentView = this.page.locator(Locators.exitStudentView)
+        this.textField = this.page.locator(Locators.textField)
+        this.obtainedPoints = this.page.locator(Locators.lessonPage.mainPage.obtainedPoints)
+        this.lineError = this.page.locator(Locators.lessonPage.mainPage.lineError)
+        this.closeBtn = this.page.locator(Locators.lessonPage.mainPage.closeBtn)
+        this.checkAnswerBtn = this.page.locator(Locators.lessonPage.mainPage.checkAnswerBtn)
+        this.inputTag = this.page.locator(Locators.lessonPage.mainPage.input)
+        this.PresentationMode = this.page.locator(Locators.lessonPage.mainPage.presnetationMode)
+        this.gotItBtn = this.page.locator(Locators.lessonPage.mainPage.gotItBtn)
         this.addNewItem = this.page.locator(Locators.addNewItem)
         this.itemContainer = this.page.locator(Locators.itemContainer)
         this.addItemLesson = this.page.locator(Locators.addItemLesson)
@@ -59,11 +68,11 @@ exports.CreateLesson = class CreateLesson {
         this.taskList = this.page.locator(Locators.lessonPage.textEditor.taskList)
         this.dataType = this.page.locator(Locators.lessonPage.textEditor.dataType)
         this.value = this.page.locator(Locators.lessonPage.textEditor.value)
-        this.EmbedEnterURL = this.page.locator(Locators.EmbedEnterURL) 
-        this.EmbedInsertURLHeading = this.page.locator(Locators.EmbedInsertURLHeading) 
-        this.EmbedSubmitBtn = this.page.locator(Locators.EmbedSubmitBtn) 
-        this.YoutubePlayBtn = this.page.locator(Locators.YoutubePlayBtn) 
-        this.WatchOnYoutubeBtn = this.page.locator(Locators.WatchOnYoutubeBtn) 
+        this.EmbedEnterURL = this.page.locator(Locators.EmbedEnterURL)
+        this.EmbedInsertURLHeading = this.page.locator(Locators.EmbedInsertURLHeading)
+        this.EmbedSubmitBtn = this.page.locator(Locators.EmbedSubmitBtn)
+        this.YoutubePlayBtn = this.page.locator(Locators.YoutubePlayBtn)
+        this.WatchOnYoutubeBtn = this.page.locator(Locators.WatchOnYoutubeBtn)
         this.SetupBtn = this.page.locator(Locators.SetupBtn)
         this.OptionsBtn = this.page.locator(Locators.OptionsBtn)
         this.CurrentEmbedURLHeading = this.page.locator(Locators.CurrentEmbedURLHeading)
@@ -88,6 +97,56 @@ exports.CreateLesson = class CreateLesson {
         this.checkBox = this.page.locator(Locators.lessonPage.textEditor.checkBox)
         this.uploadImageContainer = this.page.locator(Locators.lessonPage.textEditor.uploadImageContainer)
         this.Image = this.page.locator(Locators.lessonPage.textEditor.uploadImage)
+        this.container = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.container)
+        this.setupBtn = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.setupBtn)
+        this.OptionsBtn = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.Option)
+        this.browseOptionInput = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.browseOptionInput)
+        this.addBlankBtn = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.addBlankBtn)
+        this.textInputField = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.textInputField)
+        this.BlankType = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.BlankType)
+        this.answer = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.answer)
+        this.pointsInputField = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.pointsInputField)
+        this.item1 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.item1)
+        this.checkBox1 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.checkBox1)
+        this.text1 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.text1)
+        this.item2 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.item2)
+        this.checkBox2 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.checkBox2)
+        this.text2 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.text2)
+        // File upload
+        this.fileUpload = this.page.locator(Locators.lessonPage.textEditor.fileUpload.dragDrop)
+        this.optTextEle = this.page.locator(Locators.lessonPage.textEditor.fileUpload.optionText)
+        this.optTextCb = this.page.locator(Locators.lessonPage.textEditor.fileUpload.optionCheckBox)
+        this.unSubmittedFileName = this.page.locator(Locators.lessonPage.textEditor.fileUpload.unSubmittedFileName)
+        this.correctLabelIcon = this.page.locator(Locators.lessonPage.textEditor.fileUpload.correctLabelIcon)
+        this.deleteIcon = this.page.locator(Locators.lessonPage.textEditor.fileUpload.deleteIcon)
+        this.undoDeleteIcon = this.page.locator(Locators.lessonPage.textEditor.fileUpload.undoDeleteIcon)
+        this.points = this.page.locator(Locators.lessonPage.textEditor.fileUpload.points)
+        // short answer
+        this.promptInput = this.page.locator(Locators.lessonPage.textEditor.shortAnswer.promptInput)
+        this.answerTemplate = this.page.locator(Locators.lessonPage.textEditor.shortAnswer.answerTemplate)
+        this.modelSolutionTab = this.page.locator(Locators.lessonPage.textEditor.shortAnswer.modelSolutionTab)
+        this.modelSolutionInput = this.page.locator(Locators.lessonPage.textEditor.shortAnswer.modelSolutionInput)
+        this.resetTotemplateBtn = this.page.locator(Locators.lessonPage.textEditor.shortAnswer.resetTotemplateBtn)
+        this.optionTxt1 = this.page.locator(Locators.lessonPage.textEditor.shortAnswer.optionTxt1)
+        this.optionTxt2 = this.page.locator(Locators.lessonPage.textEditor.shortAnswer.optionTxt2)
+        this.optionCb1 = this.page.locator(Locators.lessonPage.textEditor.shortAnswer.optionCb1)
+        this.optionCb2 = this.page.locator(Locators.lessonPage.textEditor.shortAnswer.optionCb2)
+        this.PresentationInput = this.page.locator(Locators.lessonPage.textEditor.shortAnswer.PresentationInput)
+        this.submitBtn = this.page.locator(Locators.lessonPage.textEditor.shortAnswer.submitBtn)
+        this.submitSucces = this.page.locator(Locators.lessonPage.textEditor.shortAnswer.submitSucces)
+        // Drag and drop
+        this.section = this.page.locator(Locators.lessonPage.textEditor.dragDrop.section)
+        this.optionList = this.page.locator(Locators.lessonPage.textEditor.dragDrop.optionList)
+        this.optionContainer = this.page.locator(Locators.lessonPage.textEditor.dragDrop.optionContainer)
+        this.option = this.page.locator(Locators.lessonPage.textEditor.dragDrop.option)
+        this.threeDot = this.page.locator(Locators.lessonPage.textEditor.dragDrop.threeDot)
+        this.deleteButton = this.page.locator(Locators.lessonPage.textEditor.dragDrop.deleteButton)
+        //Tip element
+        this.infoIcon = this.page.locator(Locators.lessonPage.textEditor.tip.infoIcon)
+        this.tipEle = this.page.locator(Locators.lessonPage.textEditor.tip.tipEle)
+        this.typeDropDown = this.page.locator(Locators.lessonPage.textEditor.tip.typeDropDown)
+
+
         this.MultipleChoiceQuestionHeadingBox = this.page.locator(Locators.MultipleChoiceQuestionHeadingBox)
         this.MultipleChoiceFormBox1 = this.page.locator(Locators.MultipleChoiceFormBox1)
         this.MultipleChoiceFormBox2 = this.page.locator(Locators.MultipleChoiceFormBox2)
@@ -216,7 +275,7 @@ exports.CreateLesson = class CreateLesson {
         const btn = subParent.locator(this.child, { hasText: val }).first()
         await this.page.waitForTimeout(1000);
         await PlaywrightCore.click(btn)
-        await this.page.getByRole('button', { name: 'Delete' }).click()
+        await this.page.getByRole('button', { name: 'Delete' }).first().click()
     }
     async selectElementFromDropdown(val) {
         const subParent = this.subParent
@@ -275,8 +334,8 @@ exports.CreateLesson = class CreateLesson {
         const tag = quo.locator(this.quoteCaptionTag)
         const ph = tag.locator(this.placeHolderTag).textContent();
     }
-    async valiadteYoutubeVideoHeading(name){
-        const iframeElement = this.page.frameLocator(Locators.IFrameLocatorYoutube);         
+    async valiadteYoutubeVideoHeading(name) {
+        const iframeElement = this.page.frameLocator(Locators.IFrameLocatorYoutube);
         await expect(iframeElement.locator(Locators.YoutubeVideoHeading)).toHaveText(name)
         await this.page.waitForTimeout(2000);
     }
@@ -302,22 +361,206 @@ exports.CreateLesson = class CreateLesson {
         for (let row = 0; row < rowCount; row++) {
             for (let col = 0; col < colCount; col++) {
                 const targetCell = table.locator(tRow).nth(row).locator(tCol).nth(col)
-                await targetCell.fill('row:'+ row + ' ' + 'col: ' + col  )
+                await targetCell.fill('row:' + row + ' ' + 'col: ' + col)
             }
         }
     }
-    async valdiateCheckboxSelection(dataType,typeValue) {
+    async valdiateCheckboxSelection(dataType, typeValue) {
         const parent = this.textEditor
         const child = parent.locator(this.taskList)
         const input = child.locator(this.inputBox)
         await this.page.waitForTimeout(2000);
         await expect(input).toHaveAttribute(dataType, typeValue)
         await PlaywrightCore.click(input)
+        await this.page.waitForTimeout(2000);
         const verifyChecked = child.locator('li')
         await expect(verifyChecked).toHaveAttribute(clTD.attributes.datachecked, clTD.attributes.checkedTrue)
     }
     async uploadImage() {
         await this.Image.setInputFiles('./test-environment/test-assets/test-resource-files/corolla.jpg')
         await this.page.waitForTimeout(3000);
+    }
+    async validateAllFillInTheBlankFields() {
+        const parent = this.textEditor.locator(this.container)
+        var subParent = parent.locator(this.setupBtn)
+        await expect(subParent).toBeVisible()
+        subParent = parent.locator(this.OptionsBtn)
+        await expect(subParent).toBeVisible()
+        subParent = parent.locator(this.browseOptionInput)
+        await expect(subParent).toBeVisible()
+        subParent = parent.locator(this.addBlankBtn)
+        await expect(subParent).toBeVisible()
+        subParent = parent.locator(this.textInputField).first()
+        await expect(subParent).toBeVisible()
+        subParent = parent.locator(this.BlankType)
+        await expect(subParent).toBeVisible()
+        subParent = parent.locator(this.answer)
+        await expect(subParent).toBeVisible()
+        subParent = parent.locator(this.pointsInputField)
+        await expect(subParent).toBeVisible()
+        // option tab items
+        subParent = parent.locator(this.OptionsBtn)
+        PlaywrightCore.click(subParent)
+        subParent = parent.locator(this.checkBox1)
+        await expect(subParent).toBeVisible()
+        subParent = parent.locator(this.text1)
+        await expect(subParent).toBeVisible()
+        subParent = parent.locator(this.checkBox2)
+        PlaywrightCore.click(subParent)
+        await expect(subParent).toBeVisible()
+        subParent = parent.locator(this.text2)
+        await expect(subParent).toBeVisible()
+        subParent = parent.locator(this.checkBox2)
+        PlaywrightCore.click(subParent)
+    }
+    async validateFillInTheBlankFunctionality() {
+        const parent = this.textEditor.locator(this.container)
+        var subParent = parent.locator(this.browseOptionInput)
+        await PlaywrightCore.fill(subParent, '/')
+        await this.selectElementFromDropdown(clTD.elements.heading1)
+        await this.validateElementsToAcceptInputOnEditor(this.heading1, clTD.textForEditor)
+        subParent = parent.locator(this.answer)
+        await PlaywrightCore.fill(subParent, clTD.Answer)
+        await PlaywrightCore.click(this.PresentationMode)
+        await PlaywrightCore.click(this.gotItBtn)
+        const verifyAnswer = parent.locator(this.inputTag)
+        await PlaywrightCore.click(verifyAnswer)
+        await PlaywrightCore.fill(verifyAnswer, clTD.wrongAnswer)
+        await PlaywrightCore.click(this.checkAnswerBtn)
+        await PlaywrightCore.click(this.closeBtn)
+        await expect(this.lineError).toHaveText(clTD.validationError)
+        await this.page.waitForTimeout(3000);
+        await PlaywrightCore.fill(verifyAnswer, clTD.Answer)
+        await this.page.waitForTimeout(3000);
+        await PlaywrightCore.click(this.checkAnswerBtn)
+        await PlaywrightCore.click(this.closeBtn)
+        const toVerify = await parent.locator(this.obtainedPoints).nth(1).textContent()
+        expect(toVerify).toContain('1')
+    }
+    async uploadFIle(ele, filePath) {
+        await ele.setInputFiles(filePath)
+    }
+    async checkBackgroundColor(selector, expectedColor) {
+        const backgroundColor = await selector.evaluate(el => getComputedStyle(el).backgroundColor);
+        expect(backgroundColor).toBe(expectedColor);
+    }
+    async validateFileUploadFunctionality() {
+        const parent = this.textEditor
+        var ele = parent.locator(this.fileUpload)
+        const tab = parent.locator(this.OptionsBtn)
+        await PlaywrightCore.click(tab)
+        const optText = parent.locator(this.optTextEle)
+        await expect(optText).toHaveText(clTD.fileUpload.optionField)
+        const optCb = parent.locator(this.optTextCb)
+        await PlaywrightCore.click(optCb)
+        await this.page.waitForTimeout(3000);
+        await PlaywrightCore.click(optCb)
+        const setupTab = parent.locator(this.setupBtn)
+        await PlaywrightCore.click(setupTab)
+        await PlaywrightCore.click(this.PresentationMode)
+        await PlaywrightCore.click(this.gotItBtn)
+        await this.uploadFIle(ele, './test-environment/test-assets/test-resource-files/corolla.jpg')
+        await this.page.waitForTimeout(4000);
+        expect(this.unSubmittedFileName).toBeVisible()
+        await this.page.waitForTimeout(10000);
+        const asnwerBtn = this.checkAnswerBtn
+        await PlaywrightCore.click(asnwerBtn)
+        await this.page.waitForTimeout(10000);
+        await expect(this.correctLabelIcon).toBeVisible()
+        await this.checkBackgroundColor(this.correctLabelIcon, clTD.fileUpload.correctOptionColorVal)
+        const toVerify = await this.points.textContent()
+        expect(toVerify).toContain('1')
+    
+
+    }
+    async validateShortAnswerFunctionality() {
+        const parent = this.textEditor
+        const prompt = parent.locator(this.promptInput)
+        await PlaywrightCore.fill(prompt, clTD.shortAnswer.promptTxt)
+        var type = await parent.locator(this.answerTemplate).nth(2)
+        await PlaywrightCore.fill(type, clTD.shortAnswer.answerTemplateTxt)
+        await this.page.waitForTimeout(3000);
+        const solTab = parent.locator(this.modelSolutionTab)
+        await PlaywrightCore.click(solTab)
+        await this.page.waitForTimeout(3000);
+        type = parent.locator(this.modelSolutionInput).nth(1)
+        await PlaywrightCore.fill(type, clTD.teamName)
+        await this.page.waitForTimeout(3000);
+        const clickReset = parent.locator(this.resetTotemplateBtn)
+        await PlaywrightCore.click(clickReset)
+        await this.page.waitForTimeout(3000);
+        const val = await parent.locator(this.modelSolutionInput).first().locator('p').getByText('Raul')
+        expect(val).toBeVisible()
+        const tab = parent.locator(this.OptionsBtn)
+        await PlaywrightCore.click(tab)
+        const optText1 = this.optionTxt1
+        await expect(optText1).toBeVisible()
+        const optText2 = this.optionTxt2
+        await expect(optText2).toBeVisible()
+        const optCb1 = this.optionCb1
+        await expect(optCb1).toBeVisible()
+        await PlaywrightCore.click(optCb1)
+        const optCb2 = this.optionCb2
+        await expect(optCb2).toBeVisible()
+        await PlaywrightCore.click(optCb2)
+        await PlaywrightCore.click(this.PresentationMode)
+        await PlaywrightCore.click(this.gotItBtn)
+        await this.page.waitForTimeout(3000);
+        const txt = this.PresentationInput.nth(2).locator('p')
+        await PlaywrightCore.fill(txt,'randomtext')
+        await this.page.waitForTimeout(3000);
+        await PlaywrightCore.click(this.resetTotemplateBtn)
+        const resetTxt = this.PresentationInput.nth(2).locator('p').getByText('Raul')
+        await expect(resetTxt).toBeVisible()
+        await expect(this.submitBtn).toBeVisible()
+        await PlaywrightCore.click(this.submitBtn)
+        await this.checkBackgroundColor(this.submitSucces, clTD.shortAnswer.successLabelColor)
+    }
+    async validateDragAndDropFunctionality() {
+        const parent = this.textEditor
+        const dSection = parent.locator(this.section).first()
+        const option1 = dSection.locator(this.optionContainer).nth(0)
+        await PlaywrightCore.click(option1)
+    }
+    async validateTipFunctionality() {
+        const parent = this.textEditor
+        const outerTip = parent.locator(this.textField).first()
+        const innerTip = parent.locator(this.textField).last()
+        await expect(outerTip).toBeVisible()
+        await expect(this.tipEle).toBeVisible()
+        await expect(this.infoIcon).toBeVisible()
+        await PlaywrightCore.fill(innerTip,clTD.teamName)
+        const test = parent.locator(this.tipEle)
+        await this.checkBackgroundColor(test,clTD.tip.backgroundYellow)
+        await PlaywrightCore.click(this.typeDropDown,{ force: true })
+
+        await PlaywrightCore.click(this.PresentationMode)
+        await PlaywrightCore.click(this.gotItBtn)
+        await this.checkBackgroundColor(test,clTD.tip.backgroundYellow)
+        await PlaywrightCore.click(this.exitStudentView)
+
+        const subParent = this.typeDropDown
+        await subParent.selectOption([clTD.tip.optionTip])
+        await this.page.waitForTimeout(1000);
+        await this.checkBackgroundColor(test,clTD.tip.backgroundBlue)
+
+        await PlaywrightCore.click(this.PresentationMode)
+        await PlaywrightCore.click(this.gotItBtn)
+        await this.checkBackgroundColor(test,clTD.tip.backgroundBlue)
+        await PlaywrightCore.click(this.exitStudentView)
+
+        await subParent.selectOption([clTD.tip.optionWarning])
+        await this.page.waitForTimeout(1000);
+        await this.checkBackgroundColor(test,clTD.tip.backgroundPink)
+
+        await PlaywrightCore.click(this.PresentationMode)
+        await PlaywrightCore.click(this.gotItBtn)
+        await this.checkBackgroundColor(test,clTD.tip.backgroundPink)
+        await PlaywrightCore.click(this.exitStudentView)
+    }
+    async verifyStudentViewForTipElement() {
+        const parent = this.textEditor
+        const test = parent.locator(this.tipEle)
+        await this.checkBackgroundColor(test,clTD.tip.backgroundPink)
     }
 }

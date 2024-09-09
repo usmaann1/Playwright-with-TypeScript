@@ -3,6 +3,7 @@ const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helpe
 const { test, expect } = require('../../../module-imports/testFixtures.imports');
 import frqData from '../../test-assets/test-data-files/frq/frq-testData.json';
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
+import Locators from "../../../pages/frq/frq.locator.json";
 
 test.describe('TestSuite: FRQ', () => {
 
@@ -23,8 +24,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickDelimetersFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -41,11 +42,27 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+   const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(6000);
 
     await expect(element).toHaveText("Delimiters");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+    
+    const count = await page.locator(frqData.TestStatusDiv).count();
+
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
 
   });
 
@@ -59,8 +76,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -77,11 +94,27 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("APCalendar");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator(frqData.TestStatusDiv).count();
+
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
 
   });
 
@@ -95,8 +128,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -113,11 +146,27 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("WordMatch");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator(frqData.TestStatusDiv).count();
+
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
 
   });
 
@@ -131,8 +180,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -149,15 +198,32 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("CombinedTable");
 
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator(frqData.TestStatusDiv).count();
+
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
+
+
   });
 
-  test('TC9 - Validate Club Memebers', async ({ frq, page }) => {
+  test('TC9 - Validate Club Members', async ({ frq, page }) => {
     
     await frq.ClickClubMembers();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -167,13 +233,13 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
 
-  test('TC10 - Validate CombinedTable', async ({ frq, page }) => {
+  test('TC10 - Validate Club Members', async ({ frq, page }) => {
     
     await frq.ClickClubMembers();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -185,11 +251,28 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("ClubMembers");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator(frqData.TestStatusDiv).count();
+
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
+
 
   });
 
@@ -203,8 +286,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -221,11 +304,27 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("ArrayResizer");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator(frqData.TestStatusDiv).count();
+
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
 
   });
 
@@ -239,9 +338,11 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
+
+    
 
   });
 
@@ -257,11 +358,27 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("Textbook");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator(frqData.TestStatusDiv).count();
+
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
 
   });
 
@@ -275,8 +392,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -293,11 +410,27 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("ReviewAnalysis");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator(frqData.TestStatusDiv).count();
+
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
 
   });
 
@@ -311,8 +444,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -329,11 +462,27 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("AppointmentBook");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator(frqData.TestStatusDiv).count();
+
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
 
   });
 
@@ -347,8 +496,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -365,11 +514,27 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("Sign");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator(frqData.TestStatusDiv).count();
+
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
 
   });
 
@@ -383,8 +548,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -401,11 +566,27 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("WeatherData");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator(frqData.TestStatusDiv).count();
+
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
 
   });
 
@@ -419,8 +600,8 @@ test.describe('TestSuite: FRQ', () => {
     await frq.ClickApCalendarFrq();
 
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
+    await element.waitFor({ state: 'visible' });
     await expect(element).not.toHaveText(frqData.DelimeterParagraphText);
 
   });
@@ -437,11 +618,27 @@ test.describe('TestSuite: FRQ', () => {
 
    
    //verify heading
-    const element = await page.locator(frqData.DelimeterParagraphDiv);
-
+    const element = await page.locator(Locators.DelimeterParagraphDiv);
     await page.waitForTimeout(5000);
 
     await expect(element).toHaveText("BoxOfCandy");
+
+    await frq.ClickSolutionButton()
+
+    await frq.ClickRunButton()
+
+    await frq.ClickTestsButton()
+
+    await page.waitForTimeout(20000);
+
+    const count = await page.locator(frqData.TestStatusDiv).count();
+
+    for (let i = 1; i <=count ; i++) {
+
+      const dynamicPath = `${frqData.TestStatusDivChild}[${i}]`
+      const text = await page.locator(dynamicPath).textContent();
+      expect(text.trim()).toBe(frqData.TestStatus);
+    }
 
   });
 

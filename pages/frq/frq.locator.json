@@ -16,6 +16,10 @@
     "StartCourseBtn":"//a[normalize-space()='Start Course']",
     "ConfirmBtn":"//a[normalize-space()='Confirm']",
     "TeamDropDown":"//div[@id='demo-simple-select']",
+    "SolutionBtn": "//*[@data-testid='EmojiObjectsIcon']",
+    "RunBtn": "(//*[@data-testid='PlayArrowIcon'])[1]",
+    "TestsBtn":"(//*[@data-testid='PlayArrowIcon'])[1]",
+    "DelimeterParagraphDiv":"//div[@class='tiptap ProseMirror min-h-full']/h1",
     "TeamOption":"(//li[@role='option'])[2]"
     
 }
