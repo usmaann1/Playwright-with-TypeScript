@@ -1,6 +1,5 @@
-import { defineConfig, devices, PlaywrightTestConfig } from '@playwright/test';
-import { on } from 'events';
-
+import { defineConfig, devices, PlaywrightTestConfig } from "@playwright/test";
+import { on } from "events";
 
 /**
  * Read environment variables from file.
@@ -20,37 +19,36 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: 3,
+  workers: 8,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { outputFolder: 'playwright-report' }]],
+  reporter: [["html", { outputFolder: "playwright-report" }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   timeout: 8 * 60 * 1000,
   use: {
     viewport: { width: 1920, height: 1080 },
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: "https://play.juicemind.com/",
-    headless:false,
-    permissions: ['notifications'],
-    screenshot: 'on',
+    headless: true,
+    permissions: ["notifications"],
+    screenshot: "on",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace:
-    {
-      mode: 'retain-on-failure',
+    trace: {
+      mode: "retain-on-failure",
       attachments: true,
       screenshots: true,
       snapshots: true,
-      sources: true
-    }
+      sources: true,
+    },
   },
-  reporter: [['html', { open: 'never' }]],
+  reporter: [["html", { open: "never" }]],
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    }
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
+    },
 
     /* Test against mobile viewports. */
     // {
