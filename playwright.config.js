@@ -1,5 +1,6 @@
-import { defineConfig, devices, PlaywrightTestConfig } from "@playwright/test";
-import { on } from "events";
+import { defineConfig, devices, PlaywrightTestConfig } from '@playwright/test';
+import { on } from 'events';
+
 
 /**
  * Read environment variables from file.
@@ -39,22 +40,23 @@ export default defineConfig({
     permissions: ['clipboard-read', 'clipboard-write'], // Grant clipboard permissions
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: {
-      mode: "retain-on-failure",
+    trace:
+    {
+      mode: 'retain-on-failure',
       attachments: true,
       screenshots: true,
       snapshots: true,
-      sources: true,
-    },
+      sources: true
+    }
   },
-  reporter: [["html", { open: "never" }]],
+  reporter: [['html', { open: 'never' }]],
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
-    },
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    }
 
     /* Test against mobile viewports. */
     // {
