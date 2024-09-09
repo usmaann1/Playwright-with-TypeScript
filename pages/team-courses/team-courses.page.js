@@ -227,6 +227,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.FinishBtn);
     await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.FinishBtn);
+    await PlaywrightCore.click(this.FinishBtn);
   }
 
   async createStarterCode(code, isIgnore = false) {

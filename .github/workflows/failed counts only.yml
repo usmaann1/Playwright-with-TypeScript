@@ -1,0 +1,71 @@
+name: Playwright Testsssss
+
+on:
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Step 3: Install project dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Install Playwright Browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install
+
+      # Step 5: Run Playwright tests
+      - name: Run Playwright tests
+        id: run_tests
+        run: |
+          npx playwright test test-environment/test-cases/team-courses/team-courses.test.js \
+          --reporter=json,html \
+          --output=./test-results \
+          --config=playwright.config.js
+        continue-on-error: true
+
+      # Step 6: Upload HTML report as an artifact
+      - name: Upload Playwright HTML Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: Playwright Test Report
+          path: ./test-results/index.html  # Path to HTML report
+
+  notify:
+    runs-on: ubuntu-latest
+    needs: test  # Depends on the test job completion
+
+    steps:
+      # Step 1: Construct and echo the artifact URL
+      - name: Echo Artifact URL
+        run: |
+          REPORT_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifact"
+          echo "The artifact URL is: $REPORT_URL"
+
+      # Step 2: Notify Slack with the link to the report
+      - name: Notify Slack
+        if: always()  # Always send a notification, even if previous steps fail
+        run: |
+          REPORT_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifact"
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{
+            "text": "GitHub Actions workflow completed. You can download the Playwright report here: '"$REPORT_URL"'",
+            "attachments": [
+              {
+                "title": "Download Playwright Test Report",
+                "title_link": "'"$REPORT_URL"'"
+              }
+            ]
+          }' https://hooks.slack.com/services/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

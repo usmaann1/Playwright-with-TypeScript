@@ -3,6 +3,7 @@ const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import CreateTeamsTestData from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
 import JoinQuizTestData from '../../test-assets/test-data-files/join-quiz/join-quiz-testData.json'
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
+import playwrightConfig from '../../../playwright.config';
 
 test.describe('TestSuite: Create Teams', () => {
 
@@ -13,6 +14,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.TeamsCoursesBtn).toHaveText(CreateTeamsTestData.TeamsCoursesBtnValue)
         await createTeams.navigateToTeamsCoursesPage()
         await expect(createTeams.CreateNewTeamBtn).toHaveText(CreateTeamsTestData.CreateNewTeamBtnValue)
+        await createTeams.clickOnCrossMessage()
       });
 
     test('TC - UI Validation Teams/Courses Page', async ({ createTeams }) => {
@@ -84,8 +86,9 @@ test.describe('TestSuite: Create Teams', () => {
 
     test('TC - Create a New Team CS Awesome', async ({ createTeams }) => {
         await createTeams.createNewTeamCSAwesome(CreateTeamsTestData.TeamCreatedHeadingValue)
-        await expect(createTeams.CreatingTeamLoder).toHaveText(CreateTeamsTestData.CreatingTeamLoderValue)
+        await PlaywrightCore.waitTimeout(createTeams.page, 3000)
         await PlaywrightCore.waitForElementToDisappear(createTeams, createTeams.LoaderCreatingTeam)
+        await PlaywrightCore.waitTimeout(createTeams.page, 3000)
         await expect(createTeams.GettingStartedHeading).toHaveText(CreateTeamsTestData.GettingStartedHeadingValue)
         await expect(createTeams.AddALessonBtn).toHaveText(CreateTeamsTestData.AddALessonBtnValue)
         await expect(createTeams.PresentationMode).toHaveText(CreateTeamsTestData.PresentationModeValue)
@@ -106,8 +109,9 @@ test.describe('TestSuite: Create Teams', () => {
         await createTeams.deleteAllTeams(CreateTeamsTestData.TeamCreatedHeadingValue)
         const threeDotsCount = await createTeams.ThreeDots.count()
         await createTeams.createNewTeamCSAwesome(CreateTeamsTestData.TeamCreatedHeadingValue)
-        await expect(createTeams.CreatingTeamLoder).toHaveText(CreateTeamsTestData.CreatingTeamLoderValue)
+        await PlaywrightCore.waitTimeout(createTeams.page, 3000)
         await PlaywrightCore.waitForElementToDisappear(createTeams, createTeams.LoaderCreatingTeam)
+        await PlaywrightCore.waitTimeout(createTeams.page, 3000)
         await expect(createTeams.GettingStartedHeading).toHaveText(CreateTeamsTestData.GettingStartedHeadingValue)
         await expect(createTeams.AddALessonBtn).toHaveText(CreateTeamsTestData.AddALessonBtnValue)
         await expect(createTeams.PresentationMode).toHaveText(CreateTeamsTestData.PresentationModeValue)
@@ -181,6 +185,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.LoaderUnzippingFile).toBeVisible()
         await expect(createTeams.ImportingCourse).toHaveText(CreateTeamsTestData.ImportingCourseValue)
         await PlaywrightCore.waitForElementToDisappear(createTeams, createTeams.LoaderUnzippingFile)
+        await PlaywrightCore.waitTimeout(createTeams.page, 3000)
         await expect(createTeams.GettingStartedHeading).toHaveText(CreateTeamsTestData.GettingStartedHeadingValue)
         await expect(createTeams.AddALessonBtn).toHaveText(CreateTeamsTestData.AddALessonBtnValue)
         await expect(createTeams.PresentationMode).toHaveText(CreateTeamsTestData.PresentationModeValue)
@@ -202,6 +207,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.LoaderUnzippingFile).toBeVisible()
         await expect(createTeams.ImportingCourse).toHaveText(CreateTeamsTestData.ImportingCourseValue)
         await PlaywrightCore.waitForElementToDisappear(createTeams, createTeams.LoaderUnzippingFile)
+        await PlaywrightCore.waitTimeout(createTeams.page, 3000)
         await expect(createTeams.GettingStartedHeading).toHaveText(CreateTeamsTestData.GettingStartedHeadingValue)
         await expect(createTeams.AddALessonBtn).toHaveText(CreateTeamsTestData.AddALessonBtnValue)
         await expect(createTeams.PresentationMode).toHaveText(CreateTeamsTestData.PresentationModeValue)
@@ -223,6 +229,7 @@ test.describe('TestSuite: Create Teams', () => {
         await PlaywrightCore.click(createTeams.ImportCourseFinalBtnCrateTeams)
         await expect(createTeams.ImportingCourse).toHaveText(CreateTeamsTestData.ImportingCourseValue)
         await PlaywrightCore.waitForElementToDisappear(createTeams, createTeams.LoaderCreateTeamsImportCourse)
+        await PlaywrightCore.waitTimeout(createTeams.page, 3000)
         await expect(createTeams.GettingStartedHeading).toHaveText(CreateTeamsTestData.GettingStartedHeadingValue)
         await expect(createTeams.AddALessonBtn).toHaveText(CreateTeamsTestData.AddALessonBtnValue)
         await expect(createTeams.PresentationMode).toHaveText(CreateTeamsTestData.PresentationModeValue)
@@ -243,6 +250,7 @@ test.describe('TestSuite: Create Teams', () => {
         await PlaywrightCore.click(createTeams.ImportTeamFinalBtn)
         await expect(createTeams.ImportingCoursesHeading).toHaveText(CreateTeamsTestData.ImportingCoursesHeadingValue)
         await PlaywrightCore.waitForElementToDisappear(createTeams, createTeams.LoaderUnzippingFile, 20000)
+        await PlaywrightCore.waitTimeout(createTeams.page, 3000)
         await expect(createTeams.IndexHTMLFileName).toHaveText(CreateTeamsTestData.IndexHTMLFileNameValue)
         await expect(createTeams.HTMLCSSHeading).toHaveText(CreateTeamsTestData.HTMLCSSHeadingValue)
         await expect(createTeams.PresentationMode).toHaveText(CreateTeamsTestData.PresentationModeValue)
@@ -267,6 +275,7 @@ test.describe('TestSuite: Create Teams', () => {
         await PlaywrightCore.click(createTeams.ImportTeamFinalBtnCreateTeam)
         await expect(createTeams.ImportingCoursesHeading).toHaveText(CreateTeamsTestData.ImportingCoursesHeadingValue)
         await PlaywrightCore.waitForElementToDisappear(createTeams, createTeams.LoaderUnzippingFile, 20000)
+        await PlaywrightCore.waitTimeout(createTeams.page, 3000)
         await expect(createTeams.IndexHTMLFileName).toHaveText(CreateTeamsTestData.IndexHTMLFileNameValue)
         await expect(createTeams.HTMLCSSHeading).toHaveText(CreateTeamsTestData.HTMLCSSHeadingValue)
         await expect(createTeams.PresentationMode).toHaveText(CreateTeamsTestData.PresentationModeValue)

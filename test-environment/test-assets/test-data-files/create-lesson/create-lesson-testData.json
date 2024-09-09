@@ -2,6 +2,9 @@
     "teamName": "LessonTeam",
     "lessonName": "lesson for Beginners",
     "textForEditor": "abcd1234",
+    "Answer": "Test",
+    "wrongAnswer": "Tests",
+    "validationError": "Wrong answer",
     "elements": {
         "heading1": "Heading 1",
         "heading2": "Heading 2",
@@ -16,8 +19,12 @@
         "codeBlock": "Code Block",
         "table": "Table",
         "uploadImage": "Image",
+        "fillInBlank": "Fill in the blank",
+        "fileUpload": "File Upload",
+        "shortAnswer": "Short Answer",
         "multipleChoice":"Multiple Choice",
-        "hideAndRevealButton":"Hide/Reveal Button"
+        "hideAndRevealButton":"Hide/Reveal Button",
+        "tableSelect":"Table Select"
     },
     "options": {
         "Delete": "Delete"
@@ -25,13 +32,14 @@
     "attributes": {
         "dataType": "data-type",
         "value": "taskList",
+        "checkedTrue": "true",
         "type": "type",
         "valueCb": "checkbox",
         "datachecked": "data-checked"
     },
     "EmbedInsertURLHeadingValue": "Insert URL",
     "EmbedSubmitBtnValue": "Submit",
-    "EmbedLink": "https://www.youtube.com/watch?v=1_mC_d2Ne_g",
+    "EmbedLink": "https://www.youtube.com/watch?v=PV-W5iG6yXQ",
     "EmbedLinkReplace": "https://www.youtube.com/watch?v=aW2gng4Hu70",
     "SetupBtnValue": "Setup",
     "OptionsBtnValue": "Options",
@@ -39,7 +47,7 @@
     "ReplaceHeadingValue": "Replace",
     "SaveBtnValue": "Save",
     "WayOfTearsVideoHeadingValue": "\"The Way of Tears\" Relaxing Sad Arabic Nasheed | Voice Cover by Jawad Ahmad",
-    "RelaxingRecitationVideoHeadingValue": "Relaxing Recitation of Surah Taha for Stress Relief and Soul Healing Shikh Ismail Annuri",
+    "RelaxingRecitationVideoHeadingValue": "YouTube Shorts: The COMPLETE Guide!",
     "JuiceMindZipAfterUploadedValue": "juicemind-temp-team.zip",
     "DeleteBtnAfterUploadValue": "Delete",
     "HTMLText": "<h1>This is heading 1</h1>",
@@ -47,8 +55,6 @@
     "value": "taskList",
     "type": "type",
     "valueCb": "checkbox",
-    "datachecked": "data-checked",
-    "checkedTrue": "true",
     "checkedFalse": "false",
     "placeHolder": {
         "quote": "Enter a quote",
@@ -58,6 +64,27 @@
         "Quote": "this is a famous quote",
         "Author": "famous author",
         "code": "console.log('Hello, World!');"
+    },
+    "fileUpload":{
+        "optionField": "Allow learners to check their answer.",
+        "correctOptionColorVal": "rgb(144, 238, 144)"
+    },
+    "shortAnswer": {
+        "promptTxt": "What is your Name",
+        "answerTemplateTxt": "Raul",
+         "successLabelColor": "rgb(211, 211, 211)"
+    },
+    "dragDrop":{
+        "dragAndDrop": "Drag and Drop"
+    },
+    "tip": {
+        "tipElement": "Tip",
+        "backgroundYellow": "rgb(244, 190, 48)",
+        "backgroundBlue": "rgb(82, 110, 210)",
+        "backgroundPink": "rgb(254, 91, 127)",
+        "optionInfo": "Info",
+        "optionTip": "Tip",
+        "optionWarning": "Warning"
     },
     "MultipleChoiceOptionsRule1Value":"Each learner will see the options provided in random order.",
     "MultipleChoiceOptionsRule2Value":"Allow learners to check their answer.",
@@ -81,6 +108,7 @@
     "CorrectAnswerTxt":"Correct Answer!",
     "PointScore0Txt":"Points scored: 0",
     "PointScore4Txt":"Points scored: 4",
+    "PointScore1Txt":"Points scored: 1",
     "CloseBtnValue":"Close",
     "IncorrectMsgValue":"Incorrect",
     "CorrectMsgValue":"Correct"

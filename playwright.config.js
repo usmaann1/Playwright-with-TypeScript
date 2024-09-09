@@ -17,20 +17,26 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries:0,
   /* Opt out of parallel tests on CI. */
   workers: 8,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [["html", { outputFolder: "playwright-report" }]],
+  reporter: [
+    ['json-summary', { outputFile: 'summary.json' }],
+    ['playwright-json-summary-reporter'],
+    ['html'], // other reporters
+    ['dot']
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   timeout: 8 * 60 * 1000,
   use: {
     viewport: { width: 1920, height: 1080 },
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: "https://play.juicemind.com/",
-    headless: true,
-    permissions: ["notifications"],
-    screenshot: "on",
+    headless:true,
+    permissions: ['notifications'],
+    screenshot: 'on',
+    permissions: ['clipboard-read', 'clipboard-write'], // Grant clipboard permissions
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: {

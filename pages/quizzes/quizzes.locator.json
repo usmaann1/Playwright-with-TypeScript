@@ -1,0 +1,39 @@
+{
+    "Quizzes": "//div[normalize-space()='Quizzes']",
+    "JavaProgramming" : "(//div[normalize-space()='Why Programming? Why Java?'])[1]" ,
+    "EasyQuizz" : "(//div[normalize-space()='Easy'])[1]",
+    "StartQuiz": "(//a[normalize-space()='Start'])[1]",  
+    "StartQuizzDialoug": "(//a[normalize-space()='Start'])[2]",
+    "ImreadyDialoug": "//a[@class = '_root_1go8p_1 undefined ']",
+    "JoinQuiz": "(//a[normalize-space()='Join Quiz'])[1]",
+    "GamePin": "//input[@placeholder='Game Pin']",
+    "Enter": "(//a[normalize-space()='Enter'])[1]",
+    "Nickname":"//input[@placeholder = 'Nickname']",
+    "LetsGo": "(//a[@class='_root_1go8p_1 undefined '])[1]",
+    "StartQuizAfterJoinplayers" :"//a[text() = 'Start Quiz!']",
+    "ErrorLine" :"(//span[@class='ace_entity ace_name ace_function'])[3]",
+    "WriteInEditor":"//div[@class='ace_active-line']",
+    
+    "AnswerChoice_1": "(//h1[@class ='_choiceLetter_1h2ot_22'])[1]",
+    "AnswerChoice_2": "(//h1[@class ='_choiceLetter_1h2ot_22'])[2]",
+    "AnswerChoice_3": "(//h1[@class ='_choiceLetter_1h2ot_22'])[3]",
+    "AnswerChoice_4": "(//h1[@class ='_choiceLetter_1h2ot_22'])[4]",
+    "Next": "(//a[normalize-space()='Next'])[1]",
+    "WriteCodeInEditor":"(//div[@class='ace_line'])[3]",
+    "ExecuteButton": "//*[@data-testid='PlayArrowIcon']",
+
+    "Presentation_btn":"//a[normalize-space()='Presentation Mode']",
+    "Gotit_btn":"//a[normalize-space()='Got it']",
+    "ExitStudentView_btn":"//a[normalize-space()='Exit Student View']",
+    "EmailStudentSignin_textfield": "input[placeholder='Email Address']",
+    "PasswordStudentSignin_textfield": "input[placeholder='Password']",
+    "ClickSignin_btn": "//a[normalize-space()='Sign in']",
+    "login_btn": "//a[@href='/login']",
+    "finish_btn":"//a[normalize-space()='Finish']",
+    "studentAssignmentHeading":"//div[@class='tiptap ProseMirror min-h-full']/h1"
+
+
+
+
+    
+}

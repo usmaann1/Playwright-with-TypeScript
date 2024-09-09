@@ -48,6 +48,7 @@ exports.LoginPage = class LoginPage {
   async NavigateToSignUpPage(){
     await PlaywrightCore.goTo(this.page, this.baseURL)
     await PlaywrightCore.click(this.SignUpNavigationBtn);
+    
   }
 
   async NavigateToForgotPasswordPage(){

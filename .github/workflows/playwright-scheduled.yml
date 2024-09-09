@@ -1,13 +1,16 @@
 name: Playwright Tests
-
 on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs Every day at 12:00 AM
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
   test:
     timeout-minutes: 120
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      actions: read
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -19,62 +22,95 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-
+      
+    - name: json summary reporter
+      run: npm install playwright-json-summary-reporter
+      
     - name: Install Playwright Browsers
       run: npx playwright install
 
-    - name: Run Playwright Tests
-      run: |
-        npx playwright test --reporter=json > results.json
-        zip -r test-results.zip results.json
+   
+    - name: Run Playwright tests
+      run: APP_URL=${{ env.APP_URL}} npx playwright test --reporter=json > summary.json || true
+      
+    - name: List files in directory
+      run: ls -la
 
-    - name: Upload test results
+    - name: Check for summary.json
+      run: |
+        if [ -f summary.json ]; then
+          echo "summary.json exists."
+        else
+          echo "summary.json does not exist."
+        fi
+    - name: Upload Playwright Summary Report as artifact
       uses: actions/upload-artifact@v4
       with:
-        name: test-results
-        path: test-results.zip
-
-  parse-and-notify:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-    - name: Download test results
-      uses: actions/download-artifact@v4
-      with:
-        name: test-results
-        path: downloaded-report
-
-    - name: Install jq and unzip
-      run: sudo apt-get install -y jq unzip
-
-    - name: Extract the Zip File
-      run: |
-        unzip downloaded-report/test-results.zip -d extracted-report
-
+        name: playwright-summary
+        path: summary.json  # Adjust path if necessary
     - name: Count Test Cases
       id: count-tests
       run: |
         # Check the structure of the JSON file for correctness
-        jq '.' extracted-report/results.json
-
-        # Count the number of passed and failed test cases
-        PASSED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="passed")] | length' extracted-report/results.json)
-        FAILED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="failed")] | length' extracted-report/results.json)
-
-        # Use default values if results are empty or null
-        echo $(jq '[.suites[]?.suites[]')
-        echo PASSED
-        echo FAILED
-        echo "PASSED=${PASSED:-0}" >> $GITHUB_ENV
-        echo "FAILED=${FAILED:-0}" >> $GITHUB_ENV
-
-    - name: Display Results
+        jq '.' summary.json
+    - name: Read Summary Report to Get Test Results
+      if: always()
       run: |
-        echo "Total Passed: ${{ env.PASSED }}, Total Failed: ${{ env.FAILED }}"
+        PASSED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="passed")] | length' summary.json)
+        FAILED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="failed")] | length' summary.json)
+        echo "PASSED=$PASSED" >> $GITHUB_ENV 
+        echo "FAILED=$FAILED" >> $GITHUB_ENV 
+          
+          
+          
+    
+    - name: Send Slack Notification
+      if: always()
+      uses: 8398a7/action-slack@v3 
+      with:
+          status: custom
+          fields: repo,eventName,workflow,job,took
+          custom_payload: |
+            {
+              attachments: [{
+                color: '${{ job.status }}' === 'success' ? 'good' : 'danger',
+                title: `Playwright Automation Results :test_tube:`,
+                fields: [{
+                  title: 'Site Under Test',
+                  value: 'play.juicemind.com',
+                  short: true
+                },
+                {
+                  title: 'Triggered By',
+                  value: [{'origin': 'pull_request', 'new': 'Pull Request'}, {'origin': 'schedule', 'new': 'Schedule'}, {'origin': 'repository_dispatch', 'new': 'Deploy'}, {'origin': 'workflow_dispatch', 'new': 'GitHub Actions'}].find(item => item.origin === `${process.env.AS_EVENT_NAME}`).new || `${process.env.AS_EVENT_NAME}`,
+                  short: true
+                },
+                {
+                  title: 'Execution Time',
+                  value: `${process.env.AS_TOOK}`,
+                  short: true
+                },
+                {
+                  title: 'Workflow',
+                  value: `${process.env.AS_WORKFLOW}`,
+                  short: true
+                },
+                {
+                  title: 'PASSED',
+                  value: `${{env.PASSED}}`,
+                  short: true
+                },
+                {
+                  title: 'Failed',
+                  value: `${{env.FAILED}}`,
+                  short: true
+                }]
+              }]
+            }  
+      env:
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
 
-    - name: Notify Slack
-      if: always()  # Always send a notification, even if previous steps fail
-      run: |
-        curl -X POST -H 'Content-type: application/json' \
-        --data "{\"text\":\"GitHub Actions workflow completed. Number of failed tests: ${{ env.FAILED }}. Number of passed tests: ${{ env.PASSED }}.\"}" \
-        https://hooks.slack.com/services/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
+
+
+
+     
