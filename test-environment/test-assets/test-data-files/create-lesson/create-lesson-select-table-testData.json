@@ -1,0 +1,17 @@
+{
+    "SelectSolutionHeadingValue":"Select Solution",
+    "ShuffleTableHeadingValue":"Shuffle Table",
+    "SelectTableRow1Box1Value":"1",
+    "SelectTableRow1Box2Value":"2",
+    "SelectTableRow1Box3Value":"3",
+    "SelectTableRow2Box1Value":"4",
+    "SelectTableRow2Box2Value":"5",
+    "SelectTableRow2Box3Value":"6",
+    "SelectTableRow3Box1Value":"7",
+    "SelectTableRow3Box2Value":"8",
+    "SelectTableRow3Box3Value":"9",
+    "AddRowBtnValue":"Add Row",
+    "AddColumnBtnValue":"Add Column",
+    "SelectTableOpt1AllowLearnerValue":"Allow learners to check their answer.",
+    "SelectTableOpt2LeanersCanValue":"Learners can gain a percentage of the maximum points by getting portions of the block correct."
+}

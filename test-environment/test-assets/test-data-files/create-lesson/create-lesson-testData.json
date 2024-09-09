@@ -17,7 +17,8 @@
         "table": "Table",
         "uploadImage": "Image",
         "multipleChoice":"Multiple Choice",
-        "hideAndRevealButton":"Hide/Reveal Button"
+        "hideAndRevealButton":"Hide/Reveal Button",
+        "tableSelect":"Table Select"
     },
     "options": {
         "Delete": "Delete"
@@ -81,6 +82,7 @@
     "CorrectAnswerTxt":"Correct Answer!",
     "PointScore0Txt":"Points scored: 0",
     "PointScore4Txt":"Points scored: 4",
+    "PointScore1Txt":"Points scored: 1",
     "CloseBtnValue":"Close",
     "IncorrectMsgValue":"Incorrect",
     "CorrectMsgValue":"Correct"
