@@ -145,7 +145,27 @@ exports.CreateLesson = class CreateLesson {
         this.infoIcon = this.page.locator(Locators.lessonPage.textEditor.tip.infoIcon)
         this.tipEle = this.page.locator(Locators.lessonPage.textEditor.tip.tipEle)
         this.typeDropDown = this.page.locator(Locators.lessonPage.textEditor.tip.typeDropDown)
-
+        // Parsons Problem Element
+        this.parsonEle = this.page.locator(Locators.lessonPage.textEditor.parson.parsonEle)
+        this.techDropDown = this.page.locator(Locators.lessonPage.textEditor.parson.techDropDown)
+        this.distractorRow = this.page.locator(Locators.lessonPage.textEditor.parson.distractorRow)
+        this.distractorTextBox = this.page.locator(Locators.lessonPage.textEditor.parson.distractorTextBox)
+        this.activeTexBox = this.page.locator(Locators.lessonPage.textEditor.parson.activeTexBox)
+        this.Section = this.page.locator(Locators.lessonPage.textEditor.parson.Section)
+        this.line = this.page.locator(Locators.lessonPage.textEditor.parson.line)
+        this.optionsColumn = this.page.locator(Locators.lessonPage.textEditor.parson.optionsColumn)
+        this.option1 = this.page.locator(Locators.lessonPage.textEditor.parson.option1)
+        this.option2 = this.page.locator(Locators.lessonPage.textEditor.parson.option2)
+        this.answerColumn = this.page.locator(Locators.lessonPage.textEditor.parson.answerColumn)
+        // code select element
+        this.codeEle = this.page.locator(Locators.lessonPage.textEditor.codeSelect.codeEle)
+        this.languageDropDown = this.page.locator(Locators.lessonPage.textEditor.codeSelect.languageDropDown)
+        this.selectableTab = this.page.locator(Locators.lessonPage.textEditor.codeSelect.selectableTab)
+        this.correctTab = this.page.locator(Locators.lessonPage.textEditor.codeSelect.correctTab)
+        this.clearTab = this.page.locator(Locators.lessonPage.textEditor.codeSelect.clearTab)
+        this.codeEditor = this.page.locator(Locators.lessonPage.textEditor.codeSelect.codeEditor)
+     
+      
 
         this.MultipleChoiceQuestionHeadingBox = this.page.locator(Locators.MultipleChoiceQuestionHeadingBox)
         this.MultipleChoiceFormBox1 = this.page.locator(Locators.MultipleChoiceFormBox1)
@@ -562,5 +582,83 @@ exports.CreateLesson = class CreateLesson {
         const parent = this.textEditor
         const test = parent.locator(this.tipEle)
         await this.checkBackgroundColor(test,clTD.tip.backgroundPink)
+    }
+    async dragAndDrop( sourceSelector, targetSelector) {
+   
+        await sourceSelector.dragTo(targetSelector);
+
+    }
+    async validateParsonsFunctionality() {
+        const parent = this.textEditor
+        const ele = parent.locator(this.parsonEle)
+        const distractorSection = ele.locator(this.Section).first()
+        const solutionSection = ele.locator(this.Section).last()
+        await expect(ele).toBeVisible()
+        const textField1 = ele.locator(this.textField)
+        await PlaywrightCore.fill(textField1,clTD.parsonProblem.Heading)
+        const tdd = this.techDropDown
+        await tdd.selectOption([clTD.parsonProblem.techStack])
+
+        var row = distractorSection.locator(this.distractorTextBox).first()
+        var activeLine =row.locator(this.line).first()
+        await PlaywrightCore.fill(row,clTD.parsonProblem.distractor2)
+        await PlaywrightCore.press(row,'Enter')
+        activeLine =distractorSection.locator(this.line).nth(1)
+        row = distractorSection.locator(this.distractorTextBox).nth(0)
+        await PlaywrightCore.fill(activeLine,clTD.parsonProblem.distractor1)
+        await PlaywrightCore.press(row,'Enter')
+        activeLine =distractorSection.locator(this.line).nth(2)
+        await PlaywrightCore.fill(activeLine,clTD.parsonProblem.distractor4)
+        await PlaywrightCore.press(row,'Enter')
+        activeLine =distractorSection.locator(this.line).nth(3)
+        await PlaywrightCore.fill(activeLine,clTD.parsonProblem.distractor3)
+        var solRow = solutionSection.locator(this.distractorTextBox).first()
+        var solActiveLine =row.locator(this.line).first()
+        await PlaywrightCore.fill(solRow,clTD.parsonProblem.solutiion1)
+        await PlaywrightCore.press(solRow,'Enter')
+        solActiveLine =solutionSection.locator(this.line).nth(1)
+        solRow = solutionSection.locator(this.distractorTextBox).nth(0)
+        await PlaywrightCore.fill(solActiveLine,clTD.parsonProblem.solutiion2)
+        await PlaywrightCore.press(solRow,'Enter')
+        solActiveLine =solutionSection.locator(this.line).nth(2)
+        await PlaywrightCore.fill(solActiveLine,clTD.parsonProblem.solutiion3)
+        await PlaywrightCore.press(solRow,'Enter')
+        solActiveLine =solutionSection.locator(this.line).nth(3)
+        await PlaywrightCore.fill(solActiveLine,clTD.parsonProblem.solutiion4)
+        await PlaywrightCore.click(this.PresentationMode)
+        await PlaywrightCore.click(this.gotItBtn)
+        await expect(this.answerColumn).toBeVisible()
+        await this.page.waitForTimeout(3000);
+        this.dragAndDrop(this.option1,this.answerColumn)
+        await this.page.locator(this.option2).hover()
+        await this.page.mouse.down()
+        await this.page.locator(this.answerColumn).hover()
+        // await this.page.mouse.up()
+        // await this.page.waitForTimeout(6000);
+        // await PlaywrightCore.click(this.checkAnswerBtn)
+        // await PlaywrightCore.click(this.closeBtn)
+        
+    }
+    async validateCodeSelectFunctionality() {
+        const parent = this.textEditor
+        const ele = parent.locator(this.textField).nth(1)
+        await this.page.waitForTimeout(3000);
+        await expect(this.codeEle).toBeVisible()
+        await PlaywrightCore.fill(ele,clTD.codeSelect.heading)
+        const language = this.languageDropDown
+        await language.selectOption([clTD.codeSelect.language])
+        const editor = this.codeEditor
+        const editorLine = editor.locator(this.line).first()
+        await PlaywrightCore.doubleClickByText(this.page,'world!')
+        await PlaywrightCore.click(this.selectableTab)
+        await PlaywrightCore.doubleClickByText(this.page,'world!')
+        await PlaywrightCore.click(this.correctTab)
+        await PlaywrightCore.doubleClickByText(this.page,'world!')
+
+        await PlaywrightCore.click(this.PresentationMode)
+        await PlaywrightCore.click(this.gotItBtn)
+        await PlaywrightCore.ClickByText(this.page,'world!')
+        await PlaywrightCore.click(this.checkAnswerBtn)
+        await PlaywrightCore.click(this.closeBtn)
     }
 }

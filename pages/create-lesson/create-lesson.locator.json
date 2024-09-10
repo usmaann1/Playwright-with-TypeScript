@@ -134,8 +134,7 @@
                     "solutionContainer": ".MuiPaper-elevation",
                     "div1": {
                         "option": "MuiOutlinedInput-input",
-                        "threeDot":"[data-testid='MoreVertIcon']",
-                        "deleteButton": "[data-testid='DeleteIcon']"
+                        "threeDot":"[data-testid='MoreVertIcon']"
                     }
            
                 }
@@ -144,6 +143,30 @@
                 "infoIcon":"//*[name()='path' and contains(@d,'M12 2C6.48')]",
                 "tipEle": ".node-tip .allow-dragging",
                 "typeDropDown": "select"
+            },
+            "parson":{
+                "parsonEle":".node-parsons",
+                "techDropDown": "//div[@contenteditable='false']//div//div//select",
+                "deleteButton": "[data-testid='DeleteIcon']",
+                "Section": ".cm-editor",
+                "distractorRow": ".cm-scroller",
+                "distractorTextBox": ".cm-content",
+                "activeTexBox": ".cm-activeLine",
+                "line": ".cm-line",
+
+                "optionsColumn": "[data-rbd-droppable-id='options']",
+                "option1": "//body/div/div/div/div/div/div/div[@data-panel-group-direction='horizontal']/div/div/div/div[@data-panel-group-direction='horizontal']/div/div/div/div/div/div/div[@contenteditable='false']/div[@contenteditable='false']/div/div/div/div/div[@data-rbd-droppable-id='options']/div[2]/div[1]",
+                "option2": "div[role='button'][data-rbd-draggable-context-id='1'][data-rbd-draggable-id='options-0']",
+
+                "answerColumn": "//div[@data-rbd-droppable-id='answer']"
+            },
+            "codeSelect":{
+                "codeEle": ".node-codeSelect",
+                "languageDropDown": "//div[@contenteditable='false']//div//div//div//select",
+                "codeEditor": ".cm-editor",
+                "selectableTab": "//button[normalize-space()='Selectable']",
+                "correctTab": "//button[normalize-space()='Correct']",
+                "clearTab": "//button[normalize-space()='Clear']"
             }
         }
         },

@@ -247,4 +247,31 @@ test.describe('TestSuite: Create Lesson', () => {
 
         await newCreateLessonPageInstance.verifyStudentViewForTipElement()
     });
+    test.skip('TC - validate adding Parsons Problem element inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
+        const randomEmail = UserFunctions.generateRandomEmail(userEmail)
+        await createLesson.createALesson(lessonName)
+        await createLesson.setVisibility()
+        await createLesson.hoverOverFirstRow()
+        await createLesson.hoverAndClickOnPlusBtn()
+        await expect(createLesson.dropDownContainer).toBeVisible()
+        await createLesson.selectElementFromDropdown(CLtd.parsonProblem.element)
+        await createLesson.validateParsonsFunctionality()
+
+        await this.page.locator("div[role='button'][data-rbd-draggable-context-id='1'][data-rbd-draggable-id='options-0']").hover()
+        await this.page.mouse.down()
+        await this.page.locator("//div[@data-rbd-droppable-id='answer']").hover()
+        await this.page.mouse.up()
+
+    });
+    test.skip('TC - validate adding Code Select element inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
+        const randomEmail = UserFunctions.generateRandomEmail(userEmail)
+        await createLesson.createALesson(lessonName)
+        await createLesson.setVisibility()
+        await createLesson.hoverOverFirstRow()
+        await createLesson.hoverAndClickOnPlusBtn()
+        await expect(createLesson.dropDownContainer).toBeVisible()
+        await createLesson.selectElementFromDropdown(CLtd.codeSelect.element)
+        await createLesson.validateCodeSelectFunctionality()
+
+    });
 })
