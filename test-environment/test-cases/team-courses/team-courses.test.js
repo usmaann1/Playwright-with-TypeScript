@@ -404,7 +404,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.AssertImages(TeamCoursesData.TestPNG);
   });
 
-  test.only("TC: Flow Traditional Java", async ({ teamCoursesPage }) => {
+  test("TC: Flow Traditional Java", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
