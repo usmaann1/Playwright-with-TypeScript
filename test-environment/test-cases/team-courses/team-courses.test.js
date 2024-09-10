@@ -1,6 +1,10 @@
-const { UserFunctions } = require("../../../module-imports/helperFunctions.imports");
+const {
+  UserFunctions,
+} = require("../../../module-imports/helperFunctions.imports");
 const { test } = require("../../../module-imports/testFixtures.imports");
-const { TeamCoursesPage } = require("../../../pages/team-courses/team-courses.page");
+const {
+  TeamCoursesPage,
+} = require("../../../pages/team-courses/team-courses.page");
 import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
@@ -398,5 +402,21 @@ test.describe("TestSuite: Team/Courses", () => {
     );
     await teamCoursesPage.uploadFile(TeamCoursesData.PNGFile);
     await teamCoursesPage.AssertImages(TeamCoursesData.TestPNG);
+  });
+
+  test.only("TC: Flow Traditional Java", async ({ teamCoursesPage }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email);
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+
+    await teamCoursesPage.TraditionalJava(
+      randomName,
+      TeamCoursesData.projectTypeOPtion16,
+      TeamCoursesData.TestJavaTraditional,
+      TeamCoursesData.TestTraditonalOutput
+    );
   });
 });
