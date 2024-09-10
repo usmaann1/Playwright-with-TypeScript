@@ -415,10 +415,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const clipboardContent = await this.page.evaluate(async () => {
       return await navigator.clipboard.readText();
     });
-    const updatedCode = clipboardContent.replace(
-      "'purple'",
-      "'red'"
-    );
+    const updatedCode = clipboardContent.replace("'purple'", "'red'");
     console.log(updatedCode);
     await codeEditorContent.press(this.BackSpace);
     await codeEditorContent.fill(updatedCode);
@@ -434,7 +431,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.waitTimeout(this.page, 20000);
     const Colors = await UserFunctions.getAllColorsFromImage(
       this.PillowImage,
-      TeamCoursesData.AssetsPaths,
+      TeamCoursesData.AssetsPaths
     );
     const hasShadeOfRed = await Colors.some((color) =>
       UserFunctions.isShadeOfRed(color)
@@ -586,6 +583,28 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     );
     const isValid = await text.includes(TeamCoursesData.ImagesTextAssertion);
     await expect(isValid).toBe(true);
+  }
+
+  async TraditionalJava(name, option, input, output) {
+    await PlaywrightCore.click(this.IntializeIDEBtn);
+    await PlaywrightCore.fill(this.ProjectNameInput, name);
+    await this.page.getByLabel(this.ProjectType).click();
+    await this.page.getByRole("option", { name: option }).click();
+    await PlaywrightCore.click(this.SubmitBtn);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    await expect(this.CloudIcon.nth(1)).toBeVisible();
+    const codeEditorContent = await this.EditorTextBox.nth(1);
+    await codeEditorContent.press(this.SelectAll);
+    await codeEditorContent.press(this.BackSpace);
+    await codeEditorContent.fill(input);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    await PlaywrightCore.click(this.EditorPlayButton);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    const element = await this.page.$(Locators.Terminal);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    const innerText = await element.innerText();
+    const isValid = await innerText.includes(output);
+    expect(isValid).toBe(true);
   }
 
   async breakPoint() {
