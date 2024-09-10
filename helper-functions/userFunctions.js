@@ -254,6 +254,15 @@ exports.UserFunctions = class UserFunctions {
     return hexColors;
   }
 
+  static async getAllColorsFromImage(imageElement, path) {
+    await imageElement.screenshot({ path: `${path}canvas.png` });
+    // await fs.writeFileSync(`${path}canvas.png`, base64Data, "base64");
+    const colors = await getColors(`${path}canvas.png`);
+    const hexColors = colors.map((color) => color.hex());
+    console.log("Colors detected in the canvas:", hexColors);
+    return hexColors;
+  }
+
   static async isShadeOfRed(hex) {
     const red = parseInt(hex.substring(1, 3), 16);
     const green = parseInt(hex.substring(3, 5), 16);

@@ -108,6 +108,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       Locators.OverRideProjectFiles
     );
     this.ImageEditor = this.page.locator(Locators.ImageEditor);
+    this.PillowImage = this.page.locator(Locators.PillowImage);
   }
 
   async NavigateToSignUpPage() {
@@ -223,6 +224,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.StudentBtn);
     await PlaywrightCore.fill(this.FirstNameInput, firstName);
     await PlaywrightCore.fill(this.LastNameInput, lastName);
+    await PlaywrightCore.click(this.FinishBtn);
     await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.FinishBtn);
     await PlaywrightCore.click(this.FinishBtn);
@@ -377,7 +379,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       this.page,
       TeamCoursesData.AssetsPaths
     );
-    const hasShadeOfRed = await Colors.some(color => UserFunctions.isShadeOfRed(color));
+    const hasShadeOfRed = await Colors.some((color) =>
+      UserFunctions.isShadeOfRed(color)
+    );
     await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.CloseFullScreenBtn);
     await expect(hasShadeOfRed).toBe(true);
@@ -403,6 +407,41 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await expect(isValid).toBe(true);
   }
 
+  async pythonWithPillow() {
+    await PlaywrightCore.waitTimeout(this.page, 10000);
+    const codeEditorContent = await this.EditorTextBox.nth(1);
+    await codeEditorContent.press(this.SelectAll);
+    await codeEditorContent.press(this.Copy);
+    const clipboardContent = await this.page.evaluate(async () => {
+      return await navigator.clipboard.readText();
+    });
+    const updatedCode = clipboardContent.replace(
+      "'purple'",
+      "'red'"
+    );
+    console.log(updatedCode);
+    await codeEditorContent.press(this.BackSpace);
+    await codeEditorContent.fill(updatedCode);
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await PlaywrightCore.click(this.EditorPlayButton);
+    await PlaywrightCore.waitTimeout(this.page, 15000);
+    await PlaywrightCore.click(this.FileExplorerBtnOpen);
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await this.page
+      .getByText(TeamCoursesData.TestGeneratedFile)
+      .first()
+      .click();
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    const Colors = await UserFunctions.getAllColorsFromImage(
+      this.PillowImage,
+      TeamCoursesData.AssetsPaths,
+    );
+    const hasShadeOfRed = await Colors.some((color) =>
+      UserFunctions.isShadeOfRed(color)
+    );
+    await expect(hasShadeOfRed).toBe(true);
+  }
+
   async javaWithSwing() {
     const { clipboardContent, codeEditorContent } =
       await this.commonClipBoardSteps(false);
@@ -421,7 +460,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       this.page,
       TeamCoursesData.AssetsPaths
     );
-    const hasShadeOfRed = await Colors.some(color => UserFunctions.isShadeOfRed(color));
+    const hasShadeOfRed = await Colors.some((color) =>
+      UserFunctions.isShadeOfRed(color)
+    );
     await expect(hasShadeOfRed).toBe(true);
   }
 
