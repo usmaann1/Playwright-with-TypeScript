@@ -227,7 +227,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.FinishBtn);
     await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.FinishBtn);
-    await PlaywrightCore.click(this.FinishBtn);
   }
 
   async createStarterCode(code, isIgnore = false) {
@@ -526,6 +525,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async uploadFile(path) {
     await PlaywrightCore.click(this.FileExplorerBtnOpen);
+    await PlaywrightCore.waitTimeout(this.page, 10000);
     await PlaywrightCore.fileUpload(this.UploadFile, path);
   }
 
