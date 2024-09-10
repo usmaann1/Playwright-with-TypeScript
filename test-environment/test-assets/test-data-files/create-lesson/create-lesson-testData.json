@@ -85,6 +85,24 @@
         "optionTip": "Tip",
         "optionWarning": "Warning"
     },
+    "parsonProblem": {
+        "element": "Parsons Problem",
+        "Heading": "This is a JS Problem",
+        "techStack": "javascript",
+        "distractor1":"let num1 = 5",
+        "distractor2": "let num2 = 10",
+        "distractor3": "let sum = num1 + num2",
+        "distractor4": "console.log('Sum is: ' + sum)",
+        "solutiion1":"2",
+        "solutiion2": "1",
+        "solutiion3": "4",
+        "solutiion4": "3"
+    },
+    "codeSelect": {
+        "element": "Code Select",
+        "heading": "Hello this is a heading",
+        "language": "javascript"
+    },
     "MultipleChoiceOptionsRule1Value":"Each learner will see the options provided in random order.",
     "MultipleChoiceOptionsRule2Value":"Allow learners to check their answer.",
     "MultipleChoiceOptionsRule3Value":"Learners can gain a percentage of the maximum points by getting portions of the block correct.",
