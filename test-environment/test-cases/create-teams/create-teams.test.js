@@ -3,7 +3,6 @@ const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import CreateTeamsTestData from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
 import JoinQuizTestData from '../../test-assets/test-data-files/join-quiz/join-quiz-testData.json'
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
-import playwrightConfig from '../../../playwright.config';
 
 test.describe('TestSuite: Create Teams', () => {
 
