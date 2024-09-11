@@ -100,6 +100,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.InviteStudentsBtn).toHaveText(CreateTeamsTestData.InviteStudentsBtnValue)
         await expect(createTeams.UsersHeading).toHaveText(CreateTeamsTestData.UsersHeadingValue)
         await expect(createTeams.GettingStartedANdPrimitiveTypeTxt).toHaveText(CreateTeamsTestData.GettingStartedANdPrimitiveTypeTxtValue)
+        await expect(createTeams.LessonBuilderInsideTxt).toHaveText(CreateTeamsTestData.LessonBuilderInsideTxtValue)
         await PlaywrightCore.click(createTeams.BackToTheTeamsBtn)
         await createTeams.deleteFirstTeamInList()
     });
@@ -122,6 +123,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.InviteStudentsBtn).toHaveText(CreateTeamsTestData.InviteStudentsBtnValue)
         await expect(createTeams.UsersHeading).toHaveText(CreateTeamsTestData.UsersHeadingValue)
         await expect(createTeams.GettingStartedANdPrimitiveTypeTxt).toHaveText(CreateTeamsTestData.GettingStartedANdPrimitiveTypeTxtValue)
+        await expect(createTeams.LessonBuilderInsideTxt).toHaveText(CreateTeamsTestData.LessonBuilderInsideTxtValue)
         await PlaywrightCore.click(createTeams.BackToTheTeamsBtn)
         await createTeams.deleteFirstTeamInList()
         await expect(createTeams.ThreeDots).toHaveCount(threeDotsCount)
@@ -191,6 +193,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.PublishMultipleBtn).toHaveText(CreateTeamsTestData.PublishMultipleBtnValue)
         await expect(createTeams.DeleteMultipleBtn).toHaveText(CreateTeamsTestData.DeleteMultipleBtnValue)
         await expect(createTeams.GettingStartedANdPrimitiveTypeTxt).toHaveText(CreateTeamsTestData.GettingStartedANdPrimitiveTypeTxtValue)
+        await expect(createTeams.LessonBuilderInsideTxt).toHaveText(CreateTeamsTestData.LessonBuilderInsideTxtValue)
         await PlaywrightCore.click(createTeams.BackToTheTeamsBtn)
         await createTeams.deleteFirstTeamInList()
     });
@@ -212,6 +215,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.PublishMultipleBtn).toHaveText(CreateTeamsTestData.PublishMultipleBtnValue)
         await expect(createTeams.DeleteMultipleBtn).toHaveText(CreateTeamsTestData.DeleteMultipleBtnValue)
         await expect(createTeams.GettingStartedANdPrimitiveTypeTxt).toHaveText(CreateTeamsTestData.GettingStartedANdPrimitiveTypeTxtValue)
+        await expect(createTeams.LessonBuilderInsideTxt).toHaveText(CreateTeamsTestData.LessonBuilderInsideTxtValue)
         await PlaywrightCore.click(createTeams.BackToTheTeamsBtn)
         await createTeams.deleteFirstTeamInList()
     });
@@ -233,6 +237,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.PublishMultipleBtn).toHaveText(CreateTeamsTestData.PublishMultipleBtnValue)
         await expect(createTeams.DeleteMultipleBtn).toHaveText(CreateTeamsTestData.DeleteMultipleBtnValue)
         await expect(createTeams.GettingStartedANdPrimitiveTypeTxt).toHaveText(CreateTeamsTestData.GettingStartedANdPrimitiveTypeTxtValue)
+        await expect(createTeams.LessonBuilderInsideTxt).toHaveText(CreateTeamsTestData.LessonBuilderInsideTxtValue)
         await PlaywrightCore.click(createTeams.BackToTheTeamsBtn)
         await createTeams.deleteFirstTeamInList()
     });
