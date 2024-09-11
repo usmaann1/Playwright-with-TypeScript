@@ -172,7 +172,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadFile(TeamCoursesData.uploadFilePath);
   });
 
-  test.only("TC: Flow Test HTML", async ({ teamCoursesPage, browser }) => {
+  test("TC: Flow Test HTML", async ({ teamCoursesPage, browser }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -417,6 +417,18 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOPtion16,
       TeamCoursesData.TestJavaTraditional,
       TeamCoursesData.TestTraditonalOutput
+    );
+  });
+
+  test("ABCD", async ({ teamCoursesPage }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption1
     );
   });
 });
