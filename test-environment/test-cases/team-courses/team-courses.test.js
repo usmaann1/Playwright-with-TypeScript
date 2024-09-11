@@ -1,10 +1,6 @@
-const {
-  UserFunctions,
-} = require("../../../module-imports/helperFunctions.imports");
+const { UserFunctions } = require("../../../module-imports/helperFunctions.imports");
 const { test } = require("../../../module-imports/testFixtures.imports");
-const {
-  TeamCoursesPage,
-} = require("../../../pages/team-courses/team-courses.page");
+const { TeamCoursesPage } = require("../../../pages/team-courses/team-courses.page");
 import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
@@ -172,7 +168,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadFile(TeamCoursesData.uploadFilePath);
   });
 
-  test.only("TC: Flow Test HTML", async ({ teamCoursesPage, browser }) => {
+  test("TC: Flow Test HTML", async ({ teamCoursesPage, browser }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
