@@ -556,6 +556,7 @@ exports.PlaywrightCore = class PlaywrightCore {
       console.error(`Error occurred`, error);
     }
   }
+
   static async doubleClickByText(page, Text) {
     try {
       await page.getByText(Text).dblclick();
@@ -563,5 +564,19 @@ exports.PlaywrightCore = class PlaywrightCore {
       console.warn(`An error occurred while clicking, Error:`, error);
       throw error;
     }
+  }
+
+  static async createfile(page, filelocator, name, text) {
+    await page.getByTestId(filelocator).locator("path").click();
+    await page
+      .locator("div")
+      .filter({ hasText: text })
+      .getByRole("textbox")
+      .fill(name);
+    await page
+      .locator("div")
+      .filter({ hasText: text })
+      .getByRole("textbox")
+      .press("Enter");
   }
 };

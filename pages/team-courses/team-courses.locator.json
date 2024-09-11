@@ -63,5 +63,10 @@
     "ZipUpload": "input[type='file'][accept='application/zip,.zip']",
     "OverRideProjectFiles": "//a[normalize-space()='Override Project Files']",
     "ImageEditor": "xpath=(//div[contains(@class, 'codeEditorContainer')]//img)[1]",
-    "PillowImage": "(//div[contains(@class, 'codeEditorContainer')]//div[contains(@class, 'root')]//img)[2]" 
+    "PillowImage": "(//div[contains(@class, 'codeEditorContainer')]//div[contains(@class, 'root')]//img)[2]",
+    "FileUploadJS": "(//div[contains(., 'testjs')]/following-sibling::input[@type='file'])[1]",
+    "SettingBtn": "div:nth-child(3) > ._icon_znfg9_44",
+    "CodeMainFile": "text=testjs.js",
+    "CodeTargetFolder": "text=testjsnew",
+    "MenuBar": "//div[@class='_title_znfg9_32']//div[2]//div[3]//*[name()='svg']//*[name()='path' and contains(@d,'M12 8c1.1 ')]"
 }

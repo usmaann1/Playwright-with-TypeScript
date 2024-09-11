@@ -416,7 +416,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("ABCD", async ({ teamCoursesPage }) => {
+  test.only("ABCD", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -425,6 +425,13 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.IntializeIDE(
       randomName,
       TeamCoursesData.projectTypeOption1
+    );
+    await teamCoursesPage.runNewMainFile(
+      /^Filesindex\.js$/,
+      "testjs",
+      TeamCoursesData.NewFileJS,
+      /^Filesindex\.jstestjs$/,
+      "testjsnew"
     );
   });
 });
