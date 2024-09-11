@@ -59,5 +59,9 @@
   "ImagesTextAssertion": "TEST",
   "TestGeneratedFile": "generated_image.jpg",
   "TestJavaTraditional": "class Main { public static void main(String[] args) { int count = 1; count++; System.out.println(count); } }",
-  "TestTraditonalOutput": "2"
+  "TestTraditonalOutput": "2",
+  "NewFileJS": "./test-environment/test-assets/test-resource-files/testjs.js",
+  "ChangeJSFile": "testjs/testjs.js",
+  "ChangedFileOutput": "this is a test",
+  "ChangedFilePath": "./test-environment/test-assets/test-resource-files/TestChangedFiles.zip"
 }

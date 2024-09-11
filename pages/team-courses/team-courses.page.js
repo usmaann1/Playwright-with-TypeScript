@@ -1,6 +1,7 @@
 const {
   PlaywrightCore,
 } = require("../../module-imports/helperFunctions.imports");
+const AdmZip = require("adm-zip");
 import { expect } from "@playwright/test";
 import Locators from "./team-courses.locator.json";
 import { UserFunctions } from "../../helper-functions/userFunctions";
@@ -38,6 +39,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.BtnClickedMatch = /Greet/g;
     this.JavaSwing = /Color.BLACK/g;
     this.JavaSwingReplace = "Color.RED";
+    this.CreateNewFile = "CreateNewFolderIcon";
     this.ProjectType = Locators.ProjectType;
     this.TestType = Locators.TestType;
     this.CreateCourse = Locators.CreateCourse;
@@ -109,6 +111,11 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     );
     this.ImageEditor = this.page.locator(Locators.ImageEditor);
     this.PillowImage = this.page.locator(Locators.PillowImage);
+    this.FileUploadJS = this.page.locator(Locators.FileUploadJS);
+    this.SettingBtn = this.page.locator(Locators.SettingBtn);
+    this.CodeSourceFile = this.page.locator(Locators.CodeMainFile);
+    this.CodeTargetFile = this.page.locator(Locators.CodeTargetFolder);
+    this.MenuBar = this.page.locator(Locators.MenuBar);
   }
 
   async NavigateToSignUpPage() {
@@ -605,6 +612,50 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const innerText = await element.innerText();
     const isValid = await innerText.includes(output);
     expect(isValid).toBe(true);
+  }
+
+  async runNewMainFile(intialFile, intialFileName, path, newFile, newFileName) {
+    await PlaywrightCore.click(this.FileExplorerBtnOpen);
+    await PlaywrightCore.createfile(
+      this.page,
+      this.CreateNewFile,
+      intialFileName,
+      intialFile
+    );
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await PlaywrightCore.createfile(
+      this.page,
+      this.CreateNewFile,
+      newFileName,
+      newFile
+    );
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await PlaywrightCore.fileUpload(this.FileUploadJS, path);
+    await this.SettingBtn.click();
+    await this.page.getByLabel("File").click();
+    await this.page
+      .getByRole("option", { name: TeamCoursesData.ChangeJSFile })
+      .click();
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    await PlaywrightCore.click(this.EditorPlayButton);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    const element = await this.page.$(Locators.Terminal);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    const innerText = await element.innerText();
+    const isValid = await innerText.includes(TeamCoursesData.ChangedFileOutput);
+    expect(isValid).toBe(true);
+    //await this.CodeSourceFile.dragTo(this.CodeTargetFile);
+    await PlaywrightCore.click(this.MenuBar);
+    const [download] = await Promise.all([
+      this.page.waitForEvent("download"),
+      this.page.locator("text=Download Project").click(),
+    ]);
+    await download.saveAs(TeamCoursesData.ChangedFilePath);
+    const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
+    const zipEntries = zip.getEntries();
+    zipEntries.forEach((entry) => {
+      console.log(entry.entryName);
+    });
   }
 
   async breakPoint() {

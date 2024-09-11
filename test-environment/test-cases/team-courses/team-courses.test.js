@@ -426,5 +426,12 @@ test.describe("TestSuite: Team/Courses", () => {
       randomName,
       TeamCoursesData.projectTypeOption1
     );
+    await teamCoursesPage.runNewMainFile(
+      /^Filesindex\.js$/,
+      "testjs",
+      TeamCoursesData.NewFileJS,
+      /^Filesindex\.jstestjs$/,
+      "testjsnew"
+    );
   });
 });
