@@ -11,7 +11,7 @@ import Credentials from "../../test-assets/test-data-files/Credentials/credentia
 test.describe("TestSuite: Team/Courses", () => {
   const email = Credentials.EMAIL_NUMAIR;
   const password = Credentials.PASSWORD_NUMAIR;
-  test("TC: Flow Test Python1", async ({ teamCoursesPage, browser }) => {
+  test("TC: Flow Test Python", async ({ teamCoursesPage, browser }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -172,7 +172,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadFile(TeamCoursesData.uploadFilePath);
   });
 
-  test("TC: Flow Test HTML", async ({ teamCoursesPage, browser }) => {
+  test.only("TC: Flow Test HTML", async ({ teamCoursesPage, browser }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
