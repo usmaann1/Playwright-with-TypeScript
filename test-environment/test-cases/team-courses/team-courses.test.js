@@ -416,7 +416,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test.only("ABCD", async ({ teamCoursesPage }) => {
+  test("ABCD", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
