@@ -112,6 +112,13 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.ImageEditor = this.page.locator(Locators.ImageEditor);
     this.PillowImage = this.page.locator(Locators.PillowImage);
     this.FileUploadJS = this.page.locator(Locators.FileUploadJS);
+    this.FileStructure = {
+      javascript: this.page.locator(Locators.FileUploadJS),
+      python: this.page.locator(Locators.FileUploadPython),
+      java: this.page.locator(Locators.FileUploadJava),
+      csharp: this.page.locator(Locators.FileUploadCS),
+      cpp: this.page.locator(Locators.FileUploadCpp),
+    };
     this.SettingBtn = this.page.locator(Locators.SettingBtn);
     this.CodeSourceFile = this.page.locator(Locators.CodeMainFile);
     this.CodeTargetFile = this.page.locator(Locators.CodeTargetFolder);
@@ -614,7 +621,17 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     expect(isValid).toBe(true);
   }
 
-  async runNewMainFile(intialFile, intialFileName, path, newFile, newFileName) {
+  async runNewMainFile(
+    intialFile,
+    intialFileName,
+    path,
+    newFile,
+    newFileName,
+    key,
+    changedPath,
+    source,
+    target
+  ) {
     await PlaywrightCore.click(this.FileExplorerBtnOpen);
     await PlaywrightCore.createfile(
       this.page,
@@ -630,12 +647,20 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       newFile
     );
     await PlaywrightCore.waitTimeout(this.page, 5000);
-    await PlaywrightCore.fileUpload(this.FileUploadJS, path);
-    await this.SettingBtn.click();
+    const fileLocator = this.FileStructure[key];
+    console.log(fileLocator);
+    await PlaywrightCore.fileUpload(fileLocator, path);
+    if (key === "csharp") {
+      await this.page
+        .locator("div")
+        .filter({ hasText: /^SettingsTestsConsole$/ })
+        .getByTestId("SettingsIcon")
+        .click();
+    } else {
+      await this.SettingBtn.click();
+    }
     await this.page.getByLabel("File").click();
-    await this.page
-      .getByRole("option", { name: TeamCoursesData.ChangeJSFile })
-      .click();
+    await this.page.getByRole("option", { name: changedPath }).click();
     await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
     await PlaywrightCore.waitTimeout(this.page, 20000);
@@ -644,10 +669,12 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const innerText = await element.innerText();
     const isValid = await innerText.includes(TeamCoursesData.ChangedFileOutput);
     expect(isValid).toBe(true);
-    //await this.CodeSourceFile.dragTo(this.CodeTargetFile);
+    const fileHandle = await this.page.locator(source);
+    const folderHandle = await this.page.locator(target);
+    await fileHandle.dragTo(folderHandle);
     await PlaywrightCore.click(this.MenuBar);
     const [download] = await Promise.all([
-      this.page.waitForEvent("download"),
+      this.page.waitForEvent('download'),
       this.page.locator("text=Download Project").click(),
     ]);
     await download.saveAs(TeamCoursesData.ChangedFilePath);
