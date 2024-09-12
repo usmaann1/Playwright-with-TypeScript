@@ -434,14 +434,15 @@ test.describe("TestSuite: Team/Courses", () => {
     );
     await teamCoursesPage.runNewMainFile(
       /^Filesindex\.js$/,
-      "testjjs",
+      "testjs",
       TeamCoursesData.NewFileJS,
-      /^Filesindex\.jstestjjs$/,
-      "testjjsnew",
+      /^Filesindex\.jstestjs$/,
+      "testjsnew",
       "javascript",
       TeamCoursesData.ChangeJSFile,
-      'text="testjjs.js"',
-      'text="testjjsnew"'
+      'text="testjs.js"',
+      'text="testjsnew"',
+      'testjs.js'
     );
   });
 
@@ -467,7 +468,8 @@ test.describe("TestSuite: Team/Courses", () => {
       "python",
       TeamCoursesData.ChangePYFile,
       'text="testpy.py"',
-      'text="testpynew"'
+      'text="testpynew"',
+      'testpy.py'
     );
   });
 
@@ -541,7 +543,8 @@ test.describe("TestSuite: Team/Courses", () => {
       "cpp",
       TeamCoursesData.ChangeCPPFile,
       'text="testcpp.cpp"',
-      'text="testcppnew"'
+      'text="testcppnew"',
+      'testcpp.cpp'
     );
   });
 });

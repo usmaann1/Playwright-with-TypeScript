@@ -64,7 +64,7 @@
     "OverRideProjectFiles": "//a[normalize-space()='Override Project Files']",
     "ImageEditor": "xpath=(//div[contains(@class, 'codeEditorContainer')]//img)[1]",
     "PillowImage": "(//div[contains(@class, 'codeEditorContainer')]//div[contains(@class, 'root')]//img)[2]",
-    "FileUploadJS": "(//div[contains(., 'testjjs')]/following-sibling::input[@type='file'])[1]",
+    "FileUploadJS": "(//div[contains(., 'testjs')]/following-sibling::input[@type='file'])[1]",
     "FileUploadPython": "(//div[contains(., 'testpy')]/following-sibling::input[@type='file'])[1]",
     "FileUploadJava": "(//div[contains(., 'testjava')]/following-sibling::input[@type='file'])[1]",
     "FileUploadCpp": "(//div[contains(., 'testcpp')]/following-sibling::input[@type='file'])[1]",

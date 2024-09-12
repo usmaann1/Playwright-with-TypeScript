@@ -429,7 +429,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       return await navigator.clipboard.readText();
     });
     const updatedCode = clipboardContent.replace("'purple'", "'red'");
-    console.log(updatedCode);
     await codeEditorContent.press(this.BackSpace);
     await codeEditorContent.fill(updatedCode);
     await PlaywrightCore.waitTimeout(this.page, 5000);
@@ -630,7 +629,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     key,
     changedPath,
     source,
-    target
+    target,
+    file
   ) {
     await PlaywrightCore.click(this.FileExplorerBtnOpen);
     await PlaywrightCore.createfile(
@@ -648,7 +648,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     );
     await PlaywrightCore.waitTimeout(this.page, 5000);
     const fileLocator = this.FileStructure[key];
-    console.log(fileLocator);
     await PlaywrightCore.fileUpload(fileLocator, path);
     if (key === "csharp") {
       await this.page
@@ -669,19 +668,22 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const innerText = await element.innerText();
     const isValid = await innerText.includes(TeamCoursesData.ChangedFileOutput);
     expect(isValid).toBe(true);
+    if (key === 'javascript') {
+      await this.page.getByText('testjs').first().click();
+    }
     const fileHandle = await this.page.locator(source);
     const folderHandle = await this.page.locator(target);
     await fileHandle.dragTo(folderHandle);
     await PlaywrightCore.click(this.MenuBar);
     const [download] = await Promise.all([
-      this.page.waitForEvent('download'),
+      this.page.waitForEvent("download"),
       this.page.locator("text=Download Project").click(),
     ]);
     await download.saveAs(TeamCoursesData.ChangedFilePath);
     const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
     const zipEntries = zip.getEntries();
-    zipEntries.forEach((entry) => {
-      console.log(entry.entryName);
+    const found = await zipEntries.some((entry) => {
+      return entry.entryName.includes("specificValue");
     });
   }
 
