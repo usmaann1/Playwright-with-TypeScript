@@ -630,7 +630,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     changedPath,
     source,
     target,
-    file
+    file,
+    folder
   ) {
     await PlaywrightCore.click(this.FileExplorerBtnOpen);
     await PlaywrightCore.createfile(
@@ -668,9 +669,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const innerText = await element.innerText();
     const isValid = await innerText.includes(TeamCoursesData.ChangedFileOutput);
     expect(isValid).toBe(true);
-    if (key === 'javascript') {
-      await this.page.getByText('testjs').first().click();
-    }
+    await this.page.getByText(folder).first().click();
     const fileHandle = await this.page.locator(source);
     const folderHandle = await this.page.locator(target);
     await fileHandle.dragTo(folderHandle);
