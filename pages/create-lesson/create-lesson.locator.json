@@ -102,7 +102,7 @@
                 "correctLabelIcon": "//div[contains(text(),'Correct')]",
                 "deleteIcon": "//button[@aria-label='Mark for Removal']//*[name()='svg']",
                 "undoDeleteIcon": "//button[@aria-label='Undo Remove']//*[name()='svg']",
-                "points": "//body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/span[1]"
+                "points": ""
             },
             "shortAnswer": {
                 "promptInput": "//div[@contenteditable='false']//div//div[1]//div[1]//div[1]//div[1]",
@@ -155,10 +155,10 @@
                 "line": ".cm-line",
 
                 "optionsColumn": "[data-rbd-droppable-id='options']",
-                "option1": "//body/div/div/div/div/div/div/div[@data-panel-group-direction='horizontal']/div/div/div/div[@data-panel-group-direction='horizontal']/div/div/div/div/div/div/div[@contenteditable='false']/div[@contenteditable='false']/div/div/div/div/div[@data-rbd-droppable-id='options']/div[2]/div[1]",
-                "option2": "div[role='button'][data-rbd-draggable-context-id='1'][data-rbd-draggable-id='options-0']",
+                "option1": "data-rbd-draggable-id='options-1'",
+                "option2": "[data-rbd-droppable-id='options'] [data-rbd-draggable-id='options-1']",
 
-                "answerColumn": "//div[@data-rbd-droppable-id='answer']"
+                "answerColumn": "[data-rbd-droppable-id='answer']"
             },
             "codeSelect":{
                 "codeEle": ".node-codeSelect",
@@ -166,7 +166,8 @@
                 "codeEditor": ".cm-editor",
                 "selectableTab": "//button[normalize-space()='Selectable']",
                 "correctTab": "//button[normalize-space()='Correct']",
-                "clearTab": "//button[normalize-space()='Clear']"
+                "clearTab": "//button[normalize-space()='Clear']",
+                "IncorrectAnswer": "//div[contains(text(),'Incorrect')]"
             }
         }
         },

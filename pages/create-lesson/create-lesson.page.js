@@ -398,7 +398,7 @@ exports.CreateLesson = class CreateLesson {
     }
     async uploadImage() {
         await this.Image.setInputFiles('./test-environment/test-assets/test-resource-files/corolla.jpg')
-        await this.page.waitForTimeout(3000);
+        await this.page.waitForTimeout(10000);
     }
     async validateAllFillInTheBlankFields() {
         const parent = this.textEditor.locator(this.container)
@@ -441,6 +441,7 @@ exports.CreateLesson = class CreateLesson {
         await this.validateElementsToAcceptInputOnEditor(this.heading1, clTD.textForEditor)
         subParent = parent.locator(this.answer)
         await PlaywrightCore.fill(subParent, clTD.Answer)
+        await this.page.waitForTimeout(5000);
         await PlaywrightCore.click(this.PresentationMode)
         await PlaywrightCore.click(this.gotItBtn)
         const verifyAnswer = parent.locator(this.inputTag)
@@ -448,12 +449,14 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.fill(verifyAnswer, clTD.wrongAnswer)
         await PlaywrightCore.click(this.checkAnswerBtn)
         await PlaywrightCore.click(this.closeBtn)
-        await expect(this.lineError).toHaveText(clTD.validationError)
         await this.page.waitForTimeout(3000);
+        await expect(this.lineError).toHaveText(clTD.validationError)
+        await this.page.waitForTimeout(5000);
         await PlaywrightCore.fill(verifyAnswer, clTD.Answer)
         await this.page.waitForTimeout(3000);
         await PlaywrightCore.click(this.checkAnswerBtn)
         await PlaywrightCore.click(this.closeBtn)
+        await this.page.waitForTimeout(3000);
         const toVerify = await parent.locator(this.obtainedPoints).nth(1).textContent()
         expect(toVerify).toContain('1')
     }
@@ -477,7 +480,9 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.click(optCb)
         const setupTab = parent.locator(this.setupBtn)
         await PlaywrightCore.click(setupTab)
+        await this.page.waitForTimeout(10000);
         await PlaywrightCore.click(this.PresentationMode)
+        await this.page.waitForTimeout(10000);
         await PlaywrightCore.click(this.gotItBtn)
         await this.uploadFIle(ele, './test-environment/test-assets/test-resource-files/corolla.jpg')
         await this.page.waitForTimeout(4000);
@@ -488,6 +493,8 @@ exports.CreateLesson = class CreateLesson {
         await this.page.waitForTimeout(10000);
         await expect(this.correctLabelIcon).toBeVisible()
         await this.checkBackgroundColor(this.correctLabelIcon, clTD.fileUpload.correctOptionColorVal)
+        await PlaywrightCore.click(asnwerBtn)
+        await this.page.waitForTimeout(10000);
         const toVerify = await this.points.textContent()
         expect(toVerify).toContain('1')
     
@@ -584,9 +591,7 @@ exports.CreateLesson = class CreateLesson {
         await this.checkBackgroundColor(test,clTD.tip.backgroundPink)
     }
     async dragAndDrop( sourceSelector, targetSelector) {
-   
         await sourceSelector.dragTo(targetSelector);
-
     }
     async validateParsonsFunctionality() {
         const parent = this.textEditor
@@ -628,16 +633,15 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.click(this.PresentationMode)
         await PlaywrightCore.click(this.gotItBtn)
         await expect(this.answerColumn).toBeVisible()
+        await this.page.waitForTimeout(5000);
+        const parentOption = this.optionsColumn
+        const from = this.option2
+        const to = this.answerColumn
+
         await this.page.waitForTimeout(3000);
-        this.dragAndDrop(this.option1,this.answerColumn)
-        await this.page.locator(this.option2).hover()
-        await this.page.mouse.down()
-        await this.page.locator(this.answerColumn).hover()
-        // await this.page.mouse.up()
-        // await this.page.waitForTimeout(6000);
-        // await PlaywrightCore.click(this.checkAnswerBtn)
-        // await PlaywrightCore.click(this.closeBtn)
-        
+        await from.dragTo(to)
+        await this.page.waitForTimeout(5000);
+        await PlaywrightCore.click(this.checkAnswerBtn)
     }
     async validateCodeSelectFunctionality() {
         const parent = this.textEditor
@@ -648,17 +652,28 @@ exports.CreateLesson = class CreateLesson {
         const language = this.languageDropDown
         await language.selectOption([clTD.codeSelect.language])
         const editor = this.codeEditor
-        const editorLine = editor.locator(this.line).first()
-        await PlaywrightCore.doubleClickByText(this.page,'world!')
+        const editorLine1 = editor.locator(this.line).nth(3)
         await PlaywrightCore.click(this.selectableTab)
-        await PlaywrightCore.doubleClickByText(this.page,'world!')
+        await editorLine1.selectText()
+        await this.page.waitForTimeout(3000);
+        await PlaywrightCore.doubleClickByText(this.page,'return n')
+        await this.page.waitForTimeout(3000);
         await PlaywrightCore.click(this.correctTab)
-        await PlaywrightCore.doubleClickByText(this.page,'world!')
-
+        await PlaywrightCore.ClickByText(this.page,'return n')
         await PlaywrightCore.click(this.PresentationMode)
         await PlaywrightCore.click(this.gotItBtn)
-        await PlaywrightCore.ClickByText(this.page,'world!')
+        await editorLine1.selectText()
+        await PlaywrightCore.ClickByText(this.page,'return n')
         await PlaywrightCore.click(this.checkAnswerBtn)
-        await PlaywrightCore.click(this.closeBtn)
+        await expect(this.correctLabelIcon).toBeVisible()
+        await PlaywrightCore.click(this.exitStudentView)
+    }
+    async verifyStudentViewForCorrectCodeSelectElement() {
+        const editor = this.codeEditor
+        const editorLine1 = editor.locator(this.line).nth(3)
+        await editorLine1.selectText()
+        await PlaywrightCore.ClickByText(this.page,'return n')
+        await PlaywrightCore.click(this.checkAnswerBtn)
+        await expect(this.correctLabelIcon).toBeVisible()
     }
 }
