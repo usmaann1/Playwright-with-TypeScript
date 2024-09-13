@@ -191,6 +191,7 @@ test.describe('TestSuite: Create Lesson', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
         await createLesson.selectElementFromDropdown(CLtd.elements.uploadImage)
         await createLesson.uploadImage()
+
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
     test('TC - validate adding new Fill in Blank element inside the editor Ui validations', async ({ createLesson }) => {
@@ -211,7 +212,7 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.selectElementFromDropdown(CLtd.elements.fillInBlank)
         await createLesson.validateFillInTheBlankFunctionality()
     });
-    test('TC - validate adding File upload element inside the editor', async ({ createLesson }) => {
+    test.only('TC - validate adding File upload element inside the editor', async ({ createLesson }) => {
         await createLesson.createALesson(lessonName)
         await createLesson.setVisibility()
         await createLesson.hoverOverFirstRow()
@@ -247,7 +248,7 @@ test.describe('TestSuite: Create Lesson', () => {
 
         await newCreateLessonPageInstance.verifyStudentViewForTipElement()
     });
-    test.skip('TC - validate adding Parsons Problem element inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
+    test('TC - validate adding Parsons Problem element inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.createALesson(lessonName)
         await createLesson.setVisibility()
@@ -257,13 +258,8 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.selectElementFromDropdown(CLtd.parsonProblem.element)
         await createLesson.validateParsonsFunctionality()
 
-        await this.page.locator("div[role='button'][data-rbd-draggable-context-id='1'][data-rbd-draggable-id='options-0']").hover()
-        await this.page.mouse.down()
-        await this.page.locator("//div[@data-rbd-droppable-id='answer']").hover()
-        await this.page.mouse.up()
-
     });
-    test.skip('TC - validate adding Code Select element inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
+    test('TC - validate adding Code Select element inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.createALesson(lessonName)
         await createLesson.setVisibility()
@@ -273,5 +269,13 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.selectElementFromDropdown(CLtd.codeSelect.element)
         await createLesson.validateCodeSelectFunctionality()
 
+        const link = await teamCoursesPage.PublishAndInviteCreateLesson()
+        const newPage = await browser.newPage()
+        const newTeamCoursesPageInstance = new TeamCoursesPage(newPage)
+        const newCreateLessonPageInstance = new CreateLesson(newPage)
+        await newTeamCoursesPageInstance.afterInviteSignUp(link,randomEmail,userPwd,TeamCoursesData.firstName,TeamCoursesData.LastName)
+
+        await newCreateLessonPageInstance.verifyStudentViewForCorrectCodeSelectElement()
     });
+
 })
