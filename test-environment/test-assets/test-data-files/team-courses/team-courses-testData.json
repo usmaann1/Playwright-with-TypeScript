@@ -61,7 +61,15 @@
   "TestJavaTraditional": "class Main { public static void main(String[] args) { int count = 1; count++; System.out.println(count); } }",
   "TestTraditonalOutput": "2",
   "NewFileJS": "./test-environment/test-assets/test-resource-files/testjs.js",
+  "NewFilePY": "./test-environment/test-assets/test-resource-files/testpy.py",
+  "NewFileJAVA": "./test-environment/test-assets/test-resource-files/testjava.java",
+  "NewFileCSHARP": "./test-environment/test-assets/test-resource-files/testcs.cs",
+  "NewFileCPP": "./test-environment/test-assets/test-resource-files/testcpp.cpp",
   "ChangeJSFile": "testjs/testjs.js",
+  "ChangePYFile": "testpy/testpy.py",
+  "ChangeJAVAFile": "testjava/testjava.java",
+  "ChangeCSFile": "testcs/testcs.cs",
+  "ChangeCPPFile": "testcpp/testcpp.cpp",
   "ChangedFileOutput": "this is a test",
   "ChangedFilePath": "./test-environment/test-assets/test-resource-files/TestChangedFiles.zip"
 }

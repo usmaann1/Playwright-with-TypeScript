@@ -1,6 +1,10 @@
-const { UserFunctions } = require("../../../module-imports/helperFunctions.imports");
+const {
+  UserFunctions,
+} = require("../../../module-imports/helperFunctions.imports");
 const { test } = require("../../../module-imports/testFixtures.imports");
-const { TeamCoursesPage } = require("../../../pages/team-courses/team-courses.page");
+const {
+  TeamCoursesPage,
+} = require("../../../pages/team-courses/team-courses.page");
 import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
@@ -416,7 +420,9 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("ABCD", async ({ teamCoursesPage }) => {
+  test.only("Folder and file structure verifcation/JavaScript", async ({
+    teamCoursesPage,
+  }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -431,7 +437,114 @@ test.describe("TestSuite: Team/Courses", () => {
       "testjs",
       TeamCoursesData.NewFileJS,
       /^Filesindex\.jstestjs$/,
-      "testjsnew"
+      "testjsnew",
+      "javascript",
+      TeamCoursesData.ChangeJSFile,
+      'text="testjs.js"',
+      'text="testjsnew"',
+      'testjs.js'
+    );
+  });
+
+  test("Folder and file structure verifcation/Python", async ({
+    teamCoursesPage,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption8,
+      true
+    );
+    await teamCoursesPage.runNewMainFile(
+      /^Filesmain\.py$/,
+      "testpy",
+      TeamCoursesData.NewFilePY,
+      /^Filesmain\.pytestpy$/,
+      "testpynew",
+      "python",
+      TeamCoursesData.ChangePYFile,
+      'text="testpy.py"',
+      'text="testpynew"',
+      'testpy.py'
+    );
+  });
+
+  test.skip("Folder and file structure verifcation/Java", async ({
+    teamCoursesPage,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption9,
+      true
+    );
+    await teamCoursesPage.runNewMainFile(
+      /^FilesMain\.java$/,
+      "testjava",
+      TeamCoursesData.NewFileJAVA,
+      /^FilesMain\.javatestjava$/,
+      "testjavanew",
+      "java",
+      TeamCoursesData.ChangeJAVAFile
+    );
+  });
+
+  test.skip("Folder and file structure verifcation/CSharp", async ({
+    teamCoursesPage,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption10,
+      true
+    );
+    await teamCoursesPage.runNewMainFile(
+      /^Filesmain\.csmain\.csproj$/,
+      "testcs",
+      TeamCoursesData.NewFileCSHARP,
+      /^Filesmain\.csmain\.csprojtestcs$/,
+      "testcsnew",
+      "csharp",
+      TeamCoursesData.ChangeCSFile
+    );
+  });
+
+  test("Folder and file structure verifcation/CPP", async ({
+    teamCoursesPage,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption11,
+      true
+    );
+    await teamCoursesPage.runNewMainFile(
+      /^Filesmain\.cpp$/,
+      "testcpp",
+      TeamCoursesData.NewFileCPP,
+      /^Filesmain\.cpptestcpp$/,
+      "testcppnew",
+      "cpp",
+      TeamCoursesData.ChangeCPPFile,
+      'text="testcpp.cpp"',
+      'text="testcppnew"',
+      'testcpp.cpp'
     );
   });
 });
