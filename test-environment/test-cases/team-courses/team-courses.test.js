@@ -187,7 +187,7 @@ test.describe("TestSuite: Team/Courses", () => {
     const link = await teamCoursesPage.simpleHTML();
     const newPage = await browser.newPage();
     const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
-    newTeamCoursesPageInstance.getHtmlData(
+    await newTeamCoursesPageInstance.getHtmlData(
       TeamCoursesData.HTMLTestOutput,
       link
     );
@@ -355,7 +355,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
     const newPage = await browser.newPage();
     const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
-    newTeamCoursesPageInstance.getHtmlData(
+    await newTeamCoursesPageInstance.getHtmlData(
       TeamCoursesData.HTMLFileUploadTest,
       link
     );
@@ -432,7 +432,7 @@ test.describe("TestSuite: Team/Courses", () => {
       randomName,
       TeamCoursesData.projectTypeOption1
     );
-    await teamCoursesPage.runNewMainFile(
+    await teamCoursesPage.fileStructureJSPYCPP(
       /^Filesindex\.js$/,
       "testjs",
       TeamCoursesData.NewFileJS,
@@ -442,8 +442,8 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.ChangeJSFile,
       'text="testjs.js"',
       'text="testjsnew"',
-      'testjs.js',
-      'testjs'
+      "testjs.js",
+      "testjs"
     );
   });
 
@@ -460,7 +460,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption8,
       true
     );
-    await teamCoursesPage.runNewMainFile(
+    await teamCoursesPage.fileStructureJSPYCPP(
       /^Filesmain\.py$/,
       "testpy",
       TeamCoursesData.NewFilePY,
@@ -470,8 +470,8 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.ChangePYFile,
       'text="testpy.py"',
       'text="testpynew"',
-      'testpy.py',
-      'testpy'
+      "testpy.py",
+      "testpy"
     );
   });
 
@@ -488,18 +488,23 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption9,
       true
     );
-    await teamCoursesPage.runNewMainFile(
+    await teamCoursesPage.fileStructureJAVACSHTML(
       /^FilesMain\.java$/,
-      "testjava",
+      "Helper",
       TeamCoursesData.NewFileJAVA,
-      /^FilesMain\.javatestjava$/,
-      "testjavanew",
+      /^FilesHelperMain\.java$/,
+      "Helpernew",
       "java",
-      TeamCoursesData.ChangeJAVAFile
+      TeamCoursesData.ChangeJAVAFile,
+      'text="Helper.java"',
+      'text="Helpernew"',
+      "Helper.java",
+      "Helper",
+      TeamCoursesData.FileStructureJava
     );
   });
 
-  test.skip("Folder and file structure verifcation/CSharp", async ({
+  test("Folder and file structure verifcation/CSharp", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -512,14 +517,19 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption10,
       true
     );
-    await teamCoursesPage.runNewMainFile(
+    await teamCoursesPage.fileStructureJAVACSHTML(
       /^Filesmain\.csmain\.csproj$/,
-      "testcs",
+      "Helper",
       TeamCoursesData.NewFileCSHARP,
-      /^Filesmain\.csmain\.csprojtestcs$/,
-      "testcsnew",
+      /^Filesmain\.csmain\.csprojHelper$/,
+      "Helpernew",
       "csharp",
-      TeamCoursesData.ChangeCSFile
+      TeamCoursesData.ChangeCSFile,
+      'text="Helper.cs"',
+      'text="Helpernew"',
+      "Helper.cs",
+      "Helper",
+      TeamCoursesData.FileStructureCSharp
     );
   });
 
@@ -536,7 +546,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption11,
       true
     );
-    await teamCoursesPage.runNewMainFile(
+    await teamCoursesPage.fileStructureJSPYCPP(
       /^Filesmain\.cpp$/,
       "testcpp",
       TeamCoursesData.NewFileCPP,
@@ -546,8 +556,59 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.ChangeCPPFile,
       'text="testcpp.cpp"',
       'text="testcppnew"',
-      'testcpp.cpp',
-      'testcpp'
+      "testcpp.cpp",
+      "testcpp"
+    );
+  });
+
+  test("Folder and file structure verifcation/HTML", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.ProjectTypeOption12,
+      true
+    );
+    const link = await teamCoursesPage.fileStructureJAVACSHTML(
+      /^Filesindex\.htmlstyles\.cssscript\.js$/,
+      "Helper",
+      TeamCoursesData.NewFileHTML,
+      /^Filesindex\.htmlstyles\.cssscript\.jsHelper$/,
+      "Helpernew",
+      "html",
+      TeamCoursesData.ChangeCSFile,
+      'text="Helper.js"',
+      'text="Helpernew"',
+      "Helper.js",
+      "Helper",
+      TeamCoursesData.FileStructureHTML
+    );
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.getHtmlData2(
+      newPage,
+      TeamCoursesData.ChangedFileOutput,
+      link
+    );
+    await teamCoursesPage.fileStructureHTMLRemaining(
+      /^Filesindex\.htmlstyles\.cssscript\.js$/,
+      "Helper",
+      TeamCoursesData.NewFileHTML,
+      /^Filesindex\.htmlstyles\.cssscript\.jsHelper$/,
+      "Helpernew",
+      "html",
+      TeamCoursesData.ChangeCSFile,
+      'text="Helper.js"',
+      'text="Helpernew"',
+      "Helper.js",
+      "Helper",
+      TeamCoursesData.FileStructureHTML
     );
   });
 });
