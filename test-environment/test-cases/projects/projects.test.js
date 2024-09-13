@@ -25,7 +25,7 @@ test.describe('TestSuite: Projects', () => {
 
    //verify heading
     const element = await page.locator(projectsData.PictureLabDiv);
-
+    await projects.WaitforLocator(page);
     await expect(element).not.toHaveText(projectsData.PictureLabText);
 
   });
@@ -47,7 +47,7 @@ test.describe('TestSuite: Projects', () => {
     const element = await page.locator(projectsData.PictureLabDiv);
 
     await page.waitForTimeout(20000);
-
+    await projects.WaitforLocator(page);
     await expect(element).toHaveText("Introduction");
 
   });
