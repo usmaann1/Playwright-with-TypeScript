@@ -420,7 +420,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test.only("Folder and file structure verifcation/JavaScript", async ({
+  test("Folder and file structure verifcation/JavaScript", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -442,7 +442,8 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.ChangeJSFile,
       'text="testjs.js"',
       'text="testjsnew"',
-      'testjs.js'
+      'testjs.js',
+      'testjs'
     );
   });
 
@@ -469,7 +470,8 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.ChangePYFile,
       'text="testpy.py"',
       'text="testpynew"',
-      'testpy.py'
+      'testpy.py',
+      'testpy'
     );
   });
 
@@ -544,7 +546,8 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.ChangeCPPFile,
       'text="testcpp.cpp"',
       'text="testcppnew"',
-      'testcpp.cpp'
+      'testcpp.cpp',
+      'testcpp'
     );
   });
 });
