@@ -126,5 +126,10 @@ import { expect } from "@playwright/test";
       await PlaywrightCore.click(this.BoxOfCandyFrq);
     }
 
+    async WaitforLocator(page) {
+      await page.waitForTimeout(30000);
+     
+    }
+
 
 };
