@@ -420,7 +420,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test.only("Folder and file structure verifcation/JavaScript", async ({
+  test("Folder and file structure verifcation/JavaScript", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
