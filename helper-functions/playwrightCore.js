@@ -579,4 +579,12 @@ exports.PlaywrightCore = class PlaywrightCore {
       .getByRole("textbox")
       .press("Enter");
   }
+  static async doubleClickByText(page, Text) {
+    try {
+      await page.getByText(Text).dblclick();
+    } catch (error) {
+      console.warn(`An error occurred while clicking, Error:`, error);
+      throw error;
+    }
+  }
 };
