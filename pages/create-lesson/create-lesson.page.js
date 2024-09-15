@@ -480,21 +480,21 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.click(optCb)
         const setupTab = parent.locator(this.setupBtn)
         await PlaywrightCore.click(setupTab)
-        await this.page.waitForTimeout(10000);
+        await this.page.waitForTimeout(5000);
         await PlaywrightCore.click(this.PresentationMode)
-        await this.page.waitForTimeout(10000);
+        await this.page.waitForTimeout(5000);
         await PlaywrightCore.click(this.gotItBtn)
         await this.uploadFIle(ele, './test-environment/test-assets/test-resource-files/corolla.jpg')
         await this.page.waitForTimeout(4000);
         expect(this.unSubmittedFileName).toBeVisible()
-        await this.page.waitForTimeout(10000);
+        await this.page.waitForTimeout(5000);
         const asnwerBtn = this.checkAnswerBtn
         await PlaywrightCore.click(asnwerBtn)
-        await this.page.waitForTimeout(10000);
+        await this.page.waitForTimeout(5000);
         await expect(this.correctLabelIcon).toBeVisible()
         await this.checkBackgroundColor(this.correctLabelIcon, clTD.fileUpload.correctOptionColorVal)
-        await PlaywrightCore.click(asnwerBtn)
-        await this.page.waitForTimeout(10000);
+        // await PlaywrightCore.click(asnwerBtn)
+        await this.page.waitForTimeout(5000);
         const toVerify = await this.points.textContent()
         expect(toVerify).toContain('1')
     
