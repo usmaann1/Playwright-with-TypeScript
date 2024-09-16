@@ -611,4 +611,116 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.FileStructureHTML
     );
   });
+
+  test("Folder and file structure verifcation/Python-turtle", async ({
+    teamCoursesPage,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption2,
+      true
+    );
+    await teamCoursesPage.fileStructureJSPYCPP(
+      /^Filesmain\.py$/,
+      "testpy",
+      TeamCoursesData.NewFilePY,
+      /^Filesmain\.pytestpy$/,
+      "testpynew",
+      "python",
+      TeamCoursesData.ChangePYFile,
+      'text="testpy.py"',
+      'text="testpynew"',
+      "testpy.py",
+      "testpy"
+    );
+  });
+
+  test("Folder and file structure verifcation/Python-matplotlib", async ({
+    teamCoursesPage,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption6,
+      true
+    );
+    await teamCoursesPage.fileStructureJSPYCPP(
+      /^Filesmain\.py$/,
+      "testpy",
+      TeamCoursesData.NewFilePY,
+      /^Filesmain\.pytestpy$/,
+      "testpynew",
+      "python",
+      TeamCoursesData.ChangePYFile,
+      'text="testpy.py"',
+      'text="testpynew"',
+      "testpy.py",
+      "testpy"
+    );
+  });
+
+  test.skip("Folder and file structure verifcation/java-swing", async ({
+    teamCoursesPage,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.ProjectTypeOption13,
+      true
+    );
+    await teamCoursesPage.fileStructureJSPYCPP(
+      /^Filesmain\.py$/,
+      "testpy",
+      TeamCoursesData.NewFilePY,
+      /^Filesmain\.pytestpy$/,
+      "testpynew",
+      "python",
+      TeamCoursesData.ChangePYFile,
+      'text="testpy.py"',
+      'text="testpynew"',
+      "testpy.py",
+      "testpy"
+    );
+  });
+
+  test.only("Folder and file structure verifcation/Python-pillow", async ({
+    teamCoursesPage,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOPtion14,
+      true
+    );
+    await teamCoursesPage.fileStructureJSPYCPP(
+      /^Filesmain\.py$/,
+      "testpy",
+      TeamCoursesData.NewFilePY,
+      /^Filesmain\.pytestpy$/,
+      "testpynew",
+      "python",
+      TeamCoursesData.ChangePYFile,
+      'text="testpy.py"',
+      'text="testpynew"',
+      "testpy.py",
+      "testpy"
+    );
+  });
 });
