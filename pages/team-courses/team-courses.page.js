@@ -118,6 +118,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       java: this.page.locator(Locators.FileUploadJava),
       csharp: this.page.locator(Locators.FileUploadCS),
       cpp: this.page.locator(Locators.FileUploadCpp),
+      html: this.page.locator(Locators.FileUploadHTML),
     };
     this.SettingBtn = this.page.locator(Locators.SettingBtn);
     this.CodeSourceFile = this.page.locator(Locators.CodeMainFile);
@@ -370,6 +371,14 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async getHtmlData(data, url) {
     await this.page.goto(url);
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    const htmlContent = await this.page.content();
+    const isValid = await htmlContent.includes(data);
+    expect(isValid).toBe(true);
+  }
+  async getHtmlData2(page, data, url) {
+    await this.page.goto(url);
+    await PlaywrightCore.waitTimeout(page, 5000);
     const htmlContent = await this.page.content();
     const isValid = await htmlContent.includes(data);
     expect(isValid).toBe(true);
@@ -620,7 +629,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     expect(isValid).toBe(true);
   }
 
-  async runNewMainFile(
+  async fileStructureJSPYCPP(
     intialFile,
     intialFileName,
     path,
@@ -669,6 +678,105 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const innerText = await element.innerText();
     const isValid = await innerText.includes(TeamCoursesData.ChangedFileOutput);
     expect(isValid).toBe(true);
+    await this.page.getByText(folder).first().click();
+    const fileHandle = await this.page.locator(source);
+    const folderHandle = await this.page.locator(target);
+    await fileHandle.dragTo(folderHandle);
+    await PlaywrightCore.click(this.MenuBar);
+    const [download] = await Promise.all([
+      this.page.waitForEvent("download"),
+      this.page.locator("text=Download Project").click(),
+    ]);
+    await download.saveAs(TeamCoursesData.ChangedFilePath);
+    const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
+    const zipEntries = zip.getEntries();
+    const found = await zipEntries.some((entry) => {
+      return entry.entryName.includes("specificValue");
+    });
+  }
+
+  async fileStructureJAVACSHTML(
+    intialFile,
+    intialFileName,
+    path,
+    newFile,
+    newFileName,
+    key,
+    changedPath,
+    source,
+    target,
+    file,
+    folder,
+    changedMainFile
+  ) {
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    const codeEditorContent = await this.EditorTextBox.nth(1);
+    await codeEditorContent.press(this.SelectAll);
+    await codeEditorContent.press(this.BackSpace);
+    await codeEditorContent.fill(changedMainFile);
+    await PlaywrightCore.click(this.FileExplorerBtnOpen);
+    await PlaywrightCore.createfile(
+      this.page,
+      this.CreateNewFile,
+      intialFileName,
+      intialFile
+    );
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await PlaywrightCore.createfile(
+      this.page,
+      this.CreateNewFile,
+      newFileName,
+      newFile
+    );
+    await PlaywrightCore.waitTimeout(this.page, 5000);
+    const fileLocator = this.FileStructure[key];
+    await PlaywrightCore.fileUpload(fileLocator, path);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    await PlaywrightCore.click(this.EditorPlayButton);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
+    if (key !== "html") {
+      const element = await this.page.$(Locators.Terminal);
+      await PlaywrightCore.waitTimeout(this.page, 20000);
+      const innerText = await element.innerText();
+      const isValid = await innerText.includes(
+        TeamCoursesData.ChangedFileOutput
+      );
+      expect(isValid).toBe(true);
+    } else {
+      const src = await this.HtmlWebView.evaluate((el) => el.src);
+      return src;
+    }
+    await this.page.getByText(folder).first().click();
+    const fileHandle = await this.page.locator(source);
+    const folderHandle = await this.page.locator(target);
+    await fileHandle.dragTo(folderHandle);
+    await PlaywrightCore.click(this.MenuBar);
+    const [download] = await Promise.all([
+      this.page.waitForEvent("download"),
+      this.page.locator("text=Download Project").click(),
+    ]);
+    await download.saveAs(TeamCoursesData.ChangedFilePath);
+    const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
+    const zipEntries = zip.getEntries();
+    const found = await zipEntries.some((entry) => {
+      return entry.entryName.includes("specificValue");
+    });
+  }
+
+  async fileStructureHTMLRemaining(
+    intialFile,
+    intialFileName,
+    path,
+    newFile,
+    newFileName,
+    key,
+    changedPath,
+    source,
+    target,
+    file,
+    folder,
+    changedMainFile
+  ) {
     await this.page.getByText(folder).first().click();
     const fileHandle = await this.page.locator(source);
     const folderHandle = await this.page.locator(target);
