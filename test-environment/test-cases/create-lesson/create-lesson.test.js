@@ -212,7 +212,7 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.selectElementFromDropdown(CLtd.elements.fillInBlank)
         await createLesson.validateFillInTheBlankFunctionality()
     });
-    test.only('TC - validate adding File upload element inside the editor', async ({ createLesson }) => {
+    test('TC - validate adding File upload element inside the editor', async ({ createLesson }) => {
         await createLesson.createALesson(lessonName)
         await createLesson.setVisibility()
         await createLesson.hoverOverFirstRow()
