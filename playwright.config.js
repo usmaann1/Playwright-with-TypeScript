@@ -17,7 +17,7 @@ export default defineConfig({
   /* Retry on CI only */
   retries:0,
   /* Opt out of parallel tests on CI. */
-  workers: 8,
+  workers: 5,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['json-summary', { outputFile: 'summary.json' }],
@@ -32,6 +32,7 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: "https://play.juicemind.com/",
     headless:true,
+    actionTimeout: 15000,
     permissions: ['notifications'],
     screenshot: 'on',
     permissions: ['clipboard-read', 'clipboard-write'], // Grant clipboard permissions
