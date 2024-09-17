@@ -129,5 +129,14 @@
     "PointScore1Txt":"Points scored: 1",
     "CloseBtnValue":"Close",
     "IncorrectMsgValue":"Incorrect",
-    "CorrectMsgValue":"Correct"
+    "CorrectMsgValue":"Correct",
+    "heading1": {
+        "backgroundColor": "rgb(65, 101, 117)"
+    },
+    "heading2": {
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+    },
+    "heading3": {
+        "backgroundColor": "rgb(255, 255, 255)"
+    }
 }
