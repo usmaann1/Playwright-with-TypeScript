@@ -119,11 +119,13 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       csharp: this.page.locator(Locators.FileUploadCS),
       cpp: this.page.locator(Locators.FileUploadCpp),
       html: this.page.locator(Locators.FileUploadHTML),
+      swing: this.page.locator(Locators.FileUploadSwing),
     };
     this.SettingBtn = this.page.locator(Locators.SettingBtn);
     this.CodeSourceFile = this.page.locator(Locators.CodeMainFile);
     this.CodeTargetFile = this.page.locator(Locators.CodeTargetFolder);
     this.MenuBar = this.page.locator(Locators.MenuBar);
+    this.FullScreenMinimize = this.page.locator(Locators.FullScreenMinimize);
   }
 
   async NavigateToSignUpPage() {
@@ -734,7 +736,22 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
     await PlaywrightCore.waitTimeout(this.page, 20000);
-    if (key !== "html") {
+    if (key === "html") {
+      const src = await this.HtmlWebView.evaluate((el) => el.src);
+      return src;
+    } else if (key === "swing") {
+      await PlaywrightCore.click(this.FullScreenBtn.nth(1));
+      await PlaywrightCore.waitTimeout(this.page, 5000);
+      const Colors = await UserFunctions.getAllColorsFromCanvas(
+        this.page,
+        TeamCoursesData.AssetsPaths
+      );
+      const hasShadeOfRed = await Colors.some((color) =>
+        UserFunctions.isShadeOfRed(color)
+      );
+      await expect(hasShadeOfRed).toBe(true);
+      await PlaywrightCore.click(this.FullScreenMinimize);
+    } else {
       const element = await this.page.$(Locators.Terminal);
       await PlaywrightCore.waitTimeout(this.page, 20000);
       const innerText = await element.innerText();
@@ -742,9 +759,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
         TeamCoursesData.ChangedFileOutput
       );
       expect(isValid).toBe(true);
-    } else {
-      const src = await this.HtmlWebView.evaluate((el) => el.src);
-      return src;
     }
     await this.page.getByText(folder).first().click();
     const fileHandle = await this.page.locator(source);

@@ -1,6 +1,8 @@
-Helper class in Java 
+// Helper/Helper.java
+package Helper;
+
 public class Helper {
-    public void printGreeting(String name) {
-        System.out.println("this is a " + name);
-    }    
+    public String getTestMessage() {
+        return "this is a test";
+    }
 }
