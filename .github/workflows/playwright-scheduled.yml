@@ -1,7 +1,7 @@
 name: Playwright Tests
 on:
   schedule:
-    - cron: '*/60 * * * *'  # Runs Every hour
+    - cron: '*/120 * * * *'  # Runs Every hour
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
