@@ -16,7 +16,7 @@ test.describe('TestSuite: Create Teams', () => {
         await createTeams.clickOnCrossMessage()
       });
 
-    test('TC - UI Validation Teams/Courses Page', async ({ createTeams }) => {
+    test('Umair - TC - UI Validation Teams/Courses Page', async ({ createTeams }) => {
         await expect(createTeams.JuiceMindLogo).toBeVisible()
         await expect(createTeams.ReportIssueHeading).toHaveText(CreateTeamsTestData.ReportIssueHeadingValue)
         await expect(createTeams.ReverToOldSIteHeading).toHaveText(CreateTeamsTestData.ReverToOldSIteHeadingValue)
@@ -40,7 +40,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.ImportCodingRoomDotComHeading).toHaveText(CreateTeamsTestData.CreateNewTeamImportCodingRoomsHeadingValue)
     });  
 
-    test('TC - Validate UI of Create New Team Pop Up', async ({ createTeams }) => {
+    test('Umair - TC - Validate UI of Create New Team Pop Up', async ({ createTeams }) => {
         await PlaywrightCore.click(createTeams.CreateNewTeamBtn)
         await expect(createTeams.StartFromScratchBtn).toHaveText(CreateTeamsTestData.StartFromScratchBtnValue)
         await expect(createTeams.StartFromScratchDescription).toHaveText(CreateTeamsTestData.StartFromScratchDescriptionValue)
@@ -60,7 +60,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.GetAQuoteBtn).toHaveText(CreateTeamsTestData.GetAQuoteBtnValue)
     });
 
-    test('TC - Create a New Team From Scratch', async ({ createTeams }) => {
+    test('Umair - TC - Create a New Team From Scratch', async ({ createTeams }) => {
         await createTeams.createNewTeamFromScratch(CreateTeamsTestData.TeamCreatedHeadingValue)
         await expect(createTeams.TeamCreatedHeading).toHaveText(CreateTeamsTestData.TeamCreatedHeadingValue)
         await expect(createTeams.FolderIconNoDataImage).toBeVisible()
@@ -70,7 +70,7 @@ test.describe('TestSuite: Create Teams', () => {
         await createTeams.deleteFirstTeamInList()
     });
 
-    test('TC - Delete a Newly Create Team - From Scratch', async ({ createTeams }) => {
+    test('Umair - TC - Delete a Newly Create Team - From Scratch', async ({ createTeams }) => {
         await createTeams.deleteAllTeams(CreateTeamsTestData.TeamCreatedHeadingValue)
         const threeDotsCount = await createTeams.ThreeDots.count()
         await createTeams.createNewTeamFromScratch(CreateTeamsTestData.TeamCreatedHeadingValue)
@@ -83,7 +83,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.ThreeDots).toHaveCount(threeDotsCount)
     });
 
-    test.skip('TC - Create a New Team CS Awesome', async ({ createTeams }) => {
+    test('Umair - TC - Create a New Team CS Awesome', async ({ createTeams }) => {
         await createTeams.createNewTeamCSAwesome(CreateTeamsTestData.TeamCreatedHeadingValue)
         await PlaywrightCore.waitTimeout(createTeams.page, 3000)
         await PlaywrightCore.waitForElementToDisappear(createTeams, createTeams.LoaderCreatingTeam)
@@ -101,7 +101,7 @@ test.describe('TestSuite: Create Teams', () => {
         await createTeams.deleteFirstTeamInList()
     });
 
-    test.skip('TC - Delete a Newly Create Team - CS Awesome', async ({ createTeams }) => {
+    test('Umair - TC - Delete a Newly Create Team - CS Awesome', async ({ createTeams }) => {
         await createTeams.deleteAllTeams(CreateTeamsTestData.TeamCreatedHeadingValue)
         const threeDotsCount = await createTeams.ThreeDots.count()
         await createTeams.createNewTeamCSAwesome(CreateTeamsTestData.TeamCreatedHeadingValue)
@@ -122,7 +122,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.ThreeDots).toHaveCount(threeDotsCount)
     });
 
-    test('TC - Delete a Newly Create Team UI Validations', async ({ createTeams }) => {
+    test('Umair - TC - Delete a Newly Create Team UI Validations', async ({ createTeams }) => {
         await createTeams.deleteAllTeams(CreateTeamsTestData.TeamCreatedHeadingValue)
         const threeDotsCount = await createTeams.ThreeDots.count()
         await createTeams.createNewTeamFromScratch(CreateTeamsTestData.TeamCreatedHeadingValue)
@@ -138,7 +138,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.ThreeDots).toHaveCount(threeDotsCount)
     });
 
-    test('TC - UI Validation of Write Team Name Pop Up Box - From Scratch', async ({ createTeams }) => {
+    test('Umair - TC - UI Validation of Write Team Name Pop Up Box - From Scratch', async ({ createTeams }) => {
         await PlaywrightCore.click(createTeams.CreateNewTeamBtn)
         await PlaywrightCore.click(createTeams.StartFromScratchBtn)
         await expect(createTeams.TeamNameTxtBox).toBeVisible()
@@ -149,7 +149,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.SubmitBtn).toHaveText(CreateTeamsTestData.SubmitBtnValue)
     });
 
-    test('TC - UI Validation of Write Team Name Pop Up Box - CS Awesome', async ({ createTeams }) => {
+    test('Umair - TC - UI Validation of Write Team Name Pop Up Box - CS Awesome', async ({ createTeams }) => {
         await PlaywrightCore.click(createTeams.CreateNewTeamBtn)
         await PlaywrightCore.click(createTeams.CSAwseomeBtn)
         await expect(createTeams.TeamNameTxtBox).toBeVisible()
@@ -161,7 +161,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.CSAwesomeCreationNoteTxt).toHaveText(CreateTeamsTestData.CSAwesomeCreationNoteTxtValue)
     });
 
-    test('TC - Join Quiz Re-direction and UI Validation', async ({ joinQuizPage, createTeams }) => {
+    test('Umair - TC - Join Quiz Re-direction and UI Validation', async ({ joinQuizPage, createTeams }) => {
         await PlaywrightCore.click(createTeams.JoinQuizBtn)
         await expect(joinQuizPage.Logo).toBeVisible()
         await expect(joinQuizPage.JoinQuizHeading).toHaveText(JoinQuizTestData.JoinQuizHeadingValue)
@@ -169,7 +169,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(joinQuizPage.EnterBtn).toHaveText(JoinQuizTestData.EnterBtnValue)
     });
 
-    test.skip('TC - Import Course CS Awesome From Team/Courses Page', async ({ createTeams }) => {
+    test('Umair - TC - Import Course CS Awesome From Team/Courses Page', async ({ createTeams }) => {
         await PlaywrightCore.click(createTeams.ImportCoursesBtnMainPageTeamsCourses)
         await expect(createTeams.UploadCodingRoomZipFileHeading).toHaveText(CreateTeamsTestData.UploadCodingRoomZipFileHeadingValue)
         await PlaywrightCore.fileUpload(createTeams.UploadZip, CreateTeamsTestData.CSAwesomeCourseZipPath)
@@ -189,7 +189,7 @@ test.describe('TestSuite: Create Teams', () => {
         await createTeams.deleteFirstTeamInList()
     });
 
-    test.skip('TC - Import Course CS Awesome From Import Coding Rooms Courses Button', async ({ createTeams }) => {
+    test('Umair - TC - Import Course CS Awesome From Import Coding Rooms Courses Button', async ({ createTeams }) => {
         await PlaywrightCore.click(createTeams.ImportCodingRoomsCoursesBtn)
         await expect(createTeams.UploadCodingRoomZipFileHeading) .toHaveText(CreateTeamsTestData.UploadCodingRoomZipFileHeadingValue)
         await PlaywrightCore.fileUpload(createTeams.UploadZip, CreateTeamsTestData.CSAwesomeCourseZipPath)
@@ -209,7 +209,7 @@ test.describe('TestSuite: Create Teams', () => {
         await createTeams.deleteFirstTeamInList()
     });
 
-    test.skip('TC - Import Course CS Awesome From New Teams Import Courses Button', async ({ createTeams }) => {
+    test('Umair - TC - Import Course CS Awesome From New Teams Import Courses Button', async ({ createTeams }) => {
         await PlaywrightCore.click(createTeams.CreateNewTeamBtn)
         await PlaywrightCore.click(createTeams.CreateNewTeamImportCoursesBtn)
         await expect(createTeams.UploadCodingRoomZipFileHeading) .toHaveText(CreateTeamsTestData.UploadCodingRoomZipFileHeadingValue)
@@ -229,7 +229,7 @@ test.describe('TestSuite: Create Teams', () => {
         await createTeams.deleteFirstTeamInList()
     });
 
-    test.skip('TC - Import Replit Team From Teams/Courses Page', async ({ createTeams }) => {
+    test('Umair - TC - Import Replit Team From Teams/Courses Page', async ({ createTeams }) => {
         await PlaywrightCore.click(createTeams.ImportTeamBtnMainPageTeamsCourses)
         await expect(createTeams.UploadReplitTeamZipFileHeading) .toHaveText(CreateTeamsTestData.UploadReplitTeamZipFileHeadingValue)
         await PlaywrightCore.fileUpload(createTeams.UploadZip, CreateTeamsTestData.ReplitTeamsZipPath)
@@ -253,7 +253,7 @@ test.describe('TestSuite: Create Teams', () => {
         await createTeams.deleteFirstTeamInList()
     });
 
-    test.skip('TC - Import Replit Team From Create Team Pop Up Page', async ({ createTeams }) => {
+    test('Umair - TC - Import Replit Team From Create Team Pop Up Page', async ({ createTeams }) => {
         await PlaywrightCore.click(createTeams.CreateNewTeamBtn)
         await PlaywrightCore.click(createTeams.CreateNewTeamImportTeamsBtn)
         await expect(createTeams.UploadReplitTeamZipFileHeading) .toHaveText(CreateTeamsTestData.UploadReplitTeamZipFileHeadingValue)

@@ -29,7 +29,7 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
     });
 
-    test('TC - Create Lesson Insert - Embed', async ({ createLesson }) => {
+    test('Umair - TC - Create Lesson Insert - Embed', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.embed)
         await expect(createLesson.EmbedEnterURL).toBeVisible()
         await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
@@ -45,7 +45,7 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('TC - Create Lesson Insert - Embed Replace URL', async ({ createLesson }) => {
+    test('Umair - TC - Create Lesson Insert - Embed Replace URL', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.embed)
         await expect(createLesson.EmbedEnterURL).toBeVisible()
         await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
@@ -69,7 +69,7 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('TC - Create Lesson Insert - Insert File', async ({ createLesson }) => {
+    test('Umair - TC - Create Lesson Insert - Insert File', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.insertFiles)
         await PlaywrightCore.fileUpload(createLesson.ChooseFileBox, CreateTeamsTestData.ReplitTeamsZipPath)
         await PlaywrightCore.waitFor(createLesson.JuiceMindZipAfterUploaded)
@@ -80,7 +80,7 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await expect(createLesson.JuiceMindZipAfterUploaded).not.toBeVisible()
     });
 
-    test('TC - Create Lesson Insert - HTML', async ({ createLesson }) => {
+    test('Umair - TC - Create Lesson Insert - HTML', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.html)
         await expect(createLesson.HTMLNode).toBeVisible()
         await PlaywrightCore.click(createLesson.HTMLNode)

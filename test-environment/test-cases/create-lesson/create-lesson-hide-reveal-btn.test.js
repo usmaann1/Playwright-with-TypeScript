@@ -32,7 +32,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
     });
 
-    test('TC - Create Lesson Insert - Hide & Reveal Button', async ({ createLesson }) => {
+    test('Umair - TC - Create Lesson Insert - Hide & Reveal Button', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.hideAndRevealButton)
         await expect(createLesson.HideRevealTextBox).toBeVisible()
         await PlaywrightCore.fill(createLesson.HideRevealTextBox, CLHRtd.HideRevealTxtHeadingValue)
@@ -47,7 +47,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('TC - Create Lesson Insert - Hide & Reveal Button - Presentation Mode', async ({ createLesson }) => {
+    test('Umair - TC - Create Lesson Insert - Hide & Reveal Button - Presentation Mode', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.hideAndRevealButton)
         await expect(createLesson.HideRevealTextBox).toBeVisible()
         await PlaywrightCore.fill(createLesson.HideRevealTextBox, CLHRtd.HideRevealTxtHeadingValue)
@@ -74,7 +74,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
-    test('TC - Create Lesson Insert - Hide & Reveal Button - Student Login Check', async ({ createLesson, teamCoursesPage, browser }) => {
+    test('Umair - TC - Create Lesson Insert - Hide & Reveal Button - Student Login Check', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.selectElementFromDropdown(CLtd.elements.hideAndRevealButton)
         await expect(createLesson.HideRevealTextBox).toBeVisible()

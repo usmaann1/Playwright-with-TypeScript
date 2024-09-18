@@ -32,7 +32,7 @@ test.describe('TestSuite: Create Lesson Table Select', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
     });
 
-    test('TC - Create Lesson - Table Select - UI Validation', async ({ createLesson }) => {
+   test('Umair - TC - Create Lesson - Table Select - UI Validation', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.tableSelect)
         await expect(createLesson.SelectTableHeadingTxtBox).toBeVisible()
         await expect(createLesson.SelectSolutionHeading).toHaveText(CLSTtd.SelectSolutionHeadingValue)
@@ -55,7 +55,7 @@ test.describe('TestSuite: Create Lesson Table Select', () => {
         await expect(createLesson.SelectTableOpt2LeanersCan).toHaveText(CLSTtd.SelectTableOpt2LeanersCanValue)
     });
 
-    test('TC - Create Lesson - Table Select - Basics', async ({ createLesson }) => {
+   test('Umair - TC - Create Lesson - Table Select - Basics', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.tableSelect)
         await expect(createLesson.SelectTableHeadingTxtBox).toBeVisible()
         await PlaywrightCore.fill(createLesson.SelectTableHeadingTxtBox, CLtd.Heading1plus1)
@@ -76,7 +76,7 @@ test.describe('TestSuite: Create Lesson Table Select', () => {
         await PlaywrightCore.click(createLesson.SelectTableSelectBox1)
     });
 
-    test('TC - Create Lesson - Table Select - Presentation Mode', async ({ createLesson }) => {
+   test('Umair - TC - Create Lesson - Table Select - Presentation Mode', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.tableSelect)
         await expect(createLesson.SelectTableHeadingTxtBox).toBeVisible()
         await PlaywrightCore.fill(createLesson.SelectTableHeadingTxtBox, CLtd.Heading1plus1)
@@ -107,7 +107,7 @@ test.describe('TestSuite: Create Lesson Table Select', () => {
         await expect(createLesson.PointScoreMsg).toHaveText(CLtd.PointScore1Txt)
     });
 
-    test('TC - Create Lesson - Table Select - Student Mode', async ({ createLesson, teamCoursesPage, browser }) => {
+   test('Umair - TC - Create Lesson - Table Select - Student Mode', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.selectElementFromDropdown(CLtd.elements.tableSelect)
         await expect(createLesson.SelectTableHeadingTxtBox).toBeVisible()
