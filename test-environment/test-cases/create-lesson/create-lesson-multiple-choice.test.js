@@ -31,7 +31,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
     });
 
-    test('TC - Create Lesson Insert - Multiple Choice', async ({ createLesson }) => {
+    test('Umair - TC - Create Lesson Insert - Multiple Choice', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
         await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
@@ -65,7 +65,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Wrong Answer', async ({ createLesson }) => {
+    test('Umair - TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Wrong Answer', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
         await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
@@ -115,7 +115,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
-    test('TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer', async ({ createLesson }) => {
+    test('Umair - TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
         await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
@@ -165,7 +165,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
-    test('TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer - Multiple Selections Allowed', async ({ createLesson }) => {
+    test('Umair - TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer - Multiple Selections Allowed', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
         await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
@@ -217,7 +217,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
     });
 
 
-    test('TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer - Multiple Selections Allowed - Student Mode', async ({ createLesson, teamCoursesPage, browser }) => {
+    test('Umair - TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer - Multiple Selections Allowed - Student Mode', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
