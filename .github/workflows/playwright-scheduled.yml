@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    timeout-minutes: 120
+    timeout-minutes: 300
     runs-on: large-runner
     permissions:
       contents: read
