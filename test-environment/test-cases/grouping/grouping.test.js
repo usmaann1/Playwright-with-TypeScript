@@ -12,7 +12,7 @@ test.describe('TestSuite: Grouping', () => {
         await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
     });
 
-    test('TC1 - Validate Grouping', async ({ grouping, page }) => {
+    test('Usman TC1 - Validate Grouping', async ({ grouping, page }) => {
         
         await grouping.NavigateToTeamCoursesPage();
         await grouping.ClickOnCreateNewTeamBtn();
