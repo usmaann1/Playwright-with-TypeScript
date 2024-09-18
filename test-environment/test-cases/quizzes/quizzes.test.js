@@ -13,7 +13,7 @@ test.describe('TestSuite: Quizzes', () => {
     await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
   });
 
-  test('TC1 - Validate Quizzes', async ({ quizzes, page }) => {
+  test('Usman TC1 - Validate Quizzes', async ({ quizzes, page }) => {
     
       await quizzes.ClickQuizzesButton()
       await quizzes.ClickJavaProgrammingButton()
