@@ -63,6 +63,7 @@ exports.CreateLesson = class CreateLesson {
         this.heading3 = this.page.locator(Locators.lessonPage.textEditor.heading3)
         this.bulletList = this.page.locator(Locators.lessonPage.textEditor.bulletList)
         this.NumberedList = this.page.locator(Locators.lessonPage.textEditor.NumberedList)
+        this.tasklistElement = this.page.locator(Locators.lessonPage.textEditor.tasklistElement)
         this.unOrdered = this.page.locator(Locators.lessonPage.textEditor.unOrdered)
         this.list = this.page.locator(Locators.lessonPage.textEditor.list)
         this.taskList = this.page.locator(Locators.lessonPage.textEditor.taskList)
@@ -318,7 +319,7 @@ exports.CreateLesson = class CreateLesson {
     async validateAddingMultipleBulletOnEditor(ele) {
         const parent = this.textEditor
         const child = parent.locator(ele)
-        const row = child.locator(this.list)
+        const row = this.list
         const text = clTD.textForEditor
         await PlaywrightCore.fill(child, text)
         await PlaywrightCore.click(row)
@@ -385,7 +386,7 @@ exports.CreateLesson = class CreateLesson {
             }
         }
     }
-    async valdiateCheckboxSelection(dataType, typeValue) {
+    async valdiateClickingCheckbox(dataType, typeValue) {
         const parent = this.textEditor
         const child = parent.locator(this.taskList)
         const input = child.locator(this.inputBox)
@@ -393,8 +394,18 @@ exports.CreateLesson = class CreateLesson {
         await expect(input).toHaveAttribute(dataType, typeValue)
         await PlaywrightCore.click(input)
         await this.page.waitForTimeout(2000);
+    }
+    async validateCheckBoxCheckedState() {
+        const parent = this.textEditor
+        const child = parent.locator(this.taskList)
         const verifyChecked = child.locator('li')
         await expect(verifyChecked).toHaveAttribute(clTD.attributes.datachecked, clTD.attributes.checkedTrue)
+    }
+    async validateCheckBoxUnCheckedState() {
+        const parent = this.textEditor
+        const child = parent.locator(this.taskList)
+        const verifyChecked = child.locator('li')
+        await expect(verifyChecked).toHaveAttribute(clTD.attributes.datachecked, clTD.attributes.checkedFalse)
     }
     async uploadImage() {
         await this.Image.setInputFiles('./test-environment/test-assets/test-resource-files/corolla.jpg')
@@ -675,5 +686,14 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.ClickByText(this.page,'return n')
         await PlaywrightCore.click(this.checkAnswerBtn)
         await expect(this.correctLabelIcon).toBeVisible()
+    }
+    async validateHeadinElementOnPresentationView() {
+        await PlaywrightCore.click(this.PresentationMode)
+        await PlaywrightCore.click(this.gotItBtn)
+    }
+    async validateNumberedList() {
+        const parent = this.NumberedList
+        const child = parent.locator(this.list)
+        await PlaywrightCore.press(child, 'Enter')
     }
 }

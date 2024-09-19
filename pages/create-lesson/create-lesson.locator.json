@@ -74,6 +74,7 @@
             "quoteTag": "blockquote",
             "quoteCaptionTag": "figcaption",
             "placeHolderTag": "data-placeholder",
+            "tasklistElement": "input type='checkbox'",
             "fillInBlankContainer": {
                 "container": ".node-fillInTheBlank",
                 "setupBtn": "//button[normalize-space()='Setup']",
