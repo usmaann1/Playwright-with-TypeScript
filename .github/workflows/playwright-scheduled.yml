@@ -58,10 +58,10 @@ jobs:
       run: |
         PASSED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="passed")] | length' summary.json)
         FAILED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="failed")] | length' summary.json)
-        FAILED_TESTS=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status == "failed") | .specs.specs.title] | unique' summary.json)
+        FAILED_TESTS=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status == "failed") | .title] | unique | join(", ")' summary.json)
         echo "PASSED=$PASSED" >> $GITHUB_ENV 
         echo "FAILED=$FAILED" >> $GITHUB_ENV
-        echo "FAILED_TESTS=$FAILED_TESTS" >> $GITHUB_ENV 
+        echo "FAILED_TESTS=${FAILED_TESTS//,/\\,} >> $GITHUB_ENV 
           
           
           
