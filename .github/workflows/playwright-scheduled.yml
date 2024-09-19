@@ -31,7 +31,7 @@ jobs:
 
    
     - name: Run Playwright tests
-      run: APP_URL=${{ env.APP_URL}} npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=json > summary.json || true
+      run: APP_URL=${{ env.APP_URL}} npx playwright test --reporter=json > summary.json || true
       
     - name: List files in directory
       run: ls -la
@@ -58,10 +58,8 @@ jobs:
       run: |
         PASSED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="passed")] | length' summary.json)
         FAILED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="failed")] | length' summary.json)
-        FAILED_TESTS=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status == "failed") | .title] | unique | join(", ")' summary.json)
         echo "PASSED=$PASSED" >> $GITHUB_ENV 
-        echo "FAILED=$FAILED" >> $GITHUB_ENV
-        echo "FAILED_TESTS=${FAILED_TESTS//,/\\,}" >> $GITHUB_ENV 
+        echo "FAILED=$FAILED" >> $GITHUB_ENV 
           
           
           
@@ -105,11 +103,6 @@ jobs:
                 {
                   title: 'Failed',
                   value: `${{env.FAILED}}`,
-                  short: true
-                },
-                {
-                  title: 'FAILED TESTS',
-                  value: `${{env.FAILED_TESTS}}`,
                   short: true
                 }]
               }]
