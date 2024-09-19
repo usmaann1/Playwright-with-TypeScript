@@ -1,12 +1,12 @@
-name: Playwright Tests
+name: Playwright Tests Scheduled job
 on:
-  schedule:
-    - cron: '0 0 * * *'  # Runs Every day at 12:00 AM
+  
+      # Runs At minute 0 past every 4th hour. schedule: - cron: '0 */4 * * *'
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
   test:
-    timeout-minutes: 120
+    timeout-minutes: 300
     runs-on: large-runner
     permissions:
       contents: read

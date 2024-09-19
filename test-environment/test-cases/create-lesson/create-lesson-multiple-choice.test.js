@@ -31,7 +31,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
     });
 
-    test('TC - Create Lesson Insert - Multiple Choice', async ({ createLesson }) => {
+    test('Umair - TC - Create Lesson Insert - Multiple Choice', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
         await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
@@ -65,7 +65,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Wrong Answer', async ({ createLesson }) => {
+    test('Umair - TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Wrong Answer', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
         await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
@@ -115,7 +115,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
-    test('TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer', async ({ createLesson }) => {
+    test('Umair - TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
         await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
@@ -147,7 +147,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await PlaywrightCore.click(createLesson.OptionsCheckBox5)
         await PlaywrightCore.click(createLesson.SetupBtn)
         await expect(createLesson.PointsTxt).toHaveText(CLtd.PointsTxtValue)
-        await PlaywrightCore.fill(createLesson.MultipleChoicePointsInput, CLtd.Four)
+        await PlaywrightCore.fill(createLesson.MultipleChoicePointsInput, CLtd.One)
         await PlaywrightCore.click(createLesson.presnetationMode)
         await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
         await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
@@ -158,14 +158,14 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await PlaywrightCore.click(createLesson.PresentationModeOpt2)
         await PlaywrightCore.click(createLesson.CheckAnswerBtn)
         await expect(createLesson.IncorrectAndCorrectAnswerHeading).toHaveText(CLtd.CorrectAnswerTxt)
-        await expect(createLesson.PointScoreMsg).toHaveText(CLtd.PointScore4Txt)
+        await expect(createLesson.PointScoreMsg).toHaveText(CLtd.PointScore1Txt)
         await expect(createLesson.CloseBtn).toHaveText(CLtd.CloseBtnValue)
         await PlaywrightCore.click(createLesson.CloseBtn)
         await expect(createLesson.CorrectMsg).toHaveText(CLtd.CorrectMsgValue)
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
-    test('TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer - Multiple Selections Allowed', async ({ createLesson }) => {
+    test('Umair - TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer - Multiple Selections Allowed', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
         await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
@@ -197,7 +197,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.click(createLesson.PresentationModeOpt1CheckBox)
         await expect(createLesson.PointsTxt).toHaveText(CLtd.PointsTxtValue)
-        await PlaywrightCore.fill(createLesson.MultipleChoicePointsInput, CLtd.Four)
+        await PlaywrightCore.fill(createLesson.MultipleChoicePointsInput, CLtd.One)
         await PlaywrightCore.click(createLesson.presnetationMode)
         await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
         await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
@@ -209,7 +209,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await PlaywrightCore.click(createLesson.PresentationModeOpt1CheckBox)
         await PlaywrightCore.click(createLesson.CheckAnswerBtn)
         await expect(createLesson.IncorrectAndCorrectAnswerHeading).toHaveText(CLtd.CorrectAnswerTxt)
-        await expect(createLesson.PointScoreMsg).toHaveText(CLtd.PointScore4Txt)
+        await expect(createLesson.PointScoreMsg).toHaveText(CLtd.PointScore1Txt)
         await expect(createLesson.CloseBtn).toHaveText(CLtd.CloseBtnValue)
         await PlaywrightCore.click(createLesson.CloseBtn)
         await expect(createLesson.CorrectMsg).toHaveText(CLtd.CorrectMsgValue)
@@ -217,7 +217,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
     });
 
 
-    test('TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer - Multiple Selections Allowed - Student Mode', async ({ createLesson, teamCoursesPage, browser }) => {
+    test('Umair - TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer - Multiple Selections Allowed - Student Mode', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)

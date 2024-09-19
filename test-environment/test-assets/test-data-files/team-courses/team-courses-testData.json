@@ -62,8 +62,10 @@
   "TestTraditonalOutput": "2",
   "NewFileJS": "./test-environment/test-assets/test-resource-files/testjs.js",
   "NewFilePY": "./test-environment/test-assets/test-resource-files/testpy.py",
-  "NewFileJAVA": "./test-environment/test-assets/test-resource-files/testjava.java",
-  "NewFileCSHARP": "./test-environment/test-assets/test-resource-files/testcs.cs",
+  "NewFileJAVA": "./test-environment/test-assets/test-resource-files/Helper.java",
+  "NewFileJAVASwing": "./test-environment/test-assets/test-resource-files/HelperSwing.java",
+  "NewFileCSHARP": "./test-environment/test-assets/test-resource-files/Helper.cs",
+  "NewFileHTML": "./test-environment/test-assets/test-resource-files/Helper.js",
   "NewFileCPP": "./test-environment/test-assets/test-resource-files/testcpp.cpp",
   "ChangeJSFile": "testjs/testjs.js",
   "ChangePYFile": "testpy/testpy.py",
@@ -71,5 +73,9 @@
   "ChangeCSFile": "testcs/testcs.cs",
   "ChangeCPPFile": "testcpp/testcpp.cpp",
   "ChangedFileOutput": "this is a test",
-  "ChangedFilePath": "./test-environment/test-assets/test-resource-files/TestChangedFiles.zip"
+  "ChangedFilePath": "./test-environment/test-assets/test-resource-files/TestChangedFiles.zip",
+  "FileStructureJava": "import Helper.Helper; public class Main { public static void main(String[] args) { Helper helper = new Helper(); System.out.println(helper.getTestMessage()); } }",
+  "FileStructureCSharp": "using Helpers; class Program { static void Main() { Helper helper = new Helper(); string message = helper.Greet(\"test\"); System.Console.WriteLine(message); } }",
+  "FileStructureHTML": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Helper Example</title>\n    <script src=\"Helper/Helper.js\" defer></script>\n</head>\n<body>\n    <h1>Helper Example</h1>\n    <p id=\"greetingMessage\"></p>\n    <script>\n        // Ensure that the script runs after the page is fully loaded\n        document.addEventListener('DOMContentLoaded', () => {\n            const greetingMessage = document.getElementById('greetingMessage');\n            \n            // Use the Helper class to get a greeting message\n            const helper = new Helper();\n            const message = helper.greet('test');\n            greetingMessage.textContent = message;\n        });\n    </script>\n</body>\n</html>",
+  "FileStructureSwing": "import HelperSwing.HelperSwing; import javax.swing.*; import javax.swing.event.ChangeEvent; import javax.swing.event.ChangeListener; import java.awt.*; public class Main { public static void main(String[] args) { SwingUtilities.invokeLater(() -> new ColorMixerFrame()); } public static class ColorMixerFrame extends JFrame { private JSlider sliderRed, sliderGreen, sliderBlue; private JPanel colorDisplayPanel; public ColorMixerFrame() { super(\"Color Mixer\"); setLayout(new BorderLayout()); sliderRed = new JSlider(JSlider.HORIZONTAL, 0, 255, 0); sliderGreen = new JSlider(JSlider.HORIZONTAL, 0, 255, 0); sliderBlue = new JSlider(JSlider.HORIZONTAL, 0, 255, 0); setupSlider(sliderRed); setupSlider(sliderGreen); setupSlider(sliderBlue); ColorChangeListener colorChangeListener = new ColorChangeListener(); sliderRed.addChangeListener(colorChangeListener); sliderGreen.addChangeListener(colorChangeListener); sliderBlue.addChangeListener(colorChangeListener); colorDisplayPanel = new JPanel(); colorDisplayPanel.setBackground(HelperSwing.getDefaultColor()); add(sliderRed, BorderLayout.NORTH); add(sliderGreen, BorderLayout.CENTER); add(sliderBlue, BorderLayout.SOUTH); add(colorDisplayPanel, BorderLayout.EAST); setSize(400, 400); setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); setVisible(true); } private void setupSlider(JSlider slider) { slider.setMajorTickSpacing(50); slider.setPaintTicks(true); slider.setPaintLabels(true); } private class ColorChangeListener implements ChangeListener { @Override public void stateChanged(ChangeEvent e) { int red = sliderRed.getValue(); int green = sliderGreen.getValue(); int blue = sliderBlue.getValue(); colorDisplayPanel.setBackground(new Color(red, green, blue)); } } } }"
 }

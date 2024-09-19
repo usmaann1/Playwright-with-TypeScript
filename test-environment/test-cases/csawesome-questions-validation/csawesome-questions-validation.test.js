@@ -13,7 +13,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
   });
 
-  test('TC - 1. Getting Started and Primitive Types', async ({ csawsome, page }) => {
+  test('Usman TC - 1. Getting Started and Primitive Types', async ({ csawsome, page }) => {
     await csawsome.NavigateToTeamCoursesPage();
     
     await expect(csawsome.CreateNewTeamBtn).toBeVisible();
@@ -55,7 +55,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
-  test('TC - 2. Using Objects', async ({ csawsome, page }) => {
+  test('Usman TC - 2. Using Objects', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     
@@ -99,7 +99,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
-  test('TC - 3. Boolean Expressions & If Statements', async ({ csawsome, page }) => {
+  test('Usman TC - 3. Boolean Expressions & If Statements', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     
@@ -143,7 +143,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
-  test('TC - 4. Iteration (Loops)', async ({ csawsome, page }) => {
+  test('Usman TC - 4. Iteration (Loops)', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     
@@ -187,7 +187,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
-  test('TC - 5. Writing Classes', async ({ csawsome, page }) => {
+  test('Usman TC - 5. Writing Classes', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     
@@ -231,7 +231,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
-  test('TC - 6. Arrays', async ({ csawsome, page }) => {
+  test('Usman TC - 6. Arrays', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     
@@ -275,7 +275,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
-  test('TC - 7. ArrayList', async ({ csawsome, page }) => {
+  test('Usman TC - 7. ArrayList', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     
@@ -319,7 +319,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
-  test('TC - 8. 2DArrays', async ({ csawsome, page }) => {
+  test('Usman TC - 8. 2DArrays', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     
@@ -363,7 +363,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
-  test('TC - 9. Inheritence', async ({ csawsome, page }) => {
+  test('Usman TC - 9. Inheritence', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     
@@ -407,7 +407,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
-  test('TC - 10. Recursion', async ({ csawsome, page }) => {
+  test('Usman TC - 10. Recursion', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     
@@ -451,7 +451,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
-  test('TC - 11. Post Test and Survey', async ({ csawsome, page }) => {
+  test('Usman TC - 11. Post Test and Survey', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     
@@ -495,7 +495,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
-  test('TC - 12. Preparing For Exams', async ({ csawsome, page }) => {
+  test('Usman TC - 12. Preparing For Exams', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     
@@ -539,7 +539,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
-  test('TC - 13. Timed Multiple Choice Exam', async ({ csawsome, page }) => {
+  test('Usman TC - 13. Timed Multiple Choice Exam', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     
@@ -583,7 +583,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
-  test('TC - 14. Mixed Up Code - Free Response Practice', async ({ csawsome, page }) => {
+  test('Usman TC - 14. Mixed Up Code - Free Response Practice', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     
@@ -627,7 +627,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
     
   });
 
-  test('TC - 15. Free Response Practise', async ({ csawsome, page }) => {
+  test('Usman TC - 15. Free Response Practise', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     
@@ -670,7 +670,7 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
 
     
   });
-  test('TC - 16. Stories', async ({ csawsome, page }) => {
+  test('Usman TC - 16. Stories', async ({ csawsome, page }) => {
 
     await csawsome.NavigateToTeamCoursesPage();
     

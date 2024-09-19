@@ -11,7 +11,7 @@ test.describe('TestSuite: Login', () => {
         await loginPage.NavigateToLoginPage()
       });
 
-    test('TC: UI Validations', async ({loginPage}) => {
+    test('Umair - TC: UI Validations', async ({loginPage}) => {
         await expect(loginPage.Logo).toBeVisible()
         await expect(loginPage.LoginHeading).toHaveText(LoginCredentials.LoginHeadingValue)
         await expect(loginPage.EmailAddressTxtBox).toBeVisible()
@@ -24,7 +24,7 @@ test.describe('TestSuite: Login', () => {
         await expect(loginPage.ForgotPasswordBtn).toHaveText(LoginCredentials.ForgotPasswordBtnValue)
     }); 
 
-    test('TC: Valid Login', async ({loginPage}) => {
+    test('Umair - TC: Valid Login', async ({loginPage}) => {
         await loginPage.fillCredentialsAndLogin(Credentials.EMAIL, Credentials.PASSWORD)
         await expect(loginPage.ProfilePicture).toBeVisible()
     }); 
@@ -33,7 +33,7 @@ test.describe('TestSuite: Login', () => {
         const loginUserName = InvalidLoginCredentials.UserName
         const loginPassword = InvalidLoginCredentials.Password
        
-        test('TC-InvalidLoginErrorAssertion - UserName: '+loginUserName+', Password '+loginPassword, async ({loginPage}) => {
+        test('Umair - TC-InvalidLoginErrorAssertion - UserName: '+loginUserName+', Password '+loginPassword, async ({loginPage}) => {
             await loginPage.fillCredentialsAndLogin(loginUserName,loginPassword)
             if(loginUserName != Credentials.EMAIL && loginUserName == "")
             {
@@ -57,14 +57,14 @@ test.describe('TestSuite: Login', () => {
         });
     }
 
-    test('TC: Login Page to Sign Up Page Redirection', async ({loginPage}) => {
+    test('Umair - TC: Login Page to Sign Up Page Redirection', async ({loginPage}) => {
         PlaywrightCore.click(loginPage.SignUpWithJuicMindBtn)
         await expect(loginPage.SignUpHeading).toHaveText(LoginCredentials.SignUpHeadingValue)
         PlaywrightCore.click(loginPage.LogInNavigationBtn)
         await expect(loginPage.LoginHeading).toHaveText(LoginCredentials.LoginHeadingValue)
     }); 
 
-    test('TC: Forgot Password UI Validations & Navigation', async ({loginPage}) => {
+    test('Umair - TC: Forgot Password UI Validations & Navigation', async ({loginPage}) => {
         await loginPage.NavigateToForgotPasswordPage()
         await expect(loginPage.Logo).toBeVisible()
         await expect(loginPage.LoginHeading).toHaveText(LoginCredentials.LoginHeadingValue)

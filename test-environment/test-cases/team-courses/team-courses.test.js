@@ -11,7 +11,7 @@ import Credentials from "../../test-assets/test-data-files/Credentials/credentia
 test.describe("TestSuite: Team/Courses", () => {
   const email = Credentials.EMAIL_NUMAIR;
   const password = Credentials.PASSWORD_NUMAIR;
-  test("TC: Flow Test Python", async ({ teamCoursesPage, browser }) => {
+  test("[Numair] - TC: Flow Test Python", async ({ teamCoursesPage, browser }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -41,7 +41,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
-  test("TC: Flow Test Java", async ({ teamCoursesPage, browser }) => {
+  test("[Numair] - TC: Flow Test Java", async ({ teamCoursesPage, browser }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -71,7 +71,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
-  test("TC: Flow Test CSharp", async ({ teamCoursesPage, browser }) => {
+  test("[Numair] - TC: Flow Test CSharp", async ({ teamCoursesPage, browser }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -101,7 +101,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
-  test("TC: Flow Test C++", async ({ teamCoursesPage, browser }) => {
+  test("[Numair] - TC: Flow Test C++", async ({ teamCoursesPage, browser }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -131,7 +131,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
-  test("TC: Flow Test JavaScript", async ({ teamCoursesPage, browser }) => {
+  test("[Numair] - TC: Flow Test JavaScript", async ({ teamCoursesPage, browser }) => {
     const randomEmail = await UserFunctions.generateRandomEmail(email);
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
@@ -172,7 +172,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadFile(TeamCoursesData.uploadFilePath);
   });
 
-  test("TC: Flow Test HTML", async ({ teamCoursesPage, browser }) => {
+  test("[Numair] - TC: Flow Test HTML", async ({ teamCoursesPage, browser }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -187,13 +187,13 @@ test.describe("TestSuite: Team/Courses", () => {
     const link = await teamCoursesPage.simpleHTML();
     const newPage = await browser.newPage();
     const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
-    newTeamCoursesPageInstance.getHtmlData(
+    await newTeamCoursesPageInstance.getHtmlData(
       TeamCoursesData.HTMLTestOutput,
       link
     );
   });
 
-  test("TC: Flow Test Python with Turtle", async ({ teamCoursesPage }) => {
+  test("[Numair] - TC: Flow Test Python with Turtle", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -206,7 +206,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.pythonWithTurtle();
   });
 
-  test("TC: Flow Test Python with Tkinter", async ({ teamCoursesPage }) => {
+  test("[Numair] - TC: Flow Test Python with Tkinter", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -219,7 +219,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.pythonWithTkinter();
   });
 
-  test("TC: Flow Test Java with Swing", async ({ teamCoursesPage }) => {
+  test("[Numair] - TC: Flow Test Java with Swing", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -232,7 +232,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.javaWithSwing();
   });
 
-  test("TC: Flow Test Python with Matplotlib", async ({ teamCoursesPage }) => {
+  test("[Numair] - TC: Flow Test Python with Matplotlib", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -245,7 +245,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.pythonWithMatplotlib();
   });
 
-  test("TC: Flow Test Python with pillow", async ({ teamCoursesPage }) => {
+  test("[Numair] - TC: Flow Test Python with pillow", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -258,7 +258,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.pythonWithPillow();
   });
 
-  test("TC: Upload Python file", async ({ teamCoursesPage }) => {
+  test("[Numair] - TC: Upload Python file", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -274,7 +274,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadProgrammingFile();
   });
 
-  test("TC: Upload JAVA file", async ({ teamCoursesPage }) => {
+  test("[Numair] - TC: Upload JAVA file", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -290,7 +290,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadProgrammingFile();
   });
 
-  test("TC: Upload CSharp file", async ({ teamCoursesPage }) => {
+  test("[Numair] - TC: Upload CSharp file", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -306,7 +306,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadProgrammingFile();
   });
 
-  test("TC: Upload CPP file", async ({ teamCoursesPage }) => {
+  test("[Numair] - TC: Upload CPP file", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -322,7 +322,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadProgrammingFile();
   });
 
-  test("TC: Upload JavaScript file", async ({ teamCoursesPage }) => {
+  test("[Numair] - TC: Upload JavaScript file", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -337,7 +337,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadProgrammingFile();
   });
 
-  test("TC: Upload HTML file", async ({ teamCoursesPage, browser }) => {
+  test("[Numair] - TC: Upload HTML file", async ({ teamCoursesPage, browser }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -355,13 +355,13 @@ test.describe("TestSuite: Team/Courses", () => {
     );
     const newPage = await browser.newPage();
     const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
-    newTeamCoursesPageInstance.getHtmlData(
+    await newTeamCoursesPageInstance.getHtmlData(
       TeamCoursesData.HTMLFileUploadTest,
       link
     );
   });
 
-  test("TC: Upload CSV file", async ({ teamCoursesPage }) => {
+  test("[Numair] - TC: Upload CSV file", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -376,7 +376,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadCSV();
   });
 
-  test("TC: Upload JPG file", async ({ teamCoursesPage }) => {
+  test("[Numair] - TC: Upload JPG file", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -390,7 +390,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.AssertImages(TeamCoursesData.TestJPG);
   });
 
-  test("TC: Upload PNG file", async ({ teamCoursesPage }) => {
+  test("[Numair] - TC: Upload PNG file", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email, password);
@@ -404,7 +404,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.AssertImages(TeamCoursesData.TestPNG);
   });
 
-  test("TC: Flow Traditional Java", async ({ teamCoursesPage }) => {
+  test("[Numair] - TC: Flow Traditional Java", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     const randomEmail = await UserFunctions.generateRandomEmail(email);
@@ -420,7 +420,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("Folder and file structure verifcation/JavaScript", async ({
+  test("[Numair] - Folder and file structure verifcation/JavaScript", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -432,7 +432,7 @@ test.describe("TestSuite: Team/Courses", () => {
       randomName,
       TeamCoursesData.projectTypeOption1
     );
-    await teamCoursesPage.runNewMainFile(
+    await teamCoursesPage.fileStructureJSPYCPP(
       /^Filesindex\.js$/,
       "testjs",
       TeamCoursesData.NewFileJS,
@@ -442,12 +442,12 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.ChangeJSFile,
       'text="testjs.js"',
       'text="testjsnew"',
-      'testjs.js',
-      'testjs'
+      "testjs.js",
+      "testjs"
     );
   });
 
-  test("Folder and file structure verifcation/Python", async ({
+  test("[Numair] - Folder and file structure verifcation/Python", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -460,7 +460,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption8,
       true
     );
-    await teamCoursesPage.runNewMainFile(
+    await teamCoursesPage.fileStructureJSPYCPP(
       /^Filesmain\.py$/,
       "testpy",
       TeamCoursesData.NewFilePY,
@@ -470,12 +470,12 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.ChangePYFile,
       'text="testpy.py"',
       'text="testpynew"',
-      'testpy.py',
-      'testpy'
+      "testpy.py",
+      "testpy"
     );
   });
 
-  test.skip("Folder and file structure verifcation/Java", async ({
+  test("[Numair] - Folder and file structure verifcation/Java", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -488,18 +488,23 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption9,
       true
     );
-    await teamCoursesPage.runNewMainFile(
+    await teamCoursesPage.fileStructureJAVACSHTML(
       /^FilesMain\.java$/,
-      "testjava",
+      "Helper",
       TeamCoursesData.NewFileJAVA,
-      /^FilesMain\.javatestjava$/,
-      "testjavanew",
+      /^FilesHelperMain\.java$/,
+      "Helpernew",
       "java",
-      TeamCoursesData.ChangeJAVAFile
+      TeamCoursesData.ChangeJAVAFile,
+      'text="Helper.java"',
+      'text="Helpernew"',
+      "Helper.java",
+      "Helper",
+      TeamCoursesData.FileStructureJava
     );
   });
 
-  test.skip("Folder and file structure verifcation/CSharp", async ({
+  test("[Numair] - Folder and file structure verifcation/CSharp", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -512,18 +517,23 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption10,
       true
     );
-    await teamCoursesPage.runNewMainFile(
+    await teamCoursesPage.fileStructureJAVACSHTML(
       /^Filesmain\.csmain\.csproj$/,
-      "testcs",
+      "Helper",
       TeamCoursesData.NewFileCSHARP,
-      /^Filesmain\.csmain\.csprojtestcs$/,
-      "testcsnew",
+      /^Filesmain\.csmain\.csprojHelper$/,
+      "Helpernew",
       "csharp",
-      TeamCoursesData.ChangeCSFile
+      TeamCoursesData.ChangeCSFile,
+      'text="Helper.cs"',
+      'text="Helpernew"',
+      "Helper.cs",
+      "Helper",
+      TeamCoursesData.FileStructureCSharp
     );
   });
 
-  test("Folder and file structure verifcation/CPP", async ({
+  test("[Numair] - Folder and file structure verifcation/CPP", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -536,7 +546,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.projectTypeOption11,
       true
     );
-    await teamCoursesPage.runNewMainFile(
+    await teamCoursesPage.fileStructureJSPYCPP(
       /^Filesmain\.cpp$/,
       "testcpp",
       TeamCoursesData.NewFileCPP,
@@ -546,8 +556,172 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.ChangeCPPFile,
       'text="testcpp.cpp"',
       'text="testcppnew"',
-      'testcpp.cpp',
-      'testcpp'
+      "testcpp.cpp",
+      "testcpp"
+    );
+  });
+
+  test("[Numair] - Folder and file structure verifcation/HTML", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.ProjectTypeOption12,
+      true
+    );
+    const link = await teamCoursesPage.fileStructureJAVACSHTML(
+      /^Filesindex\.htmlstyles\.cssscript\.js$/,
+      "Helper",
+      TeamCoursesData.NewFileHTML,
+      /^Filesindex\.htmlstyles\.cssscript\.jsHelper$/,
+      "Helpernew",
+      "html",
+      TeamCoursesData.ChangeCSFile,
+      'text="Helper.js"',
+      'text="Helpernew"',
+      "Helper.js",
+      "Helper",
+      TeamCoursesData.FileStructureHTML
+    );
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.getHtmlData2(
+      newPage,
+      TeamCoursesData.ChangedFileOutput,
+      link
+    );
+    await teamCoursesPage.fileStructureHTMLRemaining(
+      /^Filesindex\.htmlstyles\.cssscript\.js$/,
+      "Helper",
+      TeamCoursesData.NewFileHTML,
+      /^Filesindex\.htmlstyles\.cssscript\.jsHelper$/,
+      "Helpernew",
+      "html",
+      TeamCoursesData.ChangeCSFile,
+      'text="Helper.js"',
+      'text="Helpernew"',
+      "Helper.js",
+      "Helper",
+      TeamCoursesData.FileStructureHTML
+    );
+  });
+
+  test("[Numair] - Folder and file structure verifcation/Python-turtle", async ({
+    teamCoursesPage,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption2,
+      true
+    );
+    await teamCoursesPage.fileStructureJSPYCPP(
+      /^Filesmain\.py$/,
+      "testpy",
+      TeamCoursesData.NewFilePY,
+      /^Filesmain\.pytestpy$/,
+      "testpynew",
+      "python",
+      TeamCoursesData.ChangePYFile,
+      'text="testpy.py"',
+      'text="testpynew"',
+      "testpy.py",
+      "testpy"
+    );
+  });
+
+  test("[Numair] - Folder and file structure verifcation/Python-matplotlib", async ({
+    teamCoursesPage,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption6,
+      true
+    );
+    await teamCoursesPage.fileStructureJSPYCPP(
+      /^Filesmain\.py$/,
+      "testpy",
+      TeamCoursesData.NewFilePY,
+      /^Filesmain\.pytestpy$/,
+      "testpynew",
+      "python",
+      TeamCoursesData.ChangePYFile,
+      'text="testpy.py"',
+      'text="testpynew"',
+      "testpy.py",
+      "testpy"
+    );
+  });
+
+  test("[Numair] - Folder and file structure verifcation/java-swing", async ({
+    teamCoursesPage,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.ProjectTypeOption13,
+      true
+    );
+    await teamCoursesPage.fileStructureJAVACSHTML(
+      /^FilesMain\.java$/,
+      "HelperSwing",
+      TeamCoursesData.NewFileJAVASwing,
+      /^FilesHelperSwingMain\.java$/,
+      "HelperSwingnew",
+      "swing",
+      TeamCoursesData.ChangeJAVAFile,
+      'text="HelperSwing.java"',
+      'text="HelperSwingnew"',
+      "HelperSwing.java",
+      "HelperSwing",
+      TeamCoursesData.FileStructureSwing
+    );
+  });
+
+  test("[Numair] - Folder and file structure verifcation/Python-pillow", async ({
+    teamCoursesPage,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOPtion14,
+      true
+    );
+    await teamCoursesPage.fileStructureJSPYCPP(
+      /^Filesmain\.py$/,
+      "testpy",
+      TeamCoursesData.NewFilePY,
+      /^Filesmain\.pytestpy$/,
+      "testpynew",
+      "python",
+      TeamCoursesData.ChangePYFile,
+      'text="testpy.py"',
+      'text="testpynew"',
+      "testpy.py",
+      "testpy"
     );
   });
 });

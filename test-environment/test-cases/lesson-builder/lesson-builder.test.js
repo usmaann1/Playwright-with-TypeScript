@@ -14,7 +14,7 @@ test.describe('TestSuite: Lesson Builder', () => {
     await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
   });
 
-  test('TC - Validate UI of Lesson Builder Page', async ({ lessonBuilder, page }) => {
+  test('Usman TC - Validate UI of Lesson Builder Page', async ({ lessonBuilder, page }) => {
 
     await lessonBuilder.NavigateToTeamCoursesPage();
     
