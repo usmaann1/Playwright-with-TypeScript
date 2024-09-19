@@ -33,6 +33,7 @@
         "dataType": "data-type",
         "value": "taskList",
         "checkedTrue": "true",
+        "checkedFalse": "false",
         "type": "type",
         "valueCb": "checkbox",
         "datachecked": "data-checked"

@@ -386,7 +386,7 @@ exports.CreateLesson = class CreateLesson {
             }
         }
     }
-    async valdiateCheckboxSelection(dataType, typeValue) {
+    async valdiateClickingCheckbox(dataType, typeValue) {
         const parent = this.textEditor
         const child = parent.locator(this.taskList)
         const input = child.locator(this.inputBox)
@@ -394,8 +394,18 @@ exports.CreateLesson = class CreateLesson {
         await expect(input).toHaveAttribute(dataType, typeValue)
         await PlaywrightCore.click(input)
         await this.page.waitForTimeout(2000);
+    }
+    async validateCheckBoxCheckedState() {
+        const parent = this.textEditor
+        const child = parent.locator(this.taskList)
         const verifyChecked = child.locator('li')
         await expect(verifyChecked).toHaveAttribute(clTD.attributes.datachecked, clTD.attributes.checkedTrue)
+    }
+    async validateCheckBoxUnCheckedState() {
+        const parent = this.textEditor
+        const child = parent.locator(this.taskList)
+        const verifyChecked = child.locator('li')
+        await expect(verifyChecked).toHaveAttribute(clTD.attributes.datachecked, clTD.attributes.checkedFalse)
     }
     async uploadImage() {
         await this.Image.setInputFiles('./test-environment/test-assets/test-resource-files/corolla.jpg')
