@@ -642,7 +642,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     source,
     target,
     file,
-    folder
+    folder,
+    matchArray
   ) {
     await PlaywrightCore.click(this.FileExplorerBtnOpen);
     await PlaywrightCore.createfile(
@@ -692,9 +693,11 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await download.saveAs(TeamCoursesData.ChangedFilePath);
     const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
     const zipEntries = zip.getEntries();
-    const found = await zipEntries.some((entry) => {
-      return entry.entryName.includes("specificValue");
-    });
+    const entryNames = zipEntries.map((entry) => entry.entryName);
+    // const allMatch = entryNames.every((entryName) => matchArray.includes(entryName));
+    // await expect(allMatch).toBe(true)
+    // console.log(allMatch);
+    console.log(entryNames);
   }
 
   async fileStructureJAVACSHTML(
@@ -772,9 +775,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await download.saveAs(TeamCoursesData.ChangedFilePath);
     const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
     const zipEntries = zip.getEntries();
-    const found = await zipEntries.some((entry) => {
-      return entry.entryName.includes("specificValue");
-    });
+    const entryNames = zipEntries.map((entry) => entry.entryName);
+    console.log(entryNames);
   }
 
   async fileStructureHTMLRemaining(
@@ -803,9 +805,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await download.saveAs(TeamCoursesData.ChangedFilePath);
     const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
     const zipEntries = zip.getEntries();
-    const found = await zipEntries.some((entry) => {
-      return entry.entryName.includes("specificValue");
-    });
+    const entryNames = zipEntries.map((entry) => entry.entryName);
+    console.log(entryNames);
   }
 
   async breakPoint() {
