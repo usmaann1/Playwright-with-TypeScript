@@ -14,7 +14,8 @@ test.describe('TestSuite: Lesson Builder', () => {
     await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
   });
 
-  test('Usman TC - Validate UI of Lesson Builder Page', async ({ lessonBuilder, page }) => {
+  test('Usman TC=> Verify presentation mode functionality on teacher side, Verify Students visibility on teacher side once they join, Verify student cant see assignment until it publish, Verify student can see assignement once it publish, Verify multiple assignments can create in a call and their visiblity on student side'
+    , async ({ lessonBuilder, page }) => {
 
     await lessonBuilder.NavigateToTeamCoursesPage();
     

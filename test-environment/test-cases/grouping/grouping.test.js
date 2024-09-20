@@ -12,11 +12,13 @@ test.describe('TestSuite: Grouping', () => {
         await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
     });
 
-    test('Usman TC1 - Validate Grouping', async ({ grouping, page }) => {
+    test('Usman TC1=> Verify Students are in Unassigned group once they join, Verify they can join other groups, Verify group A students cant see other group B students editor, Verify Students in a same group can share the editor'
+        , async ({ grouping, page }) => {
         
         await grouping.NavigateToTeamCoursesPage();
         await grouping.ClickOnCreateNewTeamBtn();
         await grouping.ClickOnStartFromScratch();
+        //await page.waitForTimeout(5000);
         await grouping.FillTeamNameTxtBox();
         await grouping.Submitbtn();
         await expect.toHaveText(groupingData.NoData && groupingData.ClassName);

@@ -13,7 +13,7 @@ test.describe('TestSuite: Projects', () => {
     await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
   });
 
-  test('Usman TC1 - Validate Projects', async ({ projects, page }) => {
+  test('Usman TC1=> Verify user is not able to write anything on Preview Projects', async ({ projects, page }) => {
     
     await projects.ClickProjects();
     await projects.ClickPictureLabButton();
@@ -30,7 +30,7 @@ test.describe('TestSuite: Projects', () => {
 
   });
 
-  test('Usman TC2 - Validate Projects', async ({ projects, page }) => {
+  test('Usman TC2=> Verify Projects title after creating a Course', async ({ projects, page }) => {
     
     await projects.ClickProjects();
     await projects.ClickPictureLabButton();
