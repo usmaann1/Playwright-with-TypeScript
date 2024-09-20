@@ -497,7 +497,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test.only("[Numair] - Folder and file structure verifcation/Python - Sign in, create team, create assignment, initialize IDE, create two folders and one file, change entry point, execute to verify output, drag and drop the file into a folder, and verify download.", async ({
+  test("[Numair] - Folder and file structure verifcation/Python - Sign in, create team, create assignment, initialize IDE, create two folders and one file, change entry point, execute to verify output, drag and drop the file into a folder, and verify download.", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
