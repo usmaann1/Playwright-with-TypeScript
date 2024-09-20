@@ -497,7 +497,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - Folder and file structure verifcation/Python - Sign in, create team, create assignment, initialize IDE, create two folders and one file, change entry point, execute to verify output, drag and drop the file into a folder, and verify download.", async ({
+  test.only("[Numair] - Folder and file structure verifcation/Python - Sign in, create team, create assignment, initialize IDE, create two folders and one file, change entry point, execute to verify output, drag and drop the file into a folder, and verify download.", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -521,7 +521,8 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="testpy.py"',
       'text="testpynew"',
       "testpy.py",
-      "testpy"[("main.py", "testpy/", "testpynew/", "testpynew/testpy.py")]
+      "testpy",
+      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"]
     );
   });
 
@@ -550,7 +551,8 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="Helpernew"',
       "Helper.java",
       "Helper",
-      TeamCoursesData.FileStructureJava
+      TeamCoursesData.FileStructureJava,
+      ["Helper/", "Helpernew/", "Helpernew/Helper.java", "Main.java"]
     );
   });
 
@@ -668,7 +670,15 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="Helpernew"',
       "Helper.js",
       "Helper",
-      TeamCoursesData.FileStructureHTML
+      TeamCoursesData.FileStructureHTML,
+      [
+        "Helper/",
+        "Helpernew/",
+        "Helpernew/Helper.js",
+        "index.html",
+        "script.js",
+        "styles.css",
+      ]
     );
   });
 
@@ -755,7 +765,13 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="HelperSwingnew"',
       "HelperSwing.java",
       "HelperSwing",
-      TeamCoursesData.FileStructureSwing
+      TeamCoursesData.FileStructureSwing,
+      [
+        "HelperSwing/",
+        "HelperSwingnew/",
+        "HelperSwingnew/HelperSwing.java",
+        "Main.java",
+      ]
     );
   });
 
