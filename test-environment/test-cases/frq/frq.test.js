@@ -14,7 +14,7 @@ test.describe('TestSuite: FRQ', () => {
     await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
   });
 
-  test('Usman TC1 - Validate Delimeter', async ({ frq, page }) => {
+  test('Usman TC1=> Verify user is not able to write anything on Preview Delimeter', async ({ frq, page }) => {
     
     await frq.ClickDelimetersFrq();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -30,7 +30,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC2 - Validate Delimeter', async ({ frq, page }) => {
+  test('Usman TC2=> Verify FRQ title after creating a Course and Verify Unit test case status for Delimeter', async ({ frq, page }) => {
     
     await frq.ClickDelimetersFrq();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -66,7 +66,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC3 - Validate ApCalendar', async ({ frq, page }) => {
+  test('Usman TC3=> Verify user is not able to write anything on Preview ApCalendar', async ({ frq, page }) => {
     
     await frq.ClickApCalendarFrq();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -82,7 +82,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC4 - Validate AP Calendar', async ({ frq, page }) => {
+  test('Usman TC4=> Verify FRQ title after creating a Course and Verify Unit test case status for AP Calendar', async ({ frq, page }) => {
     
     await frq.ClickApCalendarFrq();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -118,7 +118,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC5 - Validate WordMatch', async ({ frq, page }) => {
+  test('Usman TC5=> Verify user is not able to write anything on Preview WordMatch', async ({ frq, page }) => {
     
     await frq.ClickWordMatch();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -134,7 +134,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC6 - Validate WordMatch', async ({ frq, page }) => {
+  test('Usman TC6=> Verify FRQ title after creating a Course and Verify Unit test case status for WordMatch', async ({ frq, page }) => {
     
     await frq.ClickWordMatch();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -170,7 +170,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC7 - Validate CombinedTable', async ({ frq, page }) => {
+  test('Usman TC7=> Verify user is not able to write anything on Preview CombinedTable', async ({ frq, page }) => {
     
     await frq.ClickCombibnedTableFrq();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -186,7 +186,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC8 - Validate CombinedTable', async ({ frq, page }) => {
+  test('Usman TC8=> Verify FRQ title after creating a Course and Verify Unit test case status for CombinedTable', async ({ frq, page }) => {
     
     await frq.ClickCombibnedTableFrq();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -223,7 +223,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC9 - Validate Club Members', async ({ frq, page }) => {
+  test('Usman TC9=> Verify user is not able to write anything on Preview Club Members', async ({ frq, page }) => {
     
     await frq.ClickClubMembers();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -239,7 +239,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC10 - Validate Club Members', async ({ frq, page }) => {
+  test('Usman TC10=> Verify FRQ title after creating a Course and Verify Unit test case status for Club Members', async ({ frq, page }) => {
     
     await frq.ClickClubMembers();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -276,7 +276,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC11 - ArrayResizer', async ({ frq, page }) => {
+  test('Usman TC11=> Verify user is not able to write anything on Preview ArrayResizer', async ({ frq, page }) => {
     
     await frq.ClickArrayResizer();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -292,7 +292,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC12 - ArrayResizer', async ({ frq, page }) => {
+  test('Usman TC12=> Verify FRQ title after creating a Course and Verify Unit test case status for ArrayResizer', async ({ frq, page }) => {
     
     await frq.ClickArrayResizer();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -328,7 +328,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC13 - TextBook', async ({ frq, page }) => {
+  test('Usman TC13=> Verify user is not able to write anything on Preview TextBook', async ({ frq, page }) => {
     
     await frq.ClickTextBook();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -346,7 +346,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC14 - TextBook', async ({ frq, page }) => {
+  test('Usman TC14=> Verify FRQ title after creating a Course and Verify Unit test case status for TextBook', async ({ frq, page }) => {
     
     await frq.ClickTextBook();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -382,7 +382,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC15 - ReviewAnalysis', async ({ frq, page }) => {
+  test('Usman TC15=> Verify user is not able to write anything on Preview ReviewAnalysis', async ({ frq, page }) => {
     
     await frq.ClickReviewAnalysis();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -398,7 +398,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC16 - ReviewAnalysis', async ({ frq, page }) => {
+  test('Usman TC16=> Verify FRQ title after creating a Course and Verify Unit test case status for ReviewAnalysis', async ({ frq, page }) => {
     
     await frq.ClickReviewAnalysis();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -434,7 +434,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC17 - AppointmentBook', async ({ frq, page }) => {
+  test('Usman TC17=> Verify user is not able to write anything on Preview AppointmentBook', async ({ frq, page }) => {
     
     await frq.ClickAppointmentBook();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -450,7 +450,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC18 - AppointmentBook', async ({ frq, page }) => {
+  test('Usman TC18=> Verify FRQ title after creating a Course and Verify Unit test case status for AppointmentBook', async ({ frq, page }) => {
     
     await frq.ClickAppointmentBook();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -486,7 +486,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC19 - Sign', async ({ frq, page }) => {
+  test('Usman TC19=> Verify user is not able to write anything on Preview Sign', async ({ frq, page }) => {
     
     await frq.ClickSignFrq();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -502,7 +502,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC20 - Sign', async ({ frq, page }) => {
+  test('Usman TC20=> Verify FRQ title after creating a Course and Verify Unit test case status for Sign', async ({ frq, page }) => {
     
     await frq.ClickSignFrq();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -538,7 +538,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC21 - WeatherData', async ({ frq, page }) => {
+  test('Usman TC21=> Verify user is not able to write anything on Preview WeatherData', async ({ frq, page }) => {
     
     await frq.ClickWeatherData();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -554,7 +554,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC22 - WeatherData', async ({ frq, page }) => {
+  test('Usman TC22=> Verify FRQ title after creating a Course and Verify Unit test case status for WeatherData', async ({ frq, page }) => {
     
     await frq.ClickWeatherData();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -590,7 +590,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC23 - Box Of Candy', async ({ frq, page }) => {
+  test('Usman TC23=> Verify user is not able to write anything on Preview Box Of Candy', async ({ frq, page }) => {
     
     await frq.ClickBoxOfCandy();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
@@ -606,7 +606,7 @@ test.describe('TestSuite: FRQ', () => {
 
   });
 
-  test('Usman TC24 - Box Of Candy', async ({ frq, page }) => {
+  test('Usman TC24=> Verify FRQ title after creating a Course and Verify Unit test case status for Box Of Candy', async ({ frq, page }) => {
     
     await frq.ClickBoxOfCandy();
     await frq.FillTextInParagraph(frqData.DelimeterParagraphText)
