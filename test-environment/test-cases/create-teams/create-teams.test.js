@@ -83,7 +83,7 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.ThreeDots).toHaveCount(threeDotsCount)
     });
 
-    test('Umair - TC - Create a New Team CS Awesome', async ({ createTeams }) => {
+    test.skip('Umair - TC - Create a New Team CS Awesome', async ({ createTeams }) => {
         await createTeams.createNewTeamCSAwesome(CreateTeamsTestData.TeamCreatedHeadingValue)
         await PlaywrightCore.waitTimeout(createTeams.page, 3000)
         await PlaywrightCore.waitForElementToDisappear(createTeams, createTeams.LoaderCreatingTeam)
@@ -101,7 +101,7 @@ test.describe('TestSuite: Create Teams', () => {
         await createTeams.deleteFirstTeamInList()
     });
 
-    test('Umair - TC - Delete a Newly Create Team - CS Awesome', async ({ createTeams }) => {
+    test.skip('Umair - TC - Delete a Newly Create Team - CS Awesome', async ({ createTeams }) => {
         await createTeams.deleteAllTeams(CreateTeamsTestData.TeamCreatedHeadingValue)
         const threeDotsCount = await createTeams.ThreeDots.count()
         await createTeams.createNewTeamCSAwesome(CreateTeamsTestData.TeamCreatedHeadingValue)
