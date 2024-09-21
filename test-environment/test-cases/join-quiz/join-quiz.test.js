@@ -5,7 +5,7 @@ import JoinQuizTestData from '../../test-assets/test-data-files/join-quiz/join-q
 
 test.describe('TestSuite: Join Quiz', () => {
 
-    test('Umair - TC - Validate UI of Join Quiz Page', async ({joinQuizPage}) => {
+    test('Umair - TC-01 - Validate UI of Join Quiz Page', async ({joinQuizPage}) => {
         await joinQuizPage.navigateToJoinQuizPage()
         await expect(joinQuizPage.Logo).toBeVisible()
         await expect(joinQuizPage.JoinQuizHeading).toHaveText(JoinQuizTestData.JoinQuizHeadingValue)

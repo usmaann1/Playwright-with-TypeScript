@@ -11,7 +11,7 @@ test.describe('TestSuite: Login', () => {
         await loginPage.NavigateToLoginPage()
       });
 
-    test('Umair - TC: UI Validations', async ({loginPage}) => {
+    test('Umair - TC01 - UI Validations of Login Page', async ({loginPage}) => {
         await expect(loginPage.Logo).toBeVisible()
         await expect(loginPage.LoginHeading).toHaveText(LoginCredentials.LoginHeadingValue)
         await expect(loginPage.EmailAddressTxtBox).toBeVisible()
@@ -24,7 +24,7 @@ test.describe('TestSuite: Login', () => {
         await expect(loginPage.ForgotPasswordBtn).toHaveText(LoginCredentials.ForgotPasswordBtnValue)
     }); 
 
-    test('Umair - TC: Valid Login', async ({loginPage}) => {
+    test('Umair - TC-02 - Valid Login Functionality', async ({loginPage}) => {
         await loginPage.fillCredentialsAndLogin(Credentials.EMAIL, Credentials.PASSWORD)
         await expect(loginPage.ProfilePicture).toBeVisible()
     }); 
@@ -33,7 +33,7 @@ test.describe('TestSuite: Login', () => {
         const loginUserName = InvalidLoginCredentials.UserName
         const loginPassword = InvalidLoginCredentials.Password
        
-        test('Umair - TC-InvalidLoginErrorAssertion - UserName: '+loginUserName+', Password '+loginPassword, async ({loginPage}) => {
+        test('Umair - TC-03 - Verify Login Invalid Login Error Assertion with UserName: '+ loginUserName +', Password '+ loginPassword, async ({loginPage}) => {
             await loginPage.fillCredentialsAndLogin(loginUserName,loginPassword)
             if(loginUserName != Credentials.EMAIL && loginUserName == "")
             {
@@ -57,14 +57,14 @@ test.describe('TestSuite: Login', () => {
         });
     }
 
-    test('Umair - TC: Login Page to Sign Up Page Redirection', async ({loginPage}) => {
+    test('Umair - TC-04 - Verify Login Page to Sign Up Page Redirection Functionality', async ({loginPage}) => {
         PlaywrightCore.click(loginPage.SignUpWithJuicMindBtn)
         await expect(loginPage.SignUpHeading).toHaveText(LoginCredentials.SignUpHeadingValue)
         PlaywrightCore.click(loginPage.LogInNavigationBtn)
         await expect(loginPage.LoginHeading).toHaveText(LoginCredentials.LoginHeadingValue)
     }); 
 
-    test('Umair - TC: Forgot Password UI Validations & Navigation', async ({loginPage}) => {
+    test('Umair - TC-05 - Verify Forgot Password UI Validations & Navigation Functionality', async ({loginPage}) => {
         await loginPage.NavigateToForgotPasswordPage()
         await expect(loginPage.Logo).toBeVisible()
         await expect(loginPage.LoginHeading).toHaveText(LoginCredentials.LoginHeadingValue)

@@ -8,7 +8,7 @@ const { CreateLesson } = require("../../../pages/create-lesson/create-lesson.pag
 import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
-test.describe('TestSuite: Create Lesson Multiple Choice', () => {
+test.describe('TestSuite: Hide and Reveal Button', () => {
 
     const randomNumber = UserFunctions.generateRandomString(5)
     const userEmail = Credentials.EMAIL_HASSAAN
@@ -32,7 +32,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
     });
 
-    test('Umair - TC - Create Lesson Insert - Hide & Reveal Button', async ({ createLesson }) => {
+    test('Umair - TC-01 - Verify Hide & Reveal Button Functionality', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.hideAndRevealButton)
         await expect(createLesson.HideRevealTextBox).toBeVisible()
         await PlaywrightCore.fill(createLesson.HideRevealTextBox, CLHRtd.HideRevealTxtHeadingValue)
@@ -47,7 +47,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('Umair - TC - Create Lesson Insert - Hide & Reveal Button - Presentation Mode', async ({ createLesson }) => {
+    test('Umair - TC-02 - Verify Hide & Reveal Button Functionality in Presentation Mode', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.hideAndRevealButton)
         await expect(createLesson.HideRevealTextBox).toBeVisible()
         await PlaywrightCore.fill(createLesson.HideRevealTextBox, CLHRtd.HideRevealTxtHeadingValue)
@@ -74,7 +74,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
-    test('Umair - TC - Create Lesson Insert - Hide & Reveal Button - Student Login Check', async ({ createLesson, teamCoursesPage, browser }) => {
+    test('Umair - TC-03 - Verify Hide & Reveal Button Functionality as Student', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.selectElementFromDropdown(CLtd.elements.hideAndRevealButton)
         await expect(createLesson.HideRevealTextBox).toBeVisible()

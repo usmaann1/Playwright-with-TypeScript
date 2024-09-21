@@ -10,7 +10,7 @@ test.describe('TestSuite: Sign Up', () => {
         await loginPage.NavigateToSignUpPage()
       });
 
-    test('Umair - TC - Validate UI of Sign Up Page', async ({signUpPage, loginPage}) => {
+    test('Umair - TC-01 - Validate UI of Sign Up Page', async ({signUpPage, loginPage}) => {
         await expect(loginPage.Logo).toBeVisible()
         await expect(signUpPage.SignUpHeading).toHaveText(LoginTestData.SignUpHeadingValue)
         await expect(loginPage.EmailAddressTxtBox).toBeVisible()
@@ -24,7 +24,7 @@ test.describe('TestSuite: Sign Up', () => {
         await expect(loginPage.LogInNavigationBtn).toHaveText(SignUpTestData.LoginTxt)
     });
     
-    test('Umair - TC - Valid Sign Up & Redirection to Next Page', async ({loginPage, signUpPage}) => {
+    test('Umair - TC-02 - Verify Valid Sign Up & Redirection to Next Page Functionality', async ({loginPage, signUpPage}) => {
         const randomEmail = await UserFunctions.generateRandomEmail(Credentials.EMAIL)
         await signUpPage.fillCredentialsAndSignUp(loginPage, randomEmail, Credentials.PASSWORD)
         await expect(loginPage.Logo).toBeVisible()
@@ -40,7 +40,7 @@ test.describe('TestSuite: Sign Up', () => {
         
     });
 
-    test('Umair - TC - Sign-Up with Already Registered Email', async ({loginPage, signUpPage}) => {
+    test('Umair - TC-03 - Verify Sign-Up with Already Registered Email Functionality', async ({loginPage, signUpPage}) => {
         await signUpPage.fillCredentialsAndSignUp(loginPage, Credentials.EMAIL, Credentials.PASSWORD)
         await expect(loginPage.UserNamePasswordValidationError).toHaveText(SignUpTestData.AlreadySignedUpUserErrorValidationValue)
     });
@@ -49,7 +49,7 @@ test.describe('TestSuite: Sign Up', () => {
         const loginUserName = InvalidLoginCredentials.UserName
         const loginPassword = InvalidLoginCredentials.Password
        
-        test('Umair - TC-InvalidLoginErrorAssertion - UserName: '+loginUserName+', Password '+loginPassword, async ({loginPage, signUpPage}) => {
+        test('Umair - TC-04 - Verify Sign Up Invalid Login Error Assertion with UserName: '+ loginUserName +', Password '+ loginPassword, async ({loginPage, signUpPage}) => {
             await signUpPage.fillCredentialsAndSignUp(loginPage, loginUserName, loginPassword)
             if(loginUserName == "")
             {
