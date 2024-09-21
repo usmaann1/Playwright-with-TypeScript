@@ -2,10 +2,9 @@ const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helpe
 const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import CLtd from '../../test-assets/test-data-files/create-lesson/create-lesson-testData.json'
 import CTtd from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
-import CreateTeamsTestData from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
-test.describe('TestSuite: Create Lesson Insert', () => {
+test.describe('TestSuite: Embed Link', () => {
 
     const randomNumber = UserFunctions.generateRandomString(5)
     const userEmail = Credentials.EMAIL_HASSAAN
@@ -29,7 +28,7 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
     });
 
-    test('Umair - TC - Create Lesson Insert - Embed', async ({ createLesson }) => {
+    test('Umair - TC-01 - Verify Embed Functionality', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.embed)
         await expect(createLesson.EmbedEnterURL).toBeVisible()
         await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
@@ -45,7 +44,7 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('Umair - TC - Create Lesson Insert - Embed Replace URL', async ({ createLesson }) => {
+    test('Umair - TC-02 - Verify Replace URL Functionality in Embed', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.embed)
         await expect(createLesson.EmbedEnterURL).toBeVisible()
         await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
@@ -66,28 +65,6 @@ test.describe('TestSuite: Create Lesson Insert', () => {
         await PlaywrightCore.click(createLesson.SaveBtn)
         await PlaywrightCore.click(createLesson.SetupBtn)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.WayOfTearsVideoHeadingValue)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
-    });
-
-    test('Umair - TC - Create Lesson Insert - Insert File', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.insertFiles)
-        await PlaywrightCore.fileUpload(createLesson.ChooseFileBox, CreateTeamsTestData.ReplitTeamsZipPath)
-        await PlaywrightCore.waitFor(createLesson.JuiceMindZipAfterUploaded)
-        await expect(createLesson.JuiceMindZipAfterUploaded).toHaveText(CLtd.JuiceMindZipAfterUploadedValue)
-        await expect(createLesson.DeleteBtnAfterUpload).toHaveText(CLtd.DeleteBtnAfterUploadValue)
-        await PlaywrightCore.click(createLesson.DeleteBtnAfterUpload)
-        await expect(createLesson.DeleteBtnAfterUpload).not.toBeVisible()
-        await expect(createLesson.JuiceMindZipAfterUploaded).not.toBeVisible()
-    });
-
-    test('Umair - TC - Create Lesson Insert - HTML', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.html)
-        await expect(createLesson.HTMLNode).toBeVisible()
-        await PlaywrightCore.click(createLesson.HTMLNode)
-        await PlaywrightCore.fill(createLesson.HTMLTextBox, CLtd.HTMLText)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.click(createLesson.SaveBtn)
-        await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue)
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 

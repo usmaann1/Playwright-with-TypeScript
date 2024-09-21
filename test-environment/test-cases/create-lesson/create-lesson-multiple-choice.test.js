@@ -7,7 +7,7 @@ const { CreateLesson } = require("../../../pages/create-lesson/create-lesson.pag
 import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
-test.describe('TestSuite: Create Lesson Multiple Choice', () => {
+test.describe('TestSuite: Multiple Choice', () => {
 
     const randomNumber = UserFunctions.generateRandomString(5)
     const userEmail = Credentials.EMAIL_HASSAAN
@@ -31,7 +31,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
     });
 
-    test('Umair - TC - Create Lesson Insert - Multiple Choice', async ({ createLesson }) => {
+    test('Umair - TC-01 - Verify Multiple Choice Functionality', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
         await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
@@ -65,7 +65,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('Umair - TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Wrong Answer', async ({ createLesson }) => {
+    test('Umair - TC-02 - Verify Multiple Choice Functionality in Presentation Mode for Wrong Answer', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
         await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
@@ -115,7 +115,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
-    test('Umair - TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer', async ({ createLesson }) => {
+    test('Umair - TC-03 - Verify Multiple Choice Functionality in Presentation Mode for Correct Answer', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
         await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
@@ -165,7 +165,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
-    test('Umair - TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer - Multiple Selections Allowed', async ({ createLesson }) => {
+    test('Umair - TC-04 - Verify Multiple Choice Functionality in Presentation Mode for Correct Answer and check if it allows Multiple Selections in answer', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
         await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
@@ -217,7 +217,7 @@ test.describe('TestSuite: Create Lesson Multiple Choice', () => {
     });
 
 
-    test('Umair - TC - Create Lesson Insert - Multiple Choice - Presentation Mode - Correct Answer - Multiple Selections Allowed - Student Mode', async ({ createLesson, teamCoursesPage, browser }) => {
+    test('Umair - TC-05 - Verify Multiple Choice Functionality in Presentation Mode for Correct Answer and check if Multiple Selection is Allowed as a Student', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
