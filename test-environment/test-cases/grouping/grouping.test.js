@@ -18,7 +18,7 @@ test.describe('TestSuite: Grouping', () => {
         await grouping.NavigateToTeamCoursesPage();
         await grouping.ClickOnCreateNewTeamBtn();
         await grouping.ClickOnStartFromScratch();
-        //await page.waitForTimeout(5000);
+        await page.waitForTimeout(5000);
         await grouping.FillTeamNameTxtBox();
         await grouping.Submitbtn();
         await expect.toHaveText(groupingData.NoData && groupingData.ClassName);

@@ -16,7 +16,7 @@
     "invite_StudentsBtn":"//a[normalize-space()='Invite students']",
     "copy_InviteStudentsBtn":"//a[normalize-space()='Copy']",
     "invitestudents_closeBtn": "body div[role='presentation'] div a:nth-child(1) svg",
-    "Publish_AssignmentBtn":"//input[@type='checkbox']",
+    "Publish_AssignmentBtn":"(//input[@type='checkbox'])[1]",
     "CreateStarterCodeBtn": "//a[text() = 'Create starter code']",
 
     "addnewitem_btn":"//div[contains(text(),'Add new item')]",
@@ -39,7 +39,7 @@
     "ProjectNameTextBox": "//input[@placeholder='Project name']",
     "ProjectTypeDropDown":"//div[@id='demo-simple-select']",
     "ProjectTypeJava": "//li[@data-value='java']",
-    "GroupProjectToggle":"(//span[@class='MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-1mo6cvn'])[2]",
+    "GroupProjectToggle":"(//input[@aria-label='controlled'])[3]",
     "AddGroupBtn":"//a[normalize-space()='Add Group']" ,
     "GroupCrossIcon":"(//a[contains(@style, 'cursor')])[2]",
     "SubmitButton" :"//a[normalize-space()='Submit']",
