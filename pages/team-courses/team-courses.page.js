@@ -83,7 +83,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.TestName = this.page.locator(Locators.TestName);
     this.TestInput = this.page.locator(Locators.TestInput);
     this.TestOutput = this.page.locator(Locators.TestOutput);
-    this.PublishCheckBox = this.page.locator(Locators.PublishCheckBox);
+    this.PublishCheckBox = this.page.locator(Locators.PublishCheckBox).first();
     this.CreateTestBtn = this.page.locator(Locators.CreateTestBtn);
     this.InviteStudentBtn = this.page.locator(Locators.InviteStudent);
     this.CopyBtn = this.page.locator(Locators.CopyBtn);
@@ -274,6 +274,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       const isValid = await innerText.includes(TeamCoursesData.AssertionText);
       expect(isValid).toBe(true);
     }
+    await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.EditorSubmit);
     await PlaywrightCore.waitTimeout(this.page, 10000);
     await PlaywrightCore.click(this.SubmitBtn);
@@ -642,7 +643,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     source,
     target,
     file,
-    folder
+    folder,
+    matchArray
   ) {
     await PlaywrightCore.click(this.FileExplorerBtnOpen);
     await PlaywrightCore.createfile(
@@ -680,6 +682,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const innerText = await element.innerText();
     const isValid = await innerText.includes(TeamCoursesData.ChangedFileOutput);
     expect(isValid).toBe(true);
+    console.log(folder)
+    await PlaywrightCore.waitTimeout(this.page, 20000);
     await this.page.getByText(folder).first().click();
     const fileHandle = await this.page.locator(source);
     const folderHandle = await this.page.locator(target);
@@ -692,9 +696,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await download.saveAs(TeamCoursesData.ChangedFilePath);
     const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
     const zipEntries = zip.getEntries();
-    const found = await zipEntries.some((entry) => {
-      return entry.entryName.includes("specificValue");
-    });
+    const entryNames = zipEntries.map((entry) => entry.entryName);
+    const allMatch = entryNames.every((entryName) => matchArray.includes(entryName));
+    await expect(allMatch).toBe(true)
   }
 
   async fileStructureJAVACSHTML(
@@ -709,7 +713,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     target,
     file,
     folder,
-    changedMainFile
+    changedMainFile,
+    matchArray
   ) {
     await PlaywrightCore.waitTimeout(this.page, 20000);
     const codeEditorContent = await this.EditorTextBox.nth(1);
@@ -772,9 +777,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await download.saveAs(TeamCoursesData.ChangedFilePath);
     const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
     const zipEntries = zip.getEntries();
-    const found = await zipEntries.some((entry) => {
-      return entry.entryName.includes("specificValue");
-    });
+    const entryNames = zipEntries.map((entry) => entry.entryName);
+    const allMatch = entryNames.every((entryName) => matchArray.includes(entryName));
+    await expect(allMatch).toBe(true)
   }
 
   async fileStructureHTMLRemaining(
@@ -789,7 +794,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     target,
     file,
     folder,
-    changedMainFile
+    changedMainFile,
+    matchArray
   ) {
     await this.page.getByText(folder).first().click();
     const fileHandle = await this.page.locator(source);
@@ -803,9 +809,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await download.saveAs(TeamCoursesData.ChangedFilePath);
     const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
     const zipEntries = zip.getEntries();
-    const found = await zipEntries.some((entry) => {
-      return entry.entryName.includes("specificValue");
-    });
+    const entryNames = zipEntries.map((entry) => entry.entryName);
+    const allMatch = entryNames.every((entryName) => matchArray.includes(entryName));
+    await expect(allMatch).toBe(true)
   }
 
   async breakPoint() {
