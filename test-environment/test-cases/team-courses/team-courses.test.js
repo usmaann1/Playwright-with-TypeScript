@@ -143,7 +143,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
-  test.only("[Numair] - TC: Flow Test JavaScript - Create Assignment, project, add test, publish, share, join as student, submit test, verify answers", async ({
+  test("[Numair] - TC: Flow Test JavaScript - Create Assignment, project, add test, publish, share, join as student, submit test, verify answers", async ({
     teamCoursesPage,
     browser,
   }) => {
