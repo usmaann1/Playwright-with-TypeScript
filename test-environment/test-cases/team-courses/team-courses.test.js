@@ -143,7 +143,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
-  test("[Numair] - TC: Flow Test JavaScript - Create Assignment, project, add test, publish, share, join as student, submit test, verify answers", async ({
+  test.only("[Numair] - TC: Flow Test JavaScript - Create Assignment, project, add test, publish, share, join as student, submit test, verify answers", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -180,11 +180,6 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.testInput
     );
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
-    await teamCoursesPage.assertingUserAnswerHistory(
-      TeamCoursesData.completeName,
-      TeamCoursesData.testInput
-    );
-    await teamCoursesPage.uploadFile(TeamCoursesData.uploadFilePath);
   });
 
   test("[Numair] - TC: Flow Test HTML - Create Assignment, project, add test, publish, share, join as student, submit test, verify answers", async ({

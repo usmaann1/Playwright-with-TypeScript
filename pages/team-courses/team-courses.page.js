@@ -83,7 +83,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.TestName = this.page.locator(Locators.TestName);
     this.TestInput = this.page.locator(Locators.TestInput);
     this.TestOutput = this.page.locator(Locators.TestOutput);
-    this.PublishCheckBox = this.page.locator(Locators.PublishCheckBox);
+    this.PublishCheckBox = this.page.locator(Locators.PublishCheckBox).first();
     this.CreateTestBtn = this.page.locator(Locators.CreateTestBtn);
     this.InviteStudentBtn = this.page.locator(Locators.InviteStudent);
     this.CopyBtn = this.page.locator(Locators.CopyBtn);
@@ -274,6 +274,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       const isValid = await innerText.includes(TeamCoursesData.AssertionText);
       expect(isValid).toBe(true);
     }
+    await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.EditorSubmit);
     await PlaywrightCore.waitTimeout(this.page, 10000);
     await PlaywrightCore.click(this.SubmitBtn);
