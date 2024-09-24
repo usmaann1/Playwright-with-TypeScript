@@ -28,7 +28,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
     });
 
-    test('Umair - TC-01 - Verify HTML Functionality - Heading', async ({ createLesson }) => {
+    test('Umair - TC-01 - Verify HTML Functionality - Heading H1', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.html)
         await expect(createLesson.HTMLNode).toBeVisible()
         await PlaywrightCore.click(createLesson.HTMLNode)
@@ -39,7 +39,7 @@ test.describe('TestSuite: HTML', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('Umair - TC-01 - Verify HTML Functionality - Multiple Headings', async ({ createLesson }) => {
+    test('Umair - TC-02 - Verify HTML Functionality - Multiple Headings H1 H2', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.html)
         await expect(createLesson.HTMLNode).toBeVisible()
         await PlaywrightCore.click(createLesson.HTMLNode)

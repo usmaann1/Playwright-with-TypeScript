@@ -205,7 +205,7 @@
     "MultipleChoiceOptionsRule3":"//label[contains(text(),'Learners can gain a percentage of the maximum poin')]",
     "MultipleChoiceOptionsRule4":"//label[contains(text(),'Multiple Select. Learners can choose more than one')]",
     "MultipleChoiceOptionsRule5":"//label[contains(text(),'For polls/surveys. No correct answer. Any response')]",
-    "MultipleChoiceSelectBox2":"//form//div[2]//input[1]",
+    "MultipleChoiceSelectBox2":"(//input[@name='choices'])[2]",
     "PresentationModePopUpHeading":"//div[normalize-space()='Presentation Mode']",
     "PresentationModePopUpDescription":"//div[contains(text(),'View the exact display from the student perspectiv')]",
     "GotItBtn":"//a[normalize-space()='Got it']",
