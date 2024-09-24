@@ -194,7 +194,7 @@
     "MultipleChoiceFormBox1":"(//div[@contenteditable='true'])[3]",
     "MultipleChoiceFormBox2":"(//div[@contenteditable='true'])[4]",
     "MultipleChoiceFormBox3":"(//div[@contenteditable='true'])[5]",
-    "MultipleChoiceFormBox4DeleteBtn":"//div[4]//button[1]",
+    "MultipleChoiceFormBox4DeleteBtn":"(//*[name()='svg'][@focusable='false'])[10]",
     "MultipleChoiceAddChoiceBtn":"//button[normalize-space()='Add Choice']",
     "MultipleChoiceFormBox4":"(//div[@contenteditable='true'])[6]",
     "MultipleChoicePointsInput":"//input[@placeholder='Total']",
