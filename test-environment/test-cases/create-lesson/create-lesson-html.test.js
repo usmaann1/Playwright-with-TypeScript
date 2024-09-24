@@ -28,7 +28,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.dropDownContainer).toBeVisible()
     });
 
-    test('Umair - TC-01 - Verify HTML Functionality', async ({ createLesson }) => {
+    test('Umair - TC-01 - Verify HTML Functionality - Heading', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.html)
         await expect(createLesson.HTMLNode).toBeVisible()
         await PlaywrightCore.click(createLesson.HTMLNode)
@@ -36,6 +36,17 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+    });
+
+    test('Umair - TC-01 - Verify HTML Functionality - Multiple Headings', async ({ createLesson }) => {
+        await createLesson.selectElementFromDropdown(CLtd.elements.html)
+        await expect(createLesson.HTMLNode).toBeVisible()
+        await PlaywrightCore.click(createLesson.HTMLNode)
+        await PlaywrightCore.fill(createLesson.HTMLTextBox, CLtd.HTMLText2)
+        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
+        await PlaywrightCore.click(createLesson.SaveBtn)
+        await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue2)
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
