@@ -16,7 +16,7 @@
     "invite_StudentsBtn":"//a[normalize-space()='Invite students']",
     "copy_InviteStudentsBtn":"//a[normalize-space()='Copy']",
     "invitestudents_closeBtn": "body div[role='presentation'] div a:nth-child(1) svg",
-    "Publish_AssignmentBtn":"//input[@type='checkbox']",
+    "Publish_AssignmentBtn":"(//input[@type='checkbox'])[1]",
 
     "addnewitem_btn":"//div[contains(text(),'Add new item')]",
     "Presentation_btn":"//a[normalize-space()='Presentation Mode']",

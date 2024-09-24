@@ -25,6 +25,7 @@ test.describe('TestSuite: Lesson Builder', () => {
     // Interact with elements on the page
     await lessonBuilder.ClickOnCreateNewTeamBtn();
     await lessonBuilder.ClickOnStartFromScratch();
+    await page.waitForTimeout(5000);
     await lessonBuilder.FillTeamNameTxtBox();
     await lessonBuilder.Submitbtn();
     await expect.toHaveText(LessonBuilderTestData.NoData && LessonBuilderTestData.ClassName);
