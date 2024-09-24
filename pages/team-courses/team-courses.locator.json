@@ -74,6 +74,6 @@
     "SettingBtn": "div:nth-child(3) > ._icon_znfg9_44",
     "CodeMainFile": "text=testjs.js",
     "CodeTargetFolder": "text=testjsnew",
-    "MenuBar": "//div[@class='_title_znfg9_32']//div[2]//div[3]//*[name()='svg']//*[name()='path' and contains(@d,'M12 8c1.1 ')]",
-    "FullScreenMinimize": "//body/div[@id='root']/div/div/div/div/div[@class='flex flex-col']/div[@data-panel-group-direction='horizontal']/div/div/div/div/div[@class='hori']/div/div[@class='rounded-lg']/div/div/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]//*[name()='svg']"
+    "MenuBar": "//div[contains(@class, '_iconButton_znfg9_44')][3]",
+    "FullScreenMinimize": "//div[contains(@class, 'fullscreen-enabled')]/div/div"
 }
