@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     timeout-minutes: 300
-    runs-on: large-runner
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       actions: read
