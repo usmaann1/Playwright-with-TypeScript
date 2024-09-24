@@ -125,7 +125,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.CodeSourceFile = this.page.locator(Locators.CodeMainFile);
     this.CodeTargetFile = this.page.locator(Locators.CodeTargetFolder);
     this.MenuBar = this.page.locator(Locators.MenuBar);
-    this.FullScreenMinimize = this.page.locator(Locators.FullScreenMinimize);
+    this.FullScreenMinimize = this.page.locator(Locators.FullScreenMinimize).first();
   }
 
   async NavigateToSignUpPage() {
