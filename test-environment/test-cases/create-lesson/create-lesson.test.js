@@ -24,17 +24,17 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.selectLessonItemType()
     });
 
-    test('[HZ] TC-1 - Validate UI of Create New Lesson Screen', async ({ createLesson }) => {
+    test('[HZ] TC-1 - Validate UI of Create New Lesson Screen || verify if all the fields on create new lesson are available', async ({ createLesson }) => {
         await expect(createLesson.backButton).toBeVisible()
         await expect(createLesson.createBtn).toBeVisible()
         await expect(createLesson.lessonNameTxtBox).toBeVisible()
         await expect(createLesson.title).toBeVisible()
     });
-    test('[HZ] TC-2 - Validate creation of New lesson', async ({ createLesson }) => {
+    test('[HZ] TC-2 - Validate creation of New lesson || verify that a new lesson is getting created successfully ', async ({ createLesson }) => {
         await createLesson.createALesson(lessonName)
         await expect(createLesson.lessonTitle).toHaveText(lessonName)
     });
-    test('[HZ] TC-3 - Validate new Lesson UI fields', async ({ createLesson }) => {
+    test('[HZ] TC-3 - Validate new Lesson UI fields || verify that all the element present on the Lesson screen are present.', async ({ createLesson }) => {
         await createLesson.createALesson(lessonName)
         // covers side menus
         await expect(createLesson.backToTeamButton).toBeVisible()
@@ -66,7 +66,7 @@ test.describe('TestSuite: Create Lesson', () => {
         await expect(createLesson.menuIcon).toBeVisible()
 
     });
-    test('[HZ] TC-4 - validate adding new Header element Heading 1 inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
+    test('[HZ] TC-4 - validate adding new Header element Heading 1 inside the editor || verify adding heading element || verify user should be able to add text in the heading element || verify the functionality in presentation view || verify publishing the test and test the heading functionality', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.createALesson(lessonName)
         await createLesson.setVisibility()
@@ -93,7 +93,7 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.checkBackgroundColor(newHeading, CLtd.heading1.backgroundColor)
 
     });
-    test('[HZ] TC-5 - validate adding new Header element Heading 2 inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
+    test('[HZ] TC-5 - validate adding new Header element Heading 2 inside the editor|| verify adding heading 2 element || verify user should be able to add text in the heading 2 element || verify the functionality in presentation view || verify publishing the test and test the heading functionality', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.createALesson(lessonName)
         await createLesson.setVisibility()
@@ -133,7 +133,7 @@ test.describe('TestSuite: Create Lesson', () => {
 
 
     });
-    test('[HZ] TC-6 - validate adding new Header element Heading 3 inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
+    test('[HZ] TC-6 - validate adding new Header element Heading 3 inside the editor || verify adding heading 3 element || verify user should be able to add text in the heading element || verify the functionality in presentation view || verify publishing the test and test the heading functionality', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.createALesson(lessonName)
         await createLesson.setVisibility()
@@ -308,16 +308,38 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.selectElementFromDropdown(CLtd.elements.fillInBlank)
         createLesson.validateAllFillInTheBlankFields()
     });
-    test('[HZ] TC-15 - validate adding new Fill in Blank functionality', async ({ createLesson }) => {
+    test('[HZ] TC-15 - validate adding new Fill in Blank element functionality || check when the answer is correct', async ({ page,createLesson, teamCoursesPage, browser }) => {
+        const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.createALesson(lessonName)
         await createLesson.setVisibility()
         await createLesson.hoverOverFirstRow()
         await createLesson.hoverAndClickOnPlusBtn()
         await expect(createLesson.dropDownContainer).toBeVisible()
         await createLesson.selectElementFromDropdown(CLtd.elements.fillInBlank)
-        await createLesson.validateFillInTheBlankFunctionality()
+        await createLesson.validateFillInTheBlankFunctionalityWithCorrectAnswer()
+        await PlaywrightCore.click(createLesson.exitStudentView)
+
+        // const link = await teamCoursesPage.PublishAndInviteCreateLesson()
+        // const newPage = await browser.newPage()
+        // const newTeamCoursesPageInstance = new TeamCoursesPage(newPage)
+        // const newCreateLessonPageInstance = new CreateLesson(newPage)
+        // await newTeamCoursesPageInstance.afterInviteSignUp(link, randomEmail, userPwd, TeamCoursesData.firstName, TeamCoursesData.LastName)
+        // await page.waitForTimeout(10000);
+        // await createLesson.verifyCorrectAnswerOnPublishing()
+ 
+
+
     });
-    test('[HZ] TC-16 - validate adding File upload element inside the editor', async ({ createLesson }) => {
+    test('[HZ] TC-16 - validate adding new Fill in Blank element functionality || check when the answer is in-correct', async ({ createLesson }) => {
+        await createLesson.createALesson(lessonName)
+        await createLesson.setVisibility()
+        await createLesson.hoverOverFirstRow()
+        await createLesson.hoverAndClickOnPlusBtn()
+        await expect(createLesson.dropDownContainer).toBeVisible()
+        await createLesson.selectElementFromDropdown(CLtd.elements.fillInBlank)
+        await createLesson.validateFillInTheBlankFunctionalityWithInCorrectAnswer()
+    });
+    test('[HZ] TC-17 - validate adding File upload element inside the editor', async ({ createLesson }) => {
         await createLesson.createALesson(lessonName)
         await createLesson.setVisibility()
         await createLesson.hoverOverFirstRow()
@@ -326,7 +348,7 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.selectElementFromDropdown(CLtd.elements.fileUpload)
         await createLesson.validateFileUploadFunctionality()
     });
-    test('[HZ] TC-17 - validate adding short answer element inside the editor', async ({ createLesson }) => {
+    test('[HZ] TC-18 - validate adding short answer element inside the editor', async ({ createLesson }) => {
         await createLesson.createALesson(lessonName)
         await createLesson.setVisibility()
         await createLesson.hoverOverFirstRow()
@@ -335,7 +357,7 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.selectElementFromDropdown(CLtd.elements.shortAnswer)
         await createLesson.validateShortAnswerFunctionality()
     });
-    test('[HZ] TC-18 - validate adding tip element inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
+    test('[HZ] TC-19 - validate adding tip element inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.createALesson(lessonName)
         await createLesson.setVisibility()
@@ -353,7 +375,7 @@ test.describe('TestSuite: Create Lesson', () => {
 
         await newCreateLessonPageInstance.verifyStudentViewForTipElement()
     });
-    test('[HZ] TC-19 - validate adding Parsons Problem element inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
+    test('[HZ] TC-20 - validate adding Parsons Problem element inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.createALesson(lessonName)
         await createLesson.setVisibility()
@@ -364,7 +386,7 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.validateParsonsFunctionality()
 
     });
-    test('[HZ] TC-20 - validate adding Code Select element inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
+    test('[HZ] TC-21 - validate adding Code Select element inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.createALesson(lessonName)
         await createLesson.setVisibility()
