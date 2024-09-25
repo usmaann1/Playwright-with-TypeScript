@@ -444,7 +444,7 @@ exports.CreateLesson = class CreateLesson {
         subParent = parent.locator(this.checkBox2)
         PlaywrightCore.click(subParent)
     }
-    async validateFillInTheBlankFunctionality() {
+    async validateFillInTheBlankFunctionalityWithCorrectAnswer() {
         const parent = this.textEditor.locator(this.container)
         var subParent = parent.locator(this.browseOptionInput)
         await PlaywrightCore.fill(subParent, '/')
@@ -457,19 +457,48 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.click(this.gotItBtn)
         const verifyAnswer = parent.locator(this.inputTag)
         await PlaywrightCore.click(verifyAnswer)
+
+        await PlaywrightCore.fill(verifyAnswer, clTD.Answer)
+        await this.page.waitForTimeout(3000);
+        await PlaywrightCore.click(this.checkAnswerBtn)
+        await PlaywrightCore.click(this.closeBtn)
+        await this.page.waitForTimeout(10000);
+        const toVerify = await parent.locator(this.obtainedPoints).nth(1).textContent()
+        expect(toVerify).toContain('1')
+        await PlaywrightCore.click(this.closeBtn)
+    }
+    async verifyCorrectAnswerOnPublishing() {
+        const parent = this.textEditor.locator(this.container)
+        const verifyAnswer = parent.locator(this.inputTag)
+        await PlaywrightCore.fill(verifyAnswer, clTD.Answer)
+        await this.page.waitForTimeout(3000);
+        await PlaywrightCore.click(this.checkAnswerBtn)
+        await PlaywrightCore.click(this.closeBtn)
+        await this.page.waitForTimeout(10000);
+        const toVerify = await parent.locator(this.obtainedPoints).nth(1).textContent()
+        expect(toVerify).toContain('1')
+    }
+    async validateFillInTheBlankFunctionalityWithInCorrectAnswer() {
+        const parent = this.textEditor.locator(this.container)
+        var subParent = parent.locator(this.browseOptionInput)
+        await PlaywrightCore.fill(subParent, '/')
+        await this.selectElementFromDropdown(clTD.elements.heading1)
+        await this.validateElementsToAcceptInputOnEditor(this.heading1, clTD.textForEditor)
+        subParent = parent.locator(this.answer)
+        await PlaywrightCore.fill(subParent, clTD.Answer)
+        await this.page.waitForTimeout(5000);
+        await PlaywrightCore.click(this.PresentationMode)
+        await PlaywrightCore.click(this.gotItBtn)
+        const verifyAnswer = parent.locator(this.inputTag)
+        await PlaywrightCore.click(verifyAnswer)
+
         await PlaywrightCore.fill(verifyAnswer, clTD.wrongAnswer)
         await PlaywrightCore.click(this.checkAnswerBtn)
         await PlaywrightCore.click(this.closeBtn)
         await this.page.waitForTimeout(3000);
         await expect(this.lineError).toHaveText(clTD.validationError)
         await this.page.waitForTimeout(5000);
-        await PlaywrightCore.fill(verifyAnswer, clTD.Answer)
-        await this.page.waitForTimeout(3000);
-        await PlaywrightCore.click(this.checkAnswerBtn)
-        await PlaywrightCore.click(this.closeBtn)
-        await this.page.waitForTimeout(3000);
-        const toVerify = await parent.locator(this.obtainedPoints).nth(1).textContent()
-        expect(toVerify).toContain('1')
+
     }
     async uploadFIle(ele, filePath) {
         await ele.setInputFiles(filePath)
