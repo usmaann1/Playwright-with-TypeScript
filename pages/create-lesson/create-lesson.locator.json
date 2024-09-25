@@ -256,5 +256,7 @@
     "SelectTableDeleteNewRowAndColumn":"//tbody/tr[4]/td[4]/div[1]",
     "SelectTableOpt1AllowLearner":"//label[normalize-space()='Allow learners to check their answer.']",
     "SelectTableOpt2LeanersCan":"//label[contains(text(),'Learners can gain a percentage of the maximum poin')]",
-    "SelectTableSelectBox1":"//tbody/tr[1]/td[1]"
+    "SelectTableSelectBox1":"//tbody/tr[1]/td[1]",
+    "H1HeadingLocator":"(//h1)[2]",
+    "H2HeadingLocator":"(//h2)[1]"
 }

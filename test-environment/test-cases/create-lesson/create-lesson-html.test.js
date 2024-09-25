@@ -36,7 +36,16 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        // Navigate to Presentation Mode
+        await PlaywrightCore.click(createLesson.presnetationMode)
+        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
+        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
+        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
+        await PlaywrightCore.click(createLesson.GotItBtn)
+        // Assertion in Presentation Mode
+        await expect(createLesson.H1HeadingLocator).toHaveText(CLtd.HTMLNodeValue)
+        // Exit Presentation Mode
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
     test('Umair - TC-02 - Verify HTML Functionality - <h2> tag Heading', async ({ createLesson }) => {
@@ -47,7 +56,16 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue2)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        // Navigate to Presentation Mode
+        await PlaywrightCore.click(createLesson.presnetationMode)
+        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
+        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
+        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
+        await PlaywrightCore.click(createLesson.GotItBtn)
+        // Assertion in Presentation Mode
+        await expect(createLesson.H2HeadingLocator).toHaveText(CLtd.HTMLNodeValue2)
+        // Exit Presentation Mode
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
     test('Umair - TC-03 - Verify HTML Functionality - <h3> tag Heading', async ({ createLesson }) => {
@@ -58,7 +76,6 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue3)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('Umair - TC-04 - Verify HTML Functionality - <h4> tag Heading', async ({ createLesson }) => {
@@ -69,7 +86,6 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue4)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('Umair - TC-05 - Verify HTML Functionality - Multiple tags Headings', async ({ createLesson }) => {
@@ -80,7 +96,6 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue5)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('Umair - TC-06 - Verify HTML Functionality - Single Paragraph', async ({ createLesson }) => {
@@ -91,7 +106,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue6)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-07 - Verify HTML Functionality - Multiple Paragraphs', async ({ createLesson }) => {
@@ -102,7 +117,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue7)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-08 - Verify HTML Functionality - Single heading and single Paragraph', async ({ createLesson }) => {
@@ -113,7 +128,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue8)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-09 - Verify HTML Functionality - Single heading and multiple Paragraphs', async ({ createLesson }) => {
@@ -124,7 +139,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue9)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-10 - Verify HTML Functionality - Multiple headings and single Paragraph', async ({ createLesson }) => {
@@ -135,7 +150,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue10)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-11 - Verify HTML Functionality - Multiple headings and multiple Paragraphs', async ({ createLesson }) => {
@@ -146,7 +161,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue11)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-12 - Verify HTML Functionality - Single paragraph with line break', async ({ createLesson }) => {
@@ -157,7 +172,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue12)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-13 - Verify HTML Functionality - Multiple paragraphs with line break', async ({ createLesson }) => {
@@ -168,7 +183,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue13)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-14 - Verify HTML Functionality - Single Link', async ({ createLesson }) => {
@@ -179,7 +194,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue14)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-15 - Verify HTML Functionality - Multiple Links', async ({ createLesson }) => {
@@ -190,7 +205,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue15)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-16 - Verify HTML Functionality - Single Paragraph with defined Text color', async ({ createLesson }) => {
@@ -201,7 +216,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue16)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-17 - Verify HTML Functionality - Multiple Paragraphs with defined Text colors', async ({ createLesson }) => {
@@ -212,7 +227,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue17)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-18 - Verify HTML Functionality - Single Paragraph with defined font size', async ({ createLesson }) => {
@@ -223,7 +238,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue18)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-19 - Verify HTML Functionality - Multiple Paragraphs with defined font sizes', async ({ createLesson }) => {
@@ -234,7 +249,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue19)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-20 - Verify HTML Functionality - Multiple Paragraphs with thematic break', async ({ createLesson }) => {
@@ -245,7 +260,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue20)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-21 - Verify HTML Functionality - Multiple headings with thematic break', async ({ createLesson }) => {
@@ -256,7 +271,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue21)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-22 - Verify HTML Functionality - Multiple headings and paragraphs with thematic break', async ({ createLesson }) => {
@@ -267,7 +282,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue22)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-23 - Verify HTML Functionality - Single paragraph with bold text', async ({ createLesson }) => {
@@ -278,7 +293,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue23)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-24 - Verify HTML Functionality - Multiple paragraphs with bold text', async ({ createLesson }) => {
@@ -289,7 +304,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue24)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-25 - Verify HTML Functionality - Single paragraph with italic text', async ({ createLesson }) => {
@@ -300,7 +315,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue25)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-26 - Verify HTML Functionality - Multiple paragraphs with italic text', async ({ createLesson }) => {
@@ -311,7 +326,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue26)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-27 - Verify HTML Functionality - Single paragraph with highlighted word', async ({ createLesson }) => {
@@ -322,7 +337,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue27)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-28 - Verify HTML Functionality - Multiple paragraphs with highlighted words', async ({ createLesson }) => {
@@ -333,7 +348,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue28)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-29 - Verify HTML Functionality - Single highlighted paragraph', async ({ createLesson }) => {
@@ -344,7 +359,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue29)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-30 - Verify HTML Functionality - Multiple highlighted paragraphs', async ({ createLesson }) => {
@@ -355,7 +370,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue30)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-31 - Verify HTML Functionality - Single highlighted heading', async ({ createLesson }) => {
@@ -366,7 +381,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue31)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-32 - Verify HTML Functionality - Multiple highlighted headings', async ({ createLesson }) => {
@@ -377,7 +392,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue32)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-33 - Verify HTML Functionality - Single highlighted heading and paragraph', async ({ createLesson }) => {
@@ -388,7 +403,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue33)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-34 - Verify HTML Functionality - Multiple highlighted headings and paragraphs', async ({ createLesson }) => {
@@ -399,7 +414,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue34)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-35 - Verify HTML Functionality - Single paragraph with strike through word', async ({ createLesson }) => {
@@ -410,7 +425,7 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue35)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+        
     });
 
     test('Umair - TC-36 - Verify HTML Functionality - Multiple paragraph with strike through word', async ({ createLesson }) => {
@@ -421,7 +436,6 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue36)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('Umair - TC-37 - Verify HTML Functionality - Single strike through paragraph', async ({ createLesson }) => {
@@ -432,7 +446,6 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue37)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('Umair - TC-38 - Verify HTML Functionality - Multiple strike through paragraphs', async ({ createLesson }) => {
@@ -443,7 +456,6 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue38)
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('Umair - TC-39 - Verify HTML Functionality - Single strike through heading and paragraph', async ({ createLesson }) => {
@@ -454,6 +466,9 @@ test.describe('TestSuite: HTML', () => {
         await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
         await PlaywrightCore.click(createLesson.SaveBtn)
         await expect(createLesson.HTMLNode).toHaveText(CLtd.HTMLNodeValue39)
+    });
+
+    test.afterEach(async ({ loginPage, createTeams, createLesson }) => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 

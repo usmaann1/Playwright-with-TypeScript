@@ -235,6 +235,8 @@ exports.CreateLesson = class CreateLesson {
         this.SelectTableOpt1AllowLearner = this.page.locator(Locators.SelectTableOpt1AllowLearner)
         this.SelectTableOpt2LeanersCan = this.page.locator(Locators.SelectTableOpt2LeanersCan)
         this.SelectTableSelectBox1 = this.page.locator(Locators.SelectTableSelectBox1)
+        this.H1HeadingLocator = this.page.locator(Locators.H1HeadingLocator)
+        this.H2HeadingLocator = this.page.locator(Locators.H2HeadingLocator)
     }
    
     async clickOnAddNewItem() {
