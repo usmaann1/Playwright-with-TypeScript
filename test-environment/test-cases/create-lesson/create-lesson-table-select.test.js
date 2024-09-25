@@ -103,6 +103,7 @@ test.describe('TestSuite: Create Lesson Table Select', () => {
         await expect(createLesson.ExitStudentModeBtn).toHaveText(CLtd.ExitStudentModeBtnValue)
         await PlaywrightCore.click(createLesson.SelectTableSelectBox1)
         await PlaywrightCore.click(createLesson.CheckAnswerBtn)
+        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await expect(createLesson.IncorrectAndCorrectAnswerHeading).toHaveText(CLtd.CorrectAnswerTxt)
         await expect(createLesson.PointScoreMsg).toHaveText(CLtd.PointScore1Txt)
     });
