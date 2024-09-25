@@ -683,7 +683,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const innerText = await element.innerText();
     const isValid = await innerText.includes(TeamCoursesData.ChangedFileOutput);
     expect(isValid).toBe(true);
-    console.log(folder)
     await PlaywrightCore.waitTimeout(this.page, 20000);
     await this.page.getByText(folder).first().click();
     const fileHandle = await this.page.locator(source);
@@ -703,7 +702,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       allFilesHaveData = zipEntries.every((entry) => {
         if (!entry.isDirectory) {
           const fileContent = entry.getData().toString('utf8');
-          console.log(fileContent);
           return fileContent.length > 0;
         }
         return true;
@@ -712,13 +710,11 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       allFilesHaveData = zipEntries.some((entry) => {
         if (!entry.isDirectory) {
           const fileContent = entry.getData().toString('utf8');
-          console.log(fileContent);
           return fileContent.length > 0;
         }
         return true;
       });
     }
-    console.log(entryNames)
     const allMatch = entryNames.every((entryName) => matchArray.includes(entryName));
     await expect(allFilesHaveData).toBe(true);
     await expect(allMatch).toBe(true);
@@ -808,7 +804,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       allFilesHaveData = zipEntries.every((entry) => {
         if (!entry.isDirectory) {
           const fileContent = entry.getData().toString('utf8');
-          console.log(fileContent);
           return fileContent.length > 0;
         }
         return true;
@@ -817,7 +812,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       allFilesHaveData = zipEntries.some((entry) => {
         if (!entry.isDirectory) {
           const fileContent = entry.getData().toString('utf8');
-          console.log(fileContent);
           return fileContent.length > 0;
         }
         return true;
@@ -862,7 +856,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       allFilesHaveData = zipEntries.every((entry) => {
         if (!entry.isDirectory) {
           const fileContent = entry.getData().toString('utf8');
-          console.log(fileContent);
           return fileContent.length > 0;
         }
         return true;
@@ -871,7 +864,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       allFilesHaveData = zipEntries.some((entry) => {
         if (!entry.isDirectory) {
           const fileContent = entry.getData().toString('utf8');
-          console.log(fileContent);
           return fileContent.length > 0;
         }
         return true;
