@@ -644,7 +644,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     target,
     file,
     folder,
-    matchArray
+    matchArray,
+    checkAllFiles = true
   ) {
     await PlaywrightCore.click(this.FileExplorerBtnOpen);
     await PlaywrightCore.createfile(
@@ -682,7 +683,6 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const innerText = await element.innerText();
     const isValid = await innerText.includes(TeamCoursesData.ChangedFileOutput);
     expect(isValid).toBe(true);
-    console.log(folder)
     await PlaywrightCore.waitTimeout(this.page, 20000);
     await this.page.getByText(folder).first().click();
     const fileHandle = await this.page.locator(source);
@@ -697,8 +697,27 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
     const zipEntries = zip.getEntries();
     const entryNames = zipEntries.map((entry) => entry.entryName);
+    let allFilesHaveData = false
+    if (checkAllFiles) {
+      allFilesHaveData = zipEntries.every((entry) => {
+        if (!entry.isDirectory) {
+          const fileContent = entry.getData().toString('utf8');
+          return fileContent.length > 0;
+        }
+        return true;
+      });
+    } else {
+      allFilesHaveData = zipEntries.some((entry) => {
+        if (!entry.isDirectory) {
+          const fileContent = entry.getData().toString('utf8');
+          return fileContent.length > 0;
+        }
+        return true;
+      });
+    }
     const allMatch = entryNames.every((entryName) => matchArray.includes(entryName));
-    await expect(allMatch).toBe(true)
+    await expect(allFilesHaveData).toBe(true);
+    await expect(allMatch).toBe(true);
   }
 
   async fileStructureJAVACSHTML(
@@ -714,7 +733,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     file,
     folder,
     changedMainFile,
-    matchArray
+    matchArray,
+    checkAllFiles = true
+
   ) {
     await PlaywrightCore.waitTimeout(this.page, 20000);
     const codeEditorContent = await this.EditorTextBox.nth(1);
@@ -778,8 +799,27 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
     const zipEntries = zip.getEntries();
     const entryNames = zipEntries.map((entry) => entry.entryName);
+    let allFilesHaveData = false
+    if (checkAllFiles) {
+      allFilesHaveData = zipEntries.every((entry) => {
+        if (!entry.isDirectory) {
+          const fileContent = entry.getData().toString('utf8');
+          return fileContent.length > 0;
+        }
+        return true;
+      });
+    } else {
+      allFilesHaveData = zipEntries.some((entry) => {
+        if (!entry.isDirectory) {
+          const fileContent = entry.getData().toString('utf8');
+          return fileContent.length > 0;
+        }
+        return true;
+      });
+    }
     const allMatch = entryNames.every((entryName) => matchArray.includes(entryName));
-    await expect(allMatch).toBe(true)
+    await expect(allFilesHaveData).toBe(true);
+    await expect(allMatch).toBe(true);
   }
 
   async fileStructureHTMLRemaining(
@@ -795,7 +835,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     file,
     folder,
     changedMainFile,
-    matchArray
+    matchArray,
+    checkAllFiles = true
   ) {
     await this.page.getByText(folder).first().click();
     const fileHandle = await this.page.locator(source);
@@ -810,8 +851,27 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
     const zipEntries = zip.getEntries();
     const entryNames = zipEntries.map((entry) => entry.entryName);
+    let allFilesHaveData = false
+    if (checkAllFiles) {
+      allFilesHaveData = zipEntries.every((entry) => {
+        if (!entry.isDirectory) {
+          const fileContent = entry.getData().toString('utf8');
+          return fileContent.length > 0;
+        }
+        return true;
+      });
+    } else {
+      allFilesHaveData = zipEntries.some((entry) => {
+        if (!entry.isDirectory) {
+          const fileContent = entry.getData().toString('utf8');
+          return fileContent.length > 0;
+        }
+        return true;
+      });
+    }
     const allMatch = entryNames.every((entryName) => matchArray.includes(entryName));
-    await expect(allMatch).toBe(true)
+    await expect(allFilesHaveData).toBe(true);
+    await expect(allMatch).toBe(true);
   }
 
   async breakPoint() {

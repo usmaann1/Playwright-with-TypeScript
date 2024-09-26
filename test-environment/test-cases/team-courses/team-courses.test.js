@@ -488,7 +488,8 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="testjsnew"',
       "testjs.js",
       "testjs",
-      ["index.js", "testjs/", "testjsnew/", "testjsnew/testjs.js"]
+      ["index.js", "testjs/", "testjsnew/", "testjsnew/testjs.js"],
+      true
     );
   });
 
@@ -517,7 +518,8 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="testpynew"',
       "testpy.py",
       "testpy",
-      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"]
+      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"],
+      false
     );
   });
 
@@ -547,7 +549,8 @@ test.describe("TestSuite: Team/Courses", () => {
       "Helper.java",
       "Helper",
       TeamCoursesData.FileStructureJava,
-      ["Helper/", "Helpernew/", "Helpernew/Helper.java", "Main.java"]
+      ["Helper/", "Helpernew/", "Helpernew/Helper.java", "Main.java"],
+      true
     );
   });
 
@@ -577,7 +580,8 @@ test.describe("TestSuite: Team/Courses", () => {
       "Helper.cs",
       "Helper",
       TeamCoursesData.FileStructureCSharp,
-      ["Helper/", "Helpernew/", "Helpernew/Helper.cs", "main.cs", "main.csproj"]
+      ["Helper/", "Helpernew/", "Helpernew/Helper.cs", "main.cs", "main.csproj"],
+      true
     );
   });
 
@@ -606,7 +610,8 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="testcppnew"',
       "testcpp.cpp",
       "testcpp",
-      ["main.cpp", "testcpp/", "testcppnew/", "testcppnew/testcpp.cpp"]
+      ["main.cpp", "testcpp/", "testcppnew/", "testcppnew/testcpp.cpp"],
+      true
     );
   });
 
@@ -644,7 +649,8 @@ test.describe("TestSuite: Team/Courses", () => {
         "index.html",
         "script.js",
         "styles.css",
-      ]
+      ],
+      true
     );
     const newPage = await browser.newPage();
     const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
@@ -673,7 +679,8 @@ test.describe("TestSuite: Team/Courses", () => {
         "index.html",
         "script.js",
         "styles.css",
-      ]
+      ],
+      true
     );
   });
 
@@ -702,7 +709,8 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="testpynew"',
       "testpy.py",
       "testpy",
-      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"]
+      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"],
+      true
     );
   });
 
@@ -731,7 +739,8 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="testpynew"',
       "testpy.py",
       "testpy",
-      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"]
+      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"],
+      true
     );
   });
 
@@ -766,7 +775,8 @@ test.describe("TestSuite: Team/Courses", () => {
         "HelperSwingnew/",
         "HelperSwingnew/HelperSwing.java",
         "Main.java",
-      ]
+      ],
+      true
     );
   });
 
@@ -795,7 +805,8 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="testpynew"',
       "testpy.py",
       "testpy",
-      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"]
+      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"],
+      true
     );
   });
 });
