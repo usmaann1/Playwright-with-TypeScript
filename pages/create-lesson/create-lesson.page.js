@@ -246,6 +246,17 @@ exports.CreateLesson = class CreateLesson {
         this.ModifiedParagraphOne = this.page.locator(Locators.ModifiedParagraphOne)
         this.ModifiedParagraphTwo = this.page.locator(Locators.ModifiedParagraphTwo)
         this.ModifiedParagraphThree = this.page.locator(Locators.ModifiedParagraphThree)
+        this.JPGFileAfterUploaded = this.page.locator(Locators.JPGFileAfterUploaded)
+        this.FileTestCSVAfterUploaded = this.page.locator(Locators.FileTestCSVAfterUploaded)
+        this.FileTestPNGAfterUploaded = this.page.locator(Locators.FileTestPNGAfterUploaded)
+        this.HelperJSAfterUploaded = this.page.locator(Locators.HelperJSAfterUploaded)
+        this.IndexHTMLAfterUploaded = this.page.locator(Locators.IndexHTMLAfterUploaded)
+        this.MainJAVAAfterUploaded = this.page.locator(Locators.MainJAVAAfterUploaded)
+        this.MainPYAfterUploaded = this.page.locator(Locators.MainPYAfterUploaded)
+        this.MainCPPAfterUploaded = this.page.locator(Locators.MainCPPAfterUploaded)
+        this.MainCSAfterUploaded = this.page.locator(Locators.MainCSAfterUploaded)
+        this.TestDOCXAfterUploaded = this.page.locator(Locators.TestDOCXAfterUploaded)
+        this.TestPDFAfterUploaded = this.page.locator(Locators.TestPDFAfterUploaded)
     }
    
     async clickOnAddNewItem() {
