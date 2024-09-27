@@ -166,6 +166,14 @@ test.describe('TestSuite: Grouping', () => {
         await page.locator(groupingData.GroupBox_2).hover();
         await page.mouse.up();
 
+        // Drag and drop student 3
+        await page.locator(groupingData.GroupedStudentEmail_3).hover();
+        await page.mouse.down();
+        await grouping.waitForFunction();
+        await page.locator(groupingData.GroupBox_2).hover();
+        await page.mouse.up();
+        await grouping.waitForFunction();
+
         await grouping.ClickSubmitBtn();
         await grouping.waitForFunction();
         await grouping.ClickCodeStarterButton(newPage);
