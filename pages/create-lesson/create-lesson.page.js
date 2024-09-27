@@ -237,6 +237,15 @@ exports.CreateLesson = class CreateLesson {
         this.SelectTableSelectBox1 = this.page.locator(Locators.SelectTableSelectBox1)
         this.H1HeadingLocator = this.page.locator(Locators.H1HeadingLocator)
         this.H2HeadingLocator = this.page.locator(Locators.H2HeadingLocator)
+        this.H3HeadingLocator = this.page.locator(Locators.H3HeadingLocator)
+        this.H4HeadingLocator = this.page.locator(Locators.H4HeadingLocator)
+        this.ParagraphOneLocator = this.page.locator(Locators.ParagraphOneLocator)
+        this.ParagraphTwoLocator = this.page.locator(Locators.ParagraphTwoLocator)
+        this.ParagraphThreeLocator = this.page.locator(Locators.ParagraphThreeLocator)
+        this.LinksLocator = this.page.locator(Locators.LinksLocator)
+        this.ModifiedParagraphOne = this.page.locator(Locators.ModifiedParagraphOne)
+        this.ModifiedParagraphTwo = this.page.locator(Locators.ModifiedParagraphTwo)
+        this.ModifiedParagraphThree = this.page.locator(Locators.ModifiedParagraphThree)
     }
    
     async clickOnAddNewItem() {

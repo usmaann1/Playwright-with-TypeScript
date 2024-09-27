@@ -258,5 +258,14 @@
     "SelectTableOpt2LeanersCan":"//label[contains(text(),'Learners can gain a percentage of the maximum poin')]",
     "SelectTableSelectBox1":"//tbody/tr[1]/td[1]",
     "H1HeadingLocator":"(//h1)[2]",
-    "H2HeadingLocator":"(//h2)[1]"
+    "H2HeadingLocator":"(//h2)[1]",
+    "H3HeadingLocator":"(//h3)[1]",
+    "H4HeadingLocator":"(//h4)[1]",
+    "ParagraphOneLocator":"(//p)[1]",
+    "ParagraphTwoLocator":"(//p)[3]",
+    "ParagraphThreeLocator":"(//p)[5]",
+    "LinksLocator": "//div[@class='html-node']//div",
+    "ModifiedParagraphOne":"(//p)[1]",
+    "ModifiedParagraphTwo":"(//p)[2]",
+    "ModifiedParagraphThree":"(//p)[3]"
 }
