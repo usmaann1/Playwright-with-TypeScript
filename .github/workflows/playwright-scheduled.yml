@@ -77,7 +77,7 @@ jobs:
                 title: `Playwright Automation Results :test_tube:`,
                 fields: [{
                   title: 'Site Under Test',
-                  value: 'stg.juicemind.com',
+                  value: 'dev.juicemind.com',
                   short: true
                 },
                 {
