@@ -9,7 +9,13 @@ import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
 test.describe("TestSuite: Team/Courses", () => {
-  const email = Credentials.EMAIL_NUMAIR;
+  const email1 = Credentials.EMAIL_NUMAIR1;
+  const email2 = Credentials.EMAIL_NUMAIR2;
+  const email3 = Credentials.EMAIL_NUMAIR3;
+  const email4 = Credentials.EMAIL_NUMAIR4;
+  const email5 = Credentials.EMAIL_NUMAIR5;
+  const email6 = Credentials.EMAIL_NUMAIR6;
+  const email7 = Credentials.EMAIL_NUMAIR7;
   const password = Credentials.PASSWORD_NUMAIR;
   test("[Numair] - TC: Flow Test Python - Create Assignment, project, add test, publish, share, join as student, submit test, verify answers", async ({
     teamCoursesPage,
@@ -17,8 +23,8 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    const randomEmail = await UserFunctions.generateRandomEmail(email);
-    await teamCoursesPage.signInUser(email, password);
+    const randomEmail = await UserFunctions.generateRandomEmail(email1);
+    await teamCoursesPage.signInUser(email1, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -50,8 +56,8 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    const randomEmail = await UserFunctions.generateRandomEmail(email);
-    await teamCoursesPage.signInUser(email, password);
+    const randomEmail = await UserFunctions.generateRandomEmail(email1);
+    await teamCoursesPage.signInUser(email1, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -83,8 +89,8 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    const randomEmail = await UserFunctions.generateRandomEmail(email);
-    await teamCoursesPage.signInUser(email, password);
+    const randomEmail = await UserFunctions.generateRandomEmail(email1);
+    await teamCoursesPage.signInUser(email1, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -116,8 +122,8 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    const randomEmail = await UserFunctions.generateRandomEmail(email);
-    await teamCoursesPage.signInUser(email, password);
+    const randomEmail = await UserFunctions.generateRandomEmail(email1);
+    await teamCoursesPage.signInUser(email1, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -147,11 +153,10 @@ test.describe("TestSuite: Team/Courses", () => {
     teamCoursesPage,
     browser,
   }) => {
-    const randomEmail = await UserFunctions.generateRandomEmail(email);
+    const randomEmail = await UserFunctions.generateRandomEmail(email1);
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email1, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -188,8 +193,8 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    const randomEmail = await UserFunctions.generateRandomEmail(email);
-    await teamCoursesPage.signInUser(email, password);
+    const randomEmail = await UserFunctions.generateRandomEmail(email2);
+    await teamCoursesPage.signInUser(email2, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -211,7 +216,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email2, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -226,7 +231,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email2, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -241,7 +246,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email2, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -256,7 +261,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email2, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -271,7 +276,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email2, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -286,7 +291,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email3, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -304,7 +309,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email3, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -322,7 +327,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email3, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -340,7 +345,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email3, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -358,7 +363,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email3, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -376,7 +381,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email4, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -402,7 +407,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email4, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -419,7 +424,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email4, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -435,7 +440,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email4, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -451,8 +456,8 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    const randomEmail = await UserFunctions.generateRandomEmail(email);
-    await teamCoursesPage.signInUser(email, password);
+    const randomEmail = await UserFunctions.generateRandomEmail(email5);
+    await teamCoursesPage.signInUser(email5, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
 
@@ -469,7 +474,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email5, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -488,7 +493,8 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="testjsnew"',
       "testjs.js",
       "testjs",
-      ["index.js", "testjs/", "testjsnew/", "testjsnew/testjs.js"]
+      ["index.js", "testjs/", "testjsnew/", "testjsnew/testjs.js"],
+      true
     );
   });
 
@@ -497,7 +503,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email5, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -517,7 +523,8 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="testpynew"',
       "testpy.py",
       "testpy",
-      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"]
+      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"],
+      false
     );
   });
 
@@ -526,7 +533,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email5, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -547,7 +554,8 @@ test.describe("TestSuite: Team/Courses", () => {
       "Helper.java",
       "Helper",
       TeamCoursesData.FileStructureJava,
-      ["Helper/", "Helpernew/", "Helpernew/Helper.java", "Main.java"]
+      ["Helper/", "Helpernew/", "Helpernew/Helper.java", "Main.java"],
+      true
     );
   });
 
@@ -556,7 +564,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email5, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -577,7 +585,8 @@ test.describe("TestSuite: Team/Courses", () => {
       "Helper.cs",
       "Helper",
       TeamCoursesData.FileStructureCSharp,
-      ["Helper/", "Helpernew/", "Helpernew/Helper.cs", "main.cs", "main.csproj"]
+      ["Helper/", "Helpernew/", "Helpernew/Helper.cs", "main.cs", "main.csproj"],
+      true
     );
   });
 
@@ -586,7 +595,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email5, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -606,7 +615,8 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="testcppnew"',
       "testcpp.cpp",
       "testcpp",
-      ["main.cpp", "testcpp/", "testcppnew/", "testcppnew/testcpp.cpp"]
+      ["main.cpp", "testcpp/", "testcppnew/", "testcppnew/testcpp.cpp"],
+      true
     );
   });
 
@@ -616,7 +626,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email6, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -644,7 +654,8 @@ test.describe("TestSuite: Team/Courses", () => {
         "index.html",
         "script.js",
         "styles.css",
-      ]
+      ],
+      true
     );
     const newPage = await browser.newPage();
     const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
@@ -673,7 +684,8 @@ test.describe("TestSuite: Team/Courses", () => {
         "index.html",
         "script.js",
         "styles.css",
-      ]
+      ],
+      true
     );
   });
 
@@ -682,7 +694,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email6, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -702,7 +714,8 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="testpynew"',
       "testpy.py",
       "testpy",
-      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"]
+      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"],
+      true
     );
   });
 
@@ -711,7 +724,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email6, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -731,7 +744,8 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="testpynew"',
       "testpy.py",
       "testpy",
-      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"]
+      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"],
+      true
     );
   });
 
@@ -740,7 +754,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email6, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -766,7 +780,8 @@ test.describe("TestSuite: Team/Courses", () => {
         "HelperSwingnew/",
         "HelperSwingnew/HelperSwing.java",
         "Main.java",
-      ]
+      ],
+      true
     );
   });
 
@@ -775,7 +790,7 @@ test.describe("TestSuite: Team/Courses", () => {
   }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
-    await teamCoursesPage.signInUser(email, password);
+    await teamCoursesPage.signInUser(email6, password);
     await teamCoursesPage.CreateTeam(randomName);
     await teamCoursesPage.CreateAssignment(randomAssignment);
     await teamCoursesPage.IntializeIDE(
@@ -795,7 +810,8 @@ test.describe("TestSuite: Team/Courses", () => {
       'text="testpynew"',
       "testpy.py",
       "testpy",
-      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"]
+      ["main.py", "testpy/", "testpynew/", "testpynew/testpy.py"],
+      true
     );
   });
 });
