@@ -177,6 +177,11 @@
     "EmbedSubmitBtn":"//div[@contenteditable='false']//div//div//div//div//a",
     "YoutubePlayBtn":"//div[@contenteditable='true']//div[2]",
     "WatchOnYoutubeBtn":"//div[@class='video-setup flex flex-col items-center justify-center']",
+
+    "DailyMotionHeading": "//*[@id='media-title']",
+    "BitChuteVideoHeading": "//*[@id='q-app']/div/div[1]/div/div[2]/div/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]",
+    "VeohVideoHeading": "//*[@id='contents']/div[1]/div[2]/h2",
+
     "SetupBtn":"//button[normalize-space()='Setup']",
     "OptionsBtn":"//button[normalize-space()='Options']",
     "CurrentEmbedURLHeading":"//p[normalize-space()='Current Embed URL']",

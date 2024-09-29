@@ -73,7 +73,12 @@ exports.CreateLesson = class CreateLesson {
         this.EmbedInsertURLHeading = this.page.locator(Locators.EmbedInsertURLHeading)
         this.EmbedSubmitBtn = this.page.locator(Locators.EmbedSubmitBtn)
         this.YoutubePlayBtn = this.page.locator(Locators.YoutubePlayBtn)
+        this.PresentationYoutubePlayBtn = this.page.locator(Locators.PresentationYoutubePlayBtn)
         this.WatchOnYoutubeBtn = this.page.locator(Locators.WatchOnYoutubeBtn)
+        this.PresentationWatchOnYoutubeBtn = this.page.locator(Locators.PresentationWatchOnYoutubeBtn)
+
+        this.DailyMotionHeading = this.page.locator(Locators.DailyMotionHeading)
+
         this.SetupBtn = this.page.locator(Locators.SetupBtn)
         this.OptionsBtn = this.page.locator(Locators.OptionsBtn)
         this.CurrentEmbedURLHeading = this.page.locator(Locators.CurrentEmbedURLHeading)
@@ -382,6 +387,25 @@ exports.CreateLesson = class CreateLesson {
         await expect(iframeElement.locator(Locators.YoutubeVideoHeading)).toHaveText(name)
         await this.page.waitForTimeout(2000);
     }
+
+    async valiadteDailyMotionVideoHeading(name) {
+        const iframeElement = this.page.frameLocator(Locators.IFrameLocatorYoutube);
+        await expect(iframeElement.locator(Locators.DailyMotionHeading)).toHaveText(name)
+        await this.page.waitForTimeout(2000);
+    }
+
+    async valiadteBitChuteVideoHeading(name) {
+        const iframeElement = this.page.frameLocator(Locators.IFrameLocatorYoutube);
+        await expect(iframeElement.locator(Locators.BitChuteVideoHeading)).toHaveText(name)
+        await this.page.waitForTimeout(2000);
+    }
+
+    async valiadteVeohVideoHeading(name) {
+        const iframeElement = this.page.frameLocator(Locators.IFrameLocatorYoutube);
+        await expect(iframeElement.locator(Locators.VeohVideoHeading)).toHaveText(name)
+        await this.page.waitForTimeout(2000);
+    }
+
     async enterTextInQuoteAndAuthorFields() {
         const parent = this.textEditor
         const child = parent.locator(this.parentQuotetag)
