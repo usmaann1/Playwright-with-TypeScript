@@ -1,8 +1,7 @@
 const { PlaywrightCore } = require('../../module-imports/helperFunctions.imports')
-
 import { expect } from '@playwright/test';
-import Locators from './create-lesson.locator.json'
-import clTD from '../../test-environment/test-assets/test-data-files/create-lesson/create-lesson-testData.json'
+import Locators from './create-lesson.locator.json';
+import clTD from '../../test-environment/test-assets/test-data-files/create-lesson/create-lesson-testData.json';
 
 exports.CreateLesson = class CreateLesson {
 
