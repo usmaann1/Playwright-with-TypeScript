@@ -875,8 +875,4 @@ test.describe('TestSuite: HTML', () => {
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)  
     });
 
-    test.afterEach(async ({ loginPage, createTeams, createLesson }) => {
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
-    });
-
 })
