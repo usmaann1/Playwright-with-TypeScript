@@ -11,7 +11,7 @@ import Locators from "./lesson-builder.locator.json";
     intializePage(page) {
       this.page = page;
       this.baseURL = "./"
-      this.TeamCoursesBtn = this.page.locator(Locators.TeamCoursesBtn);
+      this.TeamCoursesBtn = this.page.locator(Locators.TeamCoursesButn);
       this.CreateNewTeamBtn = this.page.locator(Locators.CreateNewTeamBtn);
       this.StartfromScratch = this.page.locator(Locators.StartfromScratch);
       this.TeamNametxtbox = this.page.locator(Locators.TeamNametxtbox);
@@ -27,21 +27,31 @@ import Locators from "./lesson-builder.locator.json";
     
       this.copy_InviteStudentsBtn = this.page.locator(Locators.copy_InviteStudentsBtn);
       this.Publish_AssignmentBtn = this.page.locator(Locators.Publish_AssignmentBtn);
+      this.DueDateClick = this.page.locator(Locators.DueDateToggle);
+
       this.PageLockedText = this.page.locator(Locators.PageLockedText);
       this.waitingForTeacherText = this.page.locator(Locators.waitingForTeacherText);
 
       this.addnewitem_btn = this.page.locator(Locators.addnewitem_btn);
 
-    this.Presentation_btn = this.page.locator(Locators.Presentation_btn);
-    this.Gotit_btn = this.page.locator(Locators.Gotit_btn);
-    this.ViewStuPreview_btn = this.page.locator(Locators.ViewStuPreview_btn);
-    this.ExitStudentView_btn = this.page.locator(Locators.ExitStudentView_btn);
-    this.thirdsixdot_btn = this.page.locator(Locators.thirdsixdot_btn);
-    this.EmailStudentSignup_textfield = this.page.locator(Locators.EmailStudentSignup_textfield);
-    this.PasswordStudentSignup_textfield = this.page.locator(Locators.PasswordStudentSignup_textfield);
-    this.SubmitStudentSignup_btn = this.page.locator(Locators.SubmitStudentSignup_btn);
-    this.clickLogin_btn = this.page.locator(Locators.login_btn);
+      this.Presentation_btn = this.page.locator(Locators.Presentation_btn);
+      this.Gotit_btn = this.page.locator(Locators.Gotit_btn);
+      this.ViewStuPreview_btn = this.page.locator(Locators.ViewStuPreview_btn);
+      this.ExitStudentView_btn = this.page.locator(Locators.ExitStudentView_btn);
+      this.thirdsixdot_btn = this.page.locator(Locators.thirdsixdot_btn);
+      this.EmailStudentSignup_textfield = this.page.locator(Locators.EmailStudentSignup_textfield);
+      this.PasswordStudentSignup_textfield = this.page.locator(Locators.PasswordStudentSignup_textfield);
+      this.SubmitStudentSignup_btn = this.page.locator(Locators.SubmitStudentSignup_btn);
+      this.clickLogin_btn = this.page.locator(Locators.login_btn);
 
+      this.ProjectType_Java = this.page.locator(Locators.ProjectTypeJava);
+      this.InitiliazeJuiceMind_IDE = this.page.locator(Locators.Initialize_JuiceMind_IDE);
+      this.ProjectName_TextBox = this.page.locator(Locators.ProjectNameTextBox);
+      this.ProjectType_DropDown = this.page.locator(Locators.ProjectTypeDropDown);
+      this.SubmitGroupData = this.page.locator(Locators.SubmitBtn) 
+      this.CalendarIconClick = this.page.locator(Locators.CalendarIcon)
+      this.CodeStarterButton = this.page.locator(Locators.CreateStarterCodeBtn)
+      this.SubmitAssignmentStudent = this.page.locator(Locators.SubmitAssignmentStd)      
 
     }
 
@@ -61,9 +71,9 @@ import Locators from "./lesson-builder.locator.json";
       await PlaywrightCore.fill(this.TeamNametxtbox, 'Java Class');
     }
 
-    async Submitbtn(){
-        await PlaywrightCore.click(this.SubmitBtn);
-      }
+    async Submitbtn() {
+      await PlaywrightCore.click(this.SubmitBtn, { force: true });
+    }
     async CreateAssignmentbtn(){
         await PlaywrightCore.click(this.CreatenewassignmentBtn);
       }
@@ -79,6 +89,14 @@ import Locators from "./lesson-builder.locator.json";
       async AssignmentCreateBtn(){
         await PlaywrightCore.click(this.CodingAssignmentCreateBtn);
       }
+      async DueDateButton(){
+        await PlaywrightCore.click(this.DueDateClick);
+      }
+
+      async CalendarButton(){
+        await PlaywrightCore.click(this.CalendarIconClick);
+      }
+
 
       async Publish(){
         await PlaywrightCore.click(this.PublishButton);
@@ -150,7 +168,72 @@ async fillstudentsignin(newPage, Email, Password){
 
 async verifyAssignmentHeading(){
 
-  await expect(Locators.studentAssignmentHeading).toHaveText('Sample Lesson Plan');}
+  await expect(Locators.studentAssignmentHeading).toHaveText('Sample Lesson Plan');
+}
+
+async ClickInitiliazeJuiceMindIDE(page) {
+  await PlaywrightCore.click(this.InitiliazeJuiceMind_IDE)
+}
+
+async FillProjectNameTextBox(ProjectNametxt) {
+  await PlaywrightCore.fill(this.ProjectName_TextBox, ProjectNametxt);    
+}
+
+async ClickProjectTypeDropDown() {
+  await PlaywrightCore.click(this.ProjectType_DropDown);
+}
+
+async ClickProjectTypeJava() {
+  await PlaywrightCore.click(this.ProjectType_Java);
+}
+
+
+async SelectExpiredDueDate(hours, page)
+{
+  const cellCount = await page.locator(Locators.HoursBoxes).count();
+
+  for(let i=1; i<=cellCount; i++){
+    const dynamicPath = `${Locators.HoursBoxes}[${i}]`
+    var text = await page.locator(dynamicPath).textContent();
+
+    if(text == hours){
+      await page.click(dynamicPath);
+      break;
+    }
+
+  }
+
+}
+
+async ClickCodeStarterButton(newPage) {
+  await newPage.click(Locators.CreateStarterCodeBtn);
+}
+
+async ClickSubmitAssignmentBtn(newPage){
+  await newPage.click(Locators.SubmitAssignmentStd);
+}
+
+async ClickWarningSubmitAssignmentBtn(newPage){
+  await newPage.click(Locators.WarningSubmitAssignmentStd);
+}
+async ClickFirstAssignment(newPage){
+  await newPage.click(Locators.FirstAssignmentBtn);
+}
+
+async ClickSecondAssignment(newPage){
+  await newPage.click(Locators.SecondAssignmentBtn);
+}
+
+async ClickLateSubmissionToggle(newPage){
+  await newPage.click(Locators.LatesubmissionToggle);
+}
+async ClickLateReSubmissionToggle(newPage){
+  await newPage.click(Locators.AllowReSubmissionToggle);
+}
 
 
 };
+
+
+
+

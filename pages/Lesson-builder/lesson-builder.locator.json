@@ -1,5 +1,5 @@
 {
-    "TeamCoursesBtn": "//div[normalize-space()='Teams/Courses']",
+    "TeamCoursesButn": "//div[normalize-space()='Teams/Courses']",
     "CreateNewTeamBtn": "//a[normalize-space()='Create new team']",
     "StartfromScratch": "img[src='/assets/teams/start-from-scratch.png']",
     "TeamNametxtbox": "//input[@placeholder='Team name']",
@@ -17,6 +17,16 @@
     "copy_InviteStudentsBtn":"//a[normalize-space()='Copy']",
     "invitestudents_closeBtn": "body div[role='presentation'] div a:nth-child(1) svg",
     "Publish_AssignmentBtn":"(//input[@type='checkbox'])[1]",
+    "DueDateToggle":"(//input[@type='checkbox'])[2]",
+    "LatesubmissionToggle":"(//input[@type='checkbox'])[3]",
+    "AllowReSubmissionToggle":"(//input[@type='checkbox'])[4]",
+
+    "CalendarIcon":"//*[@data-testid='CalendarIcon']",
+    "CalendarCell":"(//button[@role='gridcell'])",
+    "HoursBoxes":"(//ul[@aria-label='Select hours']//li)",
+    "CreateStarterCodeBtn": "//a[text() = 'Create starter code']",
+    "DisabledResubmitButton":"//button[@disabled]",
+
 
     "addnewitem_btn":"//div[contains(text(),'Add new item')]",
     "Presentation_btn":"//a[normalize-space()='Presentation Mode']",
@@ -27,7 +37,18 @@
     "ClickSignin_btn": "//a[normalize-space()='Sign in']",
     "login_btn": "//a[@href='/login']",
     "finish_btn":"//a[normalize-space()='Finish']",
-    "studentAssignmentHeading":"//div[@class='tiptap ProseMirror min-h-full']/h1"
+    "ProjectTypeDropDown":"//div[@id='demo-simple-select']",
+    "ProjectNameTextBox": "//input[@placeholder='Project name']",
+    "Initialize_JuiceMind_IDE": "//a[normalize-space()='Initialize JuiceMind IDE']",
+    "ProjectTypeJava": "//li[@data-value='java']",
+    "studentAssignmentHeading":"//div[@class='tiptap ProseMirror min-h-full']/h1",
+    "SubmitAssignmentStd": "//*[text()='Submit']",
+    "WarningSubmitAssignmentStd": "(//*[text()='Submit'])[2]",
+    "FirstAssignmentBtn": "(//span[text() = 'Modue 7'])[1]",
+    "SecondAssignmentBtn":"(//span[text() = 'Modue 7'])[2]"
+
+
+
 
     
 }
