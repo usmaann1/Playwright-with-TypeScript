@@ -814,4 +814,161 @@ test.describe("TestSuite: Team/Courses", () => {
       true
     );
   });
+
+  test("[Numair] - TC: after due date python- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email7);
+    await teamCoursesPage.signInUser(email7, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption8,
+      true
+    );
+    await teamCoursesPage.simplePython();
+    await teamCoursesPage.setPerviousDueDate();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isSubmitDisabled();
+  });
+
+  test("[Numair] - TC: after due date java- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email1);
+    await teamCoursesPage.signInUser(email1, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption9,
+      true
+    );
+    await teamCoursesPage.simpleJava();
+    await teamCoursesPage.setPerviousDueDate();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isSubmitDisabled();
+  });
+
+  test.skip("[Numair] - TC: after due date csharp- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email1);
+    await teamCoursesPage.signInUser(email1, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption10,
+      true
+    );
+    await teamCoursesPage.simpleCsharp();
+    await teamCoursesPage.setPerviousDueDate();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isSubmitDisabled();
+  });
+
+  test("[Numair] - TC: after due date C++- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email1);
+    await teamCoursesPage.signInUser(email1, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption11,
+      true
+    );
+    await teamCoursesPage.simpleCPP();
+    await teamCoursesPage.setPerviousDueDate();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isSubmitDisabled();
+  });
+
+  test.only("[Numair] - TC: after due date JavaScript- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomEmail = await UserFunctions.generateRandomEmail(email1);
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email1, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption1
+    );
+    await teamCoursesPage.createTest(
+      TeamCoursesData.createTestType,
+      TeamCoursesData.createTestOldType,
+      TeamCoursesData.createTestNewType,
+      TeamCoursesData.createTestName,
+      TeamCoursesData.testInput,
+      TeamCoursesData.testOutput
+    );
+    await teamCoursesPage.setPerviousDueDate();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isSubmitDisabled();
+  });
 });
+

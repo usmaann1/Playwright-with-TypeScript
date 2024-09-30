@@ -1,6 +1,7 @@
 const {
   PlaywrightCore,
 } = require("../../module-imports/helperFunctions.imports");
+const dayjs = require('dayjs');
 const AdmZip = require("adm-zip");
 import { expect } from "@playwright/test";
 import Locators from "./team-courses.locator.json";
@@ -126,6 +127,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.CodeTargetFile = this.page.locator(Locators.CodeTargetFolder);
     this.MenuBar = this.page.locator(Locators.MenuBar);
     this.FullScreenMinimize = this.page.locator(Locators.FullScreenMinimize).first();
+    this.ClosePopUp = this.page.locator(Locators.ClosePopUp);
+    this.DueDateBtn = this.page.locator(Locators.DueDateBtn);
+    this.DisableSubmitBtn = this.page.locator(Locators.DisableSubmitBtn);
   }
 
   async NavigateToSignUpPage() {
@@ -630,6 +634,21 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const innerText = await element.innerText();
     const isValid = await innerText.includes(output);
     expect(isValid).toBe(true);
+  }
+
+  async setPerviousDueDate() {
+    await this.page.addStyleTag({ content: '* { transition: none !important; animation: none !important; transform: none !important }' });
+    await PlaywrightCore.click(this.ClosePopUp);
+    // await this.page.locator('div').filter({ hasText: /^Due Date$/ }).getByLabel('controlled').check();
+    await PlaywrightCore.click(this.DueDateBtn);
+    const previousDay = dayjs().subtract(1, 'day').format('MM/DD/YYYY');
+    await this.page.getByPlaceholder('MM/DD/YYYY hh:mm aa').fill(`${previousDay} 11:00 AM`);
+  }
+
+  async isSubmitDisabled() {
+    await PlaywrightCore.click(this.CreateStarterCode);
+    const isDisabled = await this.DisableSubmitBtn.isDisabled();
+    expect(isDisabled).toBe(true);
   }
 
   async fileStructureJSPYCPP(
