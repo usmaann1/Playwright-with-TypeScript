@@ -59,6 +59,7 @@ test.describe('TestSuite: Lesson Builder', () => {
       });
 
       await lessonBuilder.closeinvitestudentspopup();
+      await page.waitForTimeout(5000);
       await lessonBuilder.publishassignmentbutton();
 
       // Open a new page
@@ -138,6 +139,7 @@ test.describe('TestSuite: Lesson Builder', () => {
         });
 
       await lessonBuilder.closeinvitestudentspopup();
+      await page.waitForTimeout(5000);
       await lessonBuilder.publishassignmentbutton();
 
       // Open a new page
@@ -253,6 +255,7 @@ test.describe('TestSuite: Lesson Builder', () => {
         });
 
       await lessonBuilder.closeinvitestudentspopup();
+      await page.waitForTimeout(5000);
       await lessonBuilder.publishassignmentbutton();
 
       // Open a new page
@@ -273,6 +276,7 @@ test.describe('TestSuite: Lesson Builder', () => {
       await page.reload();
 
       await lessonBuilder.ClickFirstAssignment(page)
+      await page.waitForTimeout(5000);
       await lessonBuilder.publishassignmentbutton();
 
       await lessonBuilder.ClickInitiliazeJuiceMindIDE(newPage);
