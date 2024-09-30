@@ -1,8 +1,7 @@
 const { PlaywrightCore } = require('../../module-imports/helperFunctions.imports')
-
 import { expect } from '@playwright/test';
-import Locators from './create-lesson.locator.json'
-import clTD from '../../test-environment/test-assets/test-data-files/create-lesson/create-lesson-testData.json'
+import Locators from './create-lesson.locator.json';
+import clTD from '../../test-environment/test-assets/test-data-files/create-lesson/create-lesson-testData.json';
 
 exports.CreateLesson = class CreateLesson {
 
@@ -73,7 +72,12 @@ exports.CreateLesson = class CreateLesson {
         this.EmbedInsertURLHeading = this.page.locator(Locators.EmbedInsertURLHeading)
         this.EmbedSubmitBtn = this.page.locator(Locators.EmbedSubmitBtn)
         this.YoutubePlayBtn = this.page.locator(Locators.YoutubePlayBtn)
+        this.PresentationYoutubePlayBtn = this.page.locator(Locators.PresentationYoutubePlayBtn)
         this.WatchOnYoutubeBtn = this.page.locator(Locators.WatchOnYoutubeBtn)
+        this.PresentationWatchOnYoutubeBtn = this.page.locator(Locators.PresentationWatchOnYoutubeBtn)
+
+        this.DailyMotionHeading = this.page.locator(Locators.DailyMotionHeading)
+
         this.SetupBtn = this.page.locator(Locators.SetupBtn)
         this.OptionsBtn = this.page.locator(Locators.OptionsBtn)
         this.CurrentEmbedURLHeading = this.page.locator(Locators.CurrentEmbedURLHeading)
@@ -235,6 +239,28 @@ exports.CreateLesson = class CreateLesson {
         this.SelectTableOpt1AllowLearner = this.page.locator(Locators.SelectTableOpt1AllowLearner)
         this.SelectTableOpt2LeanersCan = this.page.locator(Locators.SelectTableOpt2LeanersCan)
         this.SelectTableSelectBox1 = this.page.locator(Locators.SelectTableSelectBox1)
+        this.H1HeadingLocator = this.page.locator(Locators.H1HeadingLocator)
+        this.H2HeadingLocator = this.page.locator(Locators.H2HeadingLocator)
+        this.H3HeadingLocator = this.page.locator(Locators.H3HeadingLocator)
+        this.H4HeadingLocator = this.page.locator(Locators.H4HeadingLocator)
+        this.ParagraphOneLocator = this.page.locator(Locators.ParagraphOneLocator)
+        this.ParagraphTwoLocator = this.page.locator(Locators.ParagraphTwoLocator)
+        this.ParagraphThreeLocator = this.page.locator(Locators.ParagraphThreeLocator)
+        this.LinksLocator = this.page.locator(Locators.LinksLocator)
+        this.ModifiedParagraphOne = this.page.locator(Locators.ModifiedParagraphOne)
+        this.ModifiedParagraphTwo = this.page.locator(Locators.ModifiedParagraphTwo)
+        this.ModifiedParagraphThree = this.page.locator(Locators.ModifiedParagraphThree)
+        this.JPGFileAfterUploaded = this.page.locator(Locators.JPGFileAfterUploaded)
+        this.FileTestCSVAfterUploaded = this.page.locator(Locators.FileTestCSVAfterUploaded)
+        this.FileTestPNGAfterUploaded = this.page.locator(Locators.FileTestPNGAfterUploaded)
+        this.HelperJSAfterUploaded = this.page.locator(Locators.HelperJSAfterUploaded)
+        this.IndexHTMLAfterUploaded = this.page.locator(Locators.IndexHTMLAfterUploaded)
+        this.MainJAVAAfterUploaded = this.page.locator(Locators.MainJAVAAfterUploaded)
+        this.MainPYAfterUploaded = this.page.locator(Locators.MainPYAfterUploaded)
+        this.MainCPPAfterUploaded = this.page.locator(Locators.MainCPPAfterUploaded)
+        this.MainCSAfterUploaded = this.page.locator(Locators.MainCSAfterUploaded)
+        this.TestDOCXAfterUploaded = this.page.locator(Locators.TestDOCXAfterUploaded)
+        this.TestPDFAfterUploaded = this.page.locator(Locators.TestPDFAfterUploaded)
     }
    
     async clickOnAddNewItem() {
@@ -360,6 +386,25 @@ exports.CreateLesson = class CreateLesson {
         await expect(iframeElement.locator(Locators.YoutubeVideoHeading)).toHaveText(name)
         await this.page.waitForTimeout(2000);
     }
+
+    async valiadteDailyMotionVideoHeading(name) {
+        const iframeElement = this.page.frameLocator(Locators.IFrameLocatorYoutube);
+        await expect(iframeElement.locator(Locators.DailyMotionHeading)).toHaveText(name)
+        await this.page.waitForTimeout(2000);
+    }
+
+    async valiadteBitChuteVideoHeading(name) {
+        const iframeElement = this.page.frameLocator(Locators.IFrameLocatorYoutube);
+        await expect(iframeElement.locator(Locators.BitChuteVideoHeading)).toHaveText(name)
+        await this.page.waitForTimeout(2000);
+    }
+
+    async valiadteVeohVideoHeading(name) {
+        const iframeElement = this.page.frameLocator(Locators.IFrameLocatorYoutube);
+        await expect(iframeElement.locator(Locators.VeohVideoHeading)).toHaveText(name)
+        await this.page.waitForTimeout(2000);
+    }
+
     async enterTextInQuoteAndAuthorFields() {
         const parent = this.textEditor
         const child = parent.locator(this.parentQuotetag)
