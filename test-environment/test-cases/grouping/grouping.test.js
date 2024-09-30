@@ -38,6 +38,7 @@ test.describe('TestSuite: Grouping', () => {
         });
 
         await grouping.closeinvitestudentspopup();
+        await page.waitForTimeout(5000);
         await grouping.publishassignmentbutton();
 
         // Open a new page for student 1
@@ -165,6 +166,7 @@ test.describe('TestSuite: Grouping', () => {
         await page.mouse.down();
         await page.locator(groupingData.GroupBox_2).hover();
         await page.mouse.up();
+        await grouping.waitForFunction();
 
         // Drag and drop student 3
         await page.locator(groupingData.GroupedStudentEmail_3).hover();
@@ -176,6 +178,8 @@ test.describe('TestSuite: Grouping', () => {
 
         await grouping.ClickSubmitBtn();
         await grouping.waitForFunction();
+        
+
         await grouping.ClickCodeStarterButton(newPage);
         await page.waitForTimeout(10000);
 
