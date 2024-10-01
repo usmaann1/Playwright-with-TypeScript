@@ -412,8 +412,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       UserFunctions.isShadeOfRed(color)
     );
     await PlaywrightCore.waitTimeout(this.page, 5000);
-    await PlaywrightCore.click(this.CloseFullScreenBtn);
     await expect(hasShadeOfRed).toBe(true);
+    await PlaywrightCore.click(this.CloseFullScreenBtn);
   }
 
   async pythonWithMatplotlib() {
@@ -434,6 +434,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       140
     );
     await expect(isValid).toBe(true);
+    await PlaywrightCore.click(this.CloseFullScreenBtn);
   }
 
   async pythonWithPillow() {
@@ -489,6 +490,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       UserFunctions.isShadeOfRed(color)
     );
     await expect(hasShadeOfRed).toBe(true);
+    await PlaywrightCore.click(this.FullScreenMinimize);
   }
 
   async pythonWithTkinter() {
@@ -511,6 +513,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       TeamCoursesData.BtnClickedTest
     );
     await expect(isValid).toBe(true);
+    await PlaywrightCore.click(this.FullScreenMinimize);
   }
 
   async assertingUserAnswered(name) {
