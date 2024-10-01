@@ -17,6 +17,7 @@
     "AssignmentLockedText":"Page Locked!",
     "AssignmentHeadingText":"Sample Lesson Plan",
     "Student1Email": "student01@gmail.com",
+    "Code":"System.out.println('Sample');",   
     "ProjectName": "Test Project",
     "Student1Password": "98769876"
     

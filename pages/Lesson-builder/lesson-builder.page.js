@@ -230,6 +230,14 @@ async ClickLateSubmissionToggle(newPage){
 async ClickLateReSubmissionToggle(newPage){
   await newPage.click(Locators.AllowReSubmissionToggle);
 }
+async fillCodeEditor(newPage, codeLine) {
+  await newPage.click(Locators.CodeEditorTargetLineLocator);
+  await newPage.fill(Locators.CodeEditorTargetLineLocator, codeLine);
+
+}
+async ClickReSubmitButton(newPage){
+  await newPage.click(Locators.ResubmitButton);
+}
 
 
 };
