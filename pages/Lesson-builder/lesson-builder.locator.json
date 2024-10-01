@@ -20,6 +20,9 @@
     "DueDateToggle":"(//input[@type='checkbox'])[2]",
     "LatesubmissionToggle":"(//input[@type='checkbox'])[3]",
     "AllowReSubmissionToggle":"(//input[@type='checkbox'])[4]",
+    "CodeEditorTargetLineLocator": "(//div[@class='cm-activeLine cm-line'])[2]",
+    "ResubmitButton":"//*[text()='Resubmit']",
+
 
     "CalendarIcon":"//*[@data-testid='CalendarIcon']",
     "CalendarCell":"(//button[@role='gridcell'])",
