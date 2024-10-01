@@ -30,7 +30,7 @@ export default defineConfig({
   use: {
     viewport: { width: 1920, height: 1080 },
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: "https://dev.juicemind.com/",
+    baseURL: "https://play.juicemind.com/",
     headless:true,
     actionTimeout: 15000,
     permissions: ['notifications'],
