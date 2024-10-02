@@ -52,6 +52,7 @@ test.describe('TestSuite: Embed Link', () => {
         // Exit Presentation Mode
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
         await PlaywrightCore.click(createLesson.SetupBtn)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('Umair - TC-02 - Verify Embed Functionality - Youtube Video 2', async ({ createLesson }) => {
@@ -797,10 +798,6 @@ test.describe('TestSuite: Embed Link', () => {
         // Exit Presentation Mode
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
         await PlaywrightCore.click(createLesson.SetupBtn)
-    });
-
-    test.afterEach(async ({ loginPage, createTeams, createLesson }) => {
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
 })
