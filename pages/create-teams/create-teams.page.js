@@ -151,10 +151,16 @@ exports.CreateTeams = class CreateTeams {
     }
     }
 
-    async clickOnCrossMessage(){
-      const iframeElement = this.page.frameLocator(Locators.ChatIFrame);         
-      await PlaywrightCore.click(iframeElement.locator(Locators.ChatCLoseBtn))
+    async clickOnCrossMessage() {
+      const iframeElement = this.page.frameLocator(Locators.ChatIFrame);
       await this.page.waitForTimeout(2000);
-  }
+      const isChatCloseBtnVisible = await iframeElement.locator(Locators.ChatCLoseBtn).isVisible();
+      if (isChatCloseBtnVisible) {
+        await PlaywrightCore.click(iframeElement.locator(Locators.ChatCLoseBtn));
+        await this.page.waitForTimeout(2000);
+      } else {
+        console.log("Chat close button is not visible.");
+      }
+    }
 
 }
