@@ -472,7 +472,7 @@ exports.PlaywrightCore = class PlaywrightCore {
 
   static async ClickByText(page, Text) {
     try {
-      await page.getByText(Text).click();
+      await page.getByText(Text, { exact: true }).click();
     } catch (error) {
       console.warn(`An error occurred while clicking, Error:`, error);
       throw error;
