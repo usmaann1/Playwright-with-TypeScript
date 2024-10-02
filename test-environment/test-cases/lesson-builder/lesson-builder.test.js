@@ -343,4 +343,386 @@ test.describe('TestSuite: Lesson Builder', () => {
 
   });
 
+  test('Usman TC4=> Solution before due date'
+    , async ({ lessonBuilder, page }) => {
+
+    await lessonBuilder.NavigateToTeamCoursesPage();
+      
+      // Ensure "Create New Team" button is visible before interaction
+      await expect(lessonBuilder.CreateNewTeamBtn).toBeVisible();
+      
+      // Interact with elements on the page
+      await lessonBuilder.ClickOnCreateNewTeamBtn();
+      await lessonBuilder.ClickOnStartFromScratch();
+      await page.waitForTimeout(5000);
+      await lessonBuilder.FillTeamNameTxtBox();
+      await lessonBuilder.Submitbtn();
+      await expect.toHaveText(LessonBuilderTestData.NoData && LessonBuilderTestData.ClassName);
+      await lessonBuilder.CreateAssignmentbtn();
+      await lessonBuilder.CodingAssignmentbtn();
+      await lessonBuilder.CodingAssignment();
+      await lessonBuilder.AssignmentCreateBtn();
+
+      //adding new assignment in a class
+      await lessonBuilder.AddNewItemBtn();
+      await lessonBuilder.CodingAssignmentbtn();
+      await lessonBuilder.CodingAssignment();
+      await lessonBuilder.AssignmentCreateBtn();
+
+      // Presentation Mode
+      await lessonBuilder.waitForFunction();
+      await lessonBuilder.PresentationMode()
+      await lessonBuilder.GotItButton();
+      await expect.toHaveText(LessonBuilderTestData.ViewStuPreview_btn);
+      await lessonBuilder.ExitStudentView();
+    
+
+      // Invite Students
+      await lessonBuilder.InviteStudentsbtn();
+      await lessonBuilder.CopyinviteStudentsbtn();
+
+      const InviteLink = await page.evaluate(async () => {
+        // Access clipboard content
+        return await navigator.clipboard.readText();
+        });
+
+      await lessonBuilder.closeinvitestudentspopup();
+      await page.waitForTimeout(5000);
+      await lessonBuilder.publishassignmentbutton();
+
+      // Open a new page
+      const browser = await chromium.launch();
+      const newPage = await browser.newPage(); 
+
+      // Navigate to the copied link
+      await newPage.goto(InviteLink);
+      await newPage.bringToFront(); // Ensure the new page is focused
+
+      await lessonBuilder.clickLoginbutton(newPage);
+
+      await lessonBuilder.fillstudentsignin(newPage, LessonBuilderTestData.Student1Email, LessonBuilderTestData.Student1Password);
+      await lessonBuilder.clickfinishbutton(newPage);
+
+      await newPage.click(LessonBuilderTestData.ClickAssignment)
+
+      await page.reload();
+
+      await lessonBuilder.ClickFirstAssignment(page)
+      await page.waitForTimeout(5000);
+      await lessonBuilder.publishassignmentbutton();
+
+      await lessonBuilder.ClickInitiliazeJuiceMindIDE(newPage);
+      await page.waitForTimeout(5000);
+
+
+      await lessonBuilder.FillProjectNameTextBox(LessonBuilderTestData.ProjectName);
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.ClickProjectTypeDropDown();
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.ClickProjectTypeJava();
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.Submitbtn();
+      await lessonBuilder.DueDateButton();
+      await lessonBuilder.ClickLateSubmissionToggle(page);     
+      await lessonBuilder.ClickLateReSubmissionToggle(page);
+      await lessonBuilder.ClickSolutionButton(page);
+      await lessonBuilder.ClickCreateSolution(page);
+      await lessonBuilder.ClickSolutionAvailableAfterSubmit(page);
+
+      await lessonBuilder.CalendarButton();
+
+      const now = new Date();
+      let currentHour = now.getHours(); 
+
+      let nextHour = 0;
+
+      let currentHour12 = currentHour % 12 || 12; 
+
+      if (currentHour12 == 12) {
+        nextHour = 1;
+      } else {
+        nextHour = currentHour12 + 1;
+      }
+      
+      await lessonBuilder.SelectExpiredDueDate(nextHour, page)
+
+      await lessonBuilder.CalendarButton();
+
+      await lessonBuilder.ClickFirstAssignment(newPage)
+
+      await lessonBuilder.ClickCodeStarterButton(newPage)
+
+      await lessonBuilder.ClickSubmitAssignmentBtn(newPage)
+
+      await lessonBuilder.ClickWarningSubmitAssignmentBtn(newPage)
+   
+      await newPage.reload();
+
+      const element = await newPage.locator(LessonBuilderLocators.SolutionButton);
+
+      await expect(element).toBeVisible();
+
+
+  });
+
+  test('Usman TC5=> Solution after due date'
+    , async ({ lessonBuilder, page }) => {
+
+    await lessonBuilder.NavigateToTeamCoursesPage();
+      
+      // Ensure "Create New Team" button is visible before interaction
+      await expect(lessonBuilder.CreateNewTeamBtn).toBeVisible();
+      
+      // Interact with elements on the page
+      await lessonBuilder.ClickOnCreateNewTeamBtn();
+      await lessonBuilder.ClickOnStartFromScratch();
+      await page.waitForTimeout(5000);
+      await lessonBuilder.FillTeamNameTxtBox();
+      await lessonBuilder.Submitbtn();
+      await expect.toHaveText(LessonBuilderTestData.NoData && LessonBuilderTestData.ClassName);
+      await lessonBuilder.CreateAssignmentbtn();
+      await lessonBuilder.CodingAssignmentbtn();
+      await lessonBuilder.CodingAssignment();
+      await lessonBuilder.AssignmentCreateBtn();
+
+      //adding new assignment in a class
+      await lessonBuilder.AddNewItemBtn();
+      await lessonBuilder.CodingAssignmentbtn();
+      await lessonBuilder.CodingAssignment();
+      await lessonBuilder.AssignmentCreateBtn();
+
+      // Presentation Mode
+      await lessonBuilder.waitForFunction();
+      await lessonBuilder.PresentationMode()
+      await lessonBuilder.GotItButton();
+      await expect.toHaveText(LessonBuilderTestData.ViewStuPreview_btn);
+      await lessonBuilder.ExitStudentView();
+    
+
+      // Invite Students
+      await lessonBuilder.InviteStudentsbtn();
+      await lessonBuilder.CopyinviteStudentsbtn();
+
+      const InviteLink = await page.evaluate(async () => {
+        // Access clipboard content
+        return await navigator.clipboard.readText();
+        });
+
+      await lessonBuilder.closeinvitestudentspopup();
+      await page.waitForTimeout(5000);
+      await lessonBuilder.publishassignmentbutton();
+
+      // Open a new page
+      const browser = await chromium.launch();
+      const newPage = await browser.newPage(); 
+
+      // Navigate to the copied link
+      await newPage.goto(InviteLink);
+      await newPage.bringToFront(); // Ensure the new page is focused
+
+      await lessonBuilder.clickLoginbutton(newPage);
+
+      await lessonBuilder.fillstudentsignin(newPage, LessonBuilderTestData.Student1Email, LessonBuilderTestData.Student1Password);
+      await lessonBuilder.clickfinishbutton(newPage);
+
+      await newPage.click(LessonBuilderTestData.ClickAssignment)
+
+      await page.reload();
+
+      await lessonBuilder.ClickFirstAssignment(page)
+      await page.waitForTimeout(5000);
+      await lessonBuilder.publishassignmentbutton();
+
+      await lessonBuilder.ClickInitiliazeJuiceMindIDE(newPage);
+      await page.waitForTimeout(5000);
+
+
+      await lessonBuilder.FillProjectNameTextBox(LessonBuilderTestData.ProjectName);
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.ClickProjectTypeDropDown();
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.ClickProjectTypeJava();
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.Submitbtn();
+      await lessonBuilder.DueDateButton();
+      await lessonBuilder.ClickLateSubmissionToggle(page);     
+      await lessonBuilder.ClickLateReSubmissionToggle(page);
+      await lessonBuilder.ClickSolutionButton(page);
+      await lessonBuilder.ClickCreateSolution(page);
+      await lessonBuilder.ClickSolutionAvailableAfterDueDate(page);
+
+      await lessonBuilder.CalendarButton();
+
+      const now = new Date();
+      let currentHour = now.getHours();
+
+      let previousHour = 0;
+
+      let currentHour12 = currentHour % 12 || 12; 
+
+      if(currentHour12 == 1)
+      {
+        previousHour = 12
+      }
+      else
+      {
+        previousHour = currentHour12-1;
+      }
+      
+      await lessonBuilder.SelectExpiredDueDate(previousHour, page)
+
+      await lessonBuilder.CalendarButton();
+
+      await lessonBuilder.ClickFirstAssignment(newPage)
+
+      await lessonBuilder.ClickCodeStarterButton(newPage)
+
+      await lessonBuilder.ClickSubmitAssignmentBtn(newPage)
+
+      await lessonBuilder.ClickWarningSubmitAssignmentBtn(newPage)
+   
+      await newPage.reload();
+
+      const element = await newPage.locator(LessonBuilderLocators.SolutionButton);
+
+      await expect(element).toBeVisible();
+
+
+  });
+
+  test('Usman TC6=> Solution after correct answer'
+    , async ({ lessonBuilder, page }) => {
+
+    await lessonBuilder.NavigateToTeamCoursesPage();
+      
+      // Ensure "Create New Team" button is visible before interaction
+      await expect(lessonBuilder.CreateNewTeamBtn).toBeVisible();
+      
+      // Interact with elements on the page
+      await lessonBuilder.ClickOnCreateNewTeamBtn();
+      await lessonBuilder.ClickOnStartFromScratch();
+      await page.waitForTimeout(5000);
+      await lessonBuilder.FillTeamNameTxtBox();
+      await lessonBuilder.Submitbtn();
+      await expect.toHaveText(LessonBuilderTestData.NoData && LessonBuilderTestData.ClassName);
+      await lessonBuilder.CreateAssignmentbtn();
+      await lessonBuilder.CodingAssignmentbtn();
+      await lessonBuilder.CodingAssignment();
+      await lessonBuilder.AssignmentCreateBtn();
+
+      //adding new assignment in a class
+      await lessonBuilder.AddNewItemBtn();
+      await lessonBuilder.CodingAssignmentbtn();
+      await lessonBuilder.CodingAssignment();
+      await lessonBuilder.AssignmentCreateBtn();
+
+      // Presentation Mode
+      await lessonBuilder.waitForFunction();
+      await lessonBuilder.PresentationMode()
+      await lessonBuilder.GotItButton();
+      await expect.toHaveText(LessonBuilderTestData.ViewStuPreview_btn);
+      await lessonBuilder.ExitStudentView();
+    
+
+      // Invite Students
+      await lessonBuilder.InviteStudentsbtn();
+      await lessonBuilder.CopyinviteStudentsbtn();
+
+      const InviteLink = await page.evaluate(async () => {
+        // Access clipboard content
+        return await navigator.clipboard.readText();
+        });
+
+      await lessonBuilder.closeinvitestudentspopup();
+      await page.waitForTimeout(5000);
+      await lessonBuilder.publishassignmentbutton();
+
+      // Open a new page
+      const browser = await chromium.launch();
+      const newPage = await browser.newPage(); 
+
+      // Navigate to the copied link
+      await newPage.goto(InviteLink);
+      await newPage.bringToFront(); // Ensure the new page is focused
+
+      await lessonBuilder.clickLoginbutton(newPage);
+
+      await lessonBuilder.fillstudentsignin(newPage, LessonBuilderTestData.Student1Email, LessonBuilderTestData.Student1Password);
+      await lessonBuilder.clickfinishbutton(newPage);
+
+      await newPage.click(LessonBuilderTestData.ClickAssignment)
+
+      await page.reload();
+
+      await lessonBuilder.ClickFirstAssignment(page)
+      await page.waitForTimeout(5000);
+      await lessonBuilder.publishassignmentbutton();
+
+      await lessonBuilder.ClickInitiliazeJuiceMindIDE(newPage);
+      await page.waitForTimeout(5000);
+
+
+      await lessonBuilder.FillProjectNameTextBox(LessonBuilderTestData.ProjectName);
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.ClickProjectTypeDropDown();
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.ClickProjectTypeJava();
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.Submitbtn();
+      await lessonBuilder.DueDateButton();
+      await lessonBuilder.ClickLateSubmissionToggle(page);     
+      await lessonBuilder.ClickLateReSubmissionToggle(page);
+      await lessonBuilder.ClickSolutionButton(page);
+      await lessonBuilder.ClickCreateSolution(page);
+      await lessonBuilder.ClickSolutionAvailableAfterCorrectAns(page);
+      await lessonBuilder.CalendarButton();
+
+      const now = new Date();
+      let currentHour = now.getHours(); 
+
+      let nextHour = 0;
+
+      let currentHour12 = currentHour % 12 || 12; 
+
+      if (currentHour12 == 12) {
+        nextHour = 1;
+      } else {
+        nextHour = currentHour12 + 1;
+      }
+      
+      await lessonBuilder.SelectExpiredDueDate(nextHour, page)
+
+      await lessonBuilder.CalendarButton();
+
+      await lessonBuilder.ClickFirstAssignment(newPage)
+
+      await lessonBuilder.ClickCodeStarterButton(newPage)
+
+      await lessonBuilder.ClickSubmitAssignmentBtn(newPage)
+
+      await lessonBuilder.ClickWarningSubmitAssignmentBtn(newPage)
+   
+      await newPage.reload();
+
+      await lessonBuilder.ClickReSubmitButton(newPage);
+      await lessonBuilder.ClickWarningSubmitAssignmentBtnAfterReSubmit(newPage)
+
+      await newPage.reload();
+
+      const element = await newPage.locator(LessonBuilderLocators.SolutionButton);
+
+      await expect(element).toBeVisible();
+
+
+  });
+
 });

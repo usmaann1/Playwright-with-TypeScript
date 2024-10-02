@@ -22,13 +22,17 @@
     "AllowReSubmissionToggle":"(//input[@type='checkbox'])[4]",
     "CodeEditorTargetLineLocator": "(//div[@class='cm-activeLine cm-line'])[2]",
     "ResubmitButton":"//*[text()='Resubmit']",
-
+    "SolutionAvailableAfterSubmitCheckbox":"//span[text() = 'Available after submitting']",
+    "SolutionAvailableAfterCorrectAnswerCheckbox":"//span[text() = 'Available after answering correctly']",
+    "SolutionAvailableAfterDueDateCheckBox":"//span[text() = 'Available after due date']",
+    "CreateSolutionButton":"//a[text() = 'Create solution']",
 
     "CalendarIcon":"//*[@data-testid='CalendarIcon']",
     "CalendarCell":"(//button[@role='gridcell'])",
     "HoursBoxes":"(//ul[@aria-label='Select hours']//li)",
     "CreateStarterCodeBtn": "//a[text() = 'Create starter code']",
     "DisabledResubmitButton":"//button[@disabled]",
+    "SolutionButton":"//*[text() = 'Solution']",
 
 
     "addnewitem_btn":"//div[contains(text(),'Add new item')]",
@@ -47,6 +51,7 @@
     "studentAssignmentHeading":"//div[@class='tiptap ProseMirror min-h-full']/h1",
     "SubmitAssignmentStd": "//*[text()='Submit']",
     "WarningSubmitAssignmentStd": "(//*[text()='Submit'])[2]",
+    "WarningSubmitAssignmentStdAfterReSubmit": "(//*[text()='Submit'])[1]",
     "FirstAssignmentBtn": "(//span[text() = 'Modue 7'])[1]",
     "SecondAssignmentBtn":"(//span[text() = 'Modue 7'])[2]"
 
