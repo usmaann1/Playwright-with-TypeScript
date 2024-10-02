@@ -95,6 +95,6 @@
     "OptionsBtn":"//button[normalize-space()='Options']",
     "NewUnitFolder":"//div[contains(@data-panel-collapsible,'true')]//div//ul//div//div//div[contains(@draggable,'true')]",
     "ImportTeamFinalBtnCreateTeam":"//body/div[@role='presentation']/div/div/a[1]",
-    "ChatIFrame":"//iframe[4]",
+    "ChatIFrame":"(//iframe[@title='chat widget'])[4]",
     "ChatCLoseBtn":"div[aria-label='Close']"
 }                   
