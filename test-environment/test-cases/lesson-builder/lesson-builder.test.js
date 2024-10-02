@@ -91,8 +91,6 @@ test.describe('TestSuite: Lesson Builder', () => {
       await expect (element2).toHaveText(LessonBuilderTestData.AssignmentLockedText);
 
 
-
-
   });
 
   test('Usman TC2=> Verify Student is not able to submit an assignment after due date'
@@ -207,7 +205,6 @@ test.describe('TestSuite: Lesson Builder', () => {
       await lessonBuilder.ClickWarningSubmitAssignmentBtn(newPage)
 
       //code here for late submission
-
 
   });
 
@@ -337,13 +334,12 @@ test.describe('TestSuite: Lesson Builder', () => {
       await expect(element).not.toBeVisible();
 
       await lessonBuilder.fillCodeEditor(newPage, LessonBuilderTestData.Code);
+      await page.waitForTimeout(5000);
       await lessonBuilder.ClickReSubmitButton(newPage);
-
-
 
   });
 
-  test('Usman TC4=> Solution before due date'
+  test('Usman TC4=> Verify Solution is visible before due date'
     , async ({ lessonBuilder, page }) => {
 
     await lessonBuilder.NavigateToTeamCoursesPage();
@@ -468,7 +464,7 @@ test.describe('TestSuite: Lesson Builder', () => {
 
   });
 
-  test('Usman TC5=> Solution after due date'
+  test('Usman TC5=> Verify Solution is visible after due date'
     , async ({ lessonBuilder, page }) => {
 
     await lessonBuilder.NavigateToTeamCoursesPage();
@@ -596,7 +592,7 @@ test.describe('TestSuite: Lesson Builder', () => {
 
   });
 
-  test('Usman TC6=> Solution after correct answer'
+  test('Usman TC6=> Verify Solution is only visible after correct answer'
     , async ({ lessonBuilder, page }) => {
 
     await lessonBuilder.NavigateToTeamCoursesPage();
@@ -712,7 +708,8 @@ test.describe('TestSuite: Lesson Builder', () => {
       await lessonBuilder.ClickWarningSubmitAssignmentBtn(newPage)
    
       await newPage.reload();
-
+      
+      await page.waitForTimeout(5000);
       await lessonBuilder.ClickReSubmitButton(newPage);
       await lessonBuilder.ClickWarningSubmitAssignmentBtnAfterReSubmit(newPage)
 
