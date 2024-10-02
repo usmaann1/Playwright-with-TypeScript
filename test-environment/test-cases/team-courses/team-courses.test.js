@@ -1133,7 +1133,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled();
   });
 
-  test.only("[Numair] - TC: after due date Python with pillow - - Change background color from purple to red and verify the change from the generated image and check student able to submit", async ({
+  test("[Numair] - TC: after due date Python with pillow - - Change background color from purple to red and verify the change from the generated image and check student able to submit", async ({
     teamCoursesPage,
     browser,
   }) => {
