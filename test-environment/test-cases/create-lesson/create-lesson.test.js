@@ -404,5 +404,39 @@ test.describe('TestSuite: Create Lesson', () => {
 
         await newCreateLessonPageInstance.verifyStudentViewForCorrectCodeSelectElement()
     });
+    test('[HZ] TC-22 - validate adding Code Select element part 2', async ({ createLesson, teamCoursesPage, browser }) => {
+        const randomEmail = UserFunctions.generateRandomEmail(userEmail)
+        await createLesson.createALesson(lessonName)
+        await createLesson.setVisibility()
+        await createLesson.hoverOverFirstRow()
+        await createLesson.hoverAndClickOnPlusBtn()
+        await expect(createLesson.dropDownContainer).toBeVisible()
+        await createLesson.selectElementFromDropdown(CLtd.codeSelect.element)
+        await createLesson.validateCodeSelectFunctionality()
+
+        const link = await teamCoursesPage.PublishAndInviteCreateLesson()
+        const newPage = await browser.newPage()
+        const newTeamCoursesPageInstance = new TeamCoursesPage(newPage)
+        const newCreateLessonPageInstance = new CreateLesson(newPage)
+        await newTeamCoursesPageInstance.afterInviteSignUp(link, randomEmail, userPwd, TeamCoursesData.firstName, TeamCoursesData.LastName)
+        await newCreateLessonPageInstance.verifyStudentViewForCorrectCodeSelectElement()
+    });
+    test('[HZ] TC-23 - validate adding Code Select element part 2', async ({ createLesson, teamCoursesPage, browser }) => {
+        const randomEmail = UserFunctions.generateRandomEmail(userEmail)
+        await createLesson.createALesson(lessonName)
+        await createLesson.setVisibility()
+        await createLesson.hoverOverFirstRow()
+        await createLesson.hoverAndClickOnPlusBtn()
+        await expect(createLesson.dropDownContainer).toBeVisible()
+        await createLesson.selectElementFromDropdown(CLtd.codeSelect.element)
+        await createLesson.validateCodeSelectFunctionality()
+
+        const link = await teamCoursesPage.PublishAndInviteCreateLesson()
+        const newPage = await browser.newPage()
+        const newTeamCoursesPageInstance = new TeamCoursesPage(newPage)
+        const newCreateLessonPageInstance = new CreateLesson(newPage)
+        await newTeamCoursesPageInstance.afterInviteSignUp(link, randomEmail, userPwd, TeamCoursesData.firstName, TeamCoursesData.LastName)
+        await newCreateLessonPageInstance.verifyStudentViewForCorrectCodeSelectElement()
+    });
 
 })
