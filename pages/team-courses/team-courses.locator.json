@@ -78,5 +78,6 @@
     "FullScreenMinimize": "//div[contains(@class, 'fullscreen-enabled')]/div/div",
     "ClosePopUp": "//div[@class='_label_1gr34_1 _up_1gr34_29 ']/button",
     "DueDateBtn": "//div[@class='mb-2']//div//div//input",
-    "DisableSubmitBtn": "//button[@class='_submitButton_141fc_117']"
+    "DisableSubmitBtn": "//button[@class='_submitButton_141fc_117']",
+    "ReSubmissionBtn": "//div[h3[text()='Allow re-submission']]//input[@type='checkbox']"
 }
