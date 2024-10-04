@@ -672,6 +672,17 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     }
   }
 
+  async isResubmissonAllowed(beforeDueDate = true) {
+    await PlaywrightCore.click(this.CreateStarterCode);
+    await PlaywrightCore.waitTimeout(this.page, 20000)
+    await PlaywrightCore.click(this.DisableSubmitBtn);
+    await PlaywrightCore.click(this.SubmitBtn);
+    const textVisible = await this.page.locator('text=You have already submitted the code.').isVisible();
+    expect(!textVisible).toBe(true);
+    const isDisabled = await this.DisableSubmitBtn.isDisabled();
+    expect(!isDisabled).toBe(true);
+  }
+
   async fileStructureJSPYCPP(
     intialFile,
     intialFileName,

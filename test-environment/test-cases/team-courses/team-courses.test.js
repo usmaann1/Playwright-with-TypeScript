@@ -1545,7 +1545,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.firstName,
       TeamCoursesData.LastName
     );
-    await newTeamCoursesPageInstance.isSubmitDisabled(false);
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
   test("[Numair] - TC: Allow resubmission java- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
@@ -1575,7 +1575,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.firstName,
       TeamCoursesData.LastName
     );
-    await newTeamCoursesPageInstance.isSubmitDisabled(false);
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
   test("[Numair] - TC: Allow resubmission csharp- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
@@ -1605,7 +1605,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.firstName,
       TeamCoursesData.LastName
     );
-    await newTeamCoursesPageInstance.isSubmitDisabled(false);
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
   test("[Numair] - TC: Allow resubmission C++- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
@@ -1635,7 +1635,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.firstName,
       TeamCoursesData.LastName
     );
-    await newTeamCoursesPageInstance.isSubmitDisabled(false);
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
   test("[Numair] - TC: Allow resubmission JavaScript- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
@@ -1671,7 +1671,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.firstName,
       TeamCoursesData.LastName
     );
-    await newTeamCoursesPageInstance.isSubmitDisabled(false);
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
   test("[Numair] - TC: Allow resubmission HTML- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
@@ -1707,7 +1707,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.firstName,
       TeamCoursesData.LastName
     );
-    await newTeamCoursesPageInstance2.isSubmitDisabled(false);
+    await newTeamCoursesPageInstance2.isResubmissonAllowed(false);
   });
 
   test("[Numair] - TC: Allow resubmission Python with Turtle  - Change background color to red and verify the change and check student able to submit", async ({
@@ -1736,7 +1736,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.firstName,
       TeamCoursesData.LastName
     );
-    await newTeamCoursesPageInstance.isSubmitDisabled(false);
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
   test("[Numair] - TC: Allow resubmission Python with Tkinter -  - Change text and verify the change and check student able to submit", async ({
@@ -1765,7 +1765,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.firstName,
       TeamCoursesData.LastName
     );
-    await newTeamCoursesPageInstance.isSubmitDisabled(false);
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
   test("[Numair] - TC: Allow resubmission Java with Swing- - Change slider color to red and verify the change and check student able to submit", async ({
@@ -1794,7 +1794,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.firstName,
       TeamCoursesData.LastName
     );
-    await newTeamCoursesPageInstance.isSubmitDisabled(false);
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
   test("[Numair] - TC: Allow resubmission Python with Matplotlib - Change X and Y axis of the graph and verify the change and check student able to submit", async ({
@@ -1823,7 +1823,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.firstName,
       TeamCoursesData.LastName
     );
-    await newTeamCoursesPageInstance.isSubmitDisabled(false);
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
   test("[Numair] - TC: Allow resubmission Python with pillow - - Change background color from purple to red and verify the change from the generated image and check student able to submit", async ({
@@ -1852,7 +1852,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.firstName,
       TeamCoursesData.LastName
     );
-    await newTeamCoursesPageInstance.isSubmitDisabled(false);
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
 });
