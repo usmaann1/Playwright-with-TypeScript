@@ -648,10 +648,23 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await this.page.getByPlaceholder('MM/DD/YYYY hh:mm aa').fill(`${previousDay} 11:00 AM`);
   }
 
-  async isSubmitDisabled() {
+  async setDueDate() {
+    await this.page.addStyleTag({ content: '* { transition: none !important; animation: none !important; transform: none !important }' });
+    await PlaywrightCore.click(this.ClosePopUp);
+    // await this.page.locator('div').filter({ hasText: /^Due Date$/ }).getByLabel('controlled').check();
+    await PlaywrightCore.click(this.DueDateBtn);
+    const previousDay = dayjs().add(2, 'day').format('MM/DD/YYYY');
+    await this.page.getByPlaceholder('MM/DD/YYYY hh:mm aa').fill(`${previousDay} 11:00 AM`);
+  }
+
+  async isSubmitDisabled(beforeDueDate = true) {
     await PlaywrightCore.click(this.CreateStarterCode);
     const isDisabled = await this.DisableSubmitBtn.isDisabled();
-    expect(isDisabled).toBe(true);
+    if (beforeDueDate) {
+      expect(isDisabled).toBe(true);
+    } else {
+      expect(!isDisabled).toBe(true);
+    }
   }
 
   async fileStructureJSPYCPP(
