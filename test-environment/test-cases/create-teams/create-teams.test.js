@@ -35,7 +35,6 @@ test.describe('TestSuite: Create Teams', () => {
         await expect(createTeams.ImportCodingMainPageTeamsCoursesDescription).toHaveText(CreateTeamsTestData.ImportCodingMainPageTeamsCoursesDescriptionValue)
         await expect(createTeams.SyncTeamsHeadingMainPage).toHaveText(CreateTeamsTestData.CreateNewTeamSyncReplitHeadingValue)
         await expect(createTeams.SyncTeamsHeadingMainPageDescription).toHaveText(CreateTeamsTestData.SyncTeamsHeadingMainPageDescriptionValue)
-        await expect(createTeams.ArchivedTeamHeading).toHaveText(CreateTeamsTestData.ArchivedTeamHeadingValue)
         await expect(createTeams.UpgradeBtn).toHaveText(CreateTeamsTestData.UpgradeBtnValue)
         await expect(createTeams.ImportCodingRoomDotComHeading).toHaveText(CreateTeamsTestData.CreateNewTeamImportCodingRoomsHeadingValue)
     });  

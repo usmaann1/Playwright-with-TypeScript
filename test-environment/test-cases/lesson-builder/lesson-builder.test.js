@@ -719,6 +719,10 @@ test.describe('TestSuite: Lesson Builder', () => {
 
       await expect(element).toBeVisible();
 
+      await lessonBuilder.ClickReSubmitButton(newPage);
+
+
+
 
   });
 

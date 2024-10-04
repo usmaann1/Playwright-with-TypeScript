@@ -741,14 +741,14 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.click(this.selectableTab)
         await editorLine1.selectText()
         await this.page.waitForTimeout(3000);
-        await PlaywrightCore.doubleClickByText(this.page,'return n')
+        await PlaywrightCore.doubleClickByText(this.page,'return')
         await this.page.waitForTimeout(3000);
         await PlaywrightCore.click(this.correctTab)
-        await PlaywrightCore.ClickByText(this.page,'return n')
+        await PlaywrightCore.ClickByText(this.page,'return')
         await PlaywrightCore.click(this.PresentationMode)
         await PlaywrightCore.click(this.gotItBtn)
         await editorLine1.selectText()
-        await PlaywrightCore.ClickByText(this.page,'return n')
+        await PlaywrightCore.ClickByText(this.page,'return')
         await PlaywrightCore.click(this.checkAnswerBtn)
         await expect(this.correctLabelIcon).toBeVisible()
         await PlaywrightCore.click(this.exitStudentView)

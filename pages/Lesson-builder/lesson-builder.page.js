@@ -241,6 +241,7 @@ async fillCodeEditor(newPage, codeLine) {
 async ClickReSubmitButton(newPage){
   await newPage.click(Locators.ResubmitButton);
 }
+
 async ClickSolutionAvailableAfterCorrectAns(newPage){
   await newPage.click(Locators.SolutionAvailableAfterCorrectAnswerCheckbox);
 }
@@ -256,8 +257,6 @@ async ClickSolutionButton(newPage){
 async ClickCreateSolution(newPage){
   await newPage.click(Locators.CreateSolutionButton);
 }
-
-
 };
 
 
