@@ -19,6 +19,15 @@
     "Student1Email": "student01@gmail.com",
     "Code":"System.out.println('Sample');",   
     "ProjectName": "Test Project",
+    "TestType":"Input Output Test - Ignores case, whitespace, and special characters",
+    "OutputType_1":"Flexible Equality - Ignores case, whitespace, and special characters",
+    "OutputType_2":"Match - Expected output is included in the student's output",
+    "OutputType_3":"Exact - Expected output is included in the student's output",
+    "OutputType_4":"Regex - Expected output is exactly the student's output",
+
+    "TestName" :"Sample Test 1",
+    "TestInput" :"Hello World",
+    "ExpectedOutput" :"Hello World",
     "Student1Password": "98769876"
     
 

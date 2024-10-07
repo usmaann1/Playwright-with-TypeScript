@@ -257,7 +257,75 @@ async ClickSolutionButton(newPage){
 async ClickCreateSolution(newPage){
   await newPage.click(Locators.CreateSolutionButton);
 }
-};
+
+async ClickTestsButton(newPage) {
+  await newPage.click(Locators.TestsButton);
+}
+
+async ClickAddTestButton(newPage) {
+  await newPage.click(Locators.AddTestButton);
+}
+async FillTestNameTextBox(newPage, testName) {
+  await newPage.fill(Locators.TestNameTextBox, testName);
+}
+
+async FillInputTextBox(newPage, inputText) {
+  await newPage.fill(Locators.InputTextBox, inputText);
+}
+
+async SelectTestType(type, page)
+{
+  
+  await page.click(Locators.TestDropDown);
+  const typeCount = await page.locator(Locators.DropDownValue).count();
+  for(let i=1; i<=typeCount; i++){
+    const dynamicPath = `${Locators.DropDownValue}[${i}]`
+    var text = await page.locator(dynamicPath).textContent();
+
+    if(text == type){
+      await page.click(dynamicPath);
+      break;
+    }
+
+  }
+
+}
+
+async SelectTestOutputType(type, page)
+{  
+  await page.click(Locators.TestTypeDropDown);
+  const typeCount = await page.locator(Locators.DropDownValue).count();
+
+  for(let i=1; i<=typeCount; i++){
+    const dynamicPath = `${Locators.DropDownValue}[${i}]`
+    var text = await page.locator(dynamicPath).textContent();
+
+    if(text == type){
+      await page.click(dynamicPath);
+      break;
+    }
+  }
+
+}
+
+async FillExpectedOutput(newPage, inputText) {
+  await newPage.fill(Locators.ExpectedOutput, inputText);
+}
+
+async SubmitTest(newPage) {
+  await newPage.click(Locators.SubmitTestButton);
+}
+
+async ClickTemplateButton(newPage) {
+  await newPage.click(Locators.TemplateButton);
+}
+async ClickPlayTests(newPage) {
+  await newPage.click(Locators.PlayTestButton);
+}
+
+
+
+}
 
 
 

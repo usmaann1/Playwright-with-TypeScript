@@ -49,6 +49,22 @@
     "WarningSubmitAssignmentStd": "(//*[text()='Submit'])[2]",
     "WarningSubmitAssignmentStdAfterReSubmit": "(//*[text()='Submit'])[1]",
     "FirstAssignmentBtn": "(//span[text() = 'Modue 7'])[1]",
-    "SecondAssignmentBtn":"(//span[text() = 'Modue 7'])[2]"
+    "SecondAssignmentBtn":"(//span[text() = 'Modue 7'])[2]",
+    "TestsButton":"(//*[@data-testid='CheckIcon'])[1]",
+    "AddTestButton":"//*[text()='Add Test']",
+    "SubmitTestButton":"(//*[text()='Add Test'])[2]",
+
+    "TestDropDown":"//div[@role = 'combobox']",
+    "TestTypeDropDown":"(//div[@role = 'combobox'])[2]",
+    "TemplateButton":"//button[text() = 'Template']",
+    "DropDownValue":"//li[@role='option']",
+    "TestNameTextBox":"//input[@placeholder='Test name']",
+    "PlayTestButton":"//a[text() = 'Tests']",
+    "InputTextBox": "//textarea[@placeholder='Input for the test']",
+    "TestPassedDiv":"//div[text() = 'Passed']",
+    "ExpectedOutput":"//textarea[@placeholder='Output for the test']"
+
+
+
     
 }

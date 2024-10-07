@@ -726,4 +726,218 @@ test.describe('TestSuite: Lesson Builder', () => {
 
   });
 
+  test('Usman TC7=> Flexible Equality'
+    , async ({ lessonBuilder, page }) => {
+
+    await lessonBuilder.NavigateToTeamCoursesPage();
+      
+      // Ensure "Create New Team" button is visible before interaction
+      await expect(lessonBuilder.CreateNewTeamBtn).toBeVisible();
+      
+      // Interact with elements on the page
+      await lessonBuilder.ClickOnCreateNewTeamBtn();
+      await lessonBuilder.ClickOnStartFromScratch();
+      await page.waitForTimeout(5000);
+      await lessonBuilder.FillTeamNameTxtBox();
+      await lessonBuilder.Submitbtn();
+      await expect.toHaveText(LessonBuilderTestData.NoData && LessonBuilderTestData.ClassName);
+      await lessonBuilder.CreateAssignmentbtn();
+      await lessonBuilder.CodingAssignmentbtn();
+      await lessonBuilder.CodingAssignment();
+      await lessonBuilder.AssignmentCreateBtn();
+     
+      await lessonBuilder.ClickInitiliazeJuiceMindIDE(page);
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.FillProjectNameTextBox(LessonBuilderTestData.ProjectName);
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.ClickProjectTypeDropDown();
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.ClickProjectTypeJava();
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.Submitbtn();
+
+      await lessonBuilder.ClickTestsButton(page);
+      await lessonBuilder.ClickAddTestButton(page);
+      await lessonBuilder.SelectTestType(LessonBuilderTestData.TestType, page)
+      await lessonBuilder.FillTestNameTextBox(page, LessonBuilderTestData.TestName);
+      await lessonBuilder.FillInputTextBox(page, LessonBuilderTestData.TestInput);
+      await lessonBuilder.FillExpectedOutput(page, LessonBuilderTestData.ExpectedOutput)
+      await lessonBuilder.SelectTestOutputType(LessonBuilderTestData.OutputType_1, page)
+      await lessonBuilder.SubmitTest(page);
+      await lessonBuilder.ClickTemplateButton(page)
+      await lessonBuilder.ClickPlayTests(page)
+
+      const element = await page.locator(LessonBuilderLocators.TestPassedDiv);
+
+      await expect(element).toBeVisible();
+
+
+      
+
+
+
+
+  });
+
+  test('Usman TC8=> Match'
+    , async ({ lessonBuilder, page }) => {
+
+    await lessonBuilder.NavigateToTeamCoursesPage();
+      
+      // Ensure "Create New Team" button is visible before interaction
+      await expect(lessonBuilder.CreateNewTeamBtn).toBeVisible();
+      
+      // Interact with elements on the page
+      await lessonBuilder.ClickOnCreateNewTeamBtn();
+      await lessonBuilder.ClickOnStartFromScratch();
+      await page.waitForTimeout(5000);
+      await lessonBuilder.FillTeamNameTxtBox();
+      await lessonBuilder.Submitbtn();
+      await expect.toHaveText(LessonBuilderTestData.NoData && LessonBuilderTestData.ClassName);
+      await lessonBuilder.CreateAssignmentbtn();
+      await lessonBuilder.CodingAssignmentbtn();
+      await lessonBuilder.CodingAssignment();
+      await lessonBuilder.AssignmentCreateBtn();
+     
+      await lessonBuilder.ClickInitiliazeJuiceMindIDE(page);
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.FillProjectNameTextBox(LessonBuilderTestData.ProjectName);
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.ClickProjectTypeDropDown();
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.ClickProjectTypeJava();
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.Submitbtn();
+
+      await lessonBuilder.ClickTestsButton(page);
+      await lessonBuilder.ClickAddTestButton(page);
+      await lessonBuilder.SelectTestType(LessonBuilderTestData.TestType, page)
+      await lessonBuilder.FillTestNameTextBox(page, LessonBuilderTestData.TestName);
+      await lessonBuilder.FillInputTextBox(page, LessonBuilderTestData.TestInput);
+      await lessonBuilder.FillExpectedOutput(page, LessonBuilderTestData.ExpectedOutput)
+      await lessonBuilder.SelectTestOutputType(LessonBuilderTestData.OutputType_2, page)
+      await lessonBuilder.SubmitTest(page);
+      await lessonBuilder.ClickTemplateButton(page)
+      await lessonBuilder.ClickPlayTests(page)
+
+      const element = await page.locator(LessonBuilderLocators.TestPassedDiv);
+
+      await expect(element).toBeVisible();
+
+
+  });
+
+  test('Usman TC9=> Exact'
+    , async ({ lessonBuilder, page }) => {
+
+    await lessonBuilder.NavigateToTeamCoursesPage();
+      
+      // Ensure "Create New Team" button is visible before interaction
+      await expect(lessonBuilder.CreateNewTeamBtn).toBeVisible();
+      
+      // Interact with elements on the page
+      await lessonBuilder.ClickOnCreateNewTeamBtn();
+      await lessonBuilder.ClickOnStartFromScratch();
+      await page.waitForTimeout(5000);
+      await lessonBuilder.FillTeamNameTxtBox();
+      await lessonBuilder.Submitbtn();
+      await expect.toHaveText(LessonBuilderTestData.NoData && LessonBuilderTestData.ClassName);
+      await lessonBuilder.CreateAssignmentbtn();
+      await lessonBuilder.CodingAssignmentbtn();
+      await lessonBuilder.CodingAssignment();
+      await lessonBuilder.AssignmentCreateBtn();
+     
+      await lessonBuilder.ClickInitiliazeJuiceMindIDE(page);
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.FillProjectNameTextBox(LessonBuilderTestData.ProjectName);
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.ClickProjectTypeDropDown();
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.ClickProjectTypeJava();
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.Submitbtn();
+
+      await lessonBuilder.ClickTestsButton(page);
+      await lessonBuilder.ClickAddTestButton(page);
+      await lessonBuilder.SelectTestType(LessonBuilderTestData.TestType, page)
+      await lessonBuilder.FillTestNameTextBox(page, LessonBuilderTestData.TestName);
+      await lessonBuilder.FillInputTextBox(page, LessonBuilderTestData.TestInput);
+      await lessonBuilder.FillExpectedOutput(page, LessonBuilderTestData.ExpectedOutput)
+      await lessonBuilder.SelectTestOutputType(LessonBuilderTestData.OutputType_3, page)
+      await lessonBuilder.SubmitTest(page);
+      await lessonBuilder.ClickTemplateButton(page)
+      await lessonBuilder.ClickPlayTests(page)
+
+      const element = await page.locator(LessonBuilderLocators.TestPassedDiv);
+
+      await expect(element).toBeVisible();
+
+
+  });
+
+  test('Usman TC10=> Regex'
+    , async ({ lessonBuilder, page }) => {
+
+    await lessonBuilder.NavigateToTeamCoursesPage();
+      
+      // Ensure "Create New Team" button is visible before interaction
+      await expect(lessonBuilder.CreateNewTeamBtn).toBeVisible();
+      
+      // Interact with elements on the page
+      await lessonBuilder.ClickOnCreateNewTeamBtn();
+      await lessonBuilder.ClickOnStartFromScratch();
+      await page.waitForTimeout(5000);
+      await lessonBuilder.FillTeamNameTxtBox();
+      await lessonBuilder.Submitbtn();
+      await expect.toHaveText(LessonBuilderTestData.NoData && LessonBuilderTestData.ClassName);
+      await lessonBuilder.CreateAssignmentbtn();
+      await lessonBuilder.CodingAssignmentbtn();
+      await lessonBuilder.CodingAssignment();
+      await lessonBuilder.AssignmentCreateBtn();
+     
+      await lessonBuilder.ClickInitiliazeJuiceMindIDE(page);
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.FillProjectNameTextBox(LessonBuilderTestData.ProjectName);
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.ClickProjectTypeDropDown();
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.ClickProjectTypeJava();
+      await page.waitForTimeout(5000);
+
+      await lessonBuilder.Submitbtn();
+
+      await lessonBuilder.ClickTestsButton(page);
+      await lessonBuilder.ClickAddTestButton(page);
+      await lessonBuilder.SelectTestType(LessonBuilderTestData.TestType, page)
+      await lessonBuilder.FillTestNameTextBox(page, LessonBuilderTestData.TestName);
+      await lessonBuilder.FillInputTextBox(page, LessonBuilderTestData.TestInput);
+      await lessonBuilder.FillExpectedOutput(page, LessonBuilderTestData.ExpectedOutput)
+      await lessonBuilder.SelectTestOutputType(LessonBuilderTestData.OutputType_4, page)
+      await lessonBuilder.SubmitTest(page);
+      await lessonBuilder.ClickTemplateButton(page)
+      await lessonBuilder.ClickPlayTests(page)
+
+      const element = await page.locator(LessonBuilderLocators.TestPassedDiv);
+
+      await expect(element).toBeVisible();
+
+
+  });
+
+
 });
