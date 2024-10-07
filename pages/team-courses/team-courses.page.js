@@ -131,6 +131,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.DueDateBtn = this.page.locator(Locators.DueDateBtn);
     this.DisableSubmitBtn = this.page.locator(Locators.DisableSubmitBtn);
     this.ReSubmissionBtn = this.page.locator(Locators.ReSubmissionBtn);
+    this.AllowLateSubmission = this.page.locator(Locators.AllowLateSubmission);
   }
 
   async NavigateToSignUpPage() {
@@ -662,6 +663,15 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.ReSubmissionBtn);
   }
 
+  async allowLateSubmission() {
+    await this.page.addStyleTag({ content: '* { transition: none !important; animation: none !important; transform: none !important }' });
+    await PlaywrightCore.click(this.ClosePopUp);
+    await PlaywrightCore.click(this.DueDateBtn);
+    const previousDay = dayjs().subtract(1, 'day').format('MM/DD/YYYY');
+    await this.page.getByPlaceholder('MM/DD/YYYY hh:mm aa').fill(`${previousDay} 11:00 AM`);
+    await PlaywrightCore.click(this.AllowLateSubmission);
+  }
+
   async isSubmitDisabled(beforeDueDate = true) {
     await PlaywrightCore.click(this.CreateStarterCode);
     const isDisabled = await this.DisableSubmitBtn.isDisabled();
@@ -670,6 +680,21 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     } else {
       expect(!isDisabled).toBe(true);
     }
+  }
+
+  async isLateSubmissionAllowed(isJS = false) {
+    await PlaywrightCore.click(this.CreateStarterCode);
+    await PlaywrightCore.waitTimeout(this.page, 20000)
+    let isDisabled = await this.DisableSubmitBtn.isDisabled();
+    expect(!isDisabled).toBe(true);
+    await PlaywrightCore.click(this.DisableSubmitBtn);
+    await PlaywrightCore.click(this.SubmitBtn);
+    await PlaywrightCore.waitTimeout(this.page, 20000)
+    
+    const textVisible = await this.page.locator('text=You have already submitted the code.').isVisible();
+    if (!isJS) expect(textVisible).toBe(true);
+    isDisabled = await this.DisableSubmitBtn.isDisabled();
+    expect(isDisabled).toBe(true);
   }
 
   async isResubmissonAllowed(beforeDueDate = true) {
