@@ -216,6 +216,9 @@ async ClickSubmitAssignmentBtn(newPage){
 async ClickWarningSubmitAssignmentBtn(newPage){
   await newPage.click(Locators.WarningSubmitAssignmentStd);
 }
+async ClickWarningSubmitAssignmentBtnAfterReSubmit(newPage){
+  await newPage.click(Locators.WarningSubmitAssignmentStdAfterReSubmit);
+}
 async ClickFirstAssignment(newPage){
   await newPage.click(Locators.FirstAssignmentBtn);
 }
@@ -239,7 +242,21 @@ async ClickReSubmitButton(newPage){
   await newPage.click(Locators.ResubmitButton);
 }
 
-
+async ClickSolutionAvailableAfterCorrectAns(newPage){
+  await newPage.click(Locators.SolutionAvailableAfterCorrectAnswerCheckbox);
+}
+async ClickSolutionAvailableAfterDueDate(newPage){
+  await newPage.click(Locators.SolutionAvailableAfterDueDateCheckBox);
+}
+async ClickSolutionAvailableAfterSubmit(newPage){
+  await newPage.click(Locators.SolutionAvailableAfterSubmitCheckbox);
+}
+async ClickSolutionButton(newPage){
+  await newPage.click(Locators.SolutionButton);
+}
+async ClickCreateSolution(newPage){
+  await newPage.click(Locators.CreateSolutionButton);
+}
 };
 
 
