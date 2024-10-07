@@ -95,6 +95,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         // Write and check answer in Presentation Mode
         await PlaywrightCore.fill(createLesson.PresentationModeFillInBlank, CLtd.FillInBlankAnswer1Value)
         await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await expect(createLesson.PresentationModeCorrectAnswerPopup).toHaveText(CLtd.PresentationModeCorrectAnswerHeading)
         await PlaywrightCore.click(createLesson.PresentationModeCorrectAnswerPopupClose)
         // Exit Presentation Mode
@@ -108,6 +109,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         // Revisit Presentation mode, mark and check answer
         await PlaywrightCore.fill(createLesson.PresentationModeFillInBlank, CLtd.FillInBlankAnswer2Value)
         await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await expect(createLesson.PresentationModeCorrectAnswerPopup).toHaveText(CLtd.PresentationModeCorrectAnswerHeading)
         await PlaywrightCore.click(createLesson.PresentationModeCorrectAnswerPopupClose)
         // Exit Presentation Mode
@@ -161,7 +163,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('Umair - TC-04 - Verify JuiceMind IDE Functionality - Revisit Presentation Mode and Check Answer', async ({ createLesson }) => {
+    test('Umair - TC-04 - Verify JuiceMind IDE Functionality - Unit Test - Revisit Presentation Mode and Check Answer', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.JuiceMindIDE)
         await expect(createLesson.InitializeJuiceMindIDEBtn).toHaveText(CLtd.InitializeJuiceMindIDEBtnValue)
         await PlaywrightCore.click(createLesson.InitializeJuiceMindIDEBtn)
@@ -215,7 +217,60 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         // Delete Element 
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
-    test('Umair - TC-05 - Verify JuiceMind IDE Functionality - Correct answer result and marks obtained', async ({ createLesson }) => {
+
+    test('Umair - TC-05 - Verify JuiceMind IDE Functionality - Input Output Test - Revisit Presentation Mode and Check Answer', async ({ createLesson }) => {
+        await createLesson.selectElementFromDropdown(CLtd.elements.JuiceMindIDE)
+        await expect(createLesson.InitializeJuiceMindIDEBtn).toHaveText(CLtd.InitializeJuiceMindIDEBtnValue)
+        await PlaywrightCore.click(createLesson.InitializeJuiceMindIDEBtn)
+        await PlaywrightCore.fill(createLesson.ProjectNameField, CLtd.ProjectNameFieldValue)
+        await PlaywrightCore.click(createLesson.ProjectTypeField)
+        await PlaywrightCore.click(createLesson.ProjectTypePythonValue)
+        await PlaywrightCore.click(createLesson.CreateProjectSubmitBtn)
+        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        await PlaywrightCore.fill(createLesson.IDEFirstLine, CLtd.IDEFirstLineValue)
+        await PlaywrightCore.click(createLesson.CodeRunBtn)
+        await PlaywrightCore.waitTimeout(createLesson.page, 3000)
+        await expect(createLesson.CodeOutputFirstLine).toHaveText(CLtd.CodeOutputFirstLineValue)
+        // create test
+        await PlaywrightCore.click(createLesson.IDETestsBtn)
+        await PlaywrightCore.click(createLesson.IDETestsAddTestBtn)
+        await PlaywrightCore.click(createLesson.CreateTestTestTypeField)
+        await PlaywrightCore.click(createLesson.CreateTestInputOutputTestType)
+        await PlaywrightCore.fill(createLesson.CreateTestTestNameField, CLtd.CreateTestTestNameFieldValue)
+        await PlaywrightCore.fill(createLesson.CreateTestInputField, CLtd.CreateTestInputFieldValue)
+        await PlaywrightCore.fill(createLesson.CreateTestOutputField, CLtd.CreateTestOutputFieldValue)
+        await PlaywrightCore.click(createLesson.CreateTestAddTestBtn2)
+        await PlaywrightCore.click(createLesson.IDETemplateBtn)
+        // Navigate to Presentation Mode
+        await PlaywrightCore.click(createLesson.presnetationMode)
+        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
+        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
+        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
+        await PlaywrightCore.click(createLesson.GotItBtn)
+        // Check answer in Presentation Mode
+        await PlaywrightCore.click(createLesson.CreateStarterCodeBtn)
+        await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        // Exit Presentation Mode
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
+        // Revisit Presentation Mode
+        await PlaywrightCore.click(createLesson.presnetationMode)
+        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
+        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
+        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
+        await PlaywrightCore.click(createLesson.GotItBtn)
+        // Revisit Presentation mode, and check answer
+        await PlaywrightCore.click(createLesson.CreateStarterCodeBtn)
+        await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        // Exit Presentation Mode
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
+        await PlaywrightCore.click(createLesson.IDETemplateBtn)
+        // Delete Element 
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+    });
+
+    test('Umair - TC-06 - Verify JuiceMind IDE Functionality - Unit Test - Correct answer result and marks obtained', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.JuiceMindIDE)
         await expect(createLesson.InitializeJuiceMindIDEBtn).toHaveText(CLtd.InitializeJuiceMindIDEBtnValue)
         await PlaywrightCore.click(createLesson.InitializeJuiceMindIDEBtn)
@@ -262,7 +317,52 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('Umair - TC-06 - Verify Short Answer Functionality - Correct answer result and marks obtained', async ({ createLesson }) => {
+    test('Umair - TC-07 - Verify JuiceMind IDE Functionality - Input Output Test - Correct answer result and marks obtained', async ({ createLesson }) => {
+        await createLesson.selectElementFromDropdown(CLtd.elements.JuiceMindIDE)
+        await expect(createLesson.InitializeJuiceMindIDEBtn).toHaveText(CLtd.InitializeJuiceMindIDEBtnValue)
+        await PlaywrightCore.click(createLesson.InitializeJuiceMindIDEBtn)
+        await PlaywrightCore.fill(createLesson.ProjectNameField, CLtd.ProjectNameFieldValue)
+        await PlaywrightCore.click(createLesson.ProjectTypeField)
+        await PlaywrightCore.click(createLesson.ProjectTypePythonValue)
+        await PlaywrightCore.click(createLesson.CreateProjectSubmitBtn)
+        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        await PlaywrightCore.fill(createLesson.IDEFirstLine, CLtd.IDEFirstLineValue)
+        await PlaywrightCore.click(createLesson.CodeRunBtn)
+        await PlaywrightCore.waitTimeout(createLesson.page, 3000)
+        await expect(createLesson.CodeOutputFirstLine).toHaveText(CLtd.CodeOutputFirstLineValue)
+        // create test
+        await PlaywrightCore.click(createLesson.IDETestsBtn)
+        await PlaywrightCore.click(createLesson.IDETestsAddTestBtn)
+        await PlaywrightCore.click(createLesson.CreateTestTestTypeField)
+        await PlaywrightCore.click(createLesson.CreateTestInputOutputTestType)
+        await PlaywrightCore.fill(createLesson.CreateTestTestNameField, CLtd.CreateTestTestNameFieldValue)
+        await PlaywrightCore.fill(createLesson.CreateTestInputField, CLtd.CreateTestInputFieldValue)
+        await PlaywrightCore.fill(createLesson.CreateTestOutputField, CLtd.CreateTestOutputFieldValue)
+        await PlaywrightCore.click(createLesson.CreateTestAddTestBtn2)
+        await PlaywrightCore.click(createLesson.IDETemplateBtn)
+        // Navigate to Presentation Mode
+        await PlaywrightCore.click(createLesson.presnetationMode)
+        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
+        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
+        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
+        await PlaywrightCore.click(createLesson.GotItBtn)
+        // Check answer in Presentation Mode
+        await PlaywrightCore.click(createLesson.CreateStarterCodeBtn)
+        await PlaywrightCore.click(createLesson.CheckAnswerButton)    
+        await PlaywrightCore.waitTimeout(createLesson.page, 8000)
+        // verify the result of correct answer and marks obtained
+        await expect(createLesson.CorrectAnswerText).toHaveText(CLtd.CorrectAnswerTextValue)
+        await expect(createLesson.InputOutputTestObtainedMarks).toHaveText(CLtd.IDETestObtainedMarksValue)
+        // Exit Presentation Mode
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
+        await PlaywrightCore.click(createLesson.IDETemplateBtn)
+        await PlaywrightCore.click(createLesson.IDETestsBtn)
+        // Delete Element 
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+    });
+
+
+    test('Umair - TC-08 - Verify Short Answer Functionality - Correct answer result and marks obtained', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.shortAnswer)
         await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
         await expect(createLesson.ModelSolutionBtn).toHaveText(CLtd.ModelSolutionBtnValue)
@@ -294,7 +394,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('Umair - TC-07 - Verify Fill in the Blanks Functionality - Correct answer result and marks obtained', async ({ createLesson }) => {
+    test('Umair - TC-09 - Verify Fill in the Blanks Functionality - Correct answer result and marks obtained', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.fillInBlank)
         await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
         await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
@@ -315,8 +415,10 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         // Write and check answer in Presentation Mode
         await PlaywrightCore.fill(createLesson.PresentationModeFillInBlank, CLtd.FillInBlankAnswer1Value)
         await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await expect(createLesson.PresentationModeCorrectAnswerPopup).toHaveText(CLtd.PresentationModeCorrectAnswerHeading)
         await PlaywrightCore.click(createLesson.PresentationModeCorrectAnswerPopupClose)
+        await expect(createLesson.FillInBlanksTestObtainedMarks).toHaveText(CLtd.FillInBlankTotalpointsValue)
         // Exit Presentation Mode
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
         await PlaywrightCore.click(createLesson.SetupBtn)
@@ -324,7 +426,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('Umair - TC-08 - Verify Multiple Choice Functionality - Correct answer result and marks obtained', async ({ createLesson }) => {
+    test('Umair - TC-10 - Verify Multiple Choice Functionality - Correct answer result and marks obtained', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
         await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
         await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
@@ -348,8 +450,10 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         // Mark and check answer in Presentation Mode
         await PlaywrightCore.click(createLesson.MCQCorrectOption)
         await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await expect(createLesson.PresentationModeCorrectAnswerPopup).toHaveText(CLtd.PresentationModeCorrectAnswerHeading)
         await PlaywrightCore.click(createLesson.PresentationModeCorrectAnswerPopupClose)
+        await expect(createLesson.MCQTestObtainedMarks).toHaveText(CLtd.MCQTotalMarks)
         // Exit Presentation Mode
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
         await PlaywrightCore.click(createLesson.SetupBtn)

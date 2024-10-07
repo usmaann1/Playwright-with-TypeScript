@@ -301,7 +301,7 @@
     "FillInBlankQues": "(//textarea[normalize-space()='Fill in the [blank]'])[1]",
     "FillInBlankAnswer1": "//textarea[@placeholder='Add answer...']",
     "FillInBlankTotalPoints": "//input[@placeholder='Total']",
-    "PresentationModeFillInBlank": "//input[@id=':rk:']",
+    "PresentationModeFillInBlank": "//input[@aria-invalid='false']",
     "ModelSolutionBtn": "//button[normalize-space()='Model Solution']",
     "ShortAnswerPromptField": "(//p[@class='is-empty is-editor-empty'])[1]",
     "ShortAnswerTemplateField": "(//p[@class='is-empty is-editor-empty'])[1]",
@@ -330,7 +330,13 @@
     "CreateStarterCodeBtn": "//a[normalize-space()='Create starter code']",
     "CorrectAnswerText": "//div[contains(text(),'Correct')]",
     "IDETestObtainedMarks": "//span[normalize-space()='1']",
-    "ShortAnswerTestObtainedMarks": "//span[normalize-space()='2']"
+    "ShortAnswerTestObtainedMarks": "(//span[contains(text(),'2')])[1]",
+    "FillInBlanksTestObtainedMarks": "(//span[contains(text(),'2')])[1]",
+    "MCQTestObtainedMarks": "(//span[contains(text(),'2')])[1]",
+    "CreateTestInputOutputTestType": "(//li[@role='option'])[1]",
+    "CreateTestInputField": "//textarea[@placeholder='Input for the test']",
+    "CreateTestOutputField": "//textarea[contains(@placeholder,'Output for the test')]",
+    "InputOutputTestObtainedMarks": "(//span[contains(text(),'1')])[1]"
     
     
 

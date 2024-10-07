@@ -203,6 +203,8 @@
     "CreateTestTestNameFieldValue": "Hello World Test",
     "CorrectAnswerTextValue": "Correct",
     "IDETestObtainedMarksValue": "1",
+    "CreateTestInputFieldValue": "print ('Hello World')",
+    "CreateTestOutputFieldValue": "Hello World",
 
 
     "value": "taskList",

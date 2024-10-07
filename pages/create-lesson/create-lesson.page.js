@@ -308,6 +308,12 @@ exports.CreateLesson = class CreateLesson {
         this.CorrectAnswerText = this.page.locator(Locators.CorrectAnswerText)
         this.IDETestObtainedMarks = this.page.locator(Locators.IDETestObtainedMarks)
         this.ShortAnswerTestObtainedMarks = this.page.locator(Locators.ShortAnswerTestObtainedMarks)
+        this.FillInBlanksTestObtainedMarks = this.page.locator(Locators.FillInBlanksTestObtainedMarks)
+        this.MCQTestObtainedMarks = this.page.locator(Locators.MCQTestObtainedMarks)
+        this.CreateTestInputOutputTestType = this.page.locator(Locators.CreateTestInputOutputTestType)
+        this.CreateTestInputField = this.page.locator(Locators.CreateTestInputField)
+        this.CreateTestOutputField = this.page.locator(Locators.CreateTestOutputField)
+        this.InputOutputTestObtainedMarks = this.page.locator(Locators.InputOutputTestObtainedMarks)
     }
 
     async clickOnAddNewItem() {
