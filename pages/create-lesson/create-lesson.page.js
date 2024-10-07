@@ -823,4 +823,89 @@ exports.CreateLesson = class CreateLesson {
         const child = parent.locator(this.list)
         await PlaywrightCore.press(child, 'Enter')
     }
+
+    async createMCQTest() {
+        await this.selectElementFromDropdown(clTD.elements.multipleChoice)
+        await expect(this.SetupBtn).toHaveText(clTD.SetupBtnValue)
+        await expect(this.OptionsBtn).toHaveText(clTD.OptionsBtnValue)
+        await expect(this.AddChoiceBtn).toHaveText(clTD.AddChoiceBtnValue)
+        await PlaywrightCore.fill(this.MCQQuestion, clTD.MCQQuestionValue)
+        await PlaywrightCore.fill(this.MCQOption1, clTD.MCQOption1Value)
+        await PlaywrightCore.fill(this.MCQOption2, clTD.MCQOption2Value)
+        await PlaywrightCore.fill(this.MCQOption3, clTD.MCQOption3Value)
+        await PlaywrightCore.fill(this.MCQOption4, clTD.MCQOption4Value)
+    }
+
+    async navigateToPresentationMode() {
+        await PlaywrightCore.click(this.presnetationMode)
+        await expect(this.PresentationModePopUpHeading).toHaveText(clTD.PresentationModePopUpHeadingValue)
+        await expect(this.PresentationModePopUpDescription).toHaveText(clTD.PresentationModePopUpDescriptionValue)
+        await expect(this.GotItBtn).toHaveText(clTD.GotItBtnValue)
+        await PlaywrightCore.click(this.GotItBtn)
+    }
+
+    async createFillInTheBlankTest() {
+        await this.selectElementFromDropdown(clTD.elements.fillInBlank)
+        await expect(this.SetupBtn).toHaveText(clTD.SetupBtnValue)
+        await expect(this.OptionsBtn).toHaveText(clTD.OptionsBtnValue)
+        await expect(this.AddBlankBtn).toHaveText(clTD.AddBlankBtnValue)
+        await PlaywrightCore.fill(this.FillInBlankTitle, clTD.FillInBlankTitleValue)
+        await PlaywrightCore.fill(this.FillInBlankQues, clTD.FillInBlankQuesValue)
+        await PlaywrightCore.click(this.AddBlankBtn)
+        await PlaywrightCore.fill(this.FillInBlankAnswer1, clTD.FillInBlankAnswer1Value)
+    }
+
+    async createShortAnswerTest() {
+        await this.selectElementFromDropdown(clTD.elements.shortAnswer)
+        await expect(this.SetupBtn).toHaveText(clTD.SetupBtnValue)
+        await expect(this.ModelSolutionBtn).toHaveText(clTD.ModelSolutionBtnValue)
+        await expect(this.OptionsBtn).toHaveText(clTD.OptionsBtnValue)
+        await PlaywrightCore.fill(this.ShortAnswerPromptField, clTD.ShortAnswerPromptFieldValue)
+        await PlaywrightCore.fill(this.ShortAnswerTemplateField, clTD.ShortAnswerTemplateFieldValue)
+        await PlaywrightCore.click(this.ModelSolutionBtn)
+        await PlaywrightCore.fill(this.ShortAnswerField, clTD.ShortAnswerFieldValue)
+    }
+
+    async createJuiceMindIDEProject() {
+        await this.selectElementFromDropdown(clTD.elements.JuiceMindIDE)
+        await expect(this.InitializeJuiceMindIDEBtn).toHaveText(clTD.InitializeJuiceMindIDEBtnValue)
+        await PlaywrightCore.click(this.InitializeJuiceMindIDEBtn)
+        await PlaywrightCore.fill(this.ProjectNameField, clTD.ProjectNameFieldValue)
+        await PlaywrightCore.click(this.ProjectTypeField)
+        await PlaywrightCore.click(this.ProjectTypePythonValue)
+        await PlaywrightCore.click(this.CreateProjectSubmitBtn)
+        await PlaywrightCore.waitTimeout(this.page, 5000)
+        await PlaywrightCore.fill(this.IDEFirstLine, clTD.IDEFirstLineValue)
+        await PlaywrightCore.click(this.CodeRunBtn)
+        await PlaywrightCore.waitTimeout(this.page, 3000)
+        await expect(this.CodeOutputFirstLine).toHaveText(clTD.CodeOutputFirstLineValue)
+    }
+
+    async createJuiceMindIDEUnitTest() {
+        await PlaywrightCore.click(this.IDETestsBtn)
+        await PlaywrightCore.click(this.IDETestsAddTestBtn)
+        await PlaywrightCore.click(this.CreateTestTestTypeField)
+        await PlaywrightCore.click(this.CreateTestUnitTestType)
+        await PlaywrightCore.fill(this.CreateTestTestNameField, clTD.CreateTestTestNameFieldValue)
+        await PlaywrightCore.click(this.CreateTestAddInnerTestBtn)
+        await PlaywrightCore.fill(this.CreateTestTestNameField2, clTD.CreateTestTestNameFieldValue)
+        await PlaywrightCore.click(this.CreateTestCodeTextbox)
+        await this.CreateTestCodeTextbox.click({clickCount: 3})
+        await PlaywrightCore.fill(this.CreateTestCodeTextbox, clTD.IDEFirstLineValue)
+        await PlaywrightCore.click(this.CreateTestAddTestBtn)
+        await PlaywrightCore.click(this.CreateTestAddTestBtn2)
+        await PlaywrightCore.click(this.IDETemplateBtn)
+    }
+
+    async createJuiceMindIDEInputOutputTest() {
+        await PlaywrightCore.click(this.IDETestsBtn)
+        await PlaywrightCore.click(this.IDETestsAddTestBtn)
+        await PlaywrightCore.click(this.CreateTestTestTypeField)
+        await PlaywrightCore.click(this.CreateTestInputOutputTestType)
+        await PlaywrightCore.fill(this.CreateTestTestNameField, clTD.CreateTestTestNameFieldValue)
+        await PlaywrightCore.fill(this.CreateTestInputField, clTD.CreateTestInputFieldValue)
+        await PlaywrightCore.fill(this.CreateTestOutputField, clTD.CreateTestOutputFieldValue)
+        await PlaywrightCore.click(this.CreateTestAddTestBtn2)
+        await PlaywrightCore.click(this.IDETemplateBtn)
+    }
 }
