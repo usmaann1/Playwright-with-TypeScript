@@ -1,13 +1,10 @@
 import { defineConfig, devices, PlaywrightTestConfig } from '@playwright/test';
 import { on } from 'events';
-
-
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
 // require('dotenv').config();
-
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -18,25 +15,27 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries:0,
+  retries:1,
   /* Opt out of parallel tests on CI. */
   workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['json', { outputFile: 'playwright-report.json' }], ['slack-ctrf']],
+  reporter: [
+    ['json-summary', { outputFile: 'summary.json' }],
+    ['playwright-json-summary-reporter'],
+    ['html'], // other reporters
+    ['dot']
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   timeout: 8 * 60 * 1000,
   use: {
-    viewport: null,
-    /* Base URL to use in actions like await page.goto('/'). */
+    viewport: { width: 1920, height: 1080 },
+    /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: "https://play.juicemind.com/",
-    headless:false,
+    headless:true,
+    actionTimeout: 15000,
     permissions: ['notifications'],
     screenshot: 'on',
     permissions: ['clipboard-read', 'clipboard-write'], // Grant clipboard permissions
-    launchOptions: {
-      args: ["--start-maximized"],
-    },
-
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace:
     {
@@ -48,14 +47,12 @@ export default defineConfig({
     }
   },
   reporter: [['html', { open: 'never' }]],
-
   /* Configure projects for major browsers */
-  // projects: [
-  //   {
-  //     name: 'chromium',
-  //     use: { ...devices['Desktop Chrome'] },
-  //   }
-
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    }
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
@@ -65,7 +62,6 @@ export default defineConfig({
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
     // },
-
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
@@ -75,8 +71,7 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-  // ],
-
+  ],
   /* Run your local dev server before starting the tests */
   // webServer: {
   //   command: 'npm run start',
