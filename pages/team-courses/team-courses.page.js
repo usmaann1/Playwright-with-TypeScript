@@ -130,6 +130,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.ClosePopUp = this.page.locator(Locators.ClosePopUp);
     this.DueDateBtn = this.page.locator(Locators.DueDateBtn);
     this.DisableSubmitBtn = this.page.locator(Locators.DisableSubmitBtn);
+    this.ReSubmissionBtn = this.page.locator(Locators.ReSubmissionBtn);
   }
 
   async NavigateToSignUpPage() {
@@ -641,8 +642,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async setPerviousDueDate() {
     await this.page.addStyleTag({ content: '* { transition: none !important; animation: none !important; transform: none !important }' });
-    await PlaywrightCore.click(this.ClosePopUp);
-    // await this.page.locator('div').filter({ hasText: /^Due Date$/ }).getByLabel('controlled').check();
+    await PlaywrightCore.click(this.ClosePopUp);;
     await PlaywrightCore.click(this.DueDateBtn);
     const previousDay = dayjs().subtract(1, 'day').format('MM/DD/YYYY');
     await this.page.getByPlaceholder('MM/DD/YYYY hh:mm aa').fill(`${previousDay} 11:00 AM`);
@@ -651,10 +651,15 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   async setDueDate() {
     await this.page.addStyleTag({ content: '* { transition: none !important; animation: none !important; transform: none !important }' });
     await PlaywrightCore.click(this.ClosePopUp);
-    // await this.page.locator('div').filter({ hasText: /^Due Date$/ }).getByLabel('controlled').check();
     await PlaywrightCore.click(this.DueDateBtn);
     const previousDay = dayjs().add(2, 'day').format('MM/DD/YYYY');
     await this.page.getByPlaceholder('MM/DD/YYYY hh:mm aa').fill(`${previousDay} 11:00 AM`);
+  }
+
+  async allowResubmission() {
+    await this.page.addStyleTag({ content: '* { transition: none !important; animation: none !important; transform: none !important }' });
+    await PlaywrightCore.click(this.ClosePopUp);
+    await PlaywrightCore.click(this.ReSubmissionBtn);
   }
 
   async isSubmitDisabled(beforeDueDate = true) {
@@ -665,6 +670,17 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     } else {
       expect(!isDisabled).toBe(true);
     }
+  }
+
+  async isResubmissonAllowed(beforeDueDate = true) {
+    await PlaywrightCore.click(this.CreateStarterCode);
+    await PlaywrightCore.waitTimeout(this.page, 20000)
+    await PlaywrightCore.click(this.DisableSubmitBtn);
+    await PlaywrightCore.click(this.SubmitBtn);
+    const textVisible = await this.page.locator('text=You have already submitted the code.').isVisible();
+    expect(!textVisible).toBe(true);
+    const isDisabled = await this.DisableSubmitBtn.isDisabled();
+    expect(!isDisabled).toBe(true);
   }
 
   async fileStructureJSPYCPP(

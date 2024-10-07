@@ -1517,4 +1517,342 @@ test.describe("TestSuite: Team/Courses", () => {
     );
     await newTeamCoursesPageInstance.isSubmitDisabled(false);
   });
+
+  test("[Numair] - TC: Allow resubmission python- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email10);
+    await teamCoursesPage.signInUser(email10, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption8,
+      true
+    );
+    await teamCoursesPage.simplePython();
+    await teamCoursesPage.allowResubmission();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
+  });
+
+  test("[Numair] - TC: Allow resubmission java- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email10);
+    await teamCoursesPage.signInUser(email10, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption9,
+      true
+    );
+    await teamCoursesPage.simpleJava();
+    await teamCoursesPage.allowResubmission();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
+  });
+
+  test("[Numair] - TC: Allow resubmission csharp- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email10);
+    await teamCoursesPage.signInUser(email10, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption10,
+      true
+    );
+    await teamCoursesPage.simpleCsharp();
+    await teamCoursesPage.allowResubmission();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
+  });
+
+  test("[Numair] - TC: Allow resubmission C++- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email10);
+    await teamCoursesPage.signInUser(email10, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption11,
+      true
+    );
+    await teamCoursesPage.simpleCPP();
+    await teamCoursesPage.allowResubmission();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
+  });
+
+  test("[Numair] - TC: Allow resubmission JavaScript- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomEmail = await UserFunctions.generateRandomEmail(email10);
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    await teamCoursesPage.signInUser(email10, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption1
+    );
+    await teamCoursesPage.createTest(
+      TeamCoursesData.createTestType,
+      TeamCoursesData.createTestOldType,
+      TeamCoursesData.createTestNewType,
+      TeamCoursesData.createTestName,
+      TeamCoursesData.testInput,
+      TeamCoursesData.testOutput
+    );
+    await teamCoursesPage.allowResubmission();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
+  });
+
+  test("[Numair] - TC: Allow resubmission HTML- Create Assignment, project, add test, set due date before currnt date, publish, share, join as student, verify student able to submit test", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email10);
+    await teamCoursesPage.signInUser(email10, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.ProjectTypeOption12,
+      true
+    );
+    const link = await teamCoursesPage.simpleHTML();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.getHtmlData(
+      TeamCoursesData.HTMLTestOutput,
+      link
+    );
+    await teamCoursesPage.allowResubmission();
+    const link2 = await teamCoursesPage.PublishAndInvite();
+    const newPage2 = await browser.newPage();
+    const newTeamCoursesPageInstance2 = new TeamCoursesPage(newPage2);
+    await newTeamCoursesPageInstance2.afterInviteSignUp(
+      link2,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance2.isResubmissonAllowed(false);
+  });
+
+  test("[Numair] - TC: Allow resubmission Python with Turtle  - Change background color to red and verify the change and check student able to submit", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email10);
+    await teamCoursesPage.signInUser(email10, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption2
+    );
+    await teamCoursesPage.pythonWithTurtle();
+    await teamCoursesPage.allowResubmission();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
+  });
+
+  test("[Numair] - TC: Allow resubmission Python with Tkinter -  - Change text and verify the change and check student able to submit", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email10);
+    await teamCoursesPage.signInUser(email10, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption4
+    );
+    await teamCoursesPage.pythonWithTkinter();
+    await teamCoursesPage.allowResubmission();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
+  });
+
+  test("[Numair] - TC: Allow resubmission Java with Swing- - Change slider color to red and verify the change and check student able to submit", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email10);
+    await teamCoursesPage.signInUser(email10, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.ProjectTypeOption13
+    );
+    await teamCoursesPage.javaWithSwing();
+    await teamCoursesPage.allowResubmission();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
+  });
+
+  test("[Numair] - TC: Allow resubmission Python with Matplotlib - Change X and Y axis of the graph and verify the change and check student able to submit", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email10);
+    await teamCoursesPage.signInUser(email10, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOption6
+    );
+    await teamCoursesPage.pythonWithMatplotlib();
+    await teamCoursesPage.allowResubmission();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
+  });
+
+  test("[Numair] - TC: Allow resubmission Python with pillow - - Change background color from purple to red and verify the change from the generated image and check student able to submit", async ({
+    teamCoursesPage,
+    browser,
+  }) => {
+    const randomName = await UserFunctions.generateName();
+    const randomAssignment = await UserFunctions.generateName();
+    const randomEmail = await UserFunctions.generateRandomEmail(email10);
+    await teamCoursesPage.signInUser(email10, password);
+    await teamCoursesPage.CreateTeam(randomName);
+    await teamCoursesPage.CreateAssignment(randomAssignment);
+    await teamCoursesPage.IntializeIDE(
+      randomName,
+      TeamCoursesData.projectTypeOPtion14
+    );
+    await teamCoursesPage.pythonWithPillow();
+    await teamCoursesPage.allowResubmission();
+    const link = await teamCoursesPage.PublishAndInvite();
+    const newPage = await browser.newPage();
+    const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
+    await newTeamCoursesPageInstance.afterInviteSignUp(
+      link,
+      randomEmail,
+      password,
+      TeamCoursesData.firstName,
+      TeamCoursesData.LastName
+    );
+    await newTeamCoursesPageInstance.isResubmissonAllowed(false);
+  });
+
 });
