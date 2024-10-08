@@ -33,3 +33,18 @@ To run all tests within a specific file, use:
 - Running a Specific Test File and Test
 To run a specific test within a specific file, use:
 	•	npx playwright test path/to/test/file.spec.ts --grep "test name"
+
+# Localhost run
+Files to edit:
+
+1. `test-environment/test-assets/global-setup.js`
+
+-`await page.goto("https://play.juicemind.com/login")`
+
++`await page.goto("http://localhost:5173/login")`
+
+2. `playwright.config.js`
+
+-`await page.goto("https://play.juicemind.com/login")`
+
++`await page.goto("http://localhost:5173/login")`
