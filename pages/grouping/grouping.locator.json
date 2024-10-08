@@ -29,8 +29,8 @@
     "login_btn": "//a[@href='/login']",
     "finish_btn":"//a[normalize-space()='Finish']",
     "studentAssignmentHeading":"//div[@class='tiptap ProseMirror min-h-full']/h1",
-    "CodeEditorTargetLineLocator": "(//div[@class='cm-line'])[8]",
-    "CodeEditorTargetLineLocatorSecondStd": "(//div[@class='cm-line'])[7]",
+    "CodeEditorTargetLineLocator": "(//div[@class='cm-activeLine cm-line'])[2]",
+    "CodeEditorTargetLineLocatorSecondStd": "(//div[@class='cm-activeLine cm-line'])[2]",
 
     "codePlayIcon": "//*[@data-testid='PlayArrowIcon']",
 

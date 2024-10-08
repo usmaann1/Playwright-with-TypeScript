@@ -726,7 +726,7 @@ test.describe('TestSuite: Lesson Builder', () => {
 
   });
 
-  test('Usman TC7=> Flexible Equality'
+  test('Usman TC7=> Verify test status is passed when expected output type is Flexible Equality'
     , async ({ lessonBuilder, page }) => {
 
     await lessonBuilder.NavigateToTeamCoursesPage();
@@ -783,7 +783,7 @@ test.describe('TestSuite: Lesson Builder', () => {
 
   });
 
-  test('Usman TC8=> Match'
+  test('Usman TC8=> Verify test status is passed when expected output type is Match'
     , async ({ lessonBuilder, page }) => {
 
     await lessonBuilder.NavigateToTeamCoursesPage();
@@ -835,7 +835,7 @@ test.describe('TestSuite: Lesson Builder', () => {
 
   });
 
-  test('Usman TC9=> Exact'
+  test('Usman TC9=> Verify test status is passed when expected output type is Exact'
     , async ({ lessonBuilder, page }) => {
 
     await lessonBuilder.NavigateToTeamCoursesPage();
@@ -887,7 +887,7 @@ test.describe('TestSuite: Lesson Builder', () => {
 
   });
 
-  test('Usman TC10=> Regex'
+  test('Usman TC10=> Verify test status is passed when expected output type is Regex'
     , async ({ lessonBuilder, page }) => {
 
     await lessonBuilder.NavigateToTeamCoursesPage();
