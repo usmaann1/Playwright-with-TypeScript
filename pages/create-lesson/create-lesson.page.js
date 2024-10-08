@@ -261,8 +261,61 @@ exports.CreateLesson = class CreateLesson {
         this.MainCSAfterUploaded = this.page.locator(Locators.MainCSAfterUploaded)
         this.TestDOCXAfterUploaded = this.page.locator(Locators.TestDOCXAfterUploaded)
         this.TestPDFAfterUploaded = this.page.locator(Locators.TestPDFAfterUploaded)
+        this.AddChoiceBtn = this.page.locator(Locators.AddChoiceBtn)
+        this.MCQQuestion = this.page.locator(Locators.MCQQuestion)
+        this.MCQOption1 = this.page.locator(Locators.MCQOption1)
+        this.MCQOption2 = this.page.locator(Locators.MCQOption2)
+        this.MCQOption3 = this.page.locator(Locators.MCQOption3)
+        this.MCQOption4 = this.page.locator(Locators.MCQOption4)
+        this.MCQTotalPoints = this.page.locator(Locators.MCQTotalPoints)
+        this.MCQCorrectOption = this.page.locator(Locators.MCQCorrectOption)
+        this.MCQWrongOption = this.page.locator(Locators.MCQWrongOption)
+        this.CheckAnswerButton = this.page.locator(Locators.CheckAnswerButton)
+        this.PresentationModeCorrectAnswerPopup = this.page.locator(Locators.PresentationModeCorrectAnswerPopup)
+        this.PresentationModeCorrectAnswerPopupClose = this.page.locator(Locators.PresentationModeCorrectAnswerPopupClose)
+        this.AddBlankBtn = this.page.locator(Locators.AddBlankBtn)
+        this.FillInBlankTitle = this.page.locator(Locators.FillInBlankTitle)
+        this.FillInBlankQues = this.page.locator(Locators.FillInBlankQues)
+        this.FillInBlankAnswer1 = this.page.locator(Locators.FillInBlankAnswer1)
+        this.FillInBlankTotalPoints = this.page.locator(Locators.FillInBlankTotalPoints)
+        this.PresentationModeFillInBlank = this.page.locator(Locators.PresentationModeFillInBlank)
+        this.ModelSolutionBtn = this.page.locator(Locators.ModelSolutionBtn)
+        this.ShortAnswerPromptField = this.page.locator(Locators.ShortAnswerPromptField)
+        this.ShortAnswerTemplateField = this.page.locator(Locators.ShortAnswerTemplateField)
+        this.ShortAnswerField = this.page.locator(Locators.ShortAnswerField)
+        this.ShortAnswerTotalPoints = this.page.locator(Locators.ShortAnswerTotalPoints)
+        this.PresentationModeAnswerField = this.page.locator(Locators.PresentationModeAnswerField)
+        this.InitializeJuiceMindIDEBtn = this.page.locator(Locators.InitializeJuiceMindIDEBtn)
+        this.ProjectNameField = this.page.locator(Locators.ProjectNameField)
+        this.ProjectTypeField = this.page.locator(Locators.ProjectTypeField)
+        this.CreateProjectSubmitBtn = this.page.locator(Locators.CreateProjectSubmitBtn)
+        this.ProjectTypePythonValue = this.page.locator(Locators.ProjectTypePythonValue)
+        this.IDEFirstLine = this.page.locator(Locators.IDEFirstLine)
+        this.CodeRunBtn = this.page.locator(Locators.CodeRunBtn)
+        this.CodeOutputFirstLine = this.page.locator(Locators.CodeOutputFirstLine)
+        this.IDETestsBtn = this.page.locator(Locators.IDETestsBtn)
+        this.IDETestsAddTestBtn = this.page.locator(Locators.IDETestsAddTestBtn)
+        this.CreateTestTestTypeField = this.page.locator(Locators.CreateTestTestTypeField)
+        this.CreateTestUnitTestType = this.page.locator(Locators.CreateTestUnitTestType)
+        this.CreateTestTestNameField = this.page.locator(Locators.CreateTestTestNameField)
+        this.CreateTestAddInnerTestBtn = this.page.locator(Locators.CreateTestAddInnerTestBtn)
+        this.CreateTestTestNameField2 = this.page.locator(Locators.CreateTestTestNameField2)
+        this.CreateTestCodeTextbox = this.page.locator(Locators.CreateTestCodeTextbox)
+        this.CreateTestAddTestBtn = this.page.locator(Locators.CreateTestAddTestBtn)
+        this.CreateTestAddTestBtn2 = this.page.locator(Locators.CreateTestAddTestBtn2)
+        this.IDETemplateBtn = this.page.locator(Locators.IDETemplateBtn)
+        this.CreateStarterCodeBtn = this.page.locator(Locators.CreateStarterCodeBtn)
+        this.CorrectAnswerText = this.page.locator(Locators.CorrectAnswerText)
+        this.IDETestObtainedMarks = this.page.locator(Locators.IDETestObtainedMarks)
+        this.ShortAnswerTestObtainedMarks = this.page.locator(Locators.ShortAnswerTestObtainedMarks)
+        this.FillInBlanksTestObtainedMarks = this.page.locator(Locators.FillInBlanksTestObtainedMarks)
+        this.MCQTestObtainedMarks = this.page.locator(Locators.MCQTestObtainedMarks)
+        this.CreateTestInputOutputTestType = this.page.locator(Locators.CreateTestInputOutputTestType)
+        this.CreateTestInputField = this.page.locator(Locators.CreateTestInputField)
+        this.CreateTestOutputField = this.page.locator(Locators.CreateTestOutputField)
+        this.InputOutputTestObtainedMarks = this.page.locator(Locators.InputOutputTestObtainedMarks)
     }
-   
+
     async clickOnAddNewItem() {
         const item = this.addNewItem
         await this.page.waitForTimeout(3000);
@@ -769,5 +822,90 @@ exports.CreateLesson = class CreateLesson {
         const parent = this.NumberedList
         const child = parent.locator(this.list)
         await PlaywrightCore.press(child, 'Enter')
+    }
+
+    async createMCQTest() {
+        await this.selectElementFromDropdown(clTD.elements.multipleChoice)
+        await expect(this.SetupBtn).toHaveText(clTD.SetupBtnValue)
+        await expect(this.OptionsBtn).toHaveText(clTD.OptionsBtnValue)
+        await expect(this.AddChoiceBtn).toHaveText(clTD.AddChoiceBtnValue)
+        await PlaywrightCore.fill(this.MCQQuestion, clTD.MCQQuestionValue)
+        await PlaywrightCore.fill(this.MCQOption1, clTD.MCQOption1Value)
+        await PlaywrightCore.fill(this.MCQOption2, clTD.MCQOption2Value)
+        await PlaywrightCore.fill(this.MCQOption3, clTD.MCQOption3Value)
+        await PlaywrightCore.fill(this.MCQOption4, clTD.MCQOption4Value)
+    }
+
+    async navigateToPresentationMode() {
+        await PlaywrightCore.click(this.presnetationMode)
+        await expect(this.PresentationModePopUpHeading).toHaveText(clTD.PresentationModePopUpHeadingValue)
+        await expect(this.PresentationModePopUpDescription).toHaveText(clTD.PresentationModePopUpDescriptionValue)
+        await expect(this.GotItBtn).toHaveText(clTD.GotItBtnValue)
+        await PlaywrightCore.click(this.GotItBtn)
+    }
+
+    async createFillInTheBlankTest() {
+        await this.selectElementFromDropdown(clTD.elements.fillInBlank)
+        await expect(this.SetupBtn).toHaveText(clTD.SetupBtnValue)
+        await expect(this.OptionsBtn).toHaveText(clTD.OptionsBtnValue)
+        await expect(this.AddBlankBtn).toHaveText(clTD.AddBlankBtnValue)
+        await PlaywrightCore.fill(this.FillInBlankTitle, clTD.FillInBlankTitleValue)
+        await PlaywrightCore.fill(this.FillInBlankQues, clTD.FillInBlankQuesValue)
+        await PlaywrightCore.click(this.AddBlankBtn)
+        await PlaywrightCore.fill(this.FillInBlankAnswer1, clTD.FillInBlankAnswer1Value)
+    }
+
+    async createShortAnswerTest() {
+        await this.selectElementFromDropdown(clTD.elements.shortAnswer)
+        await expect(this.SetupBtn).toHaveText(clTD.SetupBtnValue)
+        await expect(this.ModelSolutionBtn).toHaveText(clTD.ModelSolutionBtnValue)
+        await expect(this.OptionsBtn).toHaveText(clTD.OptionsBtnValue)
+        await PlaywrightCore.fill(this.ShortAnswerPromptField, clTD.ShortAnswerPromptFieldValue)
+        await PlaywrightCore.fill(this.ShortAnswerTemplateField, clTD.ShortAnswerTemplateFieldValue)
+        await PlaywrightCore.click(this.ModelSolutionBtn)
+        await PlaywrightCore.fill(this.ShortAnswerField, clTD.ShortAnswerFieldValue)
+    }
+
+    async createJuiceMindIDEProject() {
+        await this.selectElementFromDropdown(clTD.elements.JuiceMindIDE)
+        await expect(this.InitializeJuiceMindIDEBtn).toHaveText(clTD.InitializeJuiceMindIDEBtnValue)
+        await PlaywrightCore.click(this.InitializeJuiceMindIDEBtn)
+        await PlaywrightCore.fill(this.ProjectNameField, clTD.ProjectNameFieldValue)
+        await PlaywrightCore.click(this.ProjectTypeField)
+        await PlaywrightCore.click(this.ProjectTypePythonValue)
+        await PlaywrightCore.click(this.CreateProjectSubmitBtn)
+        await PlaywrightCore.waitTimeout(this.page, 5000)
+        await PlaywrightCore.fill(this.IDEFirstLine, clTD.IDEFirstLineValue)
+        await PlaywrightCore.click(this.CodeRunBtn)
+        await PlaywrightCore.waitTimeout(this.page, 3000)
+        await expect(this.CodeOutputFirstLine).toHaveText(clTD.CodeOutputFirstLineValue)
+    }
+
+    async createJuiceMindIDEUnitTest() {
+        await PlaywrightCore.click(this.IDETestsBtn)
+        await PlaywrightCore.click(this.IDETestsAddTestBtn)
+        await PlaywrightCore.click(this.CreateTestTestTypeField)
+        await PlaywrightCore.click(this.CreateTestUnitTestType)
+        await PlaywrightCore.fill(this.CreateTestTestNameField, clTD.CreateTestTestNameFieldValue)
+        await PlaywrightCore.click(this.CreateTestAddInnerTestBtn)
+        await PlaywrightCore.fill(this.CreateTestTestNameField2, clTD.CreateTestTestNameFieldValue)
+        await PlaywrightCore.click(this.CreateTestCodeTextbox)
+        await this.CreateTestCodeTextbox.click({clickCount: 3})
+        await PlaywrightCore.fill(this.CreateTestCodeTextbox, clTD.IDEFirstLineValue)
+        await PlaywrightCore.click(this.CreateTestAddTestBtn)
+        await PlaywrightCore.click(this.CreateTestAddTestBtn2)
+        await PlaywrightCore.click(this.IDETemplateBtn)
+    }
+
+    async createJuiceMindIDEInputOutputTest() {
+        await PlaywrightCore.click(this.IDETestsBtn)
+        await PlaywrightCore.click(this.IDETestsAddTestBtn)
+        await PlaywrightCore.click(this.CreateTestTestTypeField)
+        await PlaywrightCore.click(this.CreateTestInputOutputTestType)
+        await PlaywrightCore.fill(this.CreateTestTestNameField, clTD.CreateTestTestNameFieldValue)
+        await PlaywrightCore.fill(this.CreateTestInputField, clTD.CreateTestInputFieldValue)
+        await PlaywrightCore.fill(this.CreateTestOutputField, clTD.CreateTestOutputFieldValue)
+        await PlaywrightCore.click(this.CreateTestAddTestBtn2)
+        await PlaywrightCore.click(this.IDETemplateBtn)
     }
 }
