@@ -29,24 +29,14 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-01 - Verify Embed Functionality - Youtube Video 1', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedYTLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedYTLink1)
+        // assertions to check uploaded video
         await expect(createLesson.YoutubePlayBtn).toBeVisible()
         await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 3000)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
         // Exit Presentation Mode
@@ -55,24 +45,14 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-02 - Verify Embed Functionality - Youtube Video 2', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedYTLink2)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedYTLink2)
+        // assertions to check uploaded video
         await expect(createLesson.YoutubePlayBtn).toBeVisible()
         await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 3000)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.UnderArmourShoeReviewHeadingValue)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteYoutubeVideoHeading(CLtd.UnderArmourShoeReviewHeadingValue)
         // Exit Presentation Mode
@@ -81,22 +61,12 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-03 - Verify Embed Functionality - DailyMotion Video 1', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedDMLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 3000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedDMLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue)
         // Exit Presentation Mode
@@ -105,22 +75,12 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-04 - Verify Embed Functionality - DailyMotion Video 2', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedDMLink2)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 3000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedDMLink2)
+        // assertion to check uploaded video
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue2)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue2)
         // Exit Presentation Mode
@@ -129,22 +89,12 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-05 - Verify Embed Functionality - BITCHUTE Video 1', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedBCLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 3000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedBCLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue1)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue1)
         // Exit Presentation Mode
@@ -153,22 +103,12 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-06 - Verify Embed Functionality - BITCHUTE Video 2', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedBCLink2)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 3000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedBCLink2)
+        // assertion to check uploaded video
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue2)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue2)
         // Exit Presentation Mode
@@ -177,22 +117,12 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-07 - Verify Embed Functionality - VEOH Video 1', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedVeohLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 3000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedVeohLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue1)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue1)
         // Exit Presentation Mode
@@ -201,22 +131,12 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-08 - Verify Embed Functionality - VEOH Video 2', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedVeohLink2)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 3000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedVeohLink2)
+        // assertion to check uploaded video
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue2)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue2)
         // Exit Presentation Mode
@@ -226,32 +146,19 @@ test.describe('TestSuite: Embed Link', () => {
     
 
     test('Umair - TC-09 - Verify Replace URL Functionality in Embed - YT to YT', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedYTLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedYTLink1)
+        // assertion to check uploaded video
         await expect(createLesson.YoutubePlayBtn).toBeVisible()
         await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedYTLink2)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedYTLink2)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.UnderArmourShoeReviewHeadingValue)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteYoutubeVideoHeading(CLtd.UnderArmourShoeReviewHeadingValue)
         // Exit Presentation Mode
@@ -260,34 +167,20 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-10 - Verify Replace URL Functionality in Embed - YT to DM', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedYTLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedYTLink1)
+        // assertion to check uploaded video
         await expect(createLesson.YoutubePlayBtn).toBeVisible()
         await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedDMLink1)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedDMLink1)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue)
         // Exit Presentation Mode
@@ -296,34 +189,20 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-11 - Verify Replace URL Functionality in Embed - YT to BC', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedYTLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedYTLink1)
+        // assertion to check uploaded video
         await expect(createLesson.YoutubePlayBtn).toBeVisible()
         await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedBCLink1)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedBCLink1)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue1)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue1)
         // Exit Presentation Mode
@@ -332,34 +211,20 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-12 - Verify Replace URL Functionality in Embed - YT to Veoh', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedYTLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedYTLink1)
+        // assertion to check uploaded video
         await expect(createLesson.YoutubePlayBtn).toBeVisible()
         await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedVeohLink1)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedVeohLink1)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue1)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue1)
         // Exit Presentation Mode
@@ -368,34 +233,18 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-13 - Verify Replace URL Functionality in Embed - DM to DM', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedDMLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.YoutubePlayBtn).toBeVisible()
-        await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedDMLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedDMLink2)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedDMLink2)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue2)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue2)
         // Exit Presentation Mode
@@ -404,34 +253,18 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-14 - Verify Replace URL Functionality in Embed - DM to YT', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedDMLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.YoutubePlayBtn).toBeVisible()
-        await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedDMLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedYTLink1)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedYTLink1)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
         // Exit Presentation Mode
@@ -440,34 +273,18 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-15 - Verify Replace URL Functionality in Embed - DM to BC', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedDMLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.YoutubePlayBtn).toBeVisible()
-        await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedDMLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedBCLink1)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedBCLink1)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue1)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue1)
         // Exit Presentation Mode
@@ -476,34 +293,18 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-16 - Verify Replace URL Functionality in Embed - DM to Veoh', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedDMLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.YoutubePlayBtn).toBeVisible()
-        await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedDMLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedVeohLink1)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedVeohLink1)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue1)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue1)
         // Exit Presentation Mode
@@ -512,34 +313,18 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-17 - Verify Replace URL Functionality in Embed - BC to BC', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedBCLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.YoutubePlayBtn).toBeVisible()
-        await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedBCLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue1)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedBCLink2)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedBCLink2)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue2)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue2)
         // Exit Presentation Mode
@@ -548,34 +333,18 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-18 - Verify Replace URL Functionality in Embed - BC to YT', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedBCLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.YoutubePlayBtn).toBeVisible()
-        await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedBCLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue1)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedYTLink1)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedYTLink1)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
         // Exit Presentation Mode
@@ -584,34 +353,18 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-19 - Verify Replace URL Functionality in Embed - BC to DM', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedBCLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.YoutubePlayBtn).toBeVisible()
-        await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedBCLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue1)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedDMLink1)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedDMLink1)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue)
         // Exit Presentation Mode
@@ -620,34 +373,18 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-20 - Verify Replace URL Functionality in Embed - BC to Veoh', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedBCLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.YoutubePlayBtn).toBeVisible()
-        await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedBCLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue1)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedVeohLink1)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedVeohLink1)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue1)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue1)
         // Exit Presentation Mode
@@ -656,34 +393,18 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-21 - Verify Replace URL Functionality in Embed - Veoh to Veoh', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedVeohLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.YoutubePlayBtn).toBeVisible()
-        await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedVeohLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue1)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedVeohLink2)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedVeohLink2)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue2)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue2)
         // Exit Presentation Mode
@@ -692,34 +413,18 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-22 - Verify Replace URL Functionality in Embed - Veoh to YT', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedVeohLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.YoutubePlayBtn).toBeVisible()
-        await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedVeohLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue1)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedYTLink1)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedYTLink1)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteYoutubeVideoHeading(CLtd.RelaxingRecitationVideoHeadingValue)
         // Exit Presentation Mode
@@ -728,34 +433,18 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-23 - Verify Replace URL Functionality in Embed - Veoh to DM', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedVeohLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.YoutubePlayBtn).toBeVisible()
-        await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedVeohLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue1)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedDMLink1)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedDMLink1)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteDailyMotionVideoHeading(CLtd.DailyMotionVideoHeadingValue)
         // Exit Presentation Mode
@@ -764,34 +453,18 @@ test.describe('TestSuite: Embed Link', () => {
     });
 
     test('Umair - TC-24 - Verify Replace URL Functionality in Embed - Veoh to BC', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.embed)
-        await expect(createLesson.EmbedEnterURL).toBeVisible()
-        await expect(createLesson.EmbedInsertURLHeading).toHaveText(CLtd.EmbedInsertURLHeadingValue)
-        await expect(createLesson.EmbedSubmitBtn).toHaveText(CLtd.EmbedSubmitBtnValue)
-        await PlaywrightCore.fill(createLesson.EmbedEnterURL, CLtd.EmbedVeohLink1)
-        await PlaywrightCore.click(createLesson.EmbedSubmitBtn)
-        await expect(createLesson.YoutubePlayBtn).toBeVisible()
-        await expect(createLesson.WatchOnYoutubeBtn).toBeVisible()
-        await expect(createLesson.SetupBtn).toHaveText(CLtd.SetupBtnValue)
-        await expect(createLesson.OptionsBtn).toHaveText(CLtd.OptionsBtnValue)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        // upload video
+        await createLesson.uploadEmbedVideo(CLtd.EmbedVeohLink1)
+        // assertion to check uploaded video
         await createLesson.valiadteVeohVideoHeading(CLtd.VeohVideoHeadingValue1)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.ReplaceEmbedTxtBox).toBeVisible()
-        await expect(createLesson.CurrentEmbedURLHeading).toHaveText(CLtd.CurrentEmbedURLHeadingValue)
-        await expect(createLesson.ReplaceHeading).toHaveText(CLtd.ReplaceHeadingValue)
-        await expect(createLesson.SaveBtn).toHaveText(CLtd.SaveBtnValue)
-        await PlaywrightCore.fill(createLesson.ReplaceEmbedTxtBox, CLtd.EmbedBCLink1)
-        await PlaywrightCore.click(createLesson.SaveBtn)
+        // replace video
+        await createLesson.replaceEmbedVideo(CLtd.EmbedBCLink1)
+        // assertion to check replaced video
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue1)
         // Navigate to Presentation Mode
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await createLesson.navigateToPresentationMode()
         // Assertion in Presentation Mode
         await createLesson.valiadteBitChuteVideoHeading(CLtd.BitChuteVideoHeadingValue1)
         // Exit Presentation Mode
