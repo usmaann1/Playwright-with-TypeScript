@@ -908,4 +908,26 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.click(this.CreateTestAddTestBtn2)
         await PlaywrightCore.click(this.IDETemplateBtn)
     }
+
+    async uploadEmbedVideo(video_name) {
+        await this.selectElementFromDropdown(clTD.elements.embed)
+        await expect(this.EmbedEnterURL).toBeVisible()
+        await expect(this.EmbedInsertURLHeading).toHaveText(clTD.EmbedInsertURLHeadingValue)
+        await expect(this.EmbedSubmitBtn).toHaveText(clTD.EmbedSubmitBtnValue)
+        await PlaywrightCore.fill(this.EmbedEnterURL, video_name)
+        await PlaywrightCore.click(this.EmbedSubmitBtn)
+        await PlaywrightCore.waitTimeout(this.page, 3000)
+        await expect(this.SetupBtn).toHaveText(clTD.SetupBtnValue)
+        await expect(this.OptionsBtn).toHaveText(clTD.OptionsBtnValue)
+    }
+
+    async replaceEmbedVideo(replaced_link) {
+        await PlaywrightCore.click(this.OptionsBtn)
+        await expect(this.ReplaceEmbedTxtBox).toBeVisible()
+        await expect(this.CurrentEmbedURLHeading).toHaveText(clTD.CurrentEmbedURLHeadingValue)
+        await expect(this.ReplaceHeading).toHaveText(clTD.ReplaceHeadingValue)
+        await expect(this.SaveBtn).toHaveText(clTD.SaveBtnValue)
+        await PlaywrightCore.fill(this.ReplaceEmbedTxtBox, replaced_link)
+        await PlaywrightCore.click(this.SaveBtn)
+    }
 }
