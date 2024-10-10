@@ -1,0 +1,75 @@
+name: Playwright Tests Scheduled job
+on:
+  schedule:
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  test:
+    timeout-minutes: 300
+    runs-on: large-runner
+    permissions:
+      contents: read
+      actions: read
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+      
+    - name: json summary reporter
+      run: npm install playwright-json-summary-reporter
+      
+    - name: Install Playwright Browsers
+      run: npx playwright install
+
+   
+    - name: Run Playwright tests
+      run: APP_URL=${{ env.APP_URL}} npx playwright test test-environment/test-cases/git-workflow-test/git-workflow-test.test.js --reporter=json > summary.json || true
+      
+    - name: List files in directory
+      run: ls -la
+
+    - name: Check for summary.json
+      run: |
+        if [ -f summary.json ]; then
+          echo "summary.json exists."
+        else
+          echo "summary.json does not exist."
+        fi
+    - name: Upload Playwright Summary Report as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: playwright-summary
+        path: summary.json  # Adjust path if necessary
+    - name: Count Test Cases
+      id: count-tests
+      run: |
+        # Check the structure of the JSON file for correctness
+        jq '.' summary.json
+    - name: Read Summary Report to Get Test Results
+      if: always()
+      run: |
+        PASSED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="passed")] | length' summary.json)
+        FAILED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="failed")] | length' summary.json)
+        echo "PASSED=$PASSED" >> $GITHUB_ENV 
+        echo "FAILED=$FAILED" >> $GITHUB_ENV
+    - name: Get Titles of Failed Test Cases
+      run: |
+        FAILED_TITLES=$(jq -r '[.suites[]?.suites[]?.specs[]? | .tests[]?.results[]? | select(.status=="failed") | .title] | unique | join("\n")' summary.json)
+        echo -e "Failed Test Titles:\n$FAILED_TITLES"
+        echo "$FAILED_TITLES" > failed-tests.txt  # Save the titles to a file
+        echo "FAILED_TITLES=$FAILED_TITLES" >> $GITHUB_ENV
+
+    - name: Upload Failed Test Titles as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: failed-test-titles
+        path: failed-tests.txt 
+
+     
