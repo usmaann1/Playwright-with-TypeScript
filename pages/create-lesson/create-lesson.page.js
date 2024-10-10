@@ -930,4 +930,13 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.fill(this.ReplaceEmbedTxtBox, replaced_link)
         await PlaywrightCore.click(this.SaveBtn)
     }
+
+    async createHTMLText(Text) {
+        await this.selectElementFromDropdown(clTD.elements.html)
+        await expect(this.HTMLNode).toBeVisible()
+        await PlaywrightCore.click(this.HTMLNode)
+        await PlaywrightCore.fill(this.HTMLTextBox, Text)
+        await expect(this.SaveBtn).toHaveText(clTD.SaveBtnValue)
+        await PlaywrightCore.click(this.SaveBtn)
+    }
 }
