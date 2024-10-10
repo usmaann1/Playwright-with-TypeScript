@@ -1,4 +1,4 @@
-name: Playwright Tests Scheduled job
+name: Test work flow
 on:
   workflow_dispatch:  # Allows manual triggering
 
