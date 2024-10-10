@@ -45,6 +45,6 @@ Files to edit:
 
 2. `playwright.config.js`
 
--`await page.goto("https://play.juicemind.com/login")`
+-`baseURL: "https://play.juicemind.com/",`
 
-+`await page.goto("http://localhost:5173/login")`
++`baseURL: "http://localhost:5173/"`
