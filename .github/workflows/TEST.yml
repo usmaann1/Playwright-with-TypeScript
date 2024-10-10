@@ -1,6 +1,5 @@
 name: Playwright Tests Scheduled job
 on:
-  schedule:
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
