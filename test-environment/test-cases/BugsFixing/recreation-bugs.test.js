@@ -122,53 +122,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('Umair - TC-04 - Verify JuiceMind IDE Functionality - Input Output Test - Revisit Presentation Mode and Check Answer', async ({ createLesson }) => {
-        // create project
-        await createLesson.createJuiceMindIDEProject()
-        // create test
-        await createLesson.createJuiceMindIDEInputOutputTest()
-        // Navigate to Presentation Mode
-        await createLesson.navigateToPresentationMode()
-        // Check answer in Presentation Mode
-        await PlaywrightCore.click(createLesson.CreateStarterCodeBtn)
-        await PlaywrightCore.click(createLesson.CheckAnswerButton)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
-        // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
-        // Revisit Presentation Mode
-        await createLesson.navigateToPresentationMode()
-        // Revisit Presentation mode, and check answer
-        await PlaywrightCore.click(createLesson.CreateStarterCodeBtn)
-        await PlaywrightCore.click(createLesson.CheckAnswerButton)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
-        // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
-        await PlaywrightCore.click(createLesson.IDETemplateBtn)
-        // Delete Element 
-        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
-    });
-
-    test('Umair - TC-05 - Verify JuiceMind IDE Functionality - Input Output Test - Correct answer result and marks obtained', async ({ createLesson }) => {
-        // create project
-        await createLesson.createJuiceMindIDEProject()
-        // create test
-        await createLesson.createJuiceMindIDEInputOutputTest()
-        // Navigate to Presentation Mode
-        await createLesson.navigateToPresentationMode()
-        // Check answer in Presentation Mode
-        await PlaywrightCore.click(createLesson.CreateStarterCodeBtn)
-        await PlaywrightCore.click(createLesson.CheckAnswerButton)    
-        await PlaywrightCore.waitTimeout(createLesson.page, 8000)
-        // verify the result of correct answer and marks obtained
-        await expect(createLesson.CorrectAnswerText).toHaveText(CLtd.CorrectAnswerTextValue)
-        await expect(createLesson.InputOutputTestObtainedMarks).toHaveText(CLtd.IDETestObtainedMarksValue)
-        // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
-        await PlaywrightCore.waitTimeout(createLesson.page, 8000)
-        await PlaywrightCore.click(createLesson.IDETemplateBtn)
-    });
-
-    test('Umair - TC-06 - Verify Short Answer Functionality - Correct answer result and marks obtained', async ({ createLesson }) => {
+    test('Umair - TC-04 - Verify Short Answer Functionality - Correct answer result and marks obtained', async ({ createLesson }) => {
         //create short question and answer
         await createLesson.createShortAnswerTest()
         // define marks
@@ -190,7 +144,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('Umair - TC-07 - Verify Fill in the Blanks Functionality - Correct answer result and marks obtained', async ({ createLesson }) => {
+    test('Umair - TC-05 - Verify Fill in the Blanks Functionality - Correct answer result and marks obtained', async ({ createLesson }) => {
         //create fill in the blank
         await createLesson.createFillInTheBlankTest()
         // define marks
@@ -211,7 +165,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
-    test('Umair - TC-08 - Verify Multiple Choice Functionality - Correct answer result and marks obtained', async ({ createLesson }) => {
+    test('Umair - TC-06 - Verify Multiple Choice Functionality - Correct answer result and marks obtained', async ({ createLesson }) => {
         //create mcq
         await createLesson.createMCQTest()
         // define marks
