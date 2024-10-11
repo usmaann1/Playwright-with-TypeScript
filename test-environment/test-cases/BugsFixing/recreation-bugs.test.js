@@ -108,10 +108,11 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
         // Revisit Presentation Mode
         await createLesson.navigateToPresentationMode()
+        await PlaywrightCore.waitTimeout(createLesson.page, 3000)
         // Revisit Presentation mode, mark and check answer
         await PlaywrightCore.fill(createLesson.PresentationModeAnswerField, CLtd.ShortAnswerFieldValue)
         await PlaywrightCore.click(createLesson.CheckAnswerButton)
-        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
+        await PlaywrightCore.waitTimeout(createLesson.page, 3000)
         await expect(createLesson.PresentationModeCorrectAnswerPopup).toHaveText(CLtd.PresentationModeCorrectAnswerHeading)
         await PlaywrightCore.click(createLesson.PresentationModeCorrectAnswerPopupClose)
         // Exit Presentation Mode
