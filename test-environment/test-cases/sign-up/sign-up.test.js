@@ -3,10 +3,16 @@ const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import SignUpTestData from '../../test-assets/test-data-files/sign-up/sign-up-testData.json'
 import LoginTestData from '../../test-assets/test-data-files/login/login-testData.json'
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
+import { FAILED_TEST_CASES } from '../../../failed-test-cases/failed-test-cases';
 
 test.describe('TestSuite: Sign Up', () => {
 
     test.beforeEach(async ({ loginPage }) => {
+        if (FAILED_TEST_CASES.length !== 0) {
+            if (!FAILED_TEST_CASES.includes(testInfo.title)) {
+              test.skip('Test case not included in the list');
+            }
+          }
         await loginPage.NavigateToSignUpPage()
       });
 

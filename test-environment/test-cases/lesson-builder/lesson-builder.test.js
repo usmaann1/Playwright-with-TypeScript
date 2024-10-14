@@ -4,13 +4,17 @@ const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import LessonBuilderTestData from '../../test-assets/test-data-files/lesson-builder/lesson-builder-testData.json';
 import LessonBuilderLocators from '../../../pages/Lesson-builder/lesson-builder.locator.json';
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
+import { FAILED_TEST_CASES } from '../../../failed-test-cases/failed-test-cases';
 
 test.describe('TestSuite: Lesson Builder', () => {
 
 
   test.beforeEach(async ({ loginPage }) => {
-    
-    
+    if (FAILED_TEST_CASES.length !== 0) {
+      if (!FAILED_TEST_CASES.includes(testInfo.title)) {
+        test.skip('Test case not included in the list');
+      }
+    }
     await loginPage.NavigateToLoginPage();
     await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
   });

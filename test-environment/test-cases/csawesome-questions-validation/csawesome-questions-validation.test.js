@@ -1,6 +1,7 @@
 const { chromium } = require('playwright');
 const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helperFunctions.imports');
 const { test, expect } = require('../../../module-imports/testFixtures.imports');
+import { FAILED_TEST_CASES } from "../../../failed-test-cases/failed-test-cases";
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 
 test.describe('TestSuite: CsAwesome Questions Validation', () => {
@@ -8,7 +9,11 @@ test.describe('TestSuite: CsAwesome Questions Validation', () => {
 
   test.beforeEach(async ({ loginPage }) => {
     // await loginPage.setPage(chromiumPage); // Assuming setPage is a method to set the page context
-    
+    if (FAILED_TEST_CASES.length !== 0) {
+      if (!FAILED_TEST_CASES.includes(testInfo.title)) {
+        test.skip('Test case not included in the list');
+      }
+    }
     await loginPage.NavigateToLoginPage();
     await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
   });

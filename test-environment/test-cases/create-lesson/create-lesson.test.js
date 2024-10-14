@@ -1,5 +1,6 @@
 const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helperFunctions.imports')
 const { test, expect } = require('../../../module-imports/testFixtures.imports')
+import { FAILED_TEST_CASES } from '../../../failed-test-cases/failed-test-cases';
 import CLtd from '../../test-assets/test-data-files/create-lesson/create-lesson-testData.json'
 import CTtd from '../../test-assets/test-data-files/create-teams/create-teams-testData.json'
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
@@ -14,6 +15,11 @@ test.describe('TestSuite: Create Lesson', () => {
     const teamName = CLtd.teamName + randomNumber
     const lessonName = CLtd.lessonName + '-' + randomNumber
     test.beforeEach(async ({ loginPage, createTeams, createLesson }) => {
+        if (FAILED_TEST_CASES.length !== 0) {
+            if (!FAILED_TEST_CASES.includes(testInfo.title)) {
+              test.skip('Test case not included in the list');
+            }
+          }
         await loginPage.NavigateToLoginPage()
         await loginPage.fillCredentialsAndLogin(userEmail, userPwd)
         await expect(loginPage.ProfilePicture).toBeVisible()
