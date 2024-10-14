@@ -17,7 +17,7 @@ test.describe('TestSuite: Hide and Reveal Button', () => {
     const teamName = CLtd.teamName + randomNumber
     const lessonName = CLtd.lessonName + '-' + randomNumber
 
-    test.beforeEach(async ({ loginPage, createTeams, createLesson }) => {
+    test.beforeEach(async ({ loginPage, createTeams, createLesson }, testInfo) => {
         if (FAILED_TEST_CASES.length !== 0) {
             if (!FAILED_TEST_CASES.includes(testInfo.title)) {
               test.skip('Test case not included in the list');

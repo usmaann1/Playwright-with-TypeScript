@@ -7,7 +7,7 @@ import Credentials from "../../test-assets/test-data-files/Credentials/credentia
 test.describe('TestSuite: CsAwesome Questions Validation', () => {
 
 
-  test.beforeEach(async ({ loginPage }) => {
+  test.beforeEach(async ({ loginPage }, testInfo) => {
     // await loginPage.setPage(chromiumPage); // Assuming setPage is a method to set the page context
     if (FAILED_TEST_CASES.length !== 0) {
       if (!FAILED_TEST_CASES.includes(testInfo.title)) {

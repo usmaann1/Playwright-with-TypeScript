@@ -7,7 +7,7 @@ import { FAILED_TEST_CASES } from '../../../failed-test-cases/failed-test-cases'
 
 test.describe('TestSuite: Create Teams', () => {
 
-    test.beforeEach(async ({ loginPage, createTeams }) => {
+    test.beforeEach(async ({ loginPage, createTeams }, testInfo) => {
         if (FAILED_TEST_CASES.length !== 0) {
             if (!FAILED_TEST_CASES.includes(testInfo.title)) {
               test.skip('Test case not included in the list');
