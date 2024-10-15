@@ -6,6 +6,7 @@ const { TeamCoursesPage } = require("../../../pages/team-courses/team-courses.pa
 const { CreateLesson } = require("../../../pages/create-lesson/create-lesson.page");
 import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
+import { FAILED_TEST_CASES } from '../../../failed-test-cases/failed-test-cases'
 
 test.describe('TestSuite: Multiple Choice', () => {
 
@@ -15,7 +16,12 @@ test.describe('TestSuite: Multiple Choice', () => {
     const teamName = CLtd.teamName + randomNumber
     const lessonName = CLtd.lessonName + '-' + randomNumber
 
-    test.beforeEach(async ({ loginPage, createTeams, createLesson }) => {
+    test.beforeEach(async ({ loginPage, createTeams, createLesson }, testInfo) => {
+        if (FAILED_TEST_CASES.length !== 0) {
+            if (!FAILED_TEST_CASES.includes(testInfo.title)) {
+              test.skip('Test case not included in the list');
+            }
+          }
         await loginPage.NavigateToLoginPage()
         await loginPage.fillCredentialsAndLogin(userEmail, userPwd)
         await expect(loginPage.ProfilePicture).toBeVisible()

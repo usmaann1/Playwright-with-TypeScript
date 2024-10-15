@@ -3,12 +3,17 @@ const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helpe
 const { test, expect } = require('../../../module-imports/testFixtures.imports');
 import projectsData from '../../test-assets/test-data-files/projects/projects-testData.json';
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
+import { FAILED_TEST_CASES } from '../../../failed-test-cases/failed-test-cases';
 
 test.describe('TestSuite: Projects', () => {
 
 
-  test.beforeEach(async ({ loginPage }) => {
-    
+  test.beforeEach(async ({ loginPage }, testInfo) => {
+    if (FAILED_TEST_CASES.length !== 0) {
+      if (!FAILED_TEST_CASES.includes(testInfo.title)) {
+        test.skip('Test case not included in the list');
+      }
+    }
     await loginPage.NavigateToLoginPage();
     await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
   });
