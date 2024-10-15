@@ -70,12 +70,5 @@ jobs:
       with:
         name: failed-test-titles
         path: failed-tests.txt 
-        
-    - name: Get baseURL from Playwright Config
-      id: extract-baseurl
-      run: |
-        # Extract the baseURL from the Playwright config file using grep
-        BASE_URL=$(grep -Po '(?<=baseURL: ")[^"]*' playwright.config.js)
-        echo "BASE_URL=$BASE_URL" >> $GITHUB_ENV
 
      
