@@ -7,8 +7,8 @@ import Credentials from "../../test-assets/test-data-files/Credentials/credentia
 test.describe('TestSuite: Embed Link', () => {
 
     const randomNumber = UserFunctions.generateRandomString(5)
-    const userEmail = Credentials.EMAIL_HASSAAN
-    const userPwd = Credentials.PASSWORD_HASSAAN
+    const userEmail = Credentials.Embed_Email
+    const userPwd = Credentials.Embed_Password
     const teamName = CLtd.teamName + randomNumber
     const lessonName = CLtd.lessonName + '-' + randomNumber
 
