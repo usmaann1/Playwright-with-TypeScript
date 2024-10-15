@@ -48,22 +48,36 @@ jobs:
       with:
         name: playwright-summary
         path: summary.json  # Adjust path if necessary
+    
     - name: Count Test Cases
       id: count-tests
       run: |
         # Check the structure of the JSON file for correctness
         jq '.' summary.json
+
     - name: Read Summary Report to Get Test Results
       if: always()
       run: |
         PASSED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="passed")] | length' summary.json)
         FAILED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="failed")] | length' summary.json)
         echo "PASSED=$PASSED" >> $GITHUB_ENV 
-        echo "FAILED=$FAILED" >> $GITHUB_ENV 
-          
-          
-          
-    
+        echo "FAILED=$FAILED" >> $GITHUB_ENV
+
+    - name: Get Titles of Failed Test Cases
+      run: |
+        FAILED_TITLES=$(jq -r '[.suites[]?.suites[]?.specs[]? | .tests[]?.results[]? | select(.status=="failed") | .title] | unique | join("\n")' summary.json)
+        echo -e "Failed Test Titles:\n$FAILED_TITLES"
+        echo "$FAILED_TITLES" > failed-tests.txt  # Save the titles to a file
+        echo "FAILED_TITLES=$FAILED_TITLES" >> $GITHUB_ENV
+
+    - name: Upload Failed Test Titles as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: failed-test-titles
+        path: failed-tests.txt 
+
+
+
     - name: Send Slack Notification
       if: always()
       uses: 8398a7/action-slack@v3 
