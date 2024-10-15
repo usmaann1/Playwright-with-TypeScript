@@ -1,6 +1,7 @@
 const { PlaywrightCore, UserFunctions } = require('../../../module-imports/helperFunctions.imports')
 const { test, expect } = require('../../../module-imports/testFixtures.imports')
 
+import { FAILED_TEST_CASES } from '../../../failed-test-cases/failed-test-cases';
 import JoinQuizTestData from '../../test-assets/test-data-files/join-quiz/join-quiz-testData.json'
 
 test.describe('TestSuite: Join Quiz', () => {
