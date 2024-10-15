@@ -1,4 +1,5 @@
 node_modules/
+failed-test-cases/
 /test-results/
 /playwright-report/
 /playwright/.cache/
