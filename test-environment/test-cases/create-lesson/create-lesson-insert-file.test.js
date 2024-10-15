@@ -17,9 +17,9 @@ test.describe('TestSuite: Insert File', () => {
     test.beforeEach(async ({ loginPage, createTeams, createLesson }, testInfo) => {
         if (FAILED_TEST_CASES.length !== 0) {
             if (!FAILED_TEST_CASES.includes(testInfo.title)) {
-              test.skip('Test case not included in the list');
+                test.skip('Test case not included in the list');
             }
-          }
+        }
         await loginPage.NavigateToLoginPage()
         await loginPage.fillCredentialsAndLogin(userEmail, userPwd)
         await expect(loginPage.ProfilePicture).toBeVisible()
@@ -49,7 +49,7 @@ test.describe('TestSuite: Insert File', () => {
         // Assertion in Presentation Mode
         await expect(createLesson.JuiceMindZipAfterUploaded).toHaveText(CLtd.JuiceMindZipAfterUploadedValue)
         // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)  
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
     test('Umair - TC-02 - Verify Insert File Functionality - JPG File', async ({ createLesson }) => {
@@ -66,7 +66,7 @@ test.describe('TestSuite: Insert File', () => {
         // Assertion in Presentation Mode
         await expect(createLesson.JPGFileAfterUploaded).toHaveText(CLtd.JPGFileAfterUploadedValue)
         // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn) 
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
     test('Umair - TC-03 - Verify Insert File Functionality - CSV File', async ({ createLesson }) => {
@@ -83,7 +83,7 @@ test.describe('TestSuite: Insert File', () => {
         // Assertion in Presentation Mode
         await expect(createLesson.FileTestCSVAfterUploaded).toHaveText(CLtd.FileTestCSVAfterUploadedValue)
         // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn) 
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
     test('Umair - TC-04 - Verify Insert File Functionality - PNG File', async ({ createLesson }) => {
@@ -100,7 +100,7 @@ test.describe('TestSuite: Insert File', () => {
         // Assertion in Presentation Mode
         await expect(createLesson.FileTestPNGAfterUploaded).toHaveText(CLtd.FileTestPNGAfterUploadedValue)
         // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn) 
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
     test('Umair - TC-05 - Verify Insert File Functionality - JS File', async ({ createLesson }) => {
@@ -117,7 +117,7 @@ test.describe('TestSuite: Insert File', () => {
         // Assertion in Presentation Mode
         await expect(createLesson.HelperJSAfterUploaded).toHaveText(CLtd.HelperJSAfterUploadedValue)
         // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn) 
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
     test('Umair - TC-06 - Verify Insert File Functionality - HTML File', async ({ createLesson }) => {
@@ -134,7 +134,7 @@ test.describe('TestSuite: Insert File', () => {
         // Assertion in Presentation Mode
         await expect(createLesson.IndexHTMLAfterUploaded).toHaveText(CLtd.IndexHTMLAfterUploadedValue)
         // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn) 
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
     test('Umair - TC-07 - Verify Insert File Functionality - Java File', async ({ createLesson }) => {
@@ -151,7 +151,7 @@ test.describe('TestSuite: Insert File', () => {
         // Assertion in Presentation Mode
         await expect(createLesson.MainJAVAAfterUploaded).toHaveText(CLtd.MainJAVAAfterUploadedValue)
         // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn) 
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
     test('Umair - TC-08 - Verify Insert File Functionality - PY File', async ({ createLesson }) => {
@@ -168,7 +168,7 @@ test.describe('TestSuite: Insert File', () => {
         // Assertion in Presentation Mode
         await expect(createLesson.MainPYAfterUploaded).toHaveText(CLtd.MainPYAfterUploadedValue)
         // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn) 
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
     test('Umair - TC-09 - Verify Insert File Functionality - CPP File', async ({ createLesson }) => {
@@ -185,7 +185,7 @@ test.describe('TestSuite: Insert File', () => {
         // Assertion in Presentation Mode
         await expect(createLesson.MainCPPAfterUploaded).toHaveText(CLtd.MainCPPAfterUploadedValue)
         // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn) 
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
     test('Umair - TC-10 - Verify Insert File Functionality - CS File', async ({ createLesson }) => {
@@ -202,7 +202,7 @@ test.describe('TestSuite: Insert File', () => {
         // Assertion in Presentation Mode
         await expect(createLesson.MainCSAfterUploaded).toHaveText(CLtd.MainCSAfterUploadedValue)
         // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn) 
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
     test('Umair - TC-11 - Verify Insert File Functionality - DOCX File', async ({ createLesson }) => {
@@ -219,7 +219,7 @@ test.describe('TestSuite: Insert File', () => {
         // Assertion in Presentation Mode
         await expect(createLesson.TestDOCXAfterUploaded).toHaveText(CLtd.TestDOCXAfterUploadedValue)
         // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn) 
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
     test('Umair - TC-12 - Verify Insert File Functionality - PDF File', async ({ createLesson }) => {
@@ -236,10 +236,15 @@ test.describe('TestSuite: Insert File', () => {
         // Assertion in Presentation Mode
         await expect(createLesson.TestPDFAfterUploaded).toHaveText(CLtd.TestPDFAfterUploadedValue)
         // Exit Presentation Mode
-        await PlaywrightCore.click(createLesson.ExitStudentModeBtn) 
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
     });
 
-    test.afterEach(async ({ loginPage, createTeams, createLesson }) => {
+    test.afterEach(async ({ loginPage, createTeams, createLesson }, testInfo) => {
+        if (FAILED_TEST_CASES.length !== 0) {
+            if (!FAILED_TEST_CASES.includes(testInfo.title)) {
+                test.skip('Test case not included in the list');
+            }
+        }
         await expect(createLesson.DeleteBtnAfterUpload).toHaveText(CLtd.DeleteBtnAfterUploadValue)
         await PlaywrightCore.click(createLesson.DeleteBtnAfterUpload)
         await expect(createLesson.DeleteBtnAfterUpload).not.toBeVisible()
