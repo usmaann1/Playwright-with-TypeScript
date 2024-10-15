@@ -65,10 +65,12 @@ jobs:
 
     - name: Get Titles of Failed Test Cases
       run: |
-        FAILED_TITLES=$(jq -r '[.suites[]?.suites[]?.specs[]? | .tests[]?.results[]? | select(.status=="failed") | .title] | unique | join("\n")' summary.json)
+        FAILED_TITLES=$(jq -r '[.suites[]?.suites[]?.specs[]? | select(.ok == false) | "#### " + .title + " #$##"] | join("\n")' summary.json)
         echo -e "Failed Test Titles:\n$FAILED_TITLES"
         echo "$FAILED_TITLES" > failed-tests.txt  # Save the titles to a file
-        echo "FAILED_TITLES=$FAILED_TITLES" >> $GITHUB_ENV
+        echo "FAILED_TITLES<<EOF" >> $GITHUB_ENV
+        echo "$FAILED_TITLES" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
 
     - name: Upload Failed Test Titles as artifact
       uses: actions/upload-artifact@v4
