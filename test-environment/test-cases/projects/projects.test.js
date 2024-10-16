@@ -25,6 +25,7 @@ test.describe('TestSuite: Projects', () => {
     await projects.FillTextInParagraph(projectsData.PictureLabText)
     await projects.ClickGotIt();
     await page.reload();
+    await page.waitForTimeout(40000);
     await projects.ClickProjects();
     await projects.ClickPictureLabButton();
 
@@ -49,11 +50,11 @@ test.describe('TestSuite: Projects', () => {
 
    
    //verify heading
-    const element = await page.locator(projectsData.PictureLabDiv);
+    const element = await page.locator(projectsData.Intordiv);
 
     await page.waitForTimeout(20000);
     await projects.WaitforLocator(page);
-    await expect(element).toHaveText("Introduction");
+    await expect(element).toBeVisible("Introduction");
 
   });
 

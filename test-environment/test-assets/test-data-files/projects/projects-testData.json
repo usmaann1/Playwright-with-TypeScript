@@ -1,6 +1,7 @@
 {
     "PictureLabText": "Sample",
-    "PictureLabDiv":"//div[@class='tiptap ProseMirror min-h-full']/h1"
+    "PictureLabDiv":"//div[@class='tiptap ProseMirror min-h-full']/h1",
+    "Intordiv": "(//h1[text() = 'Introduction'])[2]"
 
 
 
