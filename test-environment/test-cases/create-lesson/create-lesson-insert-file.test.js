@@ -8,8 +8,8 @@ import Credentials from "../../test-assets/test-data-files/Credentials/credentia
 test.describe('TestSuite: Insert File', () => {
 
     const randomNumber = UserFunctions.generateRandomString(5)
-    const userEmail = Credentials.EMAIL_HASSAAN
-    const userPwd = Credentials.PASSWORD_HASSAAN
+    const userEmail = Credentials.Insert_Email
+    const userPwd = Credentials.Insert_Password
     const teamName = CLtd.teamName + randomNumber
     const lessonName = CLtd.lessonName + '-' + randomNumber
 
