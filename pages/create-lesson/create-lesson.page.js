@@ -2,6 +2,7 @@ const { PlaywrightCore } = require('../../module-imports/helperFunctions.imports
 import { expect } from '@playwright/test';
 import Locators from './create-lesson.locator.json';
 import clTD from '../../test-environment/test-assets/test-data-files/create-lesson/create-lesson-testData.json';
+import CLHRtd from '../../test-environment/test-assets/test-data-files/create-lesson/create-lesson-hide-reveal-testData.json'
 
 exports.CreateLesson = class CreateLesson {
 
@@ -938,5 +939,26 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.fill(this.HTMLTextBox, Text)
         await expect(this.SaveBtn).toHaveText(clTD.SaveBtnValue)
         await PlaywrightCore.click(this.SaveBtn)
+    }
+
+    async hideText(Text) {
+        await expect(this.HideRevealTextBox).toBeVisible()
+        await PlaywrightCore.fill(this.HideRevealTextBox, CLHRtd.HideRevealTxtHeadingValue)
+        await expect(this.HideContentBtn).toHaveText(CLHRtd.HideContentTxt)
+        await PlaywrightCore.click(this.HideContentBtn)
+    }
+
+    async assertionsAfterHidingText(Text) {
+        await expect(this.HideContentBtn).not.toBeVisible()
+        await expect(this.HideRevealTextBox).not.toBeVisible()
+        await expect(this.RevealContentButton).toBeVisible()
+        await expect(this.RevealContentButton).toHaveText(CLHRtd.RevealContentTxt)
+    }
+
+    async assertionsAfterRevealingText(Text) {
+        await expect(this.RevealContentButton).not.toBeVisible()
+        await expect(this.HideRevealTextBox).toBeVisible()
+        await expect(this.HideContentBtn).toBeVisible()
+        await expect(this.HideContentBtn).toHaveText(CLHRtd.HideContentTxt)
     }
 }
