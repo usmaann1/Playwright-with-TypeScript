@@ -943,7 +943,7 @@ exports.CreateLesson = class CreateLesson {
 
     async hideText(Text) {
         await expect(this.HideRevealTextBox).toBeVisible()
-        await PlaywrightCore.fill(this.HideRevealTextBox, CLHRtd.HideRevealTxtHeadingValue)
+        await expect(this.HideContentBtn).toBeVisible()
         await expect(this.HideContentBtn).toHaveText(CLHRtd.HideContentTxt)
         await PlaywrightCore.click(this.HideContentBtn)
     }

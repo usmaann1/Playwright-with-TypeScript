@@ -11,8 +11,8 @@ import Credentials from "../../test-assets/test-data-files/Credentials/credentia
 test.describe('TestSuite: Hide and Reveal Button', () => {
 
     const randomNumber = UserFunctions.generateRandomString(5)
-    const userEmail = Credentials.EMAIL_HASSAAN
-    const userPwd = Credentials.PASSWORD_HASSAAN
+    const userEmail = Credentials.HideReveal_Email
+    const userPwd = Credentials.HideReveal_Password
     const teamName = CLtd.teamName + randomNumber
     const lessonName = CLtd.lessonName + '-' + randomNumber
 
@@ -34,6 +34,8 @@ test.describe('TestSuite: Hide and Reveal Button', () => {
 
     test('Umair - TC-01 - Verify Hide & Reveal Button Functionality', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.hideAndRevealButton)
+        await expect(createLesson.HideRevealTextBox).toBeVisible()
+        await PlaywrightCore.fill(createLesson.HideRevealTextBox, CLHRtd.HideRevealTxtHeadingValue)
         // hide text 
         await createLesson.hideText()
         // assertion after hiding text
@@ -48,6 +50,8 @@ test.describe('TestSuite: Hide and Reveal Button', () => {
 
     test('Umair - TC-02 - Verify Hide & Reveal Button Functionality in Presentation Mode', async ({ createLesson }) => {
         await createLesson.selectElementFromDropdown(CLtd.elements.hideAndRevealButton)
+        await expect(createLesson.HideRevealTextBox).toBeVisible()
+        await PlaywrightCore.fill(createLesson.HideRevealTextBox, CLHRtd.HideRevealTxtHeadingValue)
         // hide text 
         await createLesson.hideText()
         // assertion after hiding text
@@ -75,6 +79,8 @@ test.describe('TestSuite: Hide and Reveal Button', () => {
     test('Umair - TC-03 - Verify Hide & Reveal Button Functionality as Student', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
         await createLesson.selectElementFromDropdown(CLtd.elements.hideAndRevealButton)
+        await expect(createLesson.HideRevealTextBox).toBeVisible()
+        await PlaywrightCore.fill(createLesson.HideRevealTextBox, CLHRtd.HideRevealTxtHeadingValue)
         // hide text 
         await createLesson.hideText()
         // assertion after hiding text
@@ -107,6 +113,100 @@ test.describe('TestSuite: Hide and Reveal Button', () => {
         await expect(newCreateLessonPageInstance.RevealContentButton).toHaveText(CLHRtd.RevealContentTxt)
         await PlaywrightCore.click(newCreateLessonPageInstance.RevealContentButton)
         await expect(newCreateLessonPageInstance.RevealContentButton).not.toBeVisible()
+    });
+
+    test('Umair - TC-04 - Verify Hide & Reveal Button Functionality - Hide content should show as hided on presentation mode', async ({ createLesson }) => {
+        await createLesson.selectElementFromDropdown(CLtd.elements.hideAndRevealButton)
+        await expect(createLesson.HideRevealTextBox).toBeVisible()
+        await PlaywrightCore.fill(createLesson.HideRevealTextBox, CLHRtd.HideRevealTxtHeadingValue)
+        // hide text 
+        await createLesson.hideText()
+        // assertion after hiding text
+        await createLesson.assertionsAfterHidingText()
+        // navigate to presentation mode
+        await createLesson.navigateToPresentationMode()
+        // assertion in presentation mode
+        await expect(createLesson.ExitStudentModeBtn).toHaveText(CLtd.ExitStudentModeBtnValue)
+        await expect(createLesson.HideContentBtn).not.toBeVisible()
+        await expect(createLesson.HideRevealTextBox).not.toBeVisible()
+        await expect(createLesson.RevealContentButton).toBeVisible()
+        await expect(createLesson.RevealContentButton).toHaveText(CLHRtd.RevealContentTxt)
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
+        // delete element
+        await PlaywrightCore.hover(createLesson.RevealContentButton)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+    });
+
+    test('Umair - TC-05 - Verify Hide & Reveal Button Functionality - Reveal content should show as revealed on presentation mode', async ({ createLesson }) => {
+        await createLesson.selectElementFromDropdown(CLtd.elements.hideAndRevealButton)
+        await expect(createLesson.HideRevealTextBox).toBeVisible()
+        await PlaywrightCore.fill(createLesson.HideRevealTextBox, CLHRtd.HideRevealTxtHeadingValue)
+        // assertion after revealing text 
+        await createLesson.assertionsAfterRevealingText()
+        // navigate to presentation mode
+        await createLesson.navigateToPresentationMode()
+        // assertion in presentation mode
+        await expect(createLesson.ExitStudentModeBtn).toHaveText(CLtd.ExitStudentModeBtnValue)
+        await expect(createLesson.StudentModeHideContentText).toHaveText(CLHRtd.HideRevealTxtHeadingValue)
+        await expect(createLesson.HideContentBtn).toBeVisible()
+        await expect(createLesson.RevealContentButton).not.toBeVisible()
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
+        // delete element
+        await PlaywrightCore.hover(createLesson.HideContentBtn)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+    });
+
+    test('Umair - TC-06 - Verify Hide & Reveal Button Functionality - Reveal hided content on presentation mode to show as revealed on main screen.', async ({ createLesson }) => {
+        await createLesson.selectElementFromDropdown(CLtd.elements.hideAndRevealButton)
+        await expect(createLesson.HideRevealTextBox).toBeVisible()
+        await PlaywrightCore.fill(createLesson.HideRevealTextBox, CLHRtd.HideRevealTxtHeadingValue)
+        // hide text 
+        await createLesson.hideText()
+        // assertion after hiding text
+        await createLesson.assertionsAfterHidingText()
+        // navigate to presentation mode
+        await createLesson.navigateToPresentationMode()
+        // assertion in presentation mode
+        await expect(createLesson.ExitStudentModeBtn).toHaveText(CLtd.ExitStudentModeBtnValue)
+        await expect(createLesson.HideRevealTextBox).not.toBeVisible()
+        await expect(createLesson.RevealContentButton).toBeVisible()
+        await expect(createLesson.RevealContentButton).toHaveText(CLHRtd.RevealContentTxt)
+        await PlaywrightCore.click(createLesson.RevealContentButton)
+        await expect(createLesson.RevealContentButton).not.toBeVisible()
+        await expect(createLesson.HideContentBtn).toBeVisible()
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
+        // assertion on main screen
+        await expect(createLesson.HideContentBtn).toBeVisible()
+        await expect(createLesson.HideRevealTextBox).toBeVisible()
+        await expect(createLesson.RevealContentButton).not.toBeVisible()
+        // delete element
+        await PlaywrightCore.hover(createLesson.HideContentBtn)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
+    });
+
+    test('Umair - TC-07 - Verify Hide & Reveal Button Functionality - Hide revealed content on presentation mode to show as hided on main screen.', async ({ createLesson }) => {
+        await createLesson.selectElementFromDropdown(CLtd.elements.hideAndRevealButton)
+        await expect(createLesson.HideRevealTextBox).toBeVisible()
+        await PlaywrightCore.fill(createLesson.HideRevealTextBox, CLHRtd.HideRevealTxtHeadingValue)
+        // navigate to presentation mode
+        await createLesson.navigateToPresentationMode()
+        // assertion in presentation mode
+        await expect(createLesson.ExitStudentModeBtn).toHaveText(CLtd.ExitStudentModeBtnValue)
+        await expect(createLesson.StudentModeHideContentText).toHaveText(CLHRtd.HideRevealTxtHeadingValue)
+        await expect(createLesson.RevealContentButton).not.toBeVisible()
+        await expect(createLesson.HideContentBtn).toBeVisible()
+        await expect(createLesson.HideContentBtn).toHaveText(CLHRtd.HideContentTxt)
+        await PlaywrightCore.click(createLesson.HideContentBtn)
+        await expect(createLesson.RevealContentButton).toBeVisible()
+        await expect(createLesson.HideContentBtn).not.toBeVisible()
+        await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
+        // assertion on main screen
+        await expect(createLesson.RevealContentButton).toBeVisible()
+        await expect(createLesson.HideRevealTextBox).not.toBeVisible()
+        await expect(createLesson.HideContentBtn).not.toBeVisible()
+        // delete element
+        await PlaywrightCore.hover(createLesson.RevealContentButton)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
 })
