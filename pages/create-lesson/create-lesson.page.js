@@ -916,7 +916,7 @@ exports.CreateLesson = class CreateLesson {
         await expect(this.EmbedSubmitBtn).toHaveText(clTD.EmbedSubmitBtnValue)
         await PlaywrightCore.fill(this.EmbedEnterURL, video_name)
         await PlaywrightCore.click(this.EmbedSubmitBtn)
-        await PlaywrightCore.waitTimeout(this.page, 3000)
+        await PlaywrightCore.waitTimeout(this.page, 5000)
         await expect(this.SetupBtn).toHaveText(clTD.SetupBtnValue)
         await expect(this.OptionsBtn).toHaveText(clTD.OptionsBtnValue)
     }
