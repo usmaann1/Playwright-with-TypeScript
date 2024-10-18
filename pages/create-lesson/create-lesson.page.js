@@ -20,7 +20,6 @@ exports.CreateLesson = class CreateLesson {
         this.inputTag = this.page.locator(Locators.lessonPage.mainPage.input)
         this.PresentationMode = this.page.locator(Locators.lessonPage.mainPage.presnetationMode)
         this.gotItBtn = this.page.locator(Locators.lessonPage.mainPage.gotItBtn)
-        this.addNewItem = this.page.locator(Locators.addNewItem)
         this.itemContainer = this.page.locator(Locators.itemContainer)
         this.addItemLesson = this.page.locator(Locators.addItemLesson)
         this.lessonNameTxtBox = this.page.locator(Locators.createLessonUI.lessonNameTxtBox)
@@ -30,7 +29,6 @@ exports.CreateLesson = class CreateLesson {
         this.lessonTitle = this.page.locator(Locators.lessonPage.lessonTitle)
         this.backToTeamButton = this.page.locator(Locators.lessonPage.sideMenu.backToTeamBtn)
         this.viewStudentsBtn = this.page.locator(Locators.lessonPage.sideMenu.viewStudentsBtn)
-        this.studentGradesBtn = this.page.locator(Locators.lessonPage.sideMenu.studentGradesBtn)
         this.PublishMultiple = this.page.locator(Locators.lessonPage.sideMenu.PublishMultiple)
         this.deleteMultiple = this.page.locator(Locators.lessonPage.sideMenu.deleteMultiple)
         this.SideMenuLessonName = this.page.locator(Locators.lessonPage.sideMenu.SideMenuLessonName)
@@ -44,8 +42,8 @@ exports.CreateLesson = class CreateLesson {
         this.menuIcon = this.page.locator(Locators.lessonPage.textEditor.menuIcon)
         this.firstRow = this.page.locator(Locators.lessonPage.textEditor.emptyEditorLine)
         this.hideRightSideMenuBtn = this.page.locator(Locators.lessonPage.sideMenu.hideRightSideMenuBtn)
-        this.rightSIdeMenu = this.page.locator(Locators.lessonPage.sideMenu.rightSIdeMenu)
-        this.stdntGradesBtn = this.rightSIdeMenu.locator(Locators.lessonPage.sideMenu.studentGradesBtn)
+        this.rightSIdeMenu = this.page.locator(Locators.lessonPage.sideMenu.rightSIdeMenu).last()
+        this.studentGradesBtn = this.rightSIdeMenu.locator(Locators.lessonPage.sideMenu.studentGradesBtn)
         this.InviteStudents = this.page.locator(Locators.lessonPage.sideMenu.InviteStudents)
         this.bouncingMsg = this.page.locator(Locators.lessonPage.sideMenu.bouncingMsg)
         this.bouncingMsgCloseBtn = this.page.locator(Locators.lessonPage.sideMenu.bouncingMsgCloseBtn)
@@ -111,10 +109,9 @@ exports.CreateLesson = class CreateLesson {
         this.BlankType = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.BlankType)
         this.answer = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.answer)
         this.pointsInputField = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.pointsInputField)
-        this.item1 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.item1)
+        this.itemList = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.itemList)
         this.checkBox1 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.checkBox1)
         this.text1 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.text1)
-        this.item2 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.item2)
         this.checkBox2 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.checkBox2)
         this.text2 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.text2)
         // File upload
@@ -317,7 +314,7 @@ exports.CreateLesson = class CreateLesson {
     }
 
     async clickOnAddNewItem() {
-        const item = this.addNewItem
+        const item = this.AddNewItem
         await this.page.waitForTimeout(3000);
         await PlaywrightCore.waitFor(item)
         await PlaywrightCore.click(item)
