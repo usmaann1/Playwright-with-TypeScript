@@ -10,8 +10,8 @@ import Credentials from "../../test-assets/test-data-files/Credentials/credentia
 test.describe('TestSuite: Multiple Choice', () => {
 
     const randomNumber = UserFunctions.generateRandomString(5)
-    const userEmail = Credentials.EMAIL_HASSAAN
-    const userPwd = Credentials.PASSWORD_HASSAAN
+    const userEmail = Credentials.MultipleChoice_Email
+    const userPwd = Credentials.MultipleChoice_Password
     const teamName = CLtd.teamName + randomNumber
     const lessonName = CLtd.lessonName + '-' + randomNumber
 
@@ -32,261 +32,149 @@ test.describe('TestSuite: Multiple Choice', () => {
     });
 
     test('Umair - TC-01 - Verify Multiple Choice Functionality', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
-        await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
-        await PlaywrightCore.click(createLesson.MultipleChoiceFormBox4DeleteBtn)
-        await PlaywrightCore.click(createLesson.MultipleChoiceAddChoiceBtn)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox1, CLtd.One)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox2, CLtd.Two)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox3, CLtd.Three)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox4.nth(0), CLtd.Four)
-        await PlaywrightCore.click(createLesson.MultipleChoiceSelectBox2)
-        await expect(createLesson.MultipleChoiceSelectBox2).toBeVisible()
-        await expect(createLesson.MultipleChoiceFormBox1).toHaveText(CLtd.One)
-        await expect(createLesson.MultipleChoiceFormBox2).toHaveText(CLtd.Two)
-        await expect(createLesson.MultipleChoiceFormBox3).toHaveText(CLtd.Three)
-        await expect(createLesson.MultipleChoiceFormBox4.nth(0)).toHaveText(CLtd.Four)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.MultipleChoiceOptionsRule1).toHaveText(CLtd.MultipleChoiceOptionsRule1Value)
-        await expect(createLesson.MultipleChoiceOptionsRule2).toHaveText(CLtd.MultipleChoiceOptionsRule2Value)
-        await expect(createLesson.MultipleChoiceOptionsRule3).toHaveText(CLtd.MultipleChoiceOptionsRule3Value)
-        await expect(createLesson.MultipleChoiceOptionsRule4).toHaveText(CLtd.MultipleChoiceOptionsRule4Value)
-        await expect(createLesson.MultipleChoiceOptionsRule5).toHaveText(CLtd.MultipleChoiceOptionsRule5Value)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox1)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox3)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox4.nth(0))
-        await PlaywrightCore.click(createLesson.OptionsCheckBox5.nth(0))
-        await PlaywrightCore.click(createLesson.OptionsCheckBox1)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox3)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox4.nth(0))
-        await PlaywrightCore.click(createLesson.OptionsCheckBox5.nth(0))
+        // create mcq test
+        await createLesson.createMultipleChoiceTest()
+        // assertions on Options screen
+        await createLesson.assertionsOnOptionsScreenForMCQTest()
+        // options selection for test on options screen
+        await createLesson.optionsSelectionForMCQTest()
+        // delete element
         await PlaywrightCore.click(createLesson.SetupBtn)
         await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('Umair - TC-02 - Verify Multiple Choice Functionality in Presentation Mode for Wrong Answer', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
-        await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
-        await PlaywrightCore.click(createLesson.MultipleChoiceFormBox4DeleteBtn)
-        await PlaywrightCore.click(createLesson.MultipleChoiceAddChoiceBtn)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox1, CLtd.One)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox2, CLtd.Two)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox3, CLtd.Three)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox4.nth(0), CLtd.Four)
-        await PlaywrightCore.click(createLesson.MultipleChoiceSelectBox2)
-        await expect(createLesson.MultipleChoiceSelectBox2).toBeVisible()
-        await expect(createLesson.MultipleChoiceFormBox1).toHaveText(CLtd.One)
-        await expect(createLesson.MultipleChoiceFormBox2).toHaveText(CLtd.Two)
-        await expect(createLesson.MultipleChoiceFormBox3).toHaveText(CLtd.Three)
-        await expect(createLesson.MultipleChoiceFormBox4.nth(0)).toHaveText(CLtd.Four)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.MultipleChoiceOptionsRule1).toHaveText(CLtd.MultipleChoiceOptionsRule1Value)
-        await expect(createLesson.MultipleChoiceOptionsRule2).toHaveText(CLtd.MultipleChoiceOptionsRule2Value)
-        await expect(createLesson.MultipleChoiceOptionsRule3).toHaveText(CLtd.MultipleChoiceOptionsRule3Value)
-        await expect(createLesson.MultipleChoiceOptionsRule4).toHaveText(CLtd.MultipleChoiceOptionsRule4Value)
-        await expect(createLesson.MultipleChoiceOptionsRule5).toHaveText(CLtd.MultipleChoiceOptionsRule5Value)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox1)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox3)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox4.nth(0))
-        await PlaywrightCore.click(createLesson.OptionsCheckBox5.nth(0))
-        await PlaywrightCore.click(createLesson.OptionsCheckBox1)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox3)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox4.nth(0))
-        await PlaywrightCore.click(createLesson.OptionsCheckBox5.nth(0))
+        // create mcq test
+        await createLesson.createMultipleChoiceTest()
+        // assertions on Options screen
+        await createLesson.assertionsOnOptionsScreenForMCQTest()
+        // options selection for test on options screen
+        await createLesson.optionsSelectionForMCQTest()
+        // define test marks 
         await PlaywrightCore.click(createLesson.SetupBtn)
         await expect(createLesson.PointsTxt).toHaveText(CLtd.PointsTxtValue)
         await PlaywrightCore.fill(createLesson.MultipleChoicePointsInput, CLtd.Four)
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        // navigate to presentation mode 
+        await createLesson.navigateToPresentationMode()
+        // assertions and check answer on presentation mode
         await expect(createLesson.ExitStudentModeBtn).toHaveText(CLtd.ExitStudentModeBtnValue)
         await expect(createLesson.CheckAnswerBtn).toHaveText(CLtd.CheckAnswerBtnValue)
         await PlaywrightCore.click(createLesson.PresentationModeOpt1CheckBox)
         await PlaywrightCore.click(createLesson.CheckAnswerBtn)
-        await expect(createLesson.IncorrectAndCorrectAnswerHeading).toHaveText(CLtd.IncorrectAnswerTxt)
-        await expect(createLesson.PointScoreMsg).toHaveText(CLtd.PointScore0Txt)
-        await expect(createLesson.CloseBtn).toHaveText(CLtd.CloseBtnValue)
-        await PlaywrightCore.click(createLesson.CloseBtn)
-        await expect(createLesson.IncorrectMsg).toHaveText(CLtd.IncorrectMsgValue)
+        // assertions on presentation mode for incorrect mcq answer
+        await createLesson.assertionsOnPresentationModeForIncorrectMCQAnswer()
+        // exit presentation mode 
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
+        // delete element
+        await PlaywrightCore.click(createLesson.SetupBtn)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('Umair - TC-03 - Verify Multiple Choice Functionality in Presentation Mode for Correct Answer', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
-        await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
-        await PlaywrightCore.click(createLesson.MultipleChoiceFormBox4DeleteBtn)
-        await PlaywrightCore.click(createLesson.MultipleChoiceAddChoiceBtn)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox1, CLtd.One)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox2, CLtd.Two)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox3, CLtd.Three)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox4.nth(0), CLtd.Four)
-        await PlaywrightCore.click(createLesson.MultipleChoiceSelectBox2)
-        await expect(createLesson.MultipleChoiceSelectBox2).toBeVisible()
-        await expect(createLesson.MultipleChoiceFormBox1).toHaveText(CLtd.One)
-        await expect(createLesson.MultipleChoiceFormBox2).toHaveText(CLtd.Two)
-        await expect(createLesson.MultipleChoiceFormBox3).toHaveText(CLtd.Three)
-        await expect(createLesson.MultipleChoiceFormBox4.nth(0)).toHaveText(CLtd.Four)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.MultipleChoiceOptionsRule1).toHaveText(CLtd.MultipleChoiceOptionsRule1Value)
-        await expect(createLesson.MultipleChoiceOptionsRule2).toHaveText(CLtd.MultipleChoiceOptionsRule2Value)
-        await expect(createLesson.MultipleChoiceOptionsRule3).toHaveText(CLtd.MultipleChoiceOptionsRule3Value)
-        await expect(createLesson.MultipleChoiceOptionsRule4).toHaveText(CLtd.MultipleChoiceOptionsRule4Value)
-        await expect(createLesson.MultipleChoiceOptionsRule5).toHaveText(CLtd.MultipleChoiceOptionsRule5Value)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox1)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox3)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox4.nth(0))
-        await PlaywrightCore.click(createLesson.OptionsCheckBox5.nth(0))
-        await PlaywrightCore.click(createLesson.OptionsCheckBox1)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox3)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox4.nth(0))
-        await PlaywrightCore.click(createLesson.OptionsCheckBox5.nth(0))
+        // create mcq test
+        await createLesson.createMultipleChoiceTest()
+        // assertions on Options screen
+        await createLesson.assertionsOnOptionsScreenForMCQTest()
+        // options selection for test on options screen
+        await createLesson.optionsSelectionForMCQTest()
+        // define test marks 
         await PlaywrightCore.click(createLesson.SetupBtn)
         await expect(createLesson.PointsTxt).toHaveText(CLtd.PointsTxtValue)
         await PlaywrightCore.fill(createLesson.MultipleChoicePointsInput, CLtd.One)
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        // navigate to presentation mode
+        await createLesson.navigateToPresentationMode()
+        // assertions and check answer on presentation mode
         await expect(createLesson.ExitStudentModeBtn).toHaveText(CLtd.ExitStudentModeBtnValue)
         await expect(createLesson.CheckAnswerBtn).toHaveText(CLtd.CheckAnswerBtnValue)
         await PlaywrightCore.click(createLesson.PresentationModeOpt2)
         await PlaywrightCore.click(createLesson.CheckAnswerBtn)
-        await expect(createLesson.IncorrectAndCorrectAnswerHeading).toHaveText(CLtd.CorrectAnswerTxt)
-        await expect(createLesson.PointScoreMsg).toHaveText(CLtd.PointScore1Txt)
-        await expect(createLesson.CloseBtn).toHaveText(CLtd.CloseBtnValue)
-        await PlaywrightCore.click(createLesson.CloseBtn)
-        await expect(createLesson.CorrectMsg).toHaveText(CLtd.CorrectMsgValue)
+        // assertions on presentation mode for correct mcq answer
+        await createLesson.assertionsOnPresentationModeForCorrectMCQAnswer()
+        // exit presentation mode
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
+        // delete element 
+        await PlaywrightCore.click(createLesson.SetupBtn)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
 
     test('Umair - TC-04 - Verify Multiple Choice Functionality in Presentation Mode for Correct Answer and check if it allows Multiple Selections in answer', async ({ createLesson }) => {
-        await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
-        await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
-        await PlaywrightCore.click(createLesson.MultipleChoiceFormBox4DeleteBtn)
-        await PlaywrightCore.click(createLesson.MultipleChoiceAddChoiceBtn)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox1, CLtd.One)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox2, CLtd.Two)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox3, CLtd.Three)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox4.nth(0), CLtd.Four)
-        await PlaywrightCore.click(createLesson.MultipleChoiceSelectBox2)
-        await expect(createLesson.MultipleChoiceSelectBox2).toBeVisible()
-        await expect(createLesson.MultipleChoiceFormBox1).toHaveText(CLtd.One)
-        await expect(createLesson.MultipleChoiceFormBox2).toHaveText(CLtd.Two)
-        await expect(createLesson.MultipleChoiceFormBox3).toHaveText(CLtd.Three)
-        await expect(createLesson.MultipleChoiceFormBox4.nth(0)).toHaveText(CLtd.Four)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.MultipleChoiceOptionsRule1).toHaveText(CLtd.MultipleChoiceOptionsRule1Value)
-        await expect(createLesson.MultipleChoiceOptionsRule2).toHaveText(CLtd.MultipleChoiceOptionsRule2Value)
-        await expect(createLesson.MultipleChoiceOptionsRule3).toHaveText(CLtd.MultipleChoiceOptionsRule3Value)
-        await expect(createLesson.MultipleChoiceOptionsRule4).toHaveText(CLtd.MultipleChoiceOptionsRule4Value)
-        await expect(createLesson.MultipleChoiceOptionsRule5).toHaveText(CLtd.MultipleChoiceOptionsRule5Value)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox1)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox3)
+        // create mcq test
+        await createLesson.createMultipleChoiceTest()
+        // assertions on Options screen
+        await createLesson.assertionsOnOptionsScreenForMCQTest()
+        // options selection for test on options screen
+        await createLesson.optionsSelectionForMCQTest()
         await PlaywrightCore.click(createLesson.OptionsCheckBox4.nth(0))
-        await PlaywrightCore.click(createLesson.OptionsCheckBox5.nth(0))
-        await PlaywrightCore.click(createLesson.OptionsCheckBox1)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox3)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox5.nth(0))
+        // define marks and second correct answer
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.click(createLesson.PresentationModeOpt1CheckBox)
         await expect(createLesson.PointsTxt).toHaveText(CLtd.PointsTxtValue)
         await PlaywrightCore.fill(createLesson.MultipleChoicePointsInput, CLtd.One)
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        // navigate to presentation mode
+        await createLesson.navigateToPresentationMode()
+        // assertions and check answer on presentation mode
         await expect(createLesson.ExitStudentModeBtn).toHaveText(CLtd.ExitStudentModeBtnValue)
         await expect(createLesson.CheckAnswerBtn).toHaveText(CLtd.CheckAnswerBtnValue)
         await PlaywrightCore.click(createLesson.PresentationModeOpt2)
         await PlaywrightCore.click(createLesson.PresentationModeOpt1CheckBox)
         await PlaywrightCore.click(createLesson.CheckAnswerBtn)
-        await expect(createLesson.IncorrectAndCorrectAnswerHeading).toHaveText(CLtd.CorrectAnswerTxt)
-        await expect(createLesson.PointScoreMsg).toHaveText(CLtd.PointScore1Txt)
-        await expect(createLesson.CloseBtn).toHaveText(CLtd.CloseBtnValue)
-        await PlaywrightCore.click(createLesson.CloseBtn)
-        await expect(createLesson.CorrectMsg).toHaveText(CLtd.CorrectMsgValue)
+        // assertions on presentation mode for correct mcq answer
+        await createLesson.assertionsOnPresentationModeForCorrectMCQAnswer()
+        // exit presentation mode
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
+        // delete element
+        await PlaywrightCore.click(createLesson.SetupBtn)
+        await createLesson.DeleteElementFromEditor(CLtd.options.Delete)
     });
-
 
     test('Umair - TC-05 - Verify Multiple Choice Functionality in Presentation Mode for Correct Answer and check if Multiple Selection is Allowed as a Student', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
-        await createLesson.selectElementFromDropdown(CLtd.elements.multipleChoice)
-        await PlaywrightCore.click(createLesson.MultipleChoiceQuestionHeadingBox)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceQuestionHeadingBox, CLtd.Heading1plus1)
-        await PlaywrightCore.click(createLesson.MultipleChoiceFormBox4DeleteBtn)
-        await PlaywrightCore.click(createLesson.MultipleChoiceAddChoiceBtn)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox1, CLtd.One)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox2, CLtd.Two)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox3, CLtd.Three)
-        await PlaywrightCore.fill(createLesson.MultipleChoiceFormBox4.nth(0), CLtd.Four)
-        await PlaywrightCore.click(createLesson.MultipleChoiceSelectBox2)
-        await expect(createLesson.MultipleChoiceSelectBox2).toBeVisible()
-        await expect(createLesson.MultipleChoiceFormBox1).toHaveText(CLtd.One)
-        await expect(createLesson.MultipleChoiceFormBox2).toHaveText(CLtd.Two)
-        await expect(createLesson.MultipleChoiceFormBox3).toHaveText(CLtd.Three)
-        await expect(createLesson.MultipleChoiceFormBox4.nth(0)).toHaveText(CLtd.Four)
-        await PlaywrightCore.click(createLesson.OptionsBtn)
-        await expect(createLesson.MultipleChoiceOptionsRule1).toHaveText(CLtd.MultipleChoiceOptionsRule1Value)
-        await expect(createLesson.MultipleChoiceOptionsRule2).toHaveText(CLtd.MultipleChoiceOptionsRule2Value)
-        await expect(createLesson.MultipleChoiceOptionsRule3).toHaveText(CLtd.MultipleChoiceOptionsRule3Value)
-        await expect(createLesson.MultipleChoiceOptionsRule4).toHaveText(CLtd.MultipleChoiceOptionsRule4Value)
-        await expect(createLesson.MultipleChoiceOptionsRule5).toHaveText(CLtd.MultipleChoiceOptionsRule5Value)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox1)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox3)
+        // create mcq test
+        await createLesson.createMultipleChoiceTest()
+        // assertions on Options screen
+        await createLesson.assertionsOnOptionsScreenForMCQTest()
+        // options selection for test on options screen
+        await createLesson.optionsSelectionForMCQTest()
         await PlaywrightCore.click(createLesson.OptionsCheckBox4.nth(0))
-        await PlaywrightCore.click(createLesson.OptionsCheckBox5.nth(0))
-        await PlaywrightCore.click(createLesson.OptionsCheckBox1)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox3)
-        await PlaywrightCore.click(createLesson.OptionsCheckBox5.nth(0))
+        // define marks and second correct answer
         await PlaywrightCore.click(createLesson.SetupBtn)
         await PlaywrightCore.click(createLesson.PresentationModeOpt1CheckBox)
         await expect(createLesson.PointsTxt).toHaveText(CLtd.PointsTxtValue)
-        await PlaywrightCore.fill(createLesson.MultipleChoicePointsInput, CLtd.Four)
-        await PlaywrightCore.click(createLesson.presnetationMode)
-        await expect(createLesson.PresentationModePopUpHeading).toHaveText(CLtd.PresentationModePopUpHeadingValue)
-        await expect(createLesson.PresentationModePopUpDescription).toHaveText(CLtd.PresentationModePopUpDescriptionValue)
-        await expect(createLesson.GotItBtn).toHaveText(CLtd.GotItBtnValue)
-        await PlaywrightCore.click(createLesson.GotItBtn)
+        await PlaywrightCore.fill(createLesson.MultipleChoicePointsInput, CLtd.One)
+        // navigate to presentation mode
+        await createLesson.navigateToPresentationMode()
+        // assertions and check answer on presentation mode
         await expect(createLesson.ExitStudentModeBtn).toHaveText(CLtd.ExitStudentModeBtnValue)
         await expect(createLesson.CheckAnswerBtn).toHaveText(CLtd.CheckAnswerBtnValue)
         await PlaywrightCore.click(createLesson.PresentationModeOpt2)
         await PlaywrightCore.click(createLesson.PresentationModeOpt1CheckBox)
         await PlaywrightCore.click(createLesson.CheckAnswerBtn)
-        await expect(createLesson.IncorrectAndCorrectAnswerHeading).toHaveText(CLtd.CorrectAnswerTxt)
-        await expect(createLesson.PointScoreMsg).toHaveText(CLtd.PointScore4Txt)
-        await expect(createLesson.CloseBtn).toHaveText(CLtd.CloseBtnValue)
-        await PlaywrightCore.click(createLesson.CloseBtn)
-        await expect(createLesson.CorrectMsg).toHaveText(CLtd.CorrectMsgValue)
+        // assertions on presentation mode for correct mcq answer
+        await createLesson.assertionsOnPresentationModeForCorrectMCQAnswer()
+        // exit presentation mode
         await PlaywrightCore.click(createLesson.ExitStudentModeBtn)
+        // join invite as a student
         const link = await teamCoursesPage.PublishAndInviteCreateLesson()
         const newPage = await browser.newPage()
         const newTeamCoursesPageInstance = new TeamCoursesPage(newPage)
         const newCreateLessonPageInstance = new CreateLesson(newPage)
         await newTeamCoursesPageInstance.afterInviteSignUp(link,randomEmail,userPwd,TeamCoursesData.firstName,TeamCoursesData.LastName)
+        // assertions as a student to check mcq test
         await expect(newCreateLessonPageInstance.OnePlus1TxtPresentationMode).toHaveText(CLtd.Heading1plus1)
         await expect(newCreateLessonPageInstance.OneTxtPresentationMode).toHaveText(CLtd.One)
         await expect(newCreateLessonPageInstance.TwoTxtPresentationMode).toHaveText(CLtd.Two)
         await expect(newCreateLessonPageInstance.ThreeTxtPresentationMode).toHaveText(CLtd.Three)
         await expect(newCreateLessonPageInstance.FourTxtPresentationMode).toHaveText(CLtd.Four)
         await expect(newCreateLessonPageInstance.CheckAnswerBtn).toHaveText(CLtd.CheckAnswerBtnValue)
+        // check answer as a student 
         await PlaywrightCore.click(newCreateLessonPageInstance.Opt2StudentMode)
         await PlaywrightCore.click(newCreateLessonPageInstance.PresentationModeOptionWrong)
         await PlaywrightCore.click(newCreateLessonPageInstance.CheckAnswerBtn)
+        // assertions as a student for correct mcq answer
         await expect(newCreateLessonPageInstance.IncorrectAndCorrectAnswerHeading).toHaveText(CLtd.CorrectAnswerTxt)
-        await expect(newCreateLessonPageInstance.PointScoreMsg).toHaveText(CLtd.PointScore4Txt)
+        await expect(newCreateLessonPageInstance.PointScoreMsg).toHaveText(CLtd.PointScore1Txt)
         await expect(newCreateLessonPageInstance.CloseBtn).toHaveText(CLtd.CloseBtnValue)
         await PlaywrightCore.click(newCreateLessonPageInstance.CloseBtn)
         await expect(newCreateLessonPageInstance.CorrectMsg).toHaveText(CLtd.CorrectMsgValue)
     });
-
-
 })

@@ -961,4 +961,57 @@ exports.CreateLesson = class CreateLesson {
         await expect(this.HideContentBtn).toBeVisible()
         await expect(this.HideContentBtn).toHaveText(CLHRtd.HideContentTxt)
     }
+
+    async createMultipleChoiceTest() {
+        await this.selectElementFromDropdown(clTD.elements.multipleChoice)
+        await PlaywrightCore.click(this.MultipleChoiceQuestionHeadingBox)
+        await PlaywrightCore.fill(this.MultipleChoiceQuestionHeadingBox, clTD.Heading1plus1)
+        await PlaywrightCore.click(this.MultipleChoiceFormBox4DeleteBtn)
+        await PlaywrightCore.click(this.MultipleChoiceAddChoiceBtn)
+        await PlaywrightCore.fill(this.MultipleChoiceFormBox1, clTD.One)
+        await PlaywrightCore.fill(this.MultipleChoiceFormBox2, clTD.Two)
+        await PlaywrightCore.fill(this.MultipleChoiceFormBox3, clTD.Three)
+        await PlaywrightCore.fill(this.MultipleChoiceFormBox4.nth(0), clTD.Four)
+        await expect(this.MultipleChoiceFormBox1).toHaveText(clTD.One)
+        await expect(this.MultipleChoiceFormBox2).toHaveText(clTD.Two)
+        await expect(this.MultipleChoiceFormBox3).toHaveText(clTD.Three)
+        await expect(this.MultipleChoiceFormBox4.nth(0)).toHaveText(clTD.Four)
+        await expect(this.MultipleChoiceSelectBox2).toBeVisible()
+        await PlaywrightCore.click(this.MultipleChoiceSelectBox2)
+    }
+
+    async assertionsOnOptionsScreenForMCQTest() {
+        await PlaywrightCore.click(this.OptionsBtn)
+        await expect(this.MultipleChoiceOptionsRule1).toHaveText(clTD.MultipleChoiceOptionsRule1Value)
+        await expect(this.MultipleChoiceOptionsRule2).toHaveText(clTD.MultipleChoiceOptionsRule2Value)
+        await expect(this.MultipleChoiceOptionsRule3).toHaveText(clTD.MultipleChoiceOptionsRule3Value)
+        await expect(this.MultipleChoiceOptionsRule4).toHaveText(clTD.MultipleChoiceOptionsRule4Value)
+        await expect(this.MultipleChoiceOptionsRule5).toHaveText(clTD.MultipleChoiceOptionsRule5Value)
+    }
+
+    async optionsSelectionForMCQTest() {
+        await PlaywrightCore.click(this.OptionsCheckBox1)
+        await PlaywrightCore.click(this.OptionsCheckBox3)
+        await PlaywrightCore.click(this.OptionsCheckBox4.nth(0))
+        await PlaywrightCore.click(this.OptionsCheckBox5.nth(0))
+        await PlaywrightCore.click(this.OptionsCheckBox1)
+        await PlaywrightCore.click(this.OptionsCheckBox3)
+        await PlaywrightCore.click(this.OptionsCheckBox4.nth(0))
+        await PlaywrightCore.click(this.OptionsCheckBox5.nth(0))
+    }
+    async assertionsOnPresentationModeForIncorrectMCQAnswer() {
+        await expect(this.IncorrectAndCorrectAnswerHeading).toHaveText(clTD.IncorrectAnswerTxt)
+        await expect(this.PointScoreMsg).toHaveText(clTD.PointScore0Txt)
+        await expect(this.CloseBtn).toHaveText(clTD.CloseBtnValue)
+        await PlaywrightCore.click(this.CloseBtn)
+        await expect(this.IncorrectMsg).toHaveText(clTD.IncorrectMsgValue)
+    }
+
+    async assertionsOnPresentationModeForCorrectMCQAnswer() {
+        await expect(this.IncorrectAndCorrectAnswerHeading).toHaveText(clTD.CorrectAnswerTxt)
+        await expect(this.PointScoreMsg).toHaveText(clTD.PointScore1Txt)
+        await expect(this.CloseBtn).toHaveText(clTD.CloseBtnValue)
+        await PlaywrightCore.click(this.CloseBtn)
+        await expect(this.CorrectMsg).toHaveText(clTD.CorrectMsgValue)
+    }
 }
