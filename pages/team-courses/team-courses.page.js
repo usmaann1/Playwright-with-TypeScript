@@ -73,6 +73,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.IntializeIDEBtn = this.page.locator(Locators.IntializeIDEBtn);
     this.ProjectNameInput = this.page.locator(Locators.ProjectNameInput);
     this.ProjectTypeSelect = this.page.locator(Locators.ProjectTypeSelect);
+    this.ProjectType = Locators.ProjectType;
     this.TemplateBtn = this.page.locator(Locators.TemplateBtn);
     this.FileExplorerBtnOpen = this.page.locator(Locators.FileExplorerBtnOpen);
     this.OverWriteFile = this.page.locator(Locators.OverWriteFile);
@@ -84,7 +85,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.TestName = this.page.locator(Locators.TestName);
     this.TestInput = this.page.locator(Locators.TestInput);
     this.TestOutput = this.page.locator(Locators.TestOutput);
-    this.PublishCheckBox = this.page.locator(Locators.PublishCheckBox).first();
+    this.PublishCheckBox = this.page.locator(Locators.PublishCheckBox);
     this.CreateTestBtn = this.page.locator(Locators.CreateTestBtn);
     this.InviteStudentBtn = this.page.locator(Locators.InviteStudent);
     this.CopyBtn = this.page.locator(Locators.CopyBtn);
@@ -180,7 +181,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async IntializeIDE(ProjecttName, option, isExact = false) {
     await PlaywrightCore.click(this.IntializeIDEBtn);
-    await PlaywrightCore.fill(this.ProjectNameInput, ProjecttName);
+    // await PlaywrightCore.fill(this.ProjectNameInput, ProjecttName);
     if (!isExact) {
       await PlaywrightCore.selectingDropDownByLabel(
         this.page,
@@ -218,7 +219,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   }
 
   async PublishAndInvite() {
-    await PlaywrightCore.check(this.PublishCheckBox);
+    await this.page.waitForTimeout(1000);
+    await this.PublishCheckBox.click({force: true});
     await PlaywrightCore.click(this.InviteStudentBtn);
     await PlaywrightCore.click(this.CopyBtn);
     const handle = await this.page.evaluateHandle(() =>
@@ -307,8 +309,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async normalCommonSteps(file, input, output, isHtml = false) {
     await PlaywrightCore.waitTimeout(this.page, 20000);
-    await expect(this.CloudIcon.nth(1)).toBeVisible();
-    const codeEditorContent = await this.EditorTextBox.nth(1);
+    await expect(this.CloudIcon).toBeVisible();
+    const codeEditorContent = await this.EditorTextBox;
     await codeEditorContent.press(this.SelectAll);
     await codeEditorContent.press(this.BackSpace);
     await codeEditorContent.fill(input);

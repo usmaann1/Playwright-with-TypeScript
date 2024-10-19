@@ -31,7 +31,7 @@ test.describe("TestSuite: Team/Courses", () => {
     }
   });
 
-  test("[Numair] - TC: Flow Test Python - Create Assignment, project, add test, publish, share, join as student, submit test, verify answers", async ({
+  test.only("[Numair] - TC: Flow Test Python - Create Assignment, project, add test, publish, share, join as student, submit test, verify answers", async ({
     teamCoursesPage,
     browser,
   }) => {
