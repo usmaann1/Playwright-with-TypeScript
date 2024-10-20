@@ -27,6 +27,7 @@
     "FileExplorerBtnOpen": ".lucide.lucide-folder-open.w-5.h-5",
     "FileExplorerBtnClose": "div[class='px-5 cursor-pointer'] svg",
     "PublishCheckBox": "//input[@type='checkbox']",
+    "PublishToggleBtn" :"//div[starts-with(@class, 'lexical-editor')]/descendant::span[contains(@class, 'MuiSwitch-switchBase')]",
     "InviteStudent": "//a[normalize-space()='Invite students']",
     "CopyBtn": "//a[normalize-space()='Copy']",
     "ModalCloseBtn": "//div[@class='MuiModal-root css-8ndowl']//a//*[name()='svg']",
