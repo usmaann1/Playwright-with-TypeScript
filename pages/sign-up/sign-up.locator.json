@@ -4,16 +4,16 @@
     "OrSignUpUsing":"//div[contains(text(),'Or signup using')]",
     "BySigningUPMessage":"//p[contains(text(),'By signing up, you agree to our')]",
     "ExplorePlatformBtn":"//a[normalize-space()='Explore the platform before signing up']",
-    "AlreadyHaveAnAccountText":"//p[2]",
+    "AlreadyHaveAnAccountText":"//p[contains(text(),'Already have an account?')]",
     "PasswordMustBe6DigitsValidationError":"//div[contains(text(),'Password must be at least 6 characters')]",
     "EmailIsRequiredValidationError":"//div[contains(text(),'Email Address is a required field')]",
     "IamAHeading":"//div[contains(text(),'I am a..')]",
-    "StudentBox":"//body/div[@id='root']/div/div/div/div/div/div/div[1]",
-    "RocketLogo":"svg[stroke='currentColor'][fill='currentColor'][stroke-width='0'][viewBox='0 0 16 16']",
+    "StudentBox":"(//div)[12]",
+    "RocketLogo":"(//*[name()='svg'][@stroke='currentColor'])[1]",
     "StudentHeading":"//div[contains(text(),'Student')]",
-    "IamExploringStudentTxt":"//body/div[@id='root']/div/div/div/div/div/div/div[1]/div[2]",
-    "TeacherBox":"//body/div[@id='root']/div/div/div/div/div/div/div[2]",
-    "TeacherClassLogo":"svg[stroke='currentColor'][fill='currentColor'][stroke-width='0'][viewBox='0 0 640 512']",
+    "IamExploringStudentTxt":"(//div)[15]",
+    "TeacherBox":"(//div)[16]",
+    "TeacherClassLogo":"(//*[name()='svg'][@stroke='currentColor'])[2]",
     "TeacherHeading":"//div[contains(text(),'Teacher')]",
-    "IamExploringTeacherTxt":"//body//div[@id='root']//div//div//div//div//div[2]//div[2]"
+    "IamExploringTeacherTxt":"(//div)[19]"
 }

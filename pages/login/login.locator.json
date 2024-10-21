@@ -1,6 +1,6 @@
 {
     "Logo":"img[src='/assets/general/Logo.svg']",
-    "GmailLogo":"//body/div[@id='root']/div/div/div/div/div/div[2]/div[1]",
+    "GmailLogo":"//img[@src='/assets/general/google-icon.svg']",
     "LoginHeading":"//div[contains(text(),'Login')]",
     "EmailAddressTxtBox":"input[placeholder='Email Address']",
     "PasswordTxtBox" : "input[placeholder='Password']",
@@ -10,7 +10,7 @@
     "EmailIsRequiredValidationError":"//div[contains(text(),'Email address is a required field')]",
     "PleaseEnterAValidEmailValidationError":"//div[contains(text(),'Please enter a valid email address.')]",
     "OrLoginUsingText" : "//div[contains(text(),'Or login using')]",
-    "DontHaveAnAccountText" : "//p[1]",
+    "DontHaveAnAccountText" : "//body//div//p[1]",
     "SignUpWithJuicMindBtn" : "a[href='/signup']",
     "ForgotPasswordBtn" : "a[href='/forgot-password']",
     "LogInNavigationBtn":"a[href='/login']",
