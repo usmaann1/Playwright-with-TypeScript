@@ -31,7 +31,7 @@ test.describe("TestSuite: Team/Courses", () => {
     }
   });
 
-  test("[Numair] - TC-1: Test Flow Python", async ({
+ /*  test("[Numair] - TC-1: Test Flow Python", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -463,8 +463,8 @@ test.describe("TestSuite: Team/Courses", () => {
     );
     await teamCoursesPage.uploadFile(TeamCoursesData.PNGFile);
     await teamCoursesPage.AssertImages(TeamCoursesData.TestPNG);
-  });
-/* 
+  }); */
+
   test("[Numair] - TC-21: Test Flow Traditional Java", async ({
     teamCoursesPage,
   }) => {
@@ -1113,7 +1113,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
     await newTeamCoursesPageInstance.isSubmitDisabled();
   });
-
+/* 
   test("[Numair] - TC-41: After Due Date Python with matplotlib", async ({
     teamCoursesPage,
     browser,
