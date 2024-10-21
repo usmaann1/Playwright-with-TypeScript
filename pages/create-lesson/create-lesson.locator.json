@@ -24,7 +24,7 @@
             "rightSIdeMenu": "//div[starts-with(@class, 'w-full rounded-lg')][//a[contains(text(), 'Student Grades')]]",
             "stdntGradesBtn": "a[contains(text(),'Student Grades')]",
             "InviteStudents": "//div[contains(text(),'Invite students')]",
-            "userListTitle": "//h2[normalize-space()='Users']",
+            "userListTitle": "//h2[normalize-space()='Members']",
             "userEmail": "//div[contains(text(),'syedhassaanzfr@gmail.com')]",
             "userType": "//div[normalize-space()='Admin']",
             "bouncingMsg": "//button[@aria-label='close']/..",
@@ -37,7 +37,7 @@
             "textEditor": ".lexical-editor",
             "gotItBtn": "//a[normalize-space()='Got it']",
             "input": ".MuiInputBase-input",
-            "checkAnswerBtn": "//span[normalize-space()='Check Answer']",
+            "checkAnswerBtn": "//span[normalize-space()='Check Answer' or normalize-space()='Submit']",
             "closeBtn": "//button[normalize-space()='Close']",
             "lineError": ".MuiFormHelperText-filled",
             "obtainedPoints": "span"
@@ -113,7 +113,7 @@
                 "optionCb1":"//div[@contenteditable='false']//div//div[1]//input[1]",
                 "optionCb2": "(//input[@id='instantFeedback'])[2]",
                 "PresentationInput": ".tiptap",
-                "submitBtn": "//div[@draggable='true']//div//div//div//div//button",
+                "submitBtn": ".react-renderer.node-shortAnswer button",
                 "submitSucces": "//div[contains(text(),'Submitted')]"
 
                 

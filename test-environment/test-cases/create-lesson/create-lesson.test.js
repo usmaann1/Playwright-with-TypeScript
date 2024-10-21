@@ -312,7 +312,7 @@ test.describe('TestSuite: Create Lesson', () => {
         await createLesson.hoverAndClickOnPlusBtn()
         await expect(createLesson.dropDownContainer).toBeVisible()
         await createLesson.selectElementFromDropdown(CLtd.elements.fillInBlank)
-        createLesson.validateAllFillInTheBlankFields()
+        await createLesson.validateAllFillInTheBlankFields()
     });
     test('[HZ] TC-15 - validate adding new Fill in Blank element functionality || check when the answer is correct', async ({ page,createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
@@ -379,7 +379,7 @@ test.describe('TestSuite: Create Lesson', () => {
         const newCreateLessonPageInstance = new CreateLesson(newPage)
         await newTeamCoursesPageInstance.afterInviteSignUp(link, randomEmail, userPwd, TeamCoursesData.firstName, TeamCoursesData.LastName)
 
-        await newCreateLessonPageInstance.verifyStudentViewForTipElement()
+        await newCreateLessonPageInstance.verifyStudentViewForTipElement(lessonName)
     });
     test('[HZ] TC-20 - validate adding Parsons Problem element inside the editor', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
@@ -408,7 +408,7 @@ test.describe('TestSuite: Create Lesson', () => {
         const newCreateLessonPageInstance = new CreateLesson(newPage)
         await newTeamCoursesPageInstance.afterInviteSignUp(link, randomEmail, userPwd, TeamCoursesData.firstName, TeamCoursesData.LastName)
 
-        await newCreateLessonPageInstance.verifyStudentViewForCorrectCodeSelectElement()
+        await newCreateLessonPageInstance.verifyStudentViewForCorrectCodeSelectElement(lessonName)
     });
     test('[HZ] TC-22 - validate adding Code Select element part 2', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
@@ -425,7 +425,7 @@ test.describe('TestSuite: Create Lesson', () => {
         const newTeamCoursesPageInstance = new TeamCoursesPage(newPage)
         const newCreateLessonPageInstance = new CreateLesson(newPage)
         await newTeamCoursesPageInstance.afterInviteSignUp(link, randomEmail, userPwd, TeamCoursesData.firstName, TeamCoursesData.LastName)
-        await newCreateLessonPageInstance.verifyStudentViewForCorrectCodeSelectElement()
+        await newCreateLessonPageInstance.verifyStudentViewForCorrectCodeSelectElement(lessonName)
     });
     test('[HZ] TC-23 - validate adding Code Select element part 2', async ({ createLesson, teamCoursesPage, browser }) => {
         const randomEmail = UserFunctions.generateRandomEmail(userEmail)
@@ -442,7 +442,7 @@ test.describe('TestSuite: Create Lesson', () => {
         const newTeamCoursesPageInstance = new TeamCoursesPage(newPage)
         const newCreateLessonPageInstance = new CreateLesson(newPage)
         await newTeamCoursesPageInstance.afterInviteSignUp(link, randomEmail, userPwd, TeamCoursesData.firstName, TeamCoursesData.LastName)
-        await newCreateLessonPageInstance.verifyStudentViewForCorrectCodeSelectElement()
+        await newCreateLessonPageInstance.verifyStudentViewForCorrectCodeSelectElement(lessonName)
     });
 
 })
