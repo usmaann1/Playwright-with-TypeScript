@@ -17,7 +17,7 @@ async function cleanAndWriteFile(newData) {
                 console.log('File has data. Cleaning the file...');
                 await fs.writeFile(outputFilePath, '');
             }
-        }
+        }                                                                                                               
 
         await fs.writeFile(outputFilePath, JSON.stringify(newData, null, 2), 'utf8');
 

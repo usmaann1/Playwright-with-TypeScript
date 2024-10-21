@@ -220,7 +220,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async PublishAndInvite() {
     await this.page.waitForTimeout(1000);
-    await this.PublishCheckBox.click({force: true});
+    await this.PublishCheckBox.first().click({force: true});
     await PlaywrightCore.click(this.InviteStudentBtn);
     await PlaywrightCore.click(this.CopyBtn);
     const handle = await this.page.evaluateHandle(() =>
