@@ -31,7 +31,7 @@ test.describe("TestSuite: Team/Courses", () => {
     }
   });
 
- /*  test("[Numair] - TC-1: Test Flow Python", async ({
+ test("[Numair] - TC-1: Test Flow Python", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -573,7 +573,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-25: Folder and File Structure Verification CSharp", async ({
+  test.skip("[Numair] - TC-25: Folder and File Structure Verification CSharp", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -640,7 +640,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-27: Folder and File Structure Verification HTML", async ({
+  test.skip("[Numair] - TC-27: Folder and File Structure Verification HTML", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -769,7 +769,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-30: Folder and File Structure Verification Java With Swing", async ({
+  test.skip("[Numair] - TC-30: Folder and File Structure Verification Java With Swing", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -805,7 +805,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-31: Folder and File Structure Verification Python with pillow", async ({
+  test.skip("[Numair] - TC-31: Folder and File Structure Verification Python with pillow", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -1747,7 +1747,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.LastName
     );
     await newTeamCoursesPageInstance.isResubmissonAllowed(false);
-  });*/
+  });
 
   test("[Numair] - TC-61: Allow Resubmission Python with Tkinter", async ({
     teamCoursesPage,

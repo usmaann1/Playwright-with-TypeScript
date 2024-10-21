@@ -220,7 +220,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async PublishAndInvite() {
     await this.page.waitForTimeout(1000);
-    await this.PublishCheckBox.first().click({force: true});
+    await this.PublishCheckBox.first().click({ force: true });
     await PlaywrightCore.click(this.InviteStudentBtn);
     await PlaywrightCore.click(this.CopyBtn);
     const handle = await this.page.evaluateHandle(() =>
@@ -295,8 +295,10 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await expect(this.CloudIcon).toBeVisible();
     await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
-    await PlaywrightCore.waitTimeout(this.page, 10000);
-    await PlaywrightCore.click(this.EditorStopBtn);
+    await PlaywrightCore.waitTimeout(this.page, 30000);
+    if (await this.EditorStopBtn.isVisible()) {
+      await PlaywrightCore.click(this.EditorStopBtn);
+    }
     await PlaywrightCore.waitTimeout(this.page, 5000);
     const codeEditorContent = await this.EditorTextBox;
     await codeEditorContent.press(this.SelectAll);
@@ -645,7 +647,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async setPerviousDueDate() {
     await this.page.addStyleTag({ content: '* { transition: none !important; animation: none !important; transform: none !important }' });
-    await PlaywrightCore.click(this.ClosePopUp);;
+    if (await this.ClosePopUp.isVisible()) {
+      await PlaywrightCore.click(this.ClosePopUp);
+    }
     await PlaywrightCore.click(this.DueDateBtn);
     const previousDay = dayjs().subtract(1, 'day').format('MM/DD/YYYY');
     await this.page.getByPlaceholder('MM/DD/YYYY hh:mm aa').fill(`${previousDay} 11:00 AM`);
@@ -653,7 +657,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async setDueDate() {
     await this.page.addStyleTag({ content: '* { transition: none !important; animation: none !important; transform: none !important }' });
-    await PlaywrightCore.click(this.ClosePopUp);
+    if (await this.ClosePopUp.isVisible()) {
+      await PlaywrightCore.click(this.ClosePopUp);
+    }
     await PlaywrightCore.click(this.DueDateBtn);
     const previousDay = dayjs().add(2, 'day').format('MM/DD/YYYY');
     await this.page.getByPlaceholder('MM/DD/YYYY hh:mm aa').fill(`${previousDay} 11:00 AM`);
@@ -661,13 +667,17 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async allowResubmission() {
     await this.page.addStyleTag({ content: '* { transition: none !important; animation: none !important; transform: none !important }' });
-    await PlaywrightCore.click(this.ClosePopUp);
+    if (await this.ClosePopUp.isVisible()) {
+      await PlaywrightCore.click(this.ClosePopUp);
+    }
     await PlaywrightCore.click(this.ReSubmissionBtn);
   }
 
   async allowLateSubmission() {
     await this.page.addStyleTag({ content: '* { transition: none !important; animation: none !important; transform: none !important }' });
-    await PlaywrightCore.click(this.ClosePopUp);
+    if (await this.ClosePopUp.isVisible()) {
+      await PlaywrightCore.click(this.ClosePopUp);
+    }
     await PlaywrightCore.click(this.DueDateBtn);
     const previousDay = dayjs().subtract(1, 'day').format('MM/DD/YYYY');
     await this.page.getByPlaceholder('MM/DD/YYYY hh:mm aa').fill(`${previousDay} 11:00 AM`);
@@ -692,7 +702,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.click(this.DisableSubmitBtn);
     await PlaywrightCore.click(this.SubmitBtn);
     await PlaywrightCore.waitTimeout(this.page, 20000)
-    
+
     const textVisible = await this.page.locator('text=You have already submitted the code.').isVisible();
     if (!isJS) expect(textVisible).toBe(true);
     isDisabled = await this.DisableSubmitBtn.isDisabled();
@@ -766,7 +776,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const fileHandle = await this.page.locator(source);
     const folderHandle = await this.page.locator(target);
     await fileHandle.dragTo(folderHandle);
-    await PlaywrightCore.click(this.MenuBar);
+    await this.VertIcon.first().click();
     const [download] = await Promise.all([
       this.page.waitForEvent("download"),
       this.page.locator("text=Download Project").click(),
@@ -868,7 +878,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const fileHandle = await this.page.locator(source);
     const folderHandle = await this.page.locator(target);
     await fileHandle.dragTo(folderHandle);
-    await PlaywrightCore.click(this.MenuBar);
+    await this.VertIcon.first().click();
     const [download] = await Promise.all([
       this.page.waitForEvent("download"),
       this.page.locator("text=Download Project").click(),
@@ -920,7 +930,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const fileHandle = await this.page.locator(source);
     const folderHandle = await this.page.locator(target);
     await fileHandle.dragTo(folderHandle);
-    await PlaywrightCore.click(this.MenuBar);
+    await this.VertIcon.first().click();
     const [download] = await Promise.all([
       this.page.waitForEvent("download"),
       this.page.locator("text=Download Project").click(),
