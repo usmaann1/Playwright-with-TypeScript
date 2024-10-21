@@ -463,7 +463,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
     await teamCoursesPage.uploadFile(TeamCoursesData.PNGFile);
     await teamCoursesPage.AssertImages(TeamCoursesData.TestPNG);
-  }); */
+  });
 
   test("[Numair] - TC-21: Test Flow Traditional Java", async ({
     teamCoursesPage,
@@ -1112,8 +1112,8 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.LastName
     );
     await newTeamCoursesPageInstance.isSubmitDisabled();
-  });
-/* 
+  }); */
+
   test("[Numair] - TC-41: After Due Date Python with matplotlib", async ({
     teamCoursesPage,
     browser,
@@ -1748,7 +1748,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
     await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
-
+/*
   test("[Numair] - TC-61: Allow Resubmission Python with Tkinter", async ({
     teamCoursesPage,
     browser,
