@@ -225,7 +225,6 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-7: Test Flow Python with Turtle", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -573,7 +572,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test.skip("[Numair] - TC-25: Folder and File Structure Verification CSharp", async ({
+  test("[Numair] - TC-25: Folder and File Structure Verification CSharp", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -640,7 +639,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test.skip("[Numair] - TC-27: Folder and File Structure Verification HTML", async ({
+  test("[Numair] - TC-27: Folder and File Structure Verification HTML", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -769,7 +768,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test.skip("[Numair] - TC-30: Folder and File Structure Verification Java With Swing", async ({
+  test("[Numair] - TC-30: Folder and File Structure Verification Java With Swing", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -805,7 +804,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test.skip("[Numair] - TC-31: Folder and File Structure Verification Python with pillow", async ({
+  test("[Numair] - TC-31: Folder and File Structure Verification Python with pillow", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
