@@ -31,7 +31,7 @@ test.describe("TestSuite: Team/Courses", () => {
     }
   });
 
- test("[Numair] - TC-1: Test Flow Python", async ({
+  test("[Numair] - TC-1: Test Flow Python", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -225,6 +225,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
+  test("[Numair] - TC-7: Test Flow Python with Turtle", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -1111,7 +1112,7 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.LastName
     );
     await newTeamCoursesPageInstance.isSubmitDisabled();
-  }); 
+  });
 
   test("[Numair] - TC-41: After Due Date Python with matplotlib", async ({
     teamCoursesPage,
