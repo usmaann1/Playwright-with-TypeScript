@@ -406,9 +406,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     );
     await codeEditorContent.press(this.BackSpace);
     await codeEditorContent.fill(updatedCode);
-    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
-    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.FullScreenBtn);
     const Colors = await UserFunctions.getAllColorsFromCanvas(
       this.page,
@@ -428,9 +428,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const updatedCode = clipboardContent.replace(6, 10).replace(250, 140);
     await codeEditorContent.press(this.BackSpace);
     await codeEditorContent.fill(updatedCode);
-    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
-    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.FullScreenBtn);
     await PlaywrightCore.waitTimeout(this.page, 5000);
     const isValid = await UserFunctions.getCanvasValidations(
@@ -454,7 +454,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const updatedCode = clipboardContent.replace("'purple'", "'red'");
     await codeEditorContent.press(this.BackSpace);
     await codeEditorContent.fill(updatedCode);
-    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
     await PlaywrightCore.waitTimeout(this.page, 15000);
     await PlaywrightCore.click(this.FileExplorerBtnOpen);
@@ -483,9 +483,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     );
     await codeEditorContent.press(this.BackSpace);
     await codeEditorContent.fill(updatedCode);
-    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
-    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.FullScreenBtn);
     await PlaywrightCore.waitTimeout(this.page, 5000);
     const Colors = await UserFunctions.getAllColorsFromCanvas(
@@ -508,9 +508,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     );
     await codeEditorContent.press(this.BackSpace);
     await codeEditorContent.fill(updatedCode);
-    await PlaywrightCore.waitTimeout(this.page, 5000);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
-    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.FullScreenBtn);
     await PlaywrightCore.waitTimeout(this.page, 5000);
     const isValid = await UserFunctions.getCanvasValidations(
