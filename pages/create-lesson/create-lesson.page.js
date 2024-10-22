@@ -2,6 +2,7 @@ const { PlaywrightCore } = require('../../module-imports/helperFunctions.imports
 import { expect } from '@playwright/test';
 import Locators from './create-lesson.locator.json';
 import clTD from '../../test-environment/test-assets/test-data-files/create-lesson/create-lesson-testData.json';
+import CLHRtd from '../../test-environment/test-assets/test-data-files/create-lesson/create-lesson-hide-reveal-testData.json'
 
 exports.CreateLesson = class CreateLesson {
 
@@ -560,7 +561,7 @@ exports.CreateLesson = class CreateLesson {
         await this.page.waitForTimeout(10000);
         const toVerify = await parent.locator(this.obtainedPoints).nth(1).textContent()
         expect(toVerify).toContain('1')
-        await PlaywrightCore.click(this.closeBtn)
+        // await PlaywrightCore.click(this.closeBtn)
     }
     async verifyCorrectAnswerOnPublishing() {
         const parent = this.textEditor.locator(this.container)
@@ -669,11 +670,14 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.click(this.gotItBtn)
         await this.page.waitForTimeout(3000);
         const txt = this.PresentationInput.nth(2).locator('p')
-        await PlaywrightCore.fill(txt,'randomtext')
-        await this.page.waitForTimeout(3000);
-        await PlaywrightCore.click(this.resetTotemplateBtn)
-        const resetTxt = this.PresentationInput.nth(2).locator('p').getByText('Raul')
-        await expect(resetTxt).toBeVisible()
+        await expect(txt).toBeVisible()
+        expect("Raul").toBe(await PlaywrightCore.textContent(txt))
+        await PlaywrightCore.clear(txt)
+        await PlaywrightCore.fill(txt,'Raul')
+        // await this.page.waitForTimeout(3000);
+        // await PlaywrightCore.click(this.resetTotemplateBtn)
+        const textxt = this.PresentationInput.nth(2).locator('p').getByText('Raul')
+        await expect(textxt).toBeVisible()
         await expect(this.submitBtn).toBeVisible()
         await PlaywrightCore.click(this.submitBtn)
         await this.checkBackgroundColor(this.submitSucces, clTD.shortAnswer.successLabelColor)
@@ -720,8 +724,10 @@ exports.CreateLesson = class CreateLesson {
         await this.checkBackgroundColor(test,clTD.tip.backgroundPink)
         await PlaywrightCore.click(this.exitStudentView)
     }
-    async verifyStudentViewForTipElement() {
+    async verifyStudentViewForTipElement(lesson) {
         const parent = this.textEditor
+        const lessonEle = await this.page.locator('//h2[contains(text(), "'+ lesson +'")]');
+        await PlaywrightCore.click(lessonEle)
         const test = parent.locator(this.tipEle)
         await this.checkBackgroundColor(test,clTD.tip.backgroundPink)
     }
@@ -800,15 +806,19 @@ exports.CreateLesson = class CreateLesson {
         await editorLine1.selectText()
         await PlaywrightCore.ClickByText(this.page,'return')
         await PlaywrightCore.click(this.checkAnswerBtn)
+        await PlaywrightCore.click(this.closeBtn)
         await expect(this.correctLabelIcon).toBeVisible()
         await PlaywrightCore.click(this.exitStudentView)
     }
-    async verifyStudentViewForCorrectCodeSelectElement() {
+    async verifyStudentViewForCorrectCodeSelectElement(lesson) {
         const editor = this.codeEditor
+        const lessonEle = await this.page.locator('//h2[contains(text(), "'+ lesson +'")]');
+        await PlaywrightCore.click(lessonEle)
         const editorLine1 = editor.locator(this.line).nth(3)
         await editorLine1.selectText()
         await PlaywrightCore.ClickByText(this.page,'return n')
         await PlaywrightCore.click(this.checkAnswerBtn)
+        await PlaywrightCore.click(this.closeBtn)
         await expect(this.correctLabelIcon).toBeVisible()
     }
     async validateHeadinElementOnPresentationView() {
@@ -935,5 +945,79 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.fill(this.HTMLTextBox, Text)
         await expect(this.SaveBtn).toHaveText(clTD.SaveBtnValue)
         await PlaywrightCore.click(this.SaveBtn)
+    }
+
+    async hideText(Text) {
+        await expect(this.HideRevealTextBox).toBeVisible()
+        await expect(this.HideContentBtn).toBeVisible()
+        await expect(this.HideContentBtn).toHaveText(CLHRtd.HideContentTxt)
+        await PlaywrightCore.click(this.HideContentBtn)
+    }
+
+    async assertionsAfterHidingText(Text) {
+        await expect(this.HideContentBtn).not.toBeVisible()
+        await expect(this.HideRevealTextBox).not.toBeVisible()
+        await expect(this.RevealContentButton).toBeVisible()
+        await expect(this.RevealContentButton).toHaveText(CLHRtd.RevealContentTxt)
+    }
+
+    async assertionsAfterRevealingText(Text) {
+        await expect(this.RevealContentButton).not.toBeVisible()
+        await expect(this.HideRevealTextBox).toBeVisible()
+        await expect(this.HideContentBtn).toBeVisible()
+        await expect(this.HideContentBtn).toHaveText(CLHRtd.HideContentTxt)
+    }
+
+    async createMultipleChoiceTest() {
+        await this.selectElementFromDropdown(clTD.elements.multipleChoice)
+        await PlaywrightCore.click(this.MultipleChoiceQuestionHeadingBox)
+        await PlaywrightCore.fill(this.MultipleChoiceQuestionHeadingBox, clTD.Heading1plus1)
+        await PlaywrightCore.click(this.MultipleChoiceFormBox4DeleteBtn)
+        await PlaywrightCore.click(this.MultipleChoiceAddChoiceBtn)
+        await PlaywrightCore.fill(this.MultipleChoiceFormBox1, clTD.One)
+        await PlaywrightCore.fill(this.MultipleChoiceFormBox2, clTD.Two)
+        await PlaywrightCore.fill(this.MultipleChoiceFormBox3, clTD.Three)
+        await PlaywrightCore.fill(this.MultipleChoiceFormBox4.nth(0), clTD.Four)
+        await expect(this.MultipleChoiceFormBox1).toHaveText(clTD.One)
+        await expect(this.MultipleChoiceFormBox2).toHaveText(clTD.Two)
+        await expect(this.MultipleChoiceFormBox3).toHaveText(clTD.Three)
+        await expect(this.MultipleChoiceFormBox4.nth(0)).toHaveText(clTD.Four)
+        await expect(this.MultipleChoiceSelectBox2).toBeVisible()
+        await PlaywrightCore.click(this.MultipleChoiceSelectBox2)
+    }
+
+    async assertionsOnOptionsScreenForMCQTest() {
+        await PlaywrightCore.click(this.OptionsBtn)
+        await expect(this.MultipleChoiceOptionsRule1).toHaveText(clTD.MultipleChoiceOptionsRule1Value)
+        await expect(this.MultipleChoiceOptionsRule2).toHaveText(clTD.MultipleChoiceOptionsRule2Value)
+        await expect(this.MultipleChoiceOptionsRule3).toHaveText(clTD.MultipleChoiceOptionsRule3Value)
+        await expect(this.MultipleChoiceOptionsRule4).toHaveText(clTD.MultipleChoiceOptionsRule4Value)
+        await expect(this.MultipleChoiceOptionsRule5).toHaveText(clTD.MultipleChoiceOptionsRule5Value)
+    }
+
+    async optionsSelectionForMCQTest() {
+        await PlaywrightCore.click(this.OptionsCheckBox1)
+        await PlaywrightCore.click(this.OptionsCheckBox3)
+        await PlaywrightCore.click(this.OptionsCheckBox4.nth(0))
+        await PlaywrightCore.click(this.OptionsCheckBox5.nth(0))
+        await PlaywrightCore.click(this.OptionsCheckBox1)
+        await PlaywrightCore.click(this.OptionsCheckBox3)
+        await PlaywrightCore.click(this.OptionsCheckBox4.nth(0))
+        await PlaywrightCore.click(this.OptionsCheckBox5.nth(0))
+    }
+    async assertionsOnPresentationModeForIncorrectMCQAnswer() {
+        await expect(this.IncorrectAndCorrectAnswerHeading).toHaveText(clTD.IncorrectAnswerTxt)
+        await expect(this.PointScoreMsg).toHaveText(clTD.PointScore0Txt)
+        await expect(this.CloseBtn).toHaveText(clTD.CloseBtnValue)
+        await PlaywrightCore.click(this.CloseBtn)
+        await expect(this.IncorrectMsg).toHaveText(clTD.IncorrectMsgValue)
+    }
+
+    async assertionsOnPresentationModeForCorrectMCQAnswer() {
+        await expect(this.IncorrectAndCorrectAnswerHeading).toHaveText(clTD.CorrectAnswerTxt)
+        await expect(this.PointScoreMsg).toHaveText(clTD.PointScore1Txt)
+        await expect(this.CloseBtn).toHaveText(clTD.CloseBtnValue)
+        await PlaywrightCore.click(this.CloseBtn)
+        await expect(this.CorrectMsg).toHaveText(clTD.CorrectMsgValue)
     }
 }

@@ -85,7 +85,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.TestName = this.page.locator(Locators.TestName);
     this.TestInput = this.page.locator(Locators.TestInput);
     this.TestOutput = this.page.locator(Locators.TestOutput);
-    this.PublishCheckBox = this.page.locator(Locators.PublishCheckBox);
+    this.PublishCheckBox2 = this.page.locator(Locators.PublishCheckBox);
+    this.PublishCheckBox = this.page.locator(Locators.PublishCheckBox).first();
+    this.PublishToggleBtn = this.page.locator(Locators.PublishToggleBtn)
     this.CreateTestBtn = this.page.locator(Locators.CreateTestBtn);
     this.InviteStudentBtn = this.page.locator(Locators.InviteStudent);
     this.CopyBtn = this.page.locator(Locators.CopyBtn);
@@ -220,7 +222,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async PublishAndInvite() {
     await this.page.waitForTimeout(1000);
-    await this.PublishCheckBox.first().click({ force: true });
+    await this.PublishCheckBox2.first().click({ force: true });
     await PlaywrightCore.click(this.InviteStudentBtn);
     await PlaywrightCore.click(this.CopyBtn);
     const handle = await this.page.evaluateHandle(() =>
@@ -232,7 +234,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   }
 
   async PublishAndInviteCreateLesson() {
-    await PlaywrightCore.check(this.PublishCheckBox.nth(0));
+    await this.turnOnPublishToggleButton()
     await PlaywrightCore.click(this.InviteStudentBtn);
     await PlaywrightCore.click(this.CopyBtn);
     const handle = await this.page.evaluateHandle(() =>
@@ -241,6 +243,20 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const clipboardContent = await handle.jsonValue();
     await PlaywrightCore.click(this.ModalCloseBtn);
     return clipboardContent;
+  }
+
+  async turnOnPublishToggleButton() {
+    const classAttr = await PlaywrightCore.getAttribute(this.PublishToggleBtn, 'class')
+    if(!classAttr.includes('Mui-checked')) {
+      await PlaywrightCore.click(this.PublishToggleBtn);
+    }
+  }
+
+  async turnOffPublishToggleButton() {
+    const classAttr = await PlaywrightCore.getAttribute(this.PublishToggleBtn, 'class')
+    if(!lassAttr.includes('Mui-checked')) {
+      await PlaywrightCore.click(this.PublishToggleBtn);
+    }
   }
 
   async afterInviteSignUp(url, userName, password, firstName, lastName) {
