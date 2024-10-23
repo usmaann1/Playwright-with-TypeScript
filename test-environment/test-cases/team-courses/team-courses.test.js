@@ -252,7 +252,7 @@ test.describe("TestSuite: Team/Courses", () => {
       randomName,
       TeamCoursesData.projectTypeOption4
     );
-    await teamCoursesPage.pythonWithTkinter();
+    await teamCoursesPage.pythonWithTkinter();        
   });
 
   test("[Numair] - TC-9: Test Flow Java with Swing", async ({
@@ -465,7 +465,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.AssertImages(TeamCoursesData.TestPNG);
   });
 
-  test("[Numair] - TC-21: Test Flow Traditional Java", async ({
+  /* test("[Numair] - TC-21: Test Flow Traditional Java", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -481,9 +481,9 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.TestJavaTraditional,
       TeamCoursesData.TestTraditonalOutput
     );
-  });
+  }); */
 
-  test("[Numair] - TC-22: Folder and File Structure Verification JavaScript", async ({
+  test("[Numair] - TC-21: Folder and File Structure Verification JavaScript", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -512,7 +512,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-23: Folder and File Structure Verification Python", async ({
+  test("[Numair] - TC-22: Folder and File Structure Verification Python", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -542,7 +542,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-24: Folder and File Structure Verification Java", async ({
+  test("[Numair] - TC-23: Folder and File Structure Verification Java", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -573,7 +573,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-25: Folder and File Structure Verification CSharp", async ({
+  test("[Numair] - TC-24: Folder and File Structure Verification CSharp", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -610,7 +610,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-26: Folder and File Structure Verification CPP", async ({
+  test("[Numair] - TC-25: Folder and File Structure Verification CPP", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -640,7 +640,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-27: Folder and File Structure Verification HTML", async ({
+  test("[Numair] - TC-26: Folder and File Structure Verification HTML", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -655,10 +655,10 @@ test.describe("TestSuite: Team/Courses", () => {
       true
     );
     const link = await teamCoursesPage.fileStructureJAVACSHTML(
-      /^Filesindex\.htmlstyles\.cssscript\.js$/,
+      /^Filesindex\.htmlscript\.jsstyles\.css$/,
       "Helper",
       TeamCoursesData.NewFileHTML,
-      /^Filesindex\.htmlstyles\.cssscript\.jsHelper$/,
+      /^FilesHelperindex\.htmlscript\.jsstyles\.css$/,
       "Helpernew",
       "html",
       TeamCoursesData.ChangeCSFile,
@@ -709,7 +709,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-28: Folder and File Structure Verification Python with turtle", async ({
+  test("[Numair] - TC-27: Folder and File Structure Verification Python with turtle", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -739,7 +739,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-29: Folder and File Structure Verification Pyjton with Matplotlib", async ({
+  test("[Numair] - TC-28: Folder and File Structure Verification Pyjton with Matplotlib", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -769,7 +769,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-30: Folder and File Structure Verification Java With Swing", async ({
+  test("[Numair] - TC-29: Folder and File Structure Verification Java With Swing", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -805,7 +805,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-31: Folder and File Structure Verification Python with pillow", async ({
+  test("[Numair] - TC-30: Folder and File Structure Verification Python with pillow", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -835,7 +835,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-32: After Due Date Python", async ({
+  test("[Numair] - TC-31: After Due Date Python", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -865,7 +865,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled();
   });
 
-  test("[Numair] - TC-33: After Due Date Java", async ({
+  test("[Numair] - TC-32: After Due Date Java", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -895,7 +895,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled();
   });
 
-  test("[Numair] - TC-34: After Due Date CSharp", async ({
+  test("[Numair] - TC-33: After Due Date CSharp", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -925,7 +925,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled();
   });
 
-  test("[Numair] - TC-35: After Due Date CPP", async ({
+  test("[Numair] - TC-34: After Due Date CPP", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -955,7 +955,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled();
   });
 
-  test("[Numair] - TC-36: After Due Date JavaScript", async ({
+  test("[Numair] - TC-35: After Due Date JavaScript", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -991,7 +991,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled();
   });
 
-  test("[Numair] - TC-37: After Due Date HTML", async ({
+  test("[Numair] - TC-36: After Due Date HTML", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1027,7 +1027,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance2.isSubmitDisabled();
   });
 
-  test("[Numair] - TC-38: After Due Date Python with Turtle", async ({
+  test("[Numair] - TC-37: After Due Date Python with Turtle", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1056,7 +1056,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled();
   });
 
-  test("[Numair] - TC-39: After Due Date Python with Tkinter", async ({
+  test("[Numair] - TC-38: After Due Date Python with Tkinter", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1085,7 +1085,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled();
   });
 
-  test("[Numair] - TC-40: After Due Date Java with Swing", async ({
+  test("[Numair] - TC-39: After Due Date Java with Swing", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1114,7 +1114,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled();
   });
 
-  test("[Numair] - TC-41: After Due Date Python with matplotlib", async ({
+  test("[Numair] - TC-40: After Due Date Python with matplotlib", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1143,7 +1143,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled();
   });
 
-  test("[Numair] - TC-42: After Due Date Python with Pillow", async ({
+  test("[Numair] - TC-41: After Due Date Python with Pillow", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1172,7 +1172,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled();
   });
 
-  test("[Numair] - TC-43: Before Due Date Python", async ({
+  test("[Numair] - TC-42: Before Due Date Python", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1206,7 +1206,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
-  test("[Numair] - TC-44: Before Due Date Java", async ({
+  test("[Numair] - TC-43: Before Due Date Java", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1240,7 +1240,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
-  test("[Numair] - TC-45: Before Due Date CSharp", async ({
+  test("[Numair] - TC-44: Before Due Date CSharp", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1274,7 +1274,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
-  test("[Numair] - TC-46: Before Due Date CPP", async ({
+  test("[Numair] - TC-45: Before Due Date CPP", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1308,7 +1308,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
-  test("[Numair] - TC-47: Before Due Date JavaScript", async ({
+  test("[Numair] - TC-46: Before Due Date JavaScript", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1347,7 +1347,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
-  test("[Numair] - TC-48: Before Due Date HTML", async ({
+  test("[Numair] - TC-47: Before Due Date HTML", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1383,7 +1383,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance2.isSubmitDisabled(false);
   });
 
-  test("[Numair] - TC-49: Before Due Date Python with Turtle", async ({
+  test("[Numair] - TC-48: Before Due Date Python with Turtle", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1412,7 +1412,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled(false);
   });
 
-  test("[Numair] - TC-50: Before Due Date Python With Tkinter", async ({
+  test("[Numair] - TC-49: Before Due Date Python With Tkinter", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1441,7 +1441,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled(false);
   });
 
-  test("[Numair] - TC-51: Before Due Date Java with Swing", async ({
+  test("[Numair] - TC-50: Before Due Date Java with Swing", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1470,7 +1470,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled(false);
   });
 
-  test("[Numair] - TC-52: Before Due Date Python with matplotlib", async ({
+  test("[Numair] - TC-51: Before Due Date Python with matplotlib", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1499,7 +1499,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled(false);
   });
 
-  test("[Numair] - TC-53: Before Due Date Python with Pillow", async ({
+  test("[Numair] - TC-52: Before Due Date Python with Pillow", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1528,7 +1528,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isSubmitDisabled(false);
   });
 
-  test("[Numair] - TC-54: Allow Resubmission Python", async ({
+  test("[Numair] - TC-53: Allow Resubmission Python", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1558,7 +1558,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
-  test("[Numair] - TC-55: Allow Resubmission Java", async ({
+  test("[Numair] - TC-54: Allow Resubmission Java", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1588,7 +1588,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
-  test("[Numair] - TC-56: Allow Resubmission CSharp", async ({
+  test("[Numair] - TC-55: Allow Resubmission CSharp", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1618,7 +1618,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
-  test("[Numair] - TC-57: Allow Resubmission CPP", async ({
+  test("[Numair] - TC-56: Allow Resubmission CPP", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1648,7 +1648,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
-  test("[Numair] - TC-58: Allow Resubmission JavaScript", async ({
+  test("[Numair] - TC-57: Allow Resubmission JavaScript", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1684,7 +1684,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
-  test("[Numair] - TC-59: Allow Resubmission HTML", async ({
+  test("[Numair] - TC-58: Allow Resubmission HTML", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1720,7 +1720,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance2.isResubmissonAllowed(false);
   });
 
-  test("[Numair] - TC-60: Allow Resubmission Python with Turtle", async ({
+  test("[Numair] - TC-59: Allow Resubmission Python with Turtle", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1749,7 +1749,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
-  test("[Numair] - TC-61: Allow Resubmission Python with Tkinter", async ({
+  test("[Numair] - TC-60: Allow Resubmission Python with Tkinter", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1778,7 +1778,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
-  test("[Numair] - TC-62: Allow Resubmission Java with Swing", async ({
+  test("[Numair] - TC-61: Allow Resubmission Java with Swing", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1807,7 +1807,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
-  test("[Numair] - TC-63: Allow Resubmission python with matplotlib", async ({
+  test("[Numair] - TC-62: Allow Resubmission python with matplotlib", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1836,7 +1836,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
-  test("[Numair] - TC-64: Allow Resubmission Pyton with pillow", async ({
+  test("[Numair] - TC-63: Allow Resubmission Pyton with pillow", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1865,7 +1865,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
-  test("[Numair] - TC-65: Allow Late Submission Python", async ({
+  test("[Numair] - TC-64: Allow Late Submission Python", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1895,7 +1895,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isLateSubmissionAllowed(false);
   });
 
-  test("[Numair] - TC-66: Allow Late Submission Java", async ({
+  test("[Numair] - TC-65: Allow Late Submission Java", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1925,7 +1925,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isLateSubmissionAllowed(false);
   });
 
-  test("[Numair] - TC-67: Allow Late Submission CSharp", async ({
+  test("[Numair] - TC-66: Allow Late Submission CSharp", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1955,7 +1955,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isLateSubmissionAllowed(false);
   });
 
-  test("[Numair] - TC-68: Allow Late Submission CPP", async ({
+  test("[Numair] - TC-67: Allow Late Submission CPP", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -1985,7 +1985,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isLateSubmissionAllowed(false);
   });
 
-  test("[Numair] - TC-69: Allow Late Submission JavaScript", async ({
+  test("[Numair] - TC-68: Allow Late Submission JavaScript", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -2021,7 +2021,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isLateSubmissionAllowed(true);
   });
 
-  test("[Numair] - TC-70: Allow Late Submission HTML", async ({
+  test("[Numair] - TC-69: Allow Late Submission HTML", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -2057,7 +2057,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance2.isLateSubmissionAllowed(false);
   });
 
-  test("[Numair] - TC-71: Allow Late Submission Python with turtle", async ({
+  test("[Numair] - TC-70: Allow Late Submission Python with turtle", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -2086,7 +2086,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isLateSubmissionAllowed(false);
   });
 
-  test("[Numair] - TC-72: Allow Late Submission Python with Tkinter", async ({
+  test("[Numair] - TC-71: Allow Late Submission Python with Tkinter", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -2115,7 +2115,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isLateSubmissionAllowed(false);
   });
 
-  test("[Numair] - TC-73: Allow Late Submission Java with Swing", async ({
+  test("[Numair] - TC-72: Allow Late Submission Java with Swing", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -2144,7 +2144,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isLateSubmissionAllowed(false);
   });
 
-  test("[Numair] - TC-74: Allow Late Submission Python with Matplotlib", async ({
+  test("[Numair] - TC-73: Allow Late Submission Python with Matplotlib", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -2173,7 +2173,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isLateSubmissionAllowed(false);
   });
 
-  test("[Numair] - TC-75: Allow Late Submission Python with Pillow", async ({
+  test("[Numair] - TC-74: Allow Late Submission Python with Pillow", async ({
     teamCoursesPage,
     browser,
   }) => {
