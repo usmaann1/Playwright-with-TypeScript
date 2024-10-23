@@ -1,6 +1,6 @@
 {
     "SignUpHereBtn":"//a[normalize-space()='Sign up here.']",
-    "AreYouAteacherText":"//div[3]//p[1]",
+    "AreYouAteacherText":"//p[contains(text(),'Are you a teacher?')]",
     "EnterBtn":"//a[normalize-space()='Enter']",
     "GamePinInputField":"input[placeholder='Game Pin']",
     "JoinQuizHeading":"//p[normalize-space()='Join Quiz']",
