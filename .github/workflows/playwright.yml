@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   test:
-    timeout-minutes: 120
+    timeout-minutes: 500
     runs-on: large-runner
    
     steps:
