@@ -4,12 +4,17 @@ const { test, expect } = require('../../../module-imports/testFixtures.imports')
 import frqData from '../../test-assets/test-data-files/frq/frq-testData.json';
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 import Locators from "../../../pages/frq/frq.locator.json";
+import { FAILED_TEST_CASES } from '../../../failed-test-cases/failed-test-cases';
 
 test.describe('TestSuite: FRQ', () => {
 
 
-  test.beforeEach(async ({ loginPage }) => {
-    
+  test.beforeEach(async ({ loginPage }, testInfo) => {
+    if (FAILED_TEST_CASES.length !== 0) {
+      if (!FAILED_TEST_CASES.includes(testInfo.title)) {
+        test.skip('Test case not included in the list');
+      }
+    }
     await loginPage.NavigateToLoginPage();
     await loginPage.fillCredentialsAndLogin(Credentials.EMAIL_USMAN, Credentials.PASSWORD_USMAN);
   });

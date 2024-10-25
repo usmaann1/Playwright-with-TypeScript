@@ -21,7 +21,6 @@ exports.CreateLesson = class CreateLesson {
         this.inputTag = this.page.locator(Locators.lessonPage.mainPage.input)
         this.PresentationMode = this.page.locator(Locators.lessonPage.mainPage.presnetationMode)
         this.gotItBtn = this.page.locator(Locators.lessonPage.mainPage.gotItBtn)
-        this.addNewItem = this.page.locator(Locators.addNewItem)
         this.itemContainer = this.page.locator(Locators.itemContainer)
         this.addItemLesson = this.page.locator(Locators.addItemLesson)
         this.lessonNameTxtBox = this.page.locator(Locators.createLessonUI.lessonNameTxtBox)
@@ -31,7 +30,6 @@ exports.CreateLesson = class CreateLesson {
         this.lessonTitle = this.page.locator(Locators.lessonPage.lessonTitle)
         this.backToTeamButton = this.page.locator(Locators.lessonPage.sideMenu.backToTeamBtn)
         this.viewStudentsBtn = this.page.locator(Locators.lessonPage.sideMenu.viewStudentsBtn)
-        this.studentGradesBtn = this.page.locator(Locators.lessonPage.sideMenu.studentGradesBtn)
         this.PublishMultiple = this.page.locator(Locators.lessonPage.sideMenu.PublishMultiple)
         this.deleteMultiple = this.page.locator(Locators.lessonPage.sideMenu.deleteMultiple)
         this.SideMenuLessonName = this.page.locator(Locators.lessonPage.sideMenu.SideMenuLessonName)
@@ -45,8 +43,8 @@ exports.CreateLesson = class CreateLesson {
         this.menuIcon = this.page.locator(Locators.lessonPage.textEditor.menuIcon)
         this.firstRow = this.page.locator(Locators.lessonPage.textEditor.emptyEditorLine)
         this.hideRightSideMenuBtn = this.page.locator(Locators.lessonPage.sideMenu.hideRightSideMenuBtn)
-        this.rightSIdeMenu = this.page.locator(Locators.lessonPage.sideMenu.rightSIdeMenu)
-        this.stdntGradesBtn = this.rightSIdeMenu.locator(Locators.lessonPage.sideMenu.studentGradesBtn)
+        this.rightSIdeMenu = this.page.locator(Locators.lessonPage.sideMenu.rightSIdeMenu).last()
+        this.studentGradesBtn = this.rightSIdeMenu.locator(Locators.lessonPage.sideMenu.studentGradesBtn)
         this.InviteStudents = this.page.locator(Locators.lessonPage.sideMenu.InviteStudents)
         this.bouncingMsg = this.page.locator(Locators.lessonPage.sideMenu.bouncingMsg)
         this.bouncingMsgCloseBtn = this.page.locator(Locators.lessonPage.sideMenu.bouncingMsgCloseBtn)
@@ -112,10 +110,9 @@ exports.CreateLesson = class CreateLesson {
         this.BlankType = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.BlankType)
         this.answer = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.answer)
         this.pointsInputField = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.pointsInputField)
-        this.item1 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.item1)
+        this.itemList = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.itemList)
         this.checkBox1 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.checkBox1)
         this.text1 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.text1)
-        this.item2 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.item2)
         this.checkBox2 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.checkBox2)
         this.text2 = this.page.locator(Locators.lessonPage.textEditor.fillInBlankContainer.options.text2)
         // File upload
@@ -320,7 +317,7 @@ exports.CreateLesson = class CreateLesson {
     }
 
     async clickOnAddNewItem() {
-        const item = this.addNewItem
+        const item = this.AddNewItem
         await this.page.waitForTimeout(3000);
         await PlaywrightCore.waitFor(item)
         await PlaywrightCore.click(item)
@@ -566,7 +563,7 @@ exports.CreateLesson = class CreateLesson {
         await this.page.waitForTimeout(10000);
         const toVerify = await parent.locator(this.obtainedPoints).nth(1).textContent()
         expect(toVerify).toContain('1')
-        await PlaywrightCore.click(this.closeBtn)
+        // await PlaywrightCore.click(this.closeBtn)
     }
     async verifyCorrectAnswerOnPublishing() {
         const parent = this.textEditor.locator(this.container)
@@ -675,11 +672,14 @@ exports.CreateLesson = class CreateLesson {
         await PlaywrightCore.click(this.gotItBtn)
         await this.page.waitForTimeout(3000);
         const txt = this.PresentationInput.nth(2).locator('p')
-        await PlaywrightCore.fill(txt,'randomtext')
-        await this.page.waitForTimeout(3000);
-        await PlaywrightCore.click(this.resetTotemplateBtn)
-        const resetTxt = this.PresentationInput.nth(2).locator('p').getByText('Raul')
-        await expect(resetTxt).toBeVisible()
+        await expect(txt).toBeVisible()
+        expect("Raul").toBe(await PlaywrightCore.textContent(txt))
+        await PlaywrightCore.clear(txt)
+        await PlaywrightCore.fill(txt,'Raul')
+        // await this.page.waitForTimeout(3000);
+        // await PlaywrightCore.click(this.resetTotemplateBtn)
+        const textxt = this.PresentationInput.nth(2).locator('p').getByText('Raul')
+        await expect(textxt).toBeVisible()
         await expect(this.submitBtn).toBeVisible()
         await PlaywrightCore.click(this.submitBtn)
         await this.checkBackgroundColor(this.submitSucces, clTD.shortAnswer.successLabelColor)
@@ -726,8 +726,10 @@ exports.CreateLesson = class CreateLesson {
         await this.checkBackgroundColor(test,clTD.tip.backgroundPink)
         await PlaywrightCore.click(this.exitStudentView)
     }
-    async verifyStudentViewForTipElement() {
+    async verifyStudentViewForTipElement(lesson) {
         const parent = this.textEditor
+        const lessonEle = await this.page.locator('//h2[contains(text(), "'+ lesson +'")]');
+        await PlaywrightCore.click(lessonEle)
         const test = parent.locator(this.tipEle)
         await this.checkBackgroundColor(test,clTD.tip.backgroundPink)
     }
@@ -806,15 +808,19 @@ exports.CreateLesson = class CreateLesson {
         await editorLine1.selectText()
         await PlaywrightCore.ClickByText(this.page,'return')
         await PlaywrightCore.click(this.checkAnswerBtn)
+        await PlaywrightCore.click(this.closeBtn)
         await expect(this.correctLabelIcon).toBeVisible()
         await PlaywrightCore.click(this.exitStudentView)
     }
-    async verifyStudentViewForCorrectCodeSelectElement() {
+    async verifyStudentViewForCorrectCodeSelectElement(lesson) {
         const editor = this.codeEditor
+        const lessonEle = await this.page.locator('//h2[contains(text(), "'+ lesson +'")]');
+        await PlaywrightCore.click(lessonEle)
         const editorLine1 = editor.locator(this.line).nth(3)
         await editorLine1.selectText()
         await PlaywrightCore.ClickByText(this.page,'return n')
         await PlaywrightCore.click(this.checkAnswerBtn)
+        await PlaywrightCore.click(this.closeBtn)
         await expect(this.correctLabelIcon).toBeVisible()
     }
     async validateHeadinElementOnPresentationView() {

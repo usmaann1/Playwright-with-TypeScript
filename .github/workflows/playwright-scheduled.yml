@@ -48,22 +48,46 @@ jobs:
       with:
         name: playwright-summary
         path: summary.json  # Adjust path if necessary
+    
     - name: Count Test Cases
       id: count-tests
       run: |
         # Check the structure of the JSON file for correctness
         jq '.' summary.json
+
     - name: Read Summary Report to Get Test Results
       if: always()
       run: |
         PASSED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="passed")] | length' summary.json)
         FAILED=$(jq '[.suites[]?.suites[]?.specs[]?.tests[]?.results[]? | select(.status=="failed")] | length' summary.json)
         echo "PASSED=$PASSED" >> $GITHUB_ENV 
-        echo "FAILED=$FAILED" >> $GITHUB_ENV 
-          
-          
-          
-    
+        echo "FAILED=$FAILED" >> $GITHUB_ENV
+
+    - name: Get Titles of Failed Test Cases
+      run: |
+        FAILED_TITLES=$(jq -r '[.suites[]?.suites[]?.specs[]? | select(.ok == false) | "#### " + .title + " #$##"] | join("\n")' summary.json)
+        echo -e "Failed Test Titles:\n$FAILED_TITLES"
+        echo "$FAILED_TITLES" > failed-tests.txt  # Save the titles to a file
+        echo "FAILED_TITLES<<EOF" >> $GITHUB_ENV
+        echo "$FAILED_TITLES" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
+
+    - name: Upload Failed Test Titles as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: failed-test-titles
+        path: failed-tests.txt
+
+    - name: Get baseURL from Playwright Config
+      id: extract-baseurl
+      run: |
+        # Extract the baseURL from the Playwright config file using grep
+        BASE_URL=$(grep -Po '(?<=baseURL: ")[^"]*' playwright.config.js)
+        echo "Extracted baseURL: $BASE_URL"
+        echo "BASE_URL=$BASE_URL" >> $GITHUB_ENV
+
+
+
     - name: Send Slack Notification
       if: always()
       uses: 8398a7/action-slack@v3 
@@ -77,7 +101,7 @@ jobs:
                 title: `Playwright Automation Results :test_tube:`,
                 fields: [{
                   title: 'Site Under Test',
-                  value: 'dev.juicemind.com',
+                  value: `${{ env.BASE_URL }}`,
                   short: true
                 },
                 {

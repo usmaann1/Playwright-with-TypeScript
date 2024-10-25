@@ -48,3 +48,17 @@ Files to edit:
 -`baseURL: "https://play.juicemind.com/",`
 
 +`baseURL: "http://localhost:5173/"`
+
+# RUN failed TESTS on Local machine
+
+1. Download the "failed-test-titles" file from the workflow.
+2. Open the downloaded folder and Open Failed test text file.
+3. Copy all data from the file.
+4. Open project in Visual code.
+5. Expand "failed-test-cases" folder.
+6. Paste copied data from "failed-test-titles" into string.txt file.
+7. Run this command in terminal "node failed-test-cases/conversion.js".
+8. Open output.json file and copy the array from this file.
+9. Now open "failed-test-cases.js" and paste the array you copied earlier into this file by selecting "[]" these brackets.
+10. Run "npx playwright test" command in the terminal.
+11. Once all test cases gets executed, open the playwright report.

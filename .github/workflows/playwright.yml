@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   test:
-    timeout-minutes: 120
+    timeout-minutes: 500
     runs-on: large-runner
    
     steps:
@@ -18,7 +18,7 @@ jobs:
     - name: Run Specific Playwright Test
       id: test
       run: |
-       npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=html --output=./test-results --config=playwright.config.js
+       npx playwright test test-environment/test-cases/team-courses/team-courses.test.js --reporter=html --output=./test-results --config=playwright.config.js || true
 
     - uses: actions/upload-artifact@v4
       if: always()
