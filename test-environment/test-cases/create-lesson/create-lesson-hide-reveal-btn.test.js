@@ -113,6 +113,8 @@ test.describe('TestSuite: Hide and Reveal Button', () => {
         const newCreateLessonPageInstance = new CreateLesson(newPage)
         await newTeamCoursesPageInstance.afterInviteSignUp(link,randomEmail,userPwd,TeamCoursesData.firstName,TeamCoursesData.LastName)
         // hide and reveal text as a student
+        await PlaywrightCore.click(newCreateLessonPageInstance.StudentViewLessonName)
+        await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await expect(newCreateLessonPageInstance.StudentModeHideContentText).toHaveText(CLHRtd.HideRevealTxtHeadingValue)
         await PlaywrightCore.click(newCreateLessonPageInstance.HideContentBtn)
         await expect(newCreateLessonPageInstance.HideRevealTextBox).not.toBeVisible()
