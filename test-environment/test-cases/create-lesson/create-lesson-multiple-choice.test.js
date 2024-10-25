@@ -58,9 +58,9 @@ test.describe('TestSuite: Multiple Choice', () => {
         await createLesson.navigateToPresentationMode()
         // assertions and check answer on presentation mode
         await expect(createLesson.ExitStudentModeBtn).toHaveText(CLtd.ExitStudentModeBtnValue)
-        await expect(createLesson.CheckAnswerBtn).toHaveText(CLtd.CheckAnswerBtnValue)
+        await expect(createLesson.SubmitBtn).toHaveText(CLtd.SubmitBtnValue)
         await PlaywrightCore.click(createLesson.PresentationModeOpt1CheckBox)
-        await PlaywrightCore.click(createLesson.CheckAnswerBtn)
+        await PlaywrightCore.click(createLesson.SubmitBtn)
         // assertions on presentation mode for incorrect mcq answer
         await createLesson.assertionsOnPresentationModeForIncorrectMCQAnswer()
         // exit presentation mode 
@@ -85,9 +85,9 @@ test.describe('TestSuite: Multiple Choice', () => {
         await createLesson.navigateToPresentationMode()
         // assertions and check answer on presentation mode
         await expect(createLesson.ExitStudentModeBtn).toHaveText(CLtd.ExitStudentModeBtnValue)
-        await expect(createLesson.CheckAnswerBtn).toHaveText(CLtd.CheckAnswerBtnValue)
+        await expect(createLesson.SubmitBtn).toHaveText(CLtd.SubmitBtnValue)
         await PlaywrightCore.click(createLesson.PresentationModeOpt2)
-        await PlaywrightCore.click(createLesson.CheckAnswerBtn)
+        await PlaywrightCore.click(createLesson.SubmitBtn)
         // assertions on presentation mode for correct mcq answer
         await createLesson.assertionsOnPresentationModeForCorrectMCQAnswer()
         // exit presentation mode
@@ -114,10 +114,10 @@ test.describe('TestSuite: Multiple Choice', () => {
         await createLesson.navigateToPresentationMode()
         // assertions and check answer on presentation mode
         await expect(createLesson.ExitStudentModeBtn).toHaveText(CLtd.ExitStudentModeBtnValue)
-        await expect(createLesson.CheckAnswerBtn).toHaveText(CLtd.CheckAnswerBtnValue)
+        await expect(createLesson.SubmitBtn).toHaveText(CLtd.SubmitBtnValue)
         await PlaywrightCore.click(createLesson.PresentationModeOpt2)
         await PlaywrightCore.click(createLesson.PresentationModeOpt1CheckBox)
-        await PlaywrightCore.click(createLesson.CheckAnswerBtn)
+        await PlaywrightCore.click(createLesson.SubmitBtn)
         // assertions on presentation mode for correct mcq answer
         await createLesson.assertionsOnPresentationModeForCorrectMCQAnswer()
         // exit presentation mode
@@ -145,10 +145,10 @@ test.describe('TestSuite: Multiple Choice', () => {
         await createLesson.navigateToPresentationMode()
         // assertions and check answer on presentation mode
         await expect(createLesson.ExitStudentModeBtn).toHaveText(CLtd.ExitStudentModeBtnValue)
-        await expect(createLesson.CheckAnswerBtn).toHaveText(CLtd.CheckAnswerBtnValue)
+        await expect(createLesson.SubmitBtn).toHaveText(CLtd.SubmitBtnValue)
         await PlaywrightCore.click(createLesson.PresentationModeOpt2)
         await PlaywrightCore.click(createLesson.PresentationModeOpt1CheckBox)
-        await PlaywrightCore.click(createLesson.CheckAnswerBtn)
+        await PlaywrightCore.click(createLesson.SubmitBtn)
         // assertions on presentation mode for correct mcq answer
         await createLesson.assertionsOnPresentationModeForCorrectMCQAnswer()
         // exit presentation mode
@@ -159,17 +159,18 @@ test.describe('TestSuite: Multiple Choice', () => {
         const newTeamCoursesPageInstance = new TeamCoursesPage(newPage)
         const newCreateLessonPageInstance = new CreateLesson(newPage)
         await newTeamCoursesPageInstance.afterInviteSignUp(link,randomEmail,userPwd,TeamCoursesData.firstName,TeamCoursesData.LastName)
+        await PlaywrightCore.click(newCreateLessonPageInstance.StudentViewLessonName)
         // assertions as a student to check mcq test
         await expect(newCreateLessonPageInstance.OnePlus1TxtPresentationMode).toHaveText(CLtd.Heading1plus1)
         await expect(newCreateLessonPageInstance.OneTxtPresentationMode).toHaveText(CLtd.One)
         await expect(newCreateLessonPageInstance.TwoTxtPresentationMode).toHaveText(CLtd.Two)
         await expect(newCreateLessonPageInstance.ThreeTxtPresentationMode).toHaveText(CLtd.Three)
         await expect(newCreateLessonPageInstance.FourTxtPresentationMode).toHaveText(CLtd.Four)
-        await expect(newCreateLessonPageInstance.CheckAnswerBtn).toHaveText(CLtd.CheckAnswerBtnValue)
+        await expect(newCreateLessonPageInstance.SubmitBtn).toHaveText(CLtd.SubmitBtnValue)
         // check answer as a student 
         await PlaywrightCore.click(newCreateLessonPageInstance.Opt2StudentMode)
         await PlaywrightCore.click(newCreateLessonPageInstance.PresentationModeOptionWrong)
-        await PlaywrightCore.click(newCreateLessonPageInstance.CheckAnswerBtn)
+        await PlaywrightCore.click(newCreateLessonPageInstance.SubmitBtn)
         // assertions as a student for correct mcq answer
         await expect(newCreateLessonPageInstance.IncorrectAndCorrectAnswerHeading).toHaveText(CLtd.CorrectAnswerTxt)
         await expect(newCreateLessonPageInstance.PointScoreMsg).toHaveText(CLtd.PointScore1Txt)

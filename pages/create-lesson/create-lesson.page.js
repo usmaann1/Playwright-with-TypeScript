@@ -315,6 +315,8 @@ exports.CreateLesson = class CreateLesson {
         this.CreateTestInputField = this.page.locator(Locators.CreateTestInputField)
         this.CreateTestOutputField = this.page.locator(Locators.CreateTestOutputField)
         this.InputOutputTestObtainedMarks = this.page.locator(Locators.InputOutputTestObtainedMarks)
+        this.StudentViewLessonName = this.page.locator(Locators.StudentViewLessonName)
+        this.SubmitBtn = this.page.locator(Locators.SubmitBtn)
     }
 
     async clickOnAddNewItem() {
@@ -917,7 +919,7 @@ exports.CreateLesson = class CreateLesson {
         await expect(this.EmbedSubmitBtn).toHaveText(clTD.EmbedSubmitBtnValue)
         await PlaywrightCore.fill(this.EmbedEnterURL, video_name)
         await PlaywrightCore.click(this.EmbedSubmitBtn)
-        await PlaywrightCore.waitTimeout(this.page, 5000)
+        await PlaywrightCore.waitTimeout(this.page, 8000)
         await expect(this.SetupBtn).toHaveText(clTD.SetupBtnValue)
         await expect(this.OptionsBtn).toHaveText(clTD.OptionsBtnValue)
     }

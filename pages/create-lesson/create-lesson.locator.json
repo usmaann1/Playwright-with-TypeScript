@@ -336,7 +336,9 @@
     "CreateTestInputOutputTestType": "(//li[@role='option'])[1]",
     "CreateTestInputField": "//textarea[@placeholder='Input for the test']",
     "CreateTestOutputField": "//textarea[contains(@placeholder,'Output for the test')]",
-    "InputOutputTestObtainedMarks": "(//span[contains(text(),'1')])[1]"
+    "InputOutputTestObtainedMarks": "(//span[contains(text(),'1')])[1]",
+    "StudentViewLessonName": "(//h2)[1]",
+    "SubmitBtn": "//span[normalize-space()='Submit']"
     
     
 
