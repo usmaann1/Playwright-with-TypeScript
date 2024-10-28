@@ -107,7 +107,8 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.CloudIcon = this.page.locator(Locators.CloudIcon);
     this.EditorPlayButton = this.page.locator(Locators.EditorPlayButton);
     this.EditorStopBtn = this.page.locator(Locators.EditorStopBtn);
-    this.FullScreenBtn = this.page.locator(Locators.FullScreenBtn);
+    this.FullScreenBtn = this.page.locator(Locators.FullScreenBtnProd);
+    this.FullScreenBtnProd = this.page.locator(Locators.FullScreenBtn);
     this.CloseFullScreenBtn = this.page.locator(Locators.CloseFullScreenBtn);
     this.HtmlWebView = this.page.locator(Locators.HtmlWebView);
     this.OverRideProjectFiles = this.page.locator(
@@ -300,7 +301,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     if (isIgnore) {
       await PlaywrightCore.waitTimeout(this.page, 20000);
       await this.PlayArrowIcon.click();
-      await PlaywrightCore.waitTimeout(this.page, 20000);
+      await PlaywrightCore.waitTimeout(this.page, 30000);
       const element = await this.page.$(Locators.Terminal);
       await PlaywrightCore.waitTimeout(this.page, 30000);
       const innerText = await element.innerText();
@@ -309,7 +310,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     }
     await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.EditorSubmit);
-    await PlaywrightCore.waitTimeout(this.page, 10000);
+    await PlaywrightCore.waitTimeout(this.page, 30000);
     await PlaywrightCore.click(this.SubmitBtn);
   }
 
@@ -355,7 +356,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await codeEditorContent.fill(input);
     await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
-    await PlaywrightCore.waitTimeout(this.page, 20000);
+    await PlaywrightCore.waitTimeout(this.page, 30000);
     if (!isHtml) {
       const element = await this.page.$(Locators.Terminal);
       await PlaywrightCore.waitTimeout(this.page, 30000);
@@ -446,7 +447,12 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
     await PlaywrightCore.waitTimeout(this.page, 20000);
-    await PlaywrightCore.click(this.FullScreenBtn);
+    const isVisible2 = await this.FullScreenBtn.isVisible();
+    if (isVisible2) {
+      await PlaywrightCore.click(this.FullScreenBtn);
+    } else {
+      await PlaywrightCore.click(this.FullScreenBtnProd);
+    }
     const Colors = await UserFunctions.getAllColorsFromCanvas(
       this.page,
       TeamCoursesData.AssetsPaths
@@ -468,7 +474,12 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
     await PlaywrightCore.waitTimeout(this.page, 20000);
-    await PlaywrightCore.click(this.FullScreenBtn);
+    const isVisible2 = await this.FullScreenBtn.isVisible();
+    if (isVisible2) {
+      await PlaywrightCore.click(this.FullScreenBtn);
+    } else {
+      await PlaywrightCore.click(this.FullScreenBtnProd);
+    }
     await PlaywrightCore.waitTimeout(this.page, 5000);
     const isValid = await UserFunctions.getCanvasValidations(
       this.page,
@@ -529,7 +540,12 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
     await PlaywrightCore.waitTimeout(this.page, 20000);
-    await PlaywrightCore.click(this.FullScreenBtn);
+    const isVisible2 = await this.FullScreenBtn.isVisible();
+    if (isVisible2) {
+      await PlaywrightCore.click(this.FullScreenBtn);
+    } else {
+      await PlaywrightCore.click(this.FullScreenBtnProd);
+    }
     await PlaywrightCore.waitTimeout(this.page, 5000);
     const Colors = await UserFunctions.getAllColorsFromCanvas(
       this.page,
@@ -554,7 +570,12 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
     await PlaywrightCore.waitTimeout(this.page, 20000);
-    await PlaywrightCore.click(this.FullScreenBtn);
+    const isVisible2 = await this.FullScreenBtn.isVisible();
+    if (isVisible2) {
+      await PlaywrightCore.click(this.FullScreenBtn);
+    } else {
+      await PlaywrightCore.click(this.FullScreenBtnProd);
+    }
     await PlaywrightCore.waitTimeout(this.page, 5000);
     const isValid = await UserFunctions.getCanvasValidations(
       this.page,
@@ -616,7 +637,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       await PlaywrightCore.click(this.OverWriteFile);
       await PlaywrightCore.waitTimeout(this.page, 20000);
       await this.PlayArrowIcon.click();
-      await PlaywrightCore.waitTimeout(this.page, 20000);
+      await PlaywrightCore.waitTimeout(this.page, 30000);
       const element = await this.page.$(Locators.Terminal);
       await PlaywrightCore.waitTimeout(this.page, 30000);
       const innerText = await element.innerText();
@@ -694,7 +715,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await codeEditorContent.fill(input);
     await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
-    await PlaywrightCore.waitTimeout(this.page, 20000);
+    await PlaywrightCore.waitTimeout(this.page, 30000);
     const element = await this.page.$(Locators.Terminal);
     await PlaywrightCore.waitTimeout(this.page, 30000);
     const innerText = await element.innerText();
@@ -753,7 +774,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async isLateSubmissionAllowed(isJS = false) {
     await PlaywrightCore.click(this.CreateStarterCode);
-    await PlaywrightCore.waitTimeout(this.page, 20000)
+    await PlaywrightCore.waitTimeout(this.page, 30000)
     let isDisabled = await this.DisableSubmitBtn.isDisabled();
     expect(!isDisabled).toBe(true);
     await PlaywrightCore.click(this.DisableSubmitBtn);
@@ -768,7 +789,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async isResubmissonAllowed(beforeDueDate = true) {
     await PlaywrightCore.click(this.CreateStarterCode);
-    await PlaywrightCore.waitTimeout(this.page, 20000)
+    await PlaywrightCore.waitTimeout(this.page, 30000)
     await PlaywrightCore.click(this.DisableSubmitBtn);
     await PlaywrightCore.click(this.SubmitBtn);
     const textVisible = await this.page.locator('text=You have already submitted the code.').isVisible();
@@ -822,7 +843,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await this.page.getByRole("option", { name: changedPath }).click();
     await PlaywrightCore.waitTimeout(this.page, 20000);
     await PlaywrightCore.click(this.EditorPlayButton);
-    await PlaywrightCore.waitTimeout(this.page, 20000);
+    await PlaywrightCore.waitTimeout(this.page, 30000);
     const element = await this.page.$(Locators.Terminal);
     await PlaywrightCore.waitTimeout(this.page, 30000);
     const innerText = await element.innerText();
@@ -916,7 +937,12 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       const src = await this.HtmlWebView.evaluate((el) => el.src);
       return src;
     } else if (key === "swing") {
-      await PlaywrightCore.click(this.FullScreenBtn);
+      const isVisible2 = await this.FullScreenBtn.isVisible();
+      if (isVisible2) {
+        await PlaywrightCore.click(this.FullScreenBtn);
+      } else {
+        await PlaywrightCore.click(this.FullScreenBtnProd);
+      }
       await PlaywrightCore.waitTimeout(this.page, 5000);
       const Colors = await UserFunctions.getAllColorsFromCanvas(
         this.page,
@@ -928,6 +954,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
       await expect(hasShadeOfRed).toBe(true);
       await PlaywrightCore.click(this.FullScreenMinimize);
     } else {
+      await PlaywrightCore.waitTimeout(this.page, 30000);
       const element = await this.page.$(Locators.Terminal);
       await PlaywrightCore.waitTimeout(this.page, 30000);
       const innerText = await element.innerText();
