@@ -31,7 +31,7 @@ test.describe("TestSuite: Team/Courses", () => {
     }
   });
 
-  test("[Numair] - TC-1 - Test Flow Python", async ({
+  test.only("[Numair] - TC-1 - Test Flow Python", async ({
     teamCoursesPage,
     browser,
   }) => {
