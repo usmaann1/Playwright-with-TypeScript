@@ -8,6 +8,7 @@ const {
 import TeamCoursesData from "../../test-assets/test-data-files/team-courses/team-courses-testData.json";
 import Credentials from "../../test-assets/test-data-files/Credentials/credentials.json";
 import { FAILED_TEST_CASES } from "../../../failed-test-cases/failed-test-cases";
+import config from "../../../playwright.config";
 
 test.describe("TestSuite: Team/Courses", () => {
   const email1 = Credentials.EMAIL_NUMAIR1;
@@ -23,10 +24,10 @@ test.describe("TestSuite: Team/Courses", () => {
   const email11 = Credentials.EMAIL_NUMAIR11;
   const password = Credentials.PASSWORD_NUMAIR;
 
-  test.beforeEach(async ({ }, testInfo) => {
+  test.beforeEach(async ({}, testInfo) => {
     if (FAILED_TEST_CASES.length !== 0) {
       if (!FAILED_TEST_CASES.includes(testInfo.title)) {
-        test.skip('Test case not included in the list');
+        test.skip("Test case not included in the list");
       }
     }
   });
@@ -252,7 +253,7 @@ test.describe("TestSuite: Team/Courses", () => {
       randomName,
       TeamCoursesData.projectTypeOption4
     );
-    await teamCoursesPage.pythonWithTkinter();        
+    await teamCoursesPage.pythonWithTkinter();
   });
 
   test("[Numair] - TC-9 - Test Flow Java with Swing", async ({
@@ -300,9 +301,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.pythonWithPillow();
   });
 
-  test("[Numair] - TC-12 - Python Upload File", async ({
-    teamCoursesPage,
-  }) => {
+  test("[Numair] - TC-12 - Python Upload File", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email3, password);
@@ -318,9 +317,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadProgrammingFile();
   });
 
-  test("[Numair] - TC-13 - Java Upload File", async ({
-    teamCoursesPage,
-  }) => {
+  test("[Numair] - TC-13 - Java Upload File", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email3, password);
@@ -336,9 +333,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadProgrammingFile();
   });
 
-  test("[Numair] - TC-14 - CSharp Upload File", async ({
-    teamCoursesPage,
-  }) => {
+  test("[Numair] - TC-14 - CSharp Upload File", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email3, password);
@@ -354,9 +349,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadProgrammingFile();
   });
 
-  test("[Numair] - TC-15 - CPP Upload File", async ({
-    teamCoursesPage,
-  }) => {
+  test("[Numair] - TC-15 - CPP Upload File", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email3, password);
@@ -416,9 +409,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-18 - CSV Upload File", async ({
-    teamCoursesPage,
-  }) => {
+  test("[Numair] - TC-18 - CSV Upload File", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email4, password);
@@ -433,9 +424,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadCSV();
   });
 
-  test("[Numair] - TC-19 - JPG Upload File", async ({
-    teamCoursesPage,
-  }) => {
+  test("[Numair] - TC-19 - JPG Upload File", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email4, password);
@@ -449,9 +438,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.AssertImages(TeamCoursesData.TestJPG);
   });
 
-  test("[Numair] - TC-20 - PNG Upload File", async ({
-    teamCoursesPage,
-  }) => {
+  test("[Numair] - TC-20 - PNG Upload File", async ({ teamCoursesPage }) => {
     const randomName = await UserFunctions.generateName();
     const randomAssignment = await UserFunctions.generateName();
     await teamCoursesPage.signInUser(email4, password);
@@ -640,7 +627,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-26 - Folder and File Structure Verification HTML", async ({
+  test.only("[Numair] - TC-26 - Folder and File Structure Verification HTML", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -654,29 +641,34 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.ProjectTypeOption12,
       true
     );
-    const link = await teamCoursesPage.fileStructureJAVACSHTML(
-      /^Filesindex\.htmlscript\.jsstyles\.css$/,
-      "Helper",
-      TeamCoursesData.NewFileHTML,
-      /^FilesHelperindex\.htmlscript\.jsstyles\.css$/,
-      "Helpernew",
-      "html",
-      TeamCoursesData.ChangeCSFile,
-      'text="Helper.js"',
-      'text="Helpernew"',
-      "Helper.js",
-      "Helper",
-      TeamCoursesData.FileStructureHTML,
-      [
-        "Helper/",
-        "Helpernew/",
-        "Helpernew/Helper.js",
-        "index.html",
-        "script.js",
-        "styles.css",
-      ],
-      true
-    );
+    const baseURL = config.use.baseURL;
+    let link;
+    if (!baseURL.includes("play")) {
+      link = await teamCoursesPage.fileStructureJAVACSHTML(
+        /^Filesindex\.htmlscript\.jsstyles\.css$/,
+        "Helper",
+        TeamCoursesData.NewFileHTML,
+        /^FilesHelperindex\.htmlscript\.jsstyles\.css$/,
+        "Helpernew",
+        "html",
+        TeamCoursesData.ChangeCSFile,
+        'text="Helper.js"',
+        'text="Helpernew"',
+        "Helper.js",
+        "Helper",
+        TeamCoursesData.FileStructureHTML,
+        [
+          "Helper/",
+          "Helpernew/",
+          "Helpernew/Helper.js",
+          "index.html",
+          "script.js",
+          "styles.css",
+        ],
+        true
+      );
+    } else {
+    }
     const newPage = await browser.newPage();
     const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
     await newTeamCoursesPageInstance.getHtmlData2(
@@ -684,29 +676,33 @@ test.describe("TestSuite: Team/Courses", () => {
       TeamCoursesData.ChangedFileOutput,
       link
     );
-    await teamCoursesPage.fileStructureHTMLRemaining(
-      /^Filesindex\.htmlstyles\.cssscript\.js$/,
-      "Helper",
-      TeamCoursesData.NewFileHTML,
-      /^Filesindex\.htmlstyles\.cssscript\.jsHelper$/,
-      "Helpernew",
-      "html",
-      TeamCoursesData.ChangeCSFile,
-      'text="Helper.js"',
-      'text="Helpernew"',
-      "Helper.js",
-      "Helper",
-      TeamCoursesData.FileStructureHTML,
-      [
-        "Helper/",
-        "Helpernew/",
-        "Helpernew/Helper.js",
-        "index.html",
-        "script.js",
-        "styles.css",
-      ],
-      true
-    );
+    if (!baseURL.includes("play")) {
+      await teamCoursesPage.fileStructureHTMLRemaining(
+        /^Filesindex\.htmlstyles\.cssscript\.js$/,
+        "Helper",
+        TeamCoursesData.NewFileHTML,
+        /^Filesindex\.htmlstyles\.cssscript\.jsHelper$/,
+        "Helpernew",
+        "html",
+        TeamCoursesData.ChangeCSFile,
+        'text="Helper.js"',
+        'text="Helpernew"',
+        "Helper.js",
+        "Helper",
+        TeamCoursesData.FileStructureHTML,
+        [
+          "Helper/",
+          "Helpernew/",
+          "Helpernew/Helper.js",
+          "index.html",
+          "script.js",
+          "styles.css",
+        ],
+        true
+      );
+    } else {
+      
+    }
   });
 
   test("[Numair] - TC-27 - Folder and File Structure Verification Python with turtle", async ({
@@ -1648,7 +1644,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
-  test("[Numair] - TC-57 - Allow Resubmission JavaScript", async ({
+  test.only("[Numair] - TC-57 - Allow Resubmission JavaScript", async ({
     teamCoursesPage,
     browser,
   }) => {

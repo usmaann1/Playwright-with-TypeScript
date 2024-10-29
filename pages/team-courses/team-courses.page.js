@@ -1,7 +1,7 @@
 const {
   PlaywrightCore,
 } = require("../../module-imports/helperFunctions.imports");
-const dayjs = require('dayjs');
+const dayjs = require("dayjs");
 const AdmZip = require("adm-zip");
 import { expect } from "@playwright/test";
 import Locators from "./team-courses.locator.json";
@@ -87,7 +87,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.TestOutput = this.page.locator(Locators.TestOutput);
     this.PublishCheckBox2 = this.page.locator(Locators.PublishCheckBox);
     this.PublishCheckBox = this.page.locator(Locators.PublishCheckBox).first();
-    this.PublishToggleBtn = this.page.locator(Locators.PublishToggleBtn)
+    this.PublishToggleBtn = this.page.locator(Locators.PublishToggleBtn);
     this.CreateTestBtn = this.page.locator(Locators.CreateTestBtn);
     this.InviteStudentBtn = this.page.locator(Locators.InviteStudent);
     this.CopyBtn = this.page.locator(Locators.CopyBtn);
@@ -130,7 +130,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     this.CodeSourceFile = this.page.locator(Locators.CodeMainFile);
     this.CodeTargetFile = this.page.locator(Locators.CodeTargetFolder);
     this.MenuBar = this.page.locator(Locators.MenuBar);
-    this.FullScreenMinimize = this.page.locator(Locators.FullScreenMinimize).first();
+    this.FullScreenMinimize = this.page
+      .locator(Locators.FullScreenMinimize)
+      .first();
     this.ClosePopUp = this.page.locator(Locators.ClosePopUp);
     this.DueDateBtn = this.page.locator(Locators.DueDateBtn);
     this.DisableSubmitBtn = this.page.locator(Locators.DisableSubmitBtn);
@@ -238,7 +240,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   }
 
   async PublishAndInviteCreateLesson() {
-    await this.turnOnPublishToggleButton()
+    await this.turnOnPublishToggleButton();
     await PlaywrightCore.click(this.InviteStudentBtn);
     await PlaywrightCore.click(this.CopyBtn);
     const handle = await this.page.evaluateHandle(() =>
@@ -250,15 +252,21 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   }
 
   async turnOnPublishToggleButton() {
-    const classAttr = await PlaywrightCore.getAttribute(this.PublishToggleBtn, 'class')
-    if (!classAttr.includes('Mui-checked')) {
+    const classAttr = await PlaywrightCore.getAttribute(
+      this.PublishToggleBtn,
+      "class"
+    );
+    if (!classAttr.includes("Mui-checked")) {
       await PlaywrightCore.click(this.PublishToggleBtn);
     }
   }
 
   async turnOffPublishToggleButton() {
-    const classAttr = await PlaywrightCore.getAttribute(this.PublishToggleBtn, 'class')
-    if (!lassAttr.includes('Mui-checked')) {
+    const classAttr = await PlaywrightCore.getAttribute(
+      this.PublishToggleBtn,
+      "class"
+    );
+    if (!lassAttr.includes("Mui-checked")) {
       await PlaywrightCore.click(this.PublishToggleBtn);
     }
   }
@@ -671,11 +679,13 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const editorBoxCount = await this.EditorTextBox.count();
     let textBox;
     if (editorBoxCount > 1) {
-      textBox = await this.EditorTextBox.nth(1);
+      textBox = await this.EditorTextBox.nth(3);
     } else {
       textBox = await this.EditorTextBox;
     }
+    await PlaywrightCore.waitTimeout(this.page, 5000);
     const editorText = await textBox.textContent();
+    await PlaywrightCore.waitTimeout(this.page, 20000);
     const isValid = await editorText.includes(5);
     await expect(isValid).toBe(true);
   }
@@ -684,8 +694,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.waitTimeout(this.page, 5000);
     await this.page.getByText(fileName).first().click();
     await PlaywrightCore.waitTimeout(this.page, 20000);
+    const imageEditor = await this.ImageEditor.nth(1)
     const text = await UserFunctions.imageTextValidation(
-      this.ImageEditor,
+      imageEditor,
       TeamCoursesData.AssetsPaths,
       TeamCoursesData.ImagesTextAssertion
     );
@@ -724,27 +735,40 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   }
 
   async setPerviousDueDate() {
-    await this.page.addStyleTag({ content: '* { transition: none !important; animation: none !important; transform: none !important }' });
+    await this.page.addStyleTag({
+      content:
+        "* { transition: none !important; animation: none !important; transform: none !important }",
+    });
     if (await this.ClosePopUp.isVisible()) {
       await PlaywrightCore.click(this.ClosePopUp);
     }
     await PlaywrightCore.click(this.DueDateBtn);
-    const previousDay = dayjs().subtract(1, 'day').format('MM/DD/YYYY');
-    await this.page.getByPlaceholder('MM/DD/YYYY hh:mm aa').fill(`${previousDay} 11:00 AM`);
+    const previousDay = dayjs().subtract(1, "day").format("MM/DD/YYYY");
+    await this.page
+      .getByPlaceholder("MM/DD/YYYY hh:mm aa")
+      .fill(`${previousDay} 11:00 AM`);
   }
 
   async setDueDate() {
-    await this.page.addStyleTag({ content: '* { transition: none !important; animation: none !important; transform: none !important }' });
+    await this.page.addStyleTag({
+      content:
+        "* { transition: none !important; animation: none !important; transform: none !important }",
+    });
     if (await this.ClosePopUp.isVisible()) {
       await PlaywrightCore.click(this.ClosePopUp);
     }
     await PlaywrightCore.click(this.DueDateBtn);
-    const previousDay = dayjs().add(2, 'day').format('MM/DD/YYYY');
-    await this.page.getByPlaceholder('MM/DD/YYYY hh:mm aa').fill(`${previousDay} 11:00 AM`);
+    const previousDay = dayjs().add(2, "day").format("MM/DD/YYYY");
+    await this.page
+      .getByPlaceholder("MM/DD/YYYY hh:mm aa")
+      .fill(`${previousDay} 11:00 AM`);
   }
 
   async allowResubmission() {
-    await this.page.addStyleTag({ content: '* { transition: none !important; animation: none !important; transform: none !important }' });
+    await this.page.addStyleTag({
+      content:
+        "* { transition: none !important; animation: none !important; transform: none !important }",
+    });
     if (await this.ClosePopUp.isVisible()) {
       await PlaywrightCore.click(this.ClosePopUp);
     }
@@ -752,13 +776,18 @@ exports.TeamCoursesPage = class TeamCoursesPage {
   }
 
   async allowLateSubmission() {
-    await this.page.addStyleTag({ content: '* { transition: none !important; animation: none !important; transform: none !important }' });
+    await this.page.addStyleTag({
+      content:
+        "* { transition: none !important; animation: none !important; transform: none !important }",
+    });
     if (await this.ClosePopUp.isVisible()) {
       await PlaywrightCore.click(this.ClosePopUp);
     }
     await PlaywrightCore.click(this.DueDateBtn);
-    const previousDay = dayjs().subtract(1, 'day').format('MM/DD/YYYY');
-    await this.page.getByPlaceholder('MM/DD/YYYY hh:mm aa').fill(`${previousDay} 11:00 AM`);
+    const previousDay = dayjs().subtract(1, "day").format("MM/DD/YYYY");
+    await this.page
+      .getByPlaceholder("MM/DD/YYYY hh:mm aa")
+      .fill(`${previousDay} 11:00 AM`);
     await PlaywrightCore.click(this.AllowLateSubmission);
   }
 
@@ -774,14 +803,16 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async isLateSubmissionAllowed(isJS = false) {
     await PlaywrightCore.click(this.CreateStarterCode);
-    await PlaywrightCore.waitTimeout(this.page, 30000)
+    await PlaywrightCore.waitTimeout(this.page, 30000);
     let isDisabled = await this.DisableSubmitBtn.isDisabled();
     expect(!isDisabled).toBe(true);
     await PlaywrightCore.click(this.DisableSubmitBtn);
     await PlaywrightCore.click(this.SubmitBtn);
-    await PlaywrightCore.waitTimeout(this.page, 20000)
+    await PlaywrightCore.waitTimeout(this.page, 20000);
 
-    const textVisible = await this.page.locator('text=You have already submitted the code.').isVisible();
+    const textVisible = await this.page
+      .locator("text=You have already submitted the code.")
+      .isVisible();
     if (!isJS) expect(textVisible).toBe(true);
     isDisabled = await this.DisableSubmitBtn.isDisabled();
     expect(isDisabled).toBe(true);
@@ -789,10 +820,12 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async isResubmissonAllowed(beforeDueDate = true) {
     await PlaywrightCore.click(this.CreateStarterCode);
-    await PlaywrightCore.waitTimeout(this.page, 30000)
+    await PlaywrightCore.waitTimeout(this.page, 30000);
     await PlaywrightCore.click(this.DisableSubmitBtn);
     await PlaywrightCore.click(this.SubmitBtn);
-    const textVisible = await this.page.locator('text=You have already submitted the code.').isVisible();
+    const textVisible = await this.page
+      .locator("text=You have already submitted the code.")
+      .isVisible();
     expect(!textVisible).toBe(true);
     const isDisabled = await this.DisableSubmitBtn.isDisabled();
     expect(!isDisabled).toBe(true);
@@ -863,11 +896,11 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
     const zipEntries = zip.getEntries();
     const entryNames = zipEntries.map((entry) => entry.entryName);
-    let allFilesHaveData = false
+    let allFilesHaveData = false;
     if (checkAllFiles) {
       allFilesHaveData = zipEntries.every((entry) => {
         if (!entry.isDirectory) {
-          const fileContent = entry.getData().toString('utf8');
+          const fileContent = entry.getData().toString("utf8");
           return fileContent.length > 0;
         }
         return true;
@@ -875,13 +908,15 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     } else {
       allFilesHaveData = zipEntries.some((entry) => {
         if (!entry.isDirectory) {
-          const fileContent = entry.getData().toString('utf8');
+          const fileContent = entry.getData().toString("utf8");
           return fileContent.length > 0;
         }
         return true;
       });
     }
-    const allMatch = entryNames.every((entryName) => matchArray.includes(entryName));
+    const allMatch = entryNames.every((entryName) =>
+      matchArray.includes(entryName)
+    );
     await expect(allFilesHaveData).toBe(true);
     await expect(allMatch).toBe(true);
   }
@@ -901,9 +936,9 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     changedMainFile,
     matchArray,
     checkAllFiles = true
-
   ) {
     await PlaywrightCore.waitTimeout(this.page, 20000);
+    const editorBoxCount = await this.EditorTextBox.count();
     let codeEditorContent;
     if (editorBoxCount > 1) {
       codeEditorContent = await this.EditorTextBox.nth(1);
@@ -976,11 +1011,11 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
     const zipEntries = zip.getEntries();
     const entryNames = zipEntries.map((entry) => entry.entryName);
-    let allFilesHaveData = false
+    let allFilesHaveData = false;
     if (checkAllFiles) {
       allFilesHaveData = zipEntries.every((entry) => {
         if (!entry.isDirectory) {
-          const fileContent = entry.getData().toString('utf8');
+          const fileContent = entry.getData().toString("utf8");
           return fileContent.length > 0;
         }
         return true;
@@ -988,13 +1023,15 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     } else {
       allFilesHaveData = zipEntries.some((entry) => {
         if (!entry.isDirectory) {
-          const fileContent = entry.getData().toString('utf8');
+          const fileContent = entry.getData().toString("utf8");
           return fileContent.length > 0;
         }
         return true;
       });
     }
-    const allMatch = entryNames.every((entryName) => matchArray.includes(entryName));
+    const allMatch = entryNames.every((entryName) =>
+      matchArray.includes(entryName)
+    );
     await expect(allFilesHaveData).toBe(true);
     await expect(allMatch).toBe(true);
   }
@@ -1028,11 +1065,11 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     const zip = new AdmZip(TeamCoursesData.ChangedFilePath);
     const zipEntries = zip.getEntries();
     const entryNames = zipEntries.map((entry) => entry.entryName);
-    let allFilesHaveData = false
+    let allFilesHaveData = false;
     if (checkAllFiles) {
       allFilesHaveData = zipEntries.every((entry) => {
         if (!entry.isDirectory) {
-          const fileContent = entry.getData().toString('utf8');
+          const fileContent = entry.getData().toString("utf8");
           return fileContent.length > 0;
         }
         return true;
@@ -1040,13 +1077,15 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     } else {
       allFilesHaveData = zipEntries.some((entry) => {
         if (!entry.isDirectory) {
-          const fileContent = entry.getData().toString('utf8');
+          const fileContent = entry.getData().toString("utf8");
           return fileContent.length > 0;
         }
         return true;
       });
     }
-    const allMatch = entryNames.every((entryName) => matchArray.includes(entryName));
+    const allMatch = entryNames.every((entryName) =>
+      matchArray.includes(entryName)
+    );
     await expect(allFilesHaveData).toBe(true);
     await expect(allMatch).toBe(true);
   }
