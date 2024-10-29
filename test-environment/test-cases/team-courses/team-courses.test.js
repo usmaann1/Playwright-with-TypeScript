@@ -627,7 +627,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test.only("[Numair] - TC-26 - Folder and File Structure Verification HTML", async ({
+  test("[Numair] - TC-26 - Folder and File Structure Verification HTML", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -668,6 +668,29 @@ test.describe("TestSuite: Team/Courses", () => {
         true
       );
     } else {
+      link = await teamCoursesPage.fileStructureJAVACSHTML(
+        /^Filesindex\.htmlstyles\.cssscript\.js$/,
+        "Helper",
+        TeamCoursesData.NewFileHTML,
+        /^Filesindex\.htmlstyles\.cssscript\.jsHelper$/,
+        "Helpernew",
+        "html",
+        TeamCoursesData.ChangeCSFile,
+        'text="Helper.js"',
+        'text="Helpernew"',
+        "Helper.js",
+        "Helper",
+        TeamCoursesData.FileStructureHTML,
+        [
+          "Helper/",
+          "Helpernew/",
+          "Helpernew/Helper.js",
+          "index.html",
+          "script.js",
+          "styles.css",
+        ],
+        true
+      );
     }
     const newPage = await browser.newPage();
     const newTeamCoursesPageInstance = new TeamCoursesPage(newPage);
@@ -701,7 +724,29 @@ test.describe("TestSuite: Team/Courses", () => {
         true
       );
     } else {
-      
+      await teamCoursesPage.fileStructureHTMLRemaining(
+        /^Filesindex\.htmlstyles\.cssscript\.js$/,
+        "Helper",
+        TeamCoursesData.NewFileHTML,
+        /^Filesindex\.htmlstyles\.cssscript\.jsHelper$/,
+        "Helpernew",
+        "html",
+        TeamCoursesData.ChangeCSFile,
+        'text="Helper.js"',
+        'text="Helpernew"',
+        "Helper.js",
+        "Helper",
+        TeamCoursesData.FileStructureHTML,
+        [
+          "Helper/",
+          "Helpernew/",
+          "Helpernew/Helper.js",
+          "index.html",
+          "script.js",
+          "styles.css",
+        ],
+        true
+      );
     }
   });
 
@@ -1644,7 +1689,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await newTeamCoursesPageInstance.isResubmissonAllowed(false);
   });
 
-  test.only("[Numair] - TC-57 - Allow Resubmission JavaScript", async ({
+  test("[Numair] - TC-57 - Allow Resubmission JavaScript", async ({
     teamCoursesPage,
     browser,
   }) => {
