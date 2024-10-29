@@ -245,6 +245,17 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     return clipboardContent;
   }
 
+  async InviteCreateLesson() {
+    await PlaywrightCore.click(this.InviteStudentBtn);
+    await PlaywrightCore.click(this.CopyBtn);
+    const handle = await this.page.evaluateHandle(() =>
+      navigator.clipboard.readText()
+    );
+    const clipboardContent = await handle.jsonValue();
+    await PlaywrightCore.click(this.ModalCloseBtn);
+    return clipboardContent;
+  }
+
   async turnOnPublishToggleButton() {
     const classAttr = await PlaywrightCore.getAttribute(this.PublishToggleBtn, 'class')
     if(!classAttr.includes('Mui-checked')) {

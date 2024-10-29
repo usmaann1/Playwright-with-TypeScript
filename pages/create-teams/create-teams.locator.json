@@ -21,7 +21,7 @@
     "OrHeading":"//div[contains(text(),'Or')]",
     "CreateNewTeamHeading":"//div[contains(text(),'Create new team')]",
     "UnlockWithJuiceMindPremiumBox":"(//div)[106]",
-    "LockIcon":"(//*[name()='svg'][@focusable='false'])[27]",
+    "LockIcon":"(//div)[122]",
     "UnlockWithJuiceMindPremiumHeading":"(//div[contains(text(),'Unlock with JuiceMind Premium')])[1]",
     "GetAQuoteBtn":"(//a[contains(text(),'Get a quote')])[1]",
     "ThreeDots":"//div[@data-rbd-droppable-id='teams']//div[1]//div[3]",

@@ -45,7 +45,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await createLesson.navigateToPresentationMode()
         // Mark and check answer in Presentation Mode
         await PlaywrightCore.click(createLesson.MCQCorrectOption)
-        await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.click(createLesson.SubmitBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await expect(createLesson.PresentationModeCorrectAnswerPopup).toHaveText(CLtd.PresentationModeCorrectAnswerHeading)
         await PlaywrightCore.click(createLesson.PresentationModeCorrectAnswerPopupClose)
@@ -54,8 +54,8 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         // Revisit Presentation Mode
         await createLesson.navigateToPresentationMode()
         // Revisit Presentation mode, mark and check answer
-        await PlaywrightCore.click(createLesson.MCQWrongOption)
-        await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.click(createLesson.MCQCorrectOption)
+        await PlaywrightCore.click(createLesson.SubmitBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await expect(createLesson.PresentationModeCorrectAnswerPopup).toHaveText(CLtd.PresentationModeCorrectAnswerHeading)
         await PlaywrightCore.click(createLesson.PresentationModeCorrectAnswerPopupClose)
@@ -75,7 +75,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await createLesson.navigateToPresentationMode()
         // Write and check answer in Presentation Mode
         await PlaywrightCore.fill(createLesson.PresentationModeFillInBlank, CLtd.FillInBlankAnswer1Value)
-        await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.click(createLesson.SubmitBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await expect(createLesson.PresentationModeCorrectAnswerPopup).toHaveText(CLtd.PresentationModeCorrectAnswerHeading)
         await PlaywrightCore.click(createLesson.PresentationModeCorrectAnswerPopupClose)
@@ -84,8 +84,8 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         // Revisit Presentation Mode
         await createLesson.navigateToPresentationMode()
         // Revisit Presentation mode, mark and check answer
-        await PlaywrightCore.fill(createLesson.PresentationModeFillInBlank, CLtd.FillInBlankAnswer2Value)
-        await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.fill(createLesson.PresentationModeFillInBlank, CLtd.FillInBlankAnswer1Value)
+        await PlaywrightCore.click(createLesson.SubmitBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await expect(createLesson.PresentationModeCorrectAnswerPopup).toHaveText(CLtd.PresentationModeCorrectAnswerHeading)
         await PlaywrightCore.click(createLesson.PresentationModeCorrectAnswerPopupClose)
@@ -106,7 +106,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await createLesson.navigateToPresentationMode()
         // Write and check answer in Presentation Mode
         await PlaywrightCore.fill(createLesson.PresentationModeAnswerField, CLtd.ShortAnswerFieldValue)
-        await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.click(createLesson.SubmitBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await expect(createLesson.PresentationModeCorrectAnswerPopup).toHaveText(CLtd.PresentationModeCorrectAnswerHeading)
         await PlaywrightCore.click(createLesson.PresentationModeCorrectAnswerPopupClose)
@@ -117,7 +117,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await PlaywrightCore.waitTimeout(createLesson.page, 3000)
         // Revisit Presentation mode, mark and check answer
         await PlaywrightCore.fill(createLesson.PresentationModeAnswerField, CLtd.ShortAnswerFieldValue)
-        await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.click(createLesson.SubmitBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 3000)
         await expect(createLesson.PresentationModeCorrectAnswerPopup).toHaveText(CLtd.PresentationModeCorrectAnswerHeading)
         await PlaywrightCore.click(createLesson.PresentationModeCorrectAnswerPopupClose)
@@ -138,7 +138,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await createLesson.navigateToPresentationMode()
         // Write and check answer in Presentation Mode
         await PlaywrightCore.fill(createLesson.PresentationModeAnswerField, CLtd.ShortAnswerFieldValue)
-        await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.click(createLesson.SubmitBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await expect(createLesson.PresentationModeCorrectAnswerPopup).toHaveText(CLtd.PresentationModeCorrectAnswerHeading)
         await PlaywrightCore.click(createLesson.PresentationModeCorrectAnswerPopupClose)   
@@ -159,7 +159,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await createLesson.navigateToPresentationMode()
         // Write and check answer in Presentation Mode
         await PlaywrightCore.fill(createLesson.PresentationModeFillInBlank, CLtd.FillInBlankAnswer1Value)
-        await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.click(createLesson.SubmitBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await expect(createLesson.PresentationModeCorrectAnswerPopup).toHaveText(CLtd.PresentationModeCorrectAnswerHeading)
         await PlaywrightCore.click(createLesson.PresentationModeCorrectAnswerPopupClose)
@@ -182,7 +182,7 @@ test.describe('TestSuite: Bugs Recreation Link', () => {
         await createLesson.navigateToPresentationMode()
         // Mark and check answer in Presentation Mode
         await PlaywrightCore.click(createLesson.MCQCorrectOption)
-        await PlaywrightCore.click(createLesson.CheckAnswerButton)
+        await PlaywrightCore.click(createLesson.SubmitBtn)
         await PlaywrightCore.waitTimeout(createLesson.page, 5000)
         await expect(createLesson.PresentationModeCorrectAnswerPopup).toHaveText(CLtd.PresentationModeCorrectAnswerHeading)
         await PlaywrightCore.click(createLesson.PresentationModeCorrectAnswerPopupClose)
