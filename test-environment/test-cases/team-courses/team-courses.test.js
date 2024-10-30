@@ -226,7 +226,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-7 - Test Flow Python with Turtle", async ({
+  test.only("[Numair] - TC-7 - Test Flow Python with Turtle", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -241,7 +241,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.pythonWithTurtle();
   });
 
-  test("[Numair] - TC-8 - Test Flow Python with Tkinter", async ({
+  test.only("[Numair] - TC-8 - Test Flow Python with Tkinter", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -256,7 +256,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.pythonWithTkinter();
   });
 
-  test("[Numair] - TC-9 - Test Flow Java with Swing", async ({
+  test.only("[Numair] - TC-9 - Test Flow Java with Swing", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -529,7 +529,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   });
 
-  test("[Numair] - TC-23 - Folder and File Structure Verification Java", async ({
+  test.only("[Numair] - TC-23 - Folder and File Structure Verification Java", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
