@@ -318,7 +318,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     }
     await PlaywrightCore.waitTimeout(this.page, 5000);
     await PlaywrightCore.click(this.EditorSubmit);
-    await PlaywrightCore.waitTimeout(this.page, 40000);
+    await PlaywrightCore.waitTimeout(this.page, 50000);
     await PlaywrightCore.click(this.SubmitBtn);
   }
 
@@ -806,7 +806,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
     await PlaywrightCore.waitTimeout(this.page, 30000);
     let isDisabled = await this.DisableSubmitBtn.isDisabled();
     expect(!isDisabled).toBe(true);
-    await PlaywrightCore.waitTimeout(this.page, 40000);
+    await PlaywrightCore.waitTimeout(this.page, 50000);
     await PlaywrightCore.click(this.DisableSubmitBtn);
     await PlaywrightCore.click(this.SubmitBtn);
     await PlaywrightCore.waitTimeout(this.page, 20000);
@@ -821,7 +821,7 @@ exports.TeamCoursesPage = class TeamCoursesPage {
 
   async isResubmissonAllowed(beforeDueDate = true) {
     await PlaywrightCore.click(this.CreateStarterCode);
-    await PlaywrightCore.waitTimeout(this.page, 40000);
+    await PlaywrightCore.waitTimeout(this.page, 50000);
     await PlaywrightCore.click(this.DisableSubmitBtn);
     await PlaywrightCore.click(this.SubmitBtn);
     const textVisible = await this.page
