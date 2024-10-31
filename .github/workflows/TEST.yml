@@ -100,7 +100,7 @@ jobs:
       id: get_changes
       run: |
         if [ "$PREVIOUS_VERSION" != "None" ]; then
-          CHANGES=$(git log $PREVIOUS_VERSION..HEAD --oneline | sed ':a;N;$!ba;s/\n/\\n/g')  # Replace newlines with \n
+          CHANGES=$(git log $PREVIOUS_VERSION..HEAD --oneline | sed ':a;N;$!ba;s/\n/\\n/g')
           echo "CHANGES=$CHANGES" >> $GITHUB_ENV
           echo "Changes since last version ($PREVIOUS_VERSION):"
           echo "$CHANGES"
@@ -112,7 +112,7 @@ jobs:
     - name: Get Last Commit Message
       id: last_commit
       run: |
-        LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B | sed ':a;N;$!ba;s/\n/\\n/g')  # Replace newlines with \n
+        LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B | sed ':a;N;$!ba;s/\n/\\n/g')
         echo "LAST_COMMIT_MESSAGE=$LAST_COMMIT_MESSAGE" >> $GITHUB_ENV
         echo "Last Commit Message: $LAST_COMMIT_MESSAGE"
 
