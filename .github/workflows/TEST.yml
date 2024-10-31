@@ -78,7 +78,7 @@ jobs:
         echo "PREVIOUS_VERSION=$PREVIOUS_VERSION" >> $GITHUB_ENV
         echo "Previous Version: $PREVIOUS_VERSION"
 
-    - name: Get Changes from Last Version
+      - name: Get Changes from Last Version
       id: get_changes
       run: |
         if [ "$PREVIOUS_VERSION" != "None" ]; then
@@ -87,12 +87,12 @@ jobs:
           echo "Changes since last version ($PREVIOUS_VERSION):"
           echo "$CHANGES"
         else
-          echo "No changes since the first version." >> $GITHUB_ENV
+          echo "CHANGES=No changes since the first version." >> $GITHUB_ENV
+          echo "No changes since the first version."
         fi
 
-    - name: Echo Current, Previous Version and Changes
+    - name: Echo Current, Previous Version, and Changes
       run: |
         echo "Current Version: ${{ env.CURRENT_VERSION }}"
         echo "Previous Version: ${{ env.PREVIOUS_VERSION }}"
-        echo "Changes since last version:"
-        echo "${{ env.CHANGES }}"
+        echo "Changes since last version: ${{ env.CHANGES }}"
