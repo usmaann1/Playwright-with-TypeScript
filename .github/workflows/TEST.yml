@@ -74,19 +74,17 @@ jobs:
     - name: Determine Version
       id: get_version
       run: |
-        VERSION=$(git describe --tags --abbrev=0 || echo "v0.0.0")
+        VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
         echo "VERSION=$VERSION" >> $GITHUB_ENV
         echo "Current Version: $VERSION"
 
     - name: Get Changes from Last Version
       id: get_changes
       run: |
-        PREVIOUS_VERSION=$(git describe --tags --abbrev=0 HEAD^ || echo "None")
+        PREVIOUS_VERSION=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "None")
         if [ "$PREVIOUS_VERSION" != "None" ]; then
           CHANGES=$(git log $PREVIOUS_VERSION..HEAD --oneline)
           echo "CHANGES=$CHANGES" >> $GITHUB_ENV
         else
           echo "CHANGES=No changes since the first version." >> $GITHUB_ENV
         fi
-
-     

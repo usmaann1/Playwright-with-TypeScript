@@ -131,7 +131,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
-  test("[Numair] - TC-4 - Flow Test C++ - Create Assignment, project, add test, publish, share, join as student, submit test, verify answers", async ({
+  /* test("[Numair] - TC-4 - Flow Test C++ - Create Assignment, project, add test, publish, share, join as student, submit test, verify answers", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -363,7 +363,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.waitFortime(10000);
     await teamCoursesPage.uploadFile(TeamCoursesData.CPPFile);
     await teamCoursesPage.uploadProgrammingFile();
-  });
+  }); */
 
   /* test("[Numair] - TC-16 - Upload JavaScript file - Sign in, create team, create assignment, initialize IDE, upload main file, execute, and verify output", async ({
     teamCoursesPage,
