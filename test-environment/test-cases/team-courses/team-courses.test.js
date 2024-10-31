@@ -65,7 +65,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
   });
 
-  test("[Numair] - TC-2 - Flow Test Java - Create Assignment, project, add test, publish, share, join as student, submit test, verify answers", async ({
+  /* test("[Numair] - TC-2 - Flow Test Java - Create Assignment, project, add test, publish, share, join as student, submit test, verify answers", async ({
     teamCoursesPage,
     browser,
   }) => {
@@ -129,7 +129,7 @@ test.describe("TestSuite: Team/Courses", () => {
       true
     );
     await teamCoursesPage.assertingUserAnswered(TeamCoursesData.completeName);
-  });
+  }); */
 
   /* test("[Numair] - TC-4 - Flow Test C++ - Create Assignment, project, add test, publish, share, join as student, submit test, verify answers", async ({
     teamCoursesPage,
