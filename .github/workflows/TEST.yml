@@ -71,20 +71,28 @@ jobs:
         name: failed-test-titles
         path: failed-tests.txt
 
-    - name: Determine Version
-      id: get_version
+    - name: Determine Previous Version
+      id: get_previous_version
       run: |
-        VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
-        echo "VERSION=$VERSION" >> $GITHUB_ENV
-        echo "Current Version: $VERSION"
+        PREVIOUS_VERSION=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "None")
+        echo "PREVIOUS_VERSION=$PREVIOUS_VERSION" >> $GITHUB_ENV
+        echo "Previous Version: $PREVIOUS_VERSION"
 
     - name: Get Changes from Last Version
       id: get_changes
       run: |
-        PREVIOUS_VERSION=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "None")
         if [ "$PREVIOUS_VERSION" != "None" ]; then
           CHANGES=$(git log $PREVIOUS_VERSION..HEAD --oneline)
           echo "CHANGES=$CHANGES" >> $GITHUB_ENV
+          echo "Changes since last version ($PREVIOUS_VERSION):"
+          echo "$CHANGES"
         else
-          echo "CHANGES=No changes since the first version." >> $GITHUB_ENV
+          echo "No changes since the first version." >> $GITHUB_ENV
         fi
+
+    - name: Echo Current, Previous Version and Changes
+      run: |
+        echo "Current Version: ${{ env.CURRENT_VERSION }}"
+        echo "Previous Version: ${{ env.PREVIOUS_VERSION }}"
+        echo "Changes since last version:"
+        echo "${{ env.CHANGES }}"
