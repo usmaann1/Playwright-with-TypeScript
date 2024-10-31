@@ -120,4 +120,4 @@ jobs:
       run: |
         echo "Current Version: ${{ env.CURRENT_VERSION }}"
         echo "Previous Version: ${{ env.PREVIOUS_VERSION }}"
-        echo "Changes since last version: ${{ env.CHANGES
+        echo "Changes since last version: ${{ env.CHANGES }}"
