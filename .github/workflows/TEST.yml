@@ -70,6 +70,12 @@ jobs:
       with:
         name: failed-test-titles
         path: failed-tests.txt 
+    
+    - name: Show Tags
+        run: git tag
+
+    - name: Show Commit History
+        run: git log --oneline -n 10
 
     - name: Determine Current Version
       id: get_version
@@ -97,6 +103,13 @@ jobs:
           echo "CHANGES=No changes since the first version." >> $GITHUB_ENV
           echo "No changes since the first version."
         fi
+
+    - name: Get Last Commit Message
+      id: last_commit
+      run: |
+        LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+        echo "LAST_COMMIT_MESSAGE=$LAST_COMMIT_MESSAGE" >> $GITHUB_ENV
+        echo "Last Commit Message: $LAST_COMMIT_MESSAGE"
 
     - name: Echo Current, Previous Version, and Changes
       run: |
