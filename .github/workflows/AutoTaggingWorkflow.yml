@@ -1,0 +1,40 @@
+name: Auto Tagging Workflow
+on:
+  push:
+    branches:
+      - main  # Change this to your target branch
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Get Current Version
+        id: get_version
+        run: |
+          CURRENT_VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "CURRENT_VERSION=$CURRENT_VERSION" >> $GITHUB_ENV
+          echo "Current Version: $CURRENT_VERSION"
+
+      - name: Determine New Tag
+        id: new_tag
+        run: |
+          # Increment the current version or set a new version
+          IFS='.' read -r major minor patch <<< "${{ env.CURRENT_VERSION#v}}"
+          NEW_TAG="v$((major)).$((minor)).$((patch + 1))"
+          echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
+          echo "New Tag: $NEW_TAG"
+
+      - name: Create and Push Tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the built-in GitHub token
+        run: |
+          git tag "${{ env.NEW_TAG }}"
+          git push origin "${{ env.NEW_TAG }}"
