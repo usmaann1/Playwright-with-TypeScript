@@ -27,7 +27,7 @@ jobs:
         id: new_tag
         run: |
           # Increment the current version or set a new version
-          IFS='.' read -r major minor patch <<< "${{ env.CURRENT_VERSION#v}}"
+          IFS='.' read -r major minor patch <<< "${{ env.CURRENT_VERSION}}"
           NEW_TAG="v$((major)).$((minor)).$((patch + 1))"
           echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
           echo "New Tag: $NEW_TAG"
