@@ -182,11 +182,6 @@ jobs:
                   short: true
                 },
                 {
-                  title: 'Commits since previous version',
-                  value: `${process.env.CHANGES}`,
-                  short: true
-                },
-                {
                   title: 'Last commit message',
                   value: `${process.env.LAST_COMMIT_MESSAGE}`,
                   short: true
