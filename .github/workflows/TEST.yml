@@ -96,11 +96,11 @@ jobs:
         echo "PREVIOUS_VERSION=$PREVIOUS_VERSION" >> $GITHUB_ENV
         echo "Previous Version: $PREVIOUS_VERSION"
     
-    - name: Get Changes from Last Version
+      - name: Get Changes from Last Version
       id: get_changes
       run: |
         if [ "$PREVIOUS_VERSION" != "None" ]; then
-          CHANGES=$(git log $PREVIOUS_VERSION..HEAD --oneline)
+          CHANGES=$(git log $PREVIOUS_VERSION..HEAD --oneline | sed ':a;N;$!ba;s/\n/\\n/g')  # Replace newlines with \n
           echo "CHANGES=$CHANGES" >> $GITHUB_ENV
           echo "Changes since last version ($PREVIOUS_VERSION):"
           echo "$CHANGES"
@@ -112,7 +112,7 @@ jobs:
     - name: Get Last Commit Message
       id: last_commit
       run: |
-        LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+        LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B | sed ':a;N;$!ba;s/\n/\\n/g')  # Replace newlines with \n
         echo "LAST_COMMIT_MESSAGE=$LAST_COMMIT_MESSAGE" >> $GITHUB_ENV
         echo "Last Commit Message: $LAST_COMMIT_MESSAGE"
 
@@ -120,6 +120,4 @@ jobs:
       run: |
         echo "Current Version: ${{ env.CURRENT_VERSION }}"
         echo "Previous Version: ${{ env.PREVIOUS_VERSION }}"
-        echo "Changes since last version: ${{ env.CHANGES }}"
-
-     
+        echo "Changes since last version: ${{ env.CHANGES
