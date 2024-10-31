@@ -72,10 +72,10 @@ jobs:
         path: failed-tests.txt 
     
     - name: Show Tags
-        run: git tag
+      run: git tag
 
     - name: Show Commit History
-        run: git log --oneline -n 10
+      run: git log --oneline -n 10
 
     - name: Determine Current Version
       id: get_version
