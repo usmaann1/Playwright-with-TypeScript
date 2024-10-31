@@ -1,6 +1,6 @@
 name: Test work flow
 on:
-  workflow_dispatch:  # Allows manual triggering
+  workflow_dispatch:
 
 jobs:
   test:
