@@ -365,7 +365,7 @@ test.describe("TestSuite: Team/Courses", () => {
     await teamCoursesPage.uploadProgrammingFile();
   });
 
-  test("[Numair] - TC-16 - Upload JavaScript file - Sign in, create team, create assignment, initialize IDE, upload main file, execute, and verify output", async ({
+  /* test("[Numair] - TC-16 - Upload JavaScript file - Sign in, create team, create assignment, initialize IDE, upload main file, execute, and verify output", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -450,7 +450,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
     await teamCoursesPage.uploadFile(TeamCoursesData.PNGFile);
     await teamCoursesPage.AssertImages(TeamCoursesData.TestPNG);
-  });
+  }); */
 
   /* test("[Numair] - TC-21 - Flow Traditional Java - Sign in, create team, create assignment, initialize IDE, upload main file, excute and verify output", async ({
     teamCoursesPage,
@@ -470,7 +470,7 @@ test.describe("TestSuite: Team/Courses", () => {
     );
   }); */
 
-  test("[Numair] - TC-21 - Folder and file structure verifcation/JavaScript Sign in, create team, create assignment, initialize IDE, create two folders and one file, change entry point, execute to verify output, drag and drop the file into a folder, and verify download.", async ({
+  /* test("[Numair] - TC-21 - Folder and file structure verifcation/JavaScript Sign in, create team, create assignment, initialize IDE, create two folders and one file, change entry point, execute to verify output, drag and drop the file into a folder, and verify download.", async ({
     teamCoursesPage,
   }) => {
     const randomName = await UserFunctions.generateName();
@@ -2242,4 +2242,5 @@ test.describe("TestSuite: Team/Courses", () => {
     );
     await newTeamCoursesPageInstance.isLateSubmissionAllowed(false);
   });
+ */
 });

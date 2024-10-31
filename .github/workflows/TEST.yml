@@ -45,7 +45,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: playwright-summary
-        path: summary.json  # Adjust path if necessary
+        path: summary.json
     - name: Count Test Cases
       id: count-tests
       run: |
@@ -69,6 +69,24 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: failed-test-titles
-        path: failed-tests.txt 
+        path: failed-tests.txt
+
+    - name: Determine Version
+      id: get_version
+      run: |
+        VERSION=$(git describe --tags --abbrev=0 || echo "v0.0.0")
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+        echo "Current Version: $VERSION"
+
+    - name: Get Changes from Last Version
+      id: get_changes
+      run: |
+        PREVIOUS_VERSION=$(git describe --tags --abbrev=0 HEAD^ || echo "None")
+        if [ "$PREVIOUS_VERSION" != "None" ]; then
+          CHANGES=$(git log $PREVIOUS_VERSION..HEAD --oneline)
+          echo "CHANGES=$CHANGES" >> $GITHUB_ENV
+        else
+          echo "CHANGES=No changes since the first version." >> $GITHUB_ENV
+        fi
 
      
