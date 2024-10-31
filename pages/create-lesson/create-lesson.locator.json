@@ -202,7 +202,7 @@
     "MultipleChoiceFormBox4":"(//div[@contenteditable='true'])[6]",
     "MultipleChoicePointsInput":"//input[@placeholder='Total']",
     "PointsTxt":"//span[normalize-space()='points']",
-    "PublishToggleBtn":"//input[@type='checkbox']",
+    "PublishToggleBtn":"(//input[@type='checkbox'])[1]",
     "MultipleChoiceOptionsRule1":"//label[contains(text(),'Each learner will see the options provided in rand')]",
     "MultipleChoiceOptionsRule2":"//label[normalize-space()='Allow learners to check their answer.']",
     "MultipleChoiceOptionsRule3":"//label[contains(text(),'Learners can gain a percentage of the maximum poin')]",
