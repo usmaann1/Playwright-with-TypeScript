@@ -10,10 +10,14 @@ jobs:
     runs-on: large-runner
     permissions:
       contents: read
+      pull-requests: read
       actions: read
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetches the full history and tags
+        tags: true
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
@@ -86,6 +90,74 @@ jobs:
         echo "Extracted baseURL: $BASE_URL"
         echo "BASE_URL=$BASE_URL" >> $GITHUB_ENV
 
+    - name: Show Tags
+      run: |
+        git fetch --tags  # Ensure all tags are up-to-date
+        git tag  # List tags to confirm they are present
+
+    - name: Show Commit History
+      run: git log --oneline -n 10
+
+    - name: Determine Current Version
+      id: get_version
+      run: |
+        CURRENT_VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+        echo "CURRENT_VERSION=$CURRENT_VERSION" >> $GITHUB_ENV
+        echo "Current Version: $CURRENT_VERSION"
+
+    - name: Determine Previous Version
+      id: get_previous_version
+      run: |
+        PREVIOUS_VERSION=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "None")
+        echo "PREVIOUS_VERSION=$PREVIOUS_VERSION" >> $GITHUB_ENV
+        echo "Previous Version: $PREVIOUS_VERSION"
+    
+    - name: Get Changes from Last Version
+      id: get_changes
+      run: |
+        if [ "$PREVIOUS_VERSION" != "None" ]; then
+          CHANGES=$(git log $PREVIOUS_VERSION..HEAD --oneline | sed ':a;N;$!ba;s/\n/\\n/g')
+          echo "CHANGES=$CHANGES" >> $GITHUB_ENV
+          echo "Changes since last version ($PREVIOUS_VERSION):"
+          echo "$CHANGES"
+        else
+          echo "CHANGES=No changes since the first version." >> $GITHUB_ENV
+          echo "No changes since the first version."
+        fi
+
+    - name: Get Last Commit Message
+      id: last_commit
+      run: |
+        LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B | sed ':a;N;$!ba;s/\n/\\n/g')
+        echo "LAST_COMMIT_MESSAGE=$LAST_COMMIT_MESSAGE" >> $GITHUB_ENV
+        echo "Last Commit Message: $LAST_COMMIT_MESSAGE"
+
+    - name: Echo Current, Previous Version, and Changes
+      run: |
+        echo "Current Version: ${{ env.CURRENT_VERSION }}"
+        echo "Previous Version: ${{ env.PREVIOUS_VERSION }}"
+        echo "Changes since last version: ${{ env.CHANGES }}"
+
+    - name: Install GitHub CLI
+      run: sudo apt-get install -y gh
+  
+    - name: Get Last PR Title and Creator
+      id: last_pr_info
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+          PR_DATA=$(gh pr list --limit 1 --json title,author --jq '.[0]')
+          PR_TITLE=$(echo "$PR_DATA" | jq -r '.title')
+          PR_CREATOR=$(echo "$PR_DATA" | jq -r '.author.login')
+          echo "PR_TITLE=$PR_TITLE" >> $GITHUB_ENV
+          echo "PR_CREATOR=$PR_CREATOR" >> $GITHUB_ENV
+  
+    - name: Show Last PR Title and Creator
+      run: |
+          echo "Last PR Title: ${{ env.PR_TITLE }}"
+          echo "PR Created By: ${{ env.PR_CREATOR }}"
+
+
 
 
     - name: Send Slack Notification
@@ -117,6 +189,26 @@ jobs:
                 {
                   title: 'Workflow',
                   value: `${process.env.AS_WORKFLOW}`,
+                  short: true
+                },
+                {
+                  title: 'Current Version',
+                  value: `${process.env.CURRENT_VERSION}`,
+                  short: true
+                },
+                {
+                  title: 'Last PR Title',
+                  value: `${process.env.PR_TITLE}`,
+                  short: true
+                },
+                {
+                  title: 'Last PR Author',
+                  value: `${process.env.PR_CREATOR}`,
+                  short: true
+                },
+                {
+                  title: 'Last commit message',
+                  value: `${process.env.LAST_COMMIT_MESSAGE}`,
                   short: true
                 },
                 {
