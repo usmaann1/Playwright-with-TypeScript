@@ -122,7 +122,7 @@ jobs:
         echo "Previous Version: ${{ env.PREVIOUS_VERSION }}"
         echo "Changes since last version: ${{ env.CHANGES }}"
     
-        - name: Install GitHub CLI
+      - name: Install GitHub CLI
         run: sudo apt-get install -y gh
   
       - name: Get Last PR Title and Creator
