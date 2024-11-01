@@ -121,3 +121,22 @@ jobs:
         echo "Current Version: ${{ env.CURRENT_VERSION }}"
         echo "Previous Version: ${{ env.PREVIOUS_VERSION }}"
         echo "Changes since last version: ${{ env.CHANGES }}"
+    
+        - name: Install GitHub CLI
+        run: sudo apt-get install -y gh
+  
+      - name: Get Last PR Title and Creator
+        id: last_pr_info
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_DATA=$(gh pr list --limit 1 --json title,author --jq '.[0]')
+          PR_TITLE=$(echo "$PR_DATA" | jq -r '.title')
+          PR_CREATOR=$(echo "$PR_DATA" | jq -r '.author.login')
+          echo "PR_TITLE=$PR_TITLE" >> $GITHUB_ENV
+          echo "PR_CREATOR=$PR_CREATOR" >> $GITHUB_ENV
+  
+      - name: Show Last PR Title and Creator
+        run: |
+          echo "Last PR Title: ${{ env.PR_TITLE }}"
+          echo "PR Created By: ${{ env.PR_CREATOR }}"
