@@ -8,6 +8,7 @@ jobs:
     runs-on: large-runner
     permissions:
       contents: read
+      pull-requests: read
       actions: read
     steps:
     - name: Checkout code
