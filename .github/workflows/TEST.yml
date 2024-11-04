@@ -123,21 +123,29 @@ jobs:
         echo "Previous Version: ${{ env.PREVIOUS_VERSION }}"
         echo "Changes since last version: ${{ env.CHANGES }}"
     
-    - name: Install GitHub CLI
-      run: sudo apt-get install -y gh
-  
-    - name: Get Last PR Title and Creator
-      id: last_pr_info
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Set up GitHub CLI
+      uses: actions/setup-gh@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Get latest merged PR details
+      id: pr_details
       run: |
-          PR_DATA=$(gh pr list --limit 1 --json title,author --jq '.[0]')
-          PR_TITLE=$(echo "$PR_DATA" | jq -r '.title')
-          PR_CREATOR=$(echo "$PR_DATA" | jq -r '.author.login')
-          echo "PR_TITLE=$PR_TITLE" >> $GITHUB_ENV
-          echo "PR_CREATOR=$PR_CREATOR" >> $GITHUB_ENV
-  
-    - name: Show Last PR Title and Creator
+        # Fetch the latest merged PR into the main branch
+        PR_DATA=$(gh pr list --repo ${{ github.repository }} --state merged --json title,author --limit 1 --jq '.[0]')
+
+        # Extract the title and author from JSON output
+        PR_TITLE=$(echo "$PR_DATA" | jq -r '.title')
+        PR_AUTHOR=$(echo "$PR_DATA" | jq -r '.author.login')
+
+        echo "Latest merged PR title: $PR_TITLE"
+        echo "Latest merged PR author: $PR_AUTHOR"
+
+        # Set output variables for use in subsequent steps
+        echo "::set-output name=title::$PR_TITLE"
+        echo "::set-output name=author::$PR_AUTHOR"
+
+    - name: Display PR details
       run: |
-          echo "Last PR Title: ${{ env.PR_TITLE }}"
-          echo "PR Created By: ${{ env.PR_CREATOR }}"
+        echo "The latest PR merged to main branch was titled: ${{ steps.pr_details.outputs.title }}"
+        echo "Authored by: ${{ steps.pr_details.outputs.author }}"
