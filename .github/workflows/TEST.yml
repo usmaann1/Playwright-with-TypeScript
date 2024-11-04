@@ -123,25 +123,16 @@ jobs:
         echo "Previous Version: ${{ env.PREVIOUS_VERSION }}"
         echo "Changes since last version: ${{ env.CHANGES }}"
     
-    - name: Set up GitHub CLI
-      uses: actions/setup-gh@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Install GitHub CLI
+      run: sudo apt-get install -y gh
 
     - name: Get latest merged PR details
       id: pr_details
       run: |
-        # Fetch the latest merged PR into the main branch
         PR_DATA=$(gh pr list --repo ${{ github.repository }} --state merged --json title,author --limit 1 --jq '.[0]')
-
-        # Extract the title and author from JSON output
         PR_TITLE=$(echo "$PR_DATA" | jq -r '.title')
         PR_AUTHOR=$(echo "$PR_DATA" | jq -r '.author.login')
 
-        echo "Latest merged PR title: $PR_TITLE"
-        echo "Latest merged PR author: $PR_AUTHOR"
-
-        # Set output variables for use in subsequent steps
         echo "::set-output name=title::$PR_TITLE"
         echo "::set-output name=author::$PR_AUTHOR"
 
