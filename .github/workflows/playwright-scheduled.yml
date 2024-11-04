@@ -140,22 +140,21 @@ jobs:
 
     - name: Install GitHub CLI
       run: sudo apt-get install -y gh
-  
-    - name: Get Last PR Title and Creator
-      id: last_pr_info
+
+    - name: Get Latest Merged PR Details
       env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-          PR_DATA=$(gh pr list --limit 1 --json title,author --jq '.[0]')
-          PR_TITLE=$(echo "$PR_DATA" | jq -r '.title')
-          PR_CREATOR=$(echo "$PR_DATA" | jq -r '.author.login')
-          echo "PR_TITLE=$PR_TITLE" >> $GITHUB_ENV
-          echo "PR_CREATOR=$PR_CREATOR" >> $GITHUB_ENV
-  
-    - name: Show Last PR Title and Creator
+        PR_DATA=$(gh pr list --repo ${{ github.repository }} --state merged --json title,author --limit 1 --jq '.[0]')
+        PR_TITLE=$(echo "$PR_DATA" | jq -r '.title')
+        PR_AUTHOR=$(echo "$PR_DATA" | jq -r '.author.login')
+        echo "PR_TITLE=$PR_TITLE" >> $GITHUB_ENV
+        echo "PR_AUTHOR=$PR_AUTHOR" >> $GITHUB_ENV
+
+    - name: Display PR details
       run: |
-          echo "Last PR Title: ${{ env.PR_TITLE }}"
-          echo "PR Created By: ${{ env.PR_CREATOR }}"
+        echo "PR Title: ${{ env.PR_TITLE }}"
+        echo "PR Author: ${{ env.PR_AUTHOR }}"
 
 
 
@@ -203,7 +202,7 @@ jobs:
                 },
                 {
                   title: 'Last PR Author',
-                  value: `${process.env.PR_CREATOR}`,
+                  value: `${process.env.PR_AUTHOR}`,
                   short: true
                 },
                 {
