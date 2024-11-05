@@ -172,7 +172,7 @@ jobs:
                 title: `Playwright Automation Results :test_tube:`,
                 fields: [{
                   title: 'Site Under Test',
-                  value: `${{ env.BASE_URL }}`,
+                  value: `${{ env.BASE_URL || null }}`,
                   short: true
                 },
                 {
@@ -182,40 +182,40 @@ jobs:
                 },
                 {
                   title: 'Execution Time',
-                  value: `${process.env.AS_TOOK}`,
+                  value: `${process.env.AS_TOOK || null }`,
                   short: true
                 },
                 {
                   title: 'Workflow',
-                  value: `${process.env.AS_WORKFLOW}`,
+                  value: `${process.env.AS_WORKFLOW || null }`,
                   short: true
                 },
                 {
                   title: 'Current Version',
-                  value: `${process.env.CURRENT_VERSION}`,
+                  value: `${process.env.CURRENT_VERSION || null }`,
                   short: true
                 },
                 {
                   title: 'Last PR Title',
-                  value: `${process.env.PR_TITLE}`,
+                  value: `${process.env.PR_TITLE || null }`,
+                  short: true
+                },
+                {
+                  title: 'PR Author:',
+                  value: `${process.env.PR_AUTHOR || null }`,
                   short: true
                 },
                 {
                   title: 'PASSED',
-                  value: `${{env.PASSED}}`,
+                  value: `${{env.PASSED || 0 }}`,
                   short: true
                 },
                 {
                   title: 'Failed',
-                  value: `${{env.FAILED}}`,
+                  value: `${{env.FAILED || 0 }}`,
                   short: true
                 }]
               }]
             }  
       env:
           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
-
-
-
-
-     
