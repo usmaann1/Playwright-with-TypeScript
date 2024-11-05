@@ -191,11 +191,6 @@ jobs:
                   short: true
                 },
                 {
-                  title: 'Current Version',
-                  value: `${process.env.CURRENT_VERSION || null }`,
-                  short: true
-                },
-                {
                   title: 'Last PR Title',
                   value: `${process.env.PR_TITLE || null }`,
                   short: true
