@@ -201,7 +201,7 @@ jobs:
                   short: true
                 },
                 {
-                  title: 'PR Author:',
+                  title: 'Last PR Author:',
                   value: `${process.env.PR_AUTHOR || null }`,
                   short: true
                 },
