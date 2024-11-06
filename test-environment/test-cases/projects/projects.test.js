@@ -55,6 +55,7 @@ test.describe('TestSuite: Projects', () => {
     await page.waitForTimeout(20000);
     await projects.WaitforLocator(page);
     await expect(element).toBeVisible("Introduction");
+    console.log("Hello World");
 
   });
 
